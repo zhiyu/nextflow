@@ -73,7 +73,7 @@ const MarketplaceCanvas = () => {
                         />
                     </Toolbar>
                 </AppBar>
-                <Box sx={{ pt: '70px', height: '100vh', width: '100%' }}>
+                <Box sx={{ pt: '55px', height: '100vh', width: '100%' }}>
                     <div className='reactflow-parent-wrapper'>
                         <div className='reactflow-wrapper' ref={reactFlowWrapper}>
                             <ReactFlow
