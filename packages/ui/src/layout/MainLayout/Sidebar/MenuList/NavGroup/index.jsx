@@ -44,13 +44,13 @@ const NavGroup = ({ item }) => {
                         </Typography>
                     )
                 }
-                sx={{ py: '20px' }}
+                sx={{ py: '0px' }}
             >
                 {items}
             </List>
 
             {/* group divider */}
-            <Divider sx={{ mt: 0.25, mb: 1.25 }} />
+            {/* <Divider sx={{ mt: 0.25, mb: 1.25 }} /> */}
         </>
     )
 }

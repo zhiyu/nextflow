@@ -1,100 +1,104 @@
 // assets
-import {
-    IconUsersGroup,
-    IconHierarchy,
-    IconBuildingStore,
-    IconKey,
-    IconTool,
-    IconLock,
-    IconRobot,
-    IconVariable,
-    IconFiles
-} from '@tabler/icons-react'
 
-// constant
-const icons = { IconUsersGroup, IconHierarchy, IconBuildingStore, IconKey, IconTool, IconLock, IconRobot, IconVariable, IconFiles }
+import { GoArchive, GoDependabot, GoKey, GoLock, GoDatabase, GoTools, GoCode, GoPeople, GoInfinity } from 'react-icons/go'
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
-const dashboard = {
-    id: 'dashboard',
-    title: '',
-    type: 'group',
-    children: [
-        {
-            id: 'chatflows',
-            title: 'Chatflows',
-            type: 'item',
-            url: '/chatflows',
-            icon: icons.IconHierarchy,
-            breadcrumbs: true
-        },
-        {
-            id: 'agentflows',
-            title: 'Agentflows',
-            type: 'item',
-            url: '/agentflows',
-            icon: icons.IconUsersGroup,
-            breadcrumbs: true,
-            isBeta: true
-        },
-        {
-            id: 'marketplaces',
-            title: 'Marketplaces',
-            type: 'item',
-            url: '/marketplaces',
-            icon: icons.IconBuildingStore,
-            breadcrumbs: true
-        },
-        {
-            id: 'tools',
-            title: 'Tools',
-            type: 'item',
-            url: '/tools',
-            icon: icons.IconTool,
-            breadcrumbs: true
-        },
-        {
-            id: 'assistants',
-            title: 'Assistants',
-            type: 'item',
-            url: '/assistants',
-            icon: icons.IconRobot,
-            breadcrumbs: true
-        },
-        {
-            id: 'credentials',
-            title: 'Credentials',
-            type: 'item',
-            url: '/credentials',
-            icon: icons.IconLock,
-            breadcrumbs: true
-        },
-        {
-            id: 'variables',
-            title: 'Variables',
-            type: 'item',
-            url: '/variables',
-            icon: icons.IconVariable,
-            breadcrumbs: true
-        },
-        {
-            id: 'apikey',
-            title: 'API Keys',
-            type: 'item',
-            url: '/apikey',
-            icon: icons.IconKey,
-            breadcrumbs: true
-        },
-        {
-            id: 'document-stores',
-            title: 'Document Stores',
-            type: 'item',
-            url: '/document-stores',
-            icon: icons.IconFiles,
-            breadcrumbs: true
-        }
-    ]
-}
+const dashboard = [
+    {
+        id: 'dashboard',
+        title: '探索',
+        type: 'group',
+        children: [
+            {
+                id: 'marketplaces',
+                title: '模版市场',
+                type: 'item',
+                url: '/marketplaces',
+                icon: GoArchive,
+                breadcrumbs: true
+            }
+        ]
+    },
+    {
+        id: 'studio',
+        title: '工作台',
+        type: 'group',
+        children: [
+            {
+                id: 'chatflows',
+                title: '智能助手',
+                type: 'item',
+                url: '/chatflows',
+                icon: GoDependabot,
+                breadcrumbs: true
+            },
+            {
+                id: 'agentflows',
+                title: '智能团',
+                type: 'item',
+                url: '/agentflows',
+                icon: GoPeople,
+                breadcrumbs: true,
+                isBeta: false
+            },
+            {
+                id: 'document-stores',
+                title: '知识库',
+                type: 'item',
+                url: '/document-stores',
+                icon: GoDatabase,
+                breadcrumbs: true
+            },
+            {
+                id: 'tools',
+                title: '工具箱',
+                type: 'item',
+                url: '/tools',
+                icon: GoInfinity,
+                breadcrumbs: true
+            }
+            // {
+            //     id: 'assistants',
+            //     title: '助手',
+            //     type: 'item',
+            //     url: '/assistants',
+            //     icon: GoInfinity,
+            //     breadcrumbs: true
+            // }
+        ]
+    },
+    {
+        id: 'security',
+        title: '设置',
+        type: 'group',
+        children: [
+            {
+                id: 'credentials',
+                title: '凭证',
+                type: 'item',
+                url: '/credentials',
+                icon: GoLock,
+                breadcrumbs: true
+            },
+            {
+                id: 'variables',
+                title: '全局变量',
+                type: 'item',
+                url: '/variables',
+                icon: GoCode,
+                breadcrumbs: true
+            },
+            {
+                id: 'apikey',
+                title: 'API Keys',
+                type: 'item',
+                url: '/apikey',
+                icon: GoKey,
+                breadcrumbs: true
+            }
+        ]
+    }
+]
 
 export default dashboard

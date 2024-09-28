@@ -43,7 +43,7 @@ const ViewHeader = ({
                     <Box sx={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
                         <Typography
                             sx={{
-                                fontSize: '2rem',
+                                fontSize: '1.5rem',
                                 fontWeight: 600,
                                 display: '-webkit-box',
                                 WebkitLineClamp: 3,
@@ -90,10 +90,10 @@ const ViewHeader = ({
                                 width: '280px',
                                 height: '100%',
                                 display: { xs: 'none', sm: 'flex' },
-                                borderRadius: 2,
+                                borderRadius: 16,
 
                                 '& .MuiOutlinedInput-notchedOutline': {
-                                    borderRadius: 2
+                                    borderRadius: 16
                                 }
                             }}
                             variant='outlined'

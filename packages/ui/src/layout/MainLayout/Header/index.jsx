@@ -13,7 +13,7 @@ import LogoSection from '../LogoSection'
 import ProfileSection from './ProfileSection'
 
 // assets
-import { IconMenu2 } from '@tabler/icons-react'
+import { IoMenuOutline } from 'react-icons/io5'
 
 // store
 import { SET_DARKMODE } from '@/store/actions'
@@ -101,7 +101,11 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     }
                 }}
             >
-                <Box component='span' sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
+                <Box
+                    component='span'
+                    style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}
+                    sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}
+                >
                     <LogoSection />
                 </Box>
                 <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
@@ -121,12 +125,12 @@ const Header = ({ handleLeftDrawerToggle }) => {
                         onClick={handleLeftDrawerToggle}
                         color='inherit'
                     >
-                        <IconMenu2 stroke={1.5} size='1.3rem' />
+                        <IoMenuOutline size='1.5rem' />
                     </Avatar>
                 </ButtonBase>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
-            <MaterialUISwitch checked={isDark} onChange={changeDarkMode} />
+            {/* <MaterialUISwitch checked={isDark} onChange={changeDarkMode} /> */}
             <Box sx={{ ml: 2 }}></Box>
             <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />
         </>

@@ -1,6 +1,23 @@
+import { BorderBottom } from '@mui/icons-material'
+
 export default function componentStyleOverrides(theme) {
     const bgColor = theme.colors?.grey50
     return {
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    boxShadow: 'none',
+                    borderBottom: '1px solid ' + theme.colors.grey200
+                }
+            }
+        },
+        MuiToolbar: {
+            styleOverrides: {
+                root: {
+                    borderBottom: '0px solid !important'
+                }
+            }
+        },
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
@@ -60,6 +77,14 @@ export default function componentStyleOverrides(theme) {
                 },
                 rounded: {
                     borderRadius: `${theme?.customization?.borderRadius}px`
+                }
+            }
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    borderColor: '' + theme.colors.grey200 + ' !important',
+                    minHeight: '120px'
                 }
             }
         },

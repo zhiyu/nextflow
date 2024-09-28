@@ -36,8 +36,8 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                     component='div'
                     style={{
                         height: !matchUpMd ? 'calc(100vh - 56px)' : `calc(100vh - ${headerHeight}px)`,
-                        paddingLeft: '16px',
-                        paddingRight: '16px'
+                        paddingLeft: '0px',
+                        paddingRight: '0px'
                     }}
                 >
                     <MenuList />
@@ -74,10 +74,10 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                         background: theme.palette.background.default,
                         color: theme.palette.text.primary,
                         [theme.breakpoints.up('md')]: {
-                            top: `${headerHeight}px`
+                            top: `${headerHeight + 1}px`
                         },
                         borderRight: drawerOpen ? '1px solid' : 'none',
-                        borderColor: drawerOpen ? theme.palette.primary[200] + 75 : 'transparent'
+                        borderColor: drawerOpen ? theme.palette.grey[200] : 'transparent'
                     }
                 }}
                 ModalProps={{ keepMounted: true }}

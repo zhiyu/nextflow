@@ -89,10 +89,10 @@ export default function themeTypography(theme) {
         mainContent: {
             backgroundColor: theme.background,
             width: '100%',
-            minHeight: 'calc(100vh - 75px)',
+            minHeight: 'calc(100vh - 55px)',
             flexGrow: 1,
             padding: '20px',
-            marginTop: '75px',
+            marginTop: '55px',
             marginRight: '20px',
             borderRadius: `${theme?.customization?.borderRadius}px`
         },
@@ -100,9 +100,9 @@ export default function themeTypography(theme) {
             fontSize: '0.875rem',
             fontWeight: 500,
             color: theme.heading,
-            padding: '6px',
+            padding: '6px 24px',
             textTransform: 'capitalize',
-            marginTop: '10px'
+            marginTop: '20px'
         },
         subMenuCaption: {
             fontSize: '0.6875rem',
