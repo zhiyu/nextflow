@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // material-ui
-import { Box, Skeleton, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { Box, Button, Skeleton, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 // project imports
@@ -130,7 +130,7 @@ const Agentflows = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name or Category' title='智能团队'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name or Category' title='智能体'>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
                             value={view}
@@ -141,7 +141,7 @@ const Agentflows = () => {
                             <ToggleButton
                                 sx={{
                                     borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 2,
+                                    borderRadius: 16,
                                     color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
                                 }}
                                 variant='contained'
@@ -153,7 +153,7 @@ const Agentflows = () => {
                             <ToggleButton
                                 sx={{
                                     borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 2,
+                                    borderRadius: 16,
                                     color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
                                 }}
                                 variant='contained'
@@ -163,9 +163,15 @@ const Agentflows = () => {
                                 <IconList />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        <StyledButton variant='contained' onClick={addNew} startIcon={<IconPlus />} sx={{ borderRadius: 2, height: 40 }}>
+                        <Button
+                            variant='outlined'
+                            color='primary'
+                            onClick={addNew}
+                            startIcon={<IconPlus />}
+                            sx={{ borderRadius: 2, height: 40 }}
+                        >
                             Add New
-                        </StyledButton>
+                        </Button>
                     </ViewHeader>
                     {!view || view === 'card' ? (
                         <>

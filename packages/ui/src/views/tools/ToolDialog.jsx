@@ -427,7 +427,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                                     variant='outlined'
                                     onClick={() => onSaveAsTemplate()}
                                     startIcon={<IconTemplate />}
-                                    color='secondary'
+                                    color='primary'
                                 >
                                     Save As Template
                                 </Button>
@@ -521,7 +521,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                             <Stack direction='row'>
                                 <Button
                                     style={{ marginBottom: 10, marginRight: 10 }}
-                                    color='secondary'
+                                    color='primary'
                                     variant='text'
                                     onClick={() => setShowHowToDialog(true)}
                                 >
@@ -551,7 +551,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     </StyledButton>
                 )}
                 {dialogProps.type === 'TEMPLATE' && (
-                    <StyledButton color='secondary' variant='contained' onClick={useToolTemplate}>
+                    <StyledButton color='primary' variant='contained' onClick={useToolTemplate}>
                         Use Template
                     </StyledButton>
                 )}

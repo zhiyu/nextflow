@@ -252,7 +252,7 @@ const VectorStoreQuery = () => {
                     >
                         <Button
                             variant='outlined'
-                            color='secondary'
+                            color='primary'
                             sx={{ borderRadius: 2, height: '100%' }}
                             startIcon={<IconDeviceFloppy />}
                             onClick={saveConfig}

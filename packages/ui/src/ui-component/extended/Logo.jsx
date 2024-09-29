@@ -24,7 +24,7 @@ const Logo = () => {
             }}
         >
             <IoLogoXing style={{ width: '32px', height: '32px', color: customization.isDarkMode ? '' : theme.palette.secondary.dark }} />{' '}
-            &nbsp;agentune
+            &nbsp;Agentune
         </div>
     )
 }

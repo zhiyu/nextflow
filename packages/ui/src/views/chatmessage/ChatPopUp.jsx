@@ -139,7 +139,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                 sx={{ position: 'absolute', right: 20, top: 20 }}
                 ref={anchorRef}
                 size='small'
-                color='secondary'
+                color='primary'
                 aria-label='chat'
                 title='Chat'
                 onClick={handleToggle}

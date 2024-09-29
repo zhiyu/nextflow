@@ -1018,7 +1018,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             </DialogContent>
             <DialogActions sx={{ p: 3, pt: 0 }}>
                 {dialogProps.type === 'EDIT' && (
-                    <StyledButton color='secondary' variant='contained' onClick={() => onSyncClick()}>
+                    <StyledButton color='primary' variant='contained' onClick={() => onSyncClick()}>
                         Sync
                     </StyledButton>
                 )}

@@ -179,14 +179,9 @@ const Tools = () => {
                                 />
                             </Box>
                             <ButtonGroup disableElevation aria-label='outlined primary button group'>
-                                <StyledButton
-                                    variant='contained'
-                                    onClick={addNew}
-                                    startIcon={<IconPlus />}
-                                    sx={{ borderRadius: 2, height: 40 }}
-                                >
+                                <Button variant='outlined' onClick={addNew} startIcon={<IconPlus />} sx={{ borderRadius: 2, height: 40 }}>
                                     Create
-                                </StyledButton>
+                                </Button>
                             </ButtonGroup>
                         </ViewHeader>
                         {!view || view === 'card' ? (

@@ -82,6 +82,8 @@ const CanvasNode = ({ data }) => {
         }
     }, [canvas.componentNodes, data.name, data.version])
 
+    console.log(theme.palette.primary.main)
+
     return (
         <>
             <NodeCardWrapper

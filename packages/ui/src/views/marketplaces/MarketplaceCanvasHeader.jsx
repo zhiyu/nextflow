@@ -43,7 +43,7 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                 <Stack flexDirection='row'>
                     <Typography
                         sx={{
-                            fontSize: '1.5rem',
+                            fontSize: '1.2rem',
                             fontWeight: 600,
                             ml: 2
                         }}
@@ -54,7 +54,7 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
             </Box>
             <Box>
                 <StyledButton
-                    color='secondary'
+                    color='primary'
                     variant='contained'
                     title='Use Chatflow'
                     onClick={() => onChatflowCopy(flowData)}

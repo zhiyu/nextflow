@@ -367,14 +367,15 @@ const DocumentStoreDetails = () => {
                             >
                                 <IconTrash />
                             </IconButton>
-                            <StyledButton
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: '100%', color: 'white' }}
+                            <Button
+                                variant='outlined'
+                                sx={{ borderRadius: 2, height: '100%' }}
+                                color='primary'
                                 startIcon={<IconPlus />}
                                 onClick={listLoaders}
                             >
                                 Add Document Loader
-                            </StyledButton>
+                            </Button>
                             {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
                                 <Button variant='outlined' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
                                     Refresh
@@ -391,27 +392,24 @@ const DocumentStoreDetails = () => {
                             {documentStore?.totalChunks > 0 && documentStore?.status !== 'UPSERTING' && (
                                 <>
                                     <Button
-                                        variant='contained'
+                                        variant='outlined'
                                         sx={{
                                             borderRadius: 2,
                                             height: '100%'
                                         }}
-                                        color='secondary'
+                                        color='primary'
                                         startIcon={<IconListDetails />}
                                         onClick={() => showStoredChunks('all')}
                                     >
                                         View Chunks
                                     </Button>
                                     <Button
-                                        variant='contained'
+                                        variant='outlined'
                                         sx={{
                                             borderRadius: 2,
-                                            height: '100%',
-                                            backgroundImage: `linear-gradient(to right, #13547a, #2f9e91)`,
-                                            '&:hover': {
-                                                backgroundImage: `linear-gradient(to right, #0b3d5b, #1a8377)`
-                                            }
+                                            height: '100%'
                                         }}
+                                        color='primary'
                                         startIcon={<IconRowInsertTop />}
                                         onClick={() => showVectorStore(documentStore.id)}
                                     >
@@ -421,7 +419,7 @@ const DocumentStoreDetails = () => {
                             )}
                             {documentStore?.totalChunks > 0 && documentStore?.status === 'UPSERTED' && (
                                 <Button
-                                    variant='contained'
+                                    variant='outlined'
                                     sx={{
                                         borderRadius: 2,
                                         height: '100%',
@@ -483,7 +481,7 @@ const DocumentStoreDetails = () => {
                                 </Box>
                                 <div>No Document Added Yet</div>
                                 <StyledButton
-                                    variant='contained'
+                                    variant='outlined'
                                     sx={{ borderRadius: 2, height: '100%', mt: 2, color: 'white' }}
                                     startIcon={<IconPlus />}
                                     onClick={listLoaders}

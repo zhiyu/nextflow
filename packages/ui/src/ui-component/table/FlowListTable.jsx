@@ -28,7 +28,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
+        color: theme.palette.grey[900],
+        borderBottom: '1px solid ' + theme.palette.primary.main
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -81,11 +82,10 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
 
     return (
         <>
-            <TableContainer sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }} component={Paper}>
+            <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
                     <TableHead
                         sx={{
-                            backgroundColor: customization.isDarkMode ? theme.palette.common.black : theme.palette.grey[100],
                             height: 56
                         }}
                     >

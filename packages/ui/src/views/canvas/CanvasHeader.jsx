@@ -263,10 +263,10 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                     </Box>
                     <Box sx={{ width: '100%' }}>
                         {!isEditingFlowName ? (
-                            <Stack flexDirection='row'>
+                            <Stack flexDirection='row' alignItems='center'>
                                 <Typography
                                     sx={{
-                                        fontSize: '1.5rem',
+                                        fontSize: '1.2rem',
                                         fontWeight: 600,
                                         ml: 2,
                                         textOverflow: 'ellipsis',

@@ -9,6 +9,11 @@
     z-index: 1200;
 }
 
+//hide reactflow attribution
+.react-flow__attribution {
+    display: none;
+}
+
 // ==============================|| PERFECT SCROLLBAR ||============================== //
 
 .scrollbar-container {

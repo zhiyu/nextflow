@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 // material-ui
 import {
     Box,
+    Button,
     Paper,
     Skeleton,
     Stack,
@@ -145,7 +146,7 @@ const Documents = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name' title='Document Store'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name' title='知识库'>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
                             value={view}
@@ -156,7 +157,7 @@ const Documents = () => {
                             <ToggleButton
                                 sx={{
                                     borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 2,
+                                    borderRadius: 16,
                                     color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
                                 }}
                                 variant='contained'
@@ -168,7 +169,7 @@ const Documents = () => {
                             <ToggleButton
                                 sx={{
                                     borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 2,
+                                    borderRadius: 16,
                                     color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
                                 }}
                                 variant='contained'
@@ -178,15 +179,16 @@ const Documents = () => {
                                 <IconList />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        <StyledButton
-                            variant='contained'
+                        <Button
+                            variant='outlined'
                             sx={{ borderRadius: 2, height: '100%' }}
+                            color='primary'
                             onClick={addNew}
                             startIcon={<IconPlus />}
                             id='btn_createVariable'
                         >
                             Add New
-                        </StyledButton>
+                        </Button>
                     </ViewHeader>
                     {!view || view === 'card' ? (
                         <>
@@ -210,11 +212,10 @@ const Documents = () => {
                             )}
                         </>
                     ) : (
-                        <TableContainer sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }} component={Paper}>
+                        <TableContainer component={Paper}>
                             <Table aria-label='documents table'>
                                 <TableHead
                                     sx={{
-                                        backgroundColor: customization.isDarkMode ? theme.palette.common.black : theme.palette.grey[100],
                                         height: 56
                                     }}
                                 >

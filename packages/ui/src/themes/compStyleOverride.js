@@ -18,6 +18,13 @@ export default function componentStyleOverrides(theme) {
                 }
             }
         },
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    fontSize: '1em'
+                }
+            }
+        },
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
@@ -83,7 +90,6 @@ export default function componentStyleOverrides(theme) {
         MuiCard: {
             styleOverrides: {
                 root: {
-                    borderColor: '' + theme.colors.grey200 + ' !important',
                     minHeight: '120px'
                 }
             }

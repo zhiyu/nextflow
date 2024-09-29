@@ -1,6 +1,6 @@
 // assets
 
-import { GoArchive, GoDependabot, GoKey, GoLock, GoDatabase, GoTools, GoCode, GoPeople, GoInfinity } from 'react-icons/go'
+import { GoArchive, GoDependabot, GoKey, GoLock, GoDatabase, GoTools, GoCode, GoCommentDiscussion, GoInfinity } from 'react-icons/go'
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
@@ -27,18 +27,18 @@ const dashboard = [
         children: [
             {
                 id: 'chatflows',
-                title: '智能助手',
+                title: '对话流',
                 type: 'item',
                 url: '/chatflows',
-                icon: GoDependabot,
+                icon: GoCommentDiscussion,
                 breadcrumbs: true
             },
             {
                 id: 'agentflows',
-                title: '智能团',
+                title: '智能体',
                 type: 'item',
                 url: '/agentflows',
-                icon: GoPeople,
+                icon: GoDependabot,
                 breadcrumbs: true,
                 isBeta: false
             },

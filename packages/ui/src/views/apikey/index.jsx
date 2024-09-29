@@ -66,7 +66,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     padding: '6px 16px',
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
+        color: theme.palette.grey[900],
+        borderBottom: '1px solid ' + theme.palette.primary.main
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -377,15 +378,15 @@ const APIKey = () => {
                             >
                                 Import
                             </Button>
-                            <StyledButton
-                                variant='contained'
+                            <Button
+                                variant='outlined'
                                 sx={{ borderRadius: 2, height: '100%' }}
                                 onClick={addNew}
                                 startIcon={<IconPlus />}
                                 id='btn_createApiKey'
                             >
                                 Create Key
-                            </StyledButton>
+                            </Button>
                         </ViewHeader>
                         {!isLoading && apiKeys.length <= 0 ? (
                             <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
@@ -399,16 +400,10 @@ const APIKey = () => {
                                 <div>No API Keys Yet</div>
                             </Stack>
                         ) : (
-                            <TableContainer
-                                sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
-                                component={Paper}
-                            >
+                            <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                                     <TableHead
                                         sx={{
-                                            backgroundColor: customization.isDarkMode
-                                                ? theme.palette.common.black
-                                                : theme.palette.grey[100],
                                             height: 56
                                         }}
                                     >

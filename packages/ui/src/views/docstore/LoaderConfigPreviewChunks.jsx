@@ -387,7 +387,7 @@ const LoaderConfigPreviewChunks = () => {
                                 }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-                                    <StyledFab size='small' color='secondary' aria-label='back' title='Back' onClick={() => navigate(-1)}>
+                                    <StyledFab size='small' color='primary' aria-label='back' title='Back' onClick={() => navigate(-1)}>
                                         <IconArrowLeft />
                                     </StyledFab>
                                     <Typography sx={{ ml: 2, mr: 2 }} variant='h3'>
@@ -569,7 +569,7 @@ const LoaderConfigPreviewChunks = () => {
                                                     }}
                                                 >
                                                     <StyledFab
-                                                        color='secondary'
+                                                        color='primary'
                                                         aria-label='preview'
                                                         title='Preview'
                                                         variant='extended'
@@ -599,7 +599,7 @@ const LoaderConfigPreviewChunks = () => {
                                                         value={previewChunkCount ?? 25}
                                                     />
                                                     <StyledFab
-                                                        color='secondary'
+                                                        color='primary'
                                                         aria-label='preview'
                                                         title='Preview'
                                                         variant='extended'
