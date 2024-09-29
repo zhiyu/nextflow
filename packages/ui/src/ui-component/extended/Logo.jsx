@@ -15,7 +15,7 @@ const Logo = () => {
     return (
         <div
             style={{
-                color: customization.isDarkMode ? '' : theme.palette.secondary.dark,
+                color: customization.isDarkMode ? '' : theme.palette.primary.main,
                 fontSize: '1.2em',
                 fontWeight: 600,
                 alignItems: 'center',
@@ -23,7 +23,7 @@ const Logo = () => {
                 flexDirection: 'row'
             }}
         >
-            <IoLogoXing style={{ width: '32px', height: '32px', color: customization.isDarkMode ? '' : theme.palette.secondary.dark }} />{' '}
+            <IoLogoXing style={{ width: '32px', height: '32px', color: customization.isDarkMode ? '' : theme.palette.primary.main }} />{' '}
             &nbsp;Agentune
         </div>
     )
