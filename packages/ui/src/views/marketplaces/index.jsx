@@ -417,7 +417,7 @@ const Marketplace = () => {
                                         }}
                                     >
                                         <InputLabel size='small' id='filter-badge-label'>
-                                            Tag
+                                            标签
                                         </InputLabel>
                                         <Select
                                             labelId='filter-badge-label'
@@ -453,7 +453,7 @@ const Marketplace = () => {
                                         }}
                                     >
                                         <InputLabel size='small' id='type-badge-label'>
-                                            Type
+                                            类型
                                         </InputLabel>
                                         <Select
                                             size='small'
@@ -489,7 +489,7 @@ const Marketplace = () => {
                                         }}
                                     >
                                         <InputLabel size='small' id='type-fw-label'>
-                                            Framework
+                                            框架
                                         </InputLabel>
                                         <Select
                                             size='small'
@@ -519,7 +519,7 @@ const Marketplace = () => {
                             }
                             onSearchChange={onSearchChange}
                             search={true}
-                            searchPlaceholder='Search Name/Description/Node'
+                            searchPlaceholder='搜索...'
                             title='模版市场'
                         >
                             <ToggleButtonGroup

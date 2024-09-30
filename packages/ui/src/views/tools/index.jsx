@@ -89,7 +89,7 @@ const Tools = () => {
 
     const edit = (selectedTool) => {
         const dialogProp = {
-            title: 'Edit Tool',
+            title: '编辑工具',
             type: 'EDIT',
             cancelButtonName: 'Cancel',
             confirmButtonName: 'Save',

@@ -368,7 +368,7 @@ const DocumentStoreDetails = () => {
                                 <IconTrash />
                             </IconButton>
                             <Button
-                                variant='outlined'
+                                variant='contained'
                                 sx={{ borderRadius: 2, height: '100%' }}
                                 color='primary'
                                 startIcon={<IconPlus />}
@@ -377,7 +377,7 @@ const DocumentStoreDetails = () => {
                                 Add Document Loader
                             </Button>
                             {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
-                                <Button variant='outlined' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
+                                <Button variant='contained' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
                                     Refresh
                                 </Button>
                             )}
@@ -392,7 +392,7 @@ const DocumentStoreDetails = () => {
                             {documentStore?.totalChunks > 0 && documentStore?.status !== 'UPSERTING' && (
                                 <>
                                     <Button
-                                        variant='outlined'
+                                        variant='contained'
                                         sx={{
                                             borderRadius: 2,
                                             height: '100%'
@@ -404,7 +404,7 @@ const DocumentStoreDetails = () => {
                                         View Chunks
                                     </Button>
                                     <Button
-                                        variant='outlined'
+                                        variant='contained'
                                         sx={{
                                             borderRadius: 2,
                                             height: '100%'
@@ -419,7 +419,7 @@ const DocumentStoreDetails = () => {
                             )}
                             {documentStore?.totalChunks > 0 && documentStore?.status === 'UPSERTED' && (
                                 <Button
-                                    variant='outlined'
+                                    variant='contained'
                                     sx={{
                                         borderRadius: 2,
                                         height: '100%',
@@ -480,12 +480,7 @@ const DocumentStoreDetails = () => {
                                     />
                                 </Box>
                                 <div>No Document Added Yet</div>
-                                <StyledButton
-                                    variant='outlined'
-                                    sx={{ borderRadius: 2, height: '100%', mt: 2, color: 'white' }}
-                                    startIcon={<IconPlus />}
-                                    onClick={listLoaders}
-                                >
+                                <StyledButton variant='contained' startIcon={<IconPlus />} onClick={listLoaders}>
                                     Add Document Loader
                                 </StyledButton>
                             </Stack>
@@ -497,9 +492,6 @@ const DocumentStoreDetails = () => {
                                 <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                                     <TableHead
                                         sx={{
-                                            backgroundColor: customization.isDarkMode
-                                                ? theme.palette.common.black
-                                                : theme.palette.grey[100],
                                             height: 56
                                         }}
                                     >

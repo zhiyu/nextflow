@@ -424,15 +424,15 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                             <>
                                 <Button
                                     style={{ marginRight: '10px' }}
-                                    variant='outlined'
+                                    variant='contained'
                                     onClick={() => onSaveAsTemplate()}
                                     startIcon={<IconTemplate />}
                                     color='primary'
                                 >
-                                    Save As Template
+                                    保存为模版
                                 </Button>
-                                <Button variant='outlined' onClick={() => exportTool()} startIcon={<IconFileDownload />}>
-                                    Export
+                                <Button variant='contained' onClick={() => exportTool()} startIcon={<IconFileDownload />}>
+                                    导出
                                 </Button>
                             </>
                         )}
