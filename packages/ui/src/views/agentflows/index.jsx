@@ -130,7 +130,7 @@ const Agentflows = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name or Category' title='智能体'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='智能体'>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 36 }}
                             value={view}

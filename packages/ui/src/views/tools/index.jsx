@@ -127,7 +127,7 @@ const Tools = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader title='Tools'>
+                        <ViewHeader title='工具箱'>
                             <ToggleButtonGroup
                                 sx={{ borderRadius: 2, maxHeight: 36 }}
                                 value={view}
@@ -162,7 +162,7 @@ const Tools = () => {
                             </ToggleButtonGroup>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<IconFileUpload />}>
-                                    Load
+                                    导入
                                 </Button>
                                 <input
                                     style={{ display: 'none' }}

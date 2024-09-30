@@ -368,9 +368,9 @@ const APIKey = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search API Keys' title='API Keys'>
+                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='API Keys'>
                             <Button variant='contained' onClick={uploadDialog} startIcon={<IconFileUpload />} id='btn_importApiKeys'>
-                                Import
+                                导入
                             </Button>
                             <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createApiKey'>
                                 添加 Key
@@ -396,10 +396,10 @@ const APIKey = () => {
                                         }}
                                     >
                                         <TableRow>
-                                            <StyledTableCell>Key Name</StyledTableCell>
-                                            <StyledTableCell>API Key</StyledTableCell>
-                                            <StyledTableCell>Usage</StyledTableCell>
-                                            <StyledTableCell>Created</StyledTableCell>
+                                            <StyledTableCell>Key 名称</StyledTableCell>
+                                            <StyledTableCell>Key 值</StyledTableCell>
+                                            <StyledTableCell>使用情况</StyledTableCell>
+                                            <StyledTableCell>创建时间</StyledTableCell>
                                             <StyledTableCell> </StyledTableCell>
                                             <StyledTableCell> </StyledTableCell>
                                         </TableRow>

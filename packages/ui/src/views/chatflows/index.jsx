@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // material-ui
-import { Box, Button, Skeleton, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { Breadcrumbs, Link, Typography, Box, Button, Skeleton, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 // project imports
@@ -130,7 +130,13 @@ const Chatflows = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name or Category' title='对话流'>
+                    {/* <Breadcrumbs separator='›' aria-label='breadcrumb'>
+                        <Typography color='inherit'>工作台</Typography>
+                        <Link underline='hover' color='inherit' href='/'>
+                            对话流
+                        </Link>
+                    </Breadcrumbs> */}
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='对话流'>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 36 }}
                             value={view}

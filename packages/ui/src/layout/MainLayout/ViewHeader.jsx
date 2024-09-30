@@ -24,7 +24,7 @@ const ViewHeader = ({
     const theme = useTheme()
 
     return (
-        <Box sx={{ flexGrow: 1, py: 1.25, width: '100%' }}>
+        <Box sx={{ flexGrow: 1, width: '100%' }}>
             <Toolbar
                 disableGutters={true}
                 sx={{
@@ -43,7 +43,7 @@ const ViewHeader = ({
                     <Box sx={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
                         <Typography
                             sx={{
-                                fontSize: '1.5rem',
+                                fontSize: '1rem',
                                 fontWeight: 600,
                                 display: '-webkit-box',
                                 WebkitLineClamp: 3,

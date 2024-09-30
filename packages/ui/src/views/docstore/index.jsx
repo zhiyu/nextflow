@@ -146,7 +146,7 @@ const Documents = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name' title='知识库'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='知识库'>
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 36 }}
                             value={view}
@@ -214,12 +214,12 @@ const Documents = () => {
                                 >
                                     <TableRow>
                                         <TableCell>&nbsp;</TableCell>
-                                        <TableCell>Name</TableCell>
-                                        <TableCell>Description</TableCell>
-                                        <TableCell>Connected flows</TableCell>
-                                        <TableCell>Total characters</TableCell>
-                                        <TableCell>Total chunks</TableCell>
-                                        <TableCell>Loader types</TableCell>
+                                        <TableCell>名称</TableCell>
+                                        <TableCell>描述</TableCell>
+                                        <TableCell>关联流程数</TableCell>
+                                        <TableCell>字符数</TableCell>
+                                        <TableCell>分块数量</TableCell>
+                                        <TableCell>文档类型</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>

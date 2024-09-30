@@ -230,7 +230,7 @@ const Credentials = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Credentials' title='凭证'>
+                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='凭证'>
                             <Button variant='contained' onClick={listCredential} startIcon={<IconPlus />}>
                                 添加凭证
                             </Button>
@@ -255,9 +255,9 @@ const Credentials = () => {
                                         }}
                                     >
                                         <TableRow>
-                                            <StyledTableCell>Name</StyledTableCell>
-                                            <StyledTableCell>Last Updated</StyledTableCell>
-                                            <StyledTableCell>Created</StyledTableCell>
+                                            <StyledTableCell>名称</StyledTableCell>
+                                            <StyledTableCell>最后更新</StyledTableCell>
+                                            <StyledTableCell>创建时间</StyledTableCell>
                                             <StyledTableCell> </StyledTableCell>
                                             <StyledTableCell> </StyledTableCell>
                                         </TableRow>

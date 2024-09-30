@@ -201,9 +201,9 @@ const Variables = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Variables' title='Variables'>
+                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='全局变量'>
                             <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
-                                How To Use
+                                如何使用
                             </Button>
                             <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createVariable'>
                                 添加变量
@@ -229,11 +229,11 @@ const Variables = () => {
                                         }}
                                     >
                                         <TableRow>
-                                            <StyledTableCell>Name</StyledTableCell>
-                                            <StyledTableCell>Value</StyledTableCell>
-                                            <StyledTableCell>Type</StyledTableCell>
-                                            <StyledTableCell>Last Updated</StyledTableCell>
-                                            <StyledTableCell>Created</StyledTableCell>
+                                            <StyledTableCell>变量名称</StyledTableCell>
+                                            <StyledTableCell>变量值</StyledTableCell>
+                                            <StyledTableCell>类型</StyledTableCell>
+                                            <StyledTableCell>最后更新</StyledTableCell>
+                                            <StyledTableCell>创建时间</StyledTableCell>
                                             <StyledTableCell> </StyledTableCell>
                                             <StyledTableCell> </StyledTableCell>
                                         </TableRow>
