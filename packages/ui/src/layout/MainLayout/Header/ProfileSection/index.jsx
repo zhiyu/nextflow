@@ -317,7 +317,7 @@ const ProfileSection = ({ username, handleLogout }) => {
 
     return (
         <>
-            <ButtonBase ref={anchorRef} sx={{ overflow: 'hidden' }}>
+            <ButtonBase ref={anchorRef} sx={{ borderRadius: '8px', overflow: 'hidden' }}>
                 <Avatar
                     variant='rounded'
                     sx={{
