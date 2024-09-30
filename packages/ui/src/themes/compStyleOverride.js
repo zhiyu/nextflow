@@ -27,7 +27,6 @@ export default function componentStyleOverrides(theme) {
                 }
             }
         },
-
         MuiTypography: {
             styleOverrides: {
                 root: {
