@@ -23,7 +23,7 @@ import { IconPlus, IconFileUpload, IconLayoutGrid, IconList } from '@tabler/icon
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
 import { useTheme } from '@mui/material/styles'
-import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
+import { PiPlus, PiGridFour, PiListDashes, PiUpload } from 'react-icons/pi'
 
 // ==============================|| CHATFLOWS ||============================== //
 
@@ -130,7 +130,7 @@ const Tools = () => {
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader title='工具箱'>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<IconFileUpload />}>
+                                <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<PiUpload size='0.8em' />}>
                                     导入
                                 </Button>
                                 <input
