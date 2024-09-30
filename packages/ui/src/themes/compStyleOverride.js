@@ -18,6 +18,16 @@ export default function componentStyleOverrides(theme) {
                 }
             }
         },
+
+        MuiTableContainer: {
+            styleOverrides: {
+                root: {
+                    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
+                    padding: '0px 16px'
+                }
+            }
+        },
+
         MuiTypography: {
             styleOverrides: {
                 root: {
@@ -83,9 +93,6 @@ export default function componentStyleOverrides(theme) {
             styleOverrides: {
                 root: {
                     backgroundImage: 'none'
-                },
-                rounded: {
-                    borderRadius: `${theme?.customization?.borderRadius}px`
                 }
             }
         },
