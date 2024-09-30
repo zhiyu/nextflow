@@ -13,7 +13,7 @@ const Logo = () => {
         <div
             style={{
                 color: customization.isDarkMode ? '' : theme.palette.primary.main,
-                fontSize: '1.2em',
+                fontSize: '1rem',
                 fontWeight: 600,
                 alignItems: 'center',
                 display: 'flex',
@@ -22,8 +22,8 @@ const Logo = () => {
         >
             <PiInfinityDuotone
                 style={{ width: '36px', height: '36px', color: customization.isDarkMode ? '' : theme.palette.primary.main }}
-            />{' '}
-            &nbsp;&nbsp;Agentune
+            />
+            &nbsp;&nbsp;agentake
         </div>
     )
 }
