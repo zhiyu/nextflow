@@ -13,7 +13,9 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0 2px 14px 0 rgb(32 40 45 / 8%)',
+    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
+    border: 'none !important',
+    borderRadius: '4px !important',
     cursor: 'pointer',
     '&:hover': {
         background: theme.palette.card.hover,
