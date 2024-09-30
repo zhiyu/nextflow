@@ -560,7 +560,7 @@ const Marketplace = () => {
                             <Tab value={1} label='我的模版' />
                         </Tabs>
                         <TabPanel value={activeTabValue} index={0}>
-                            <Stack direction='row' sx={{ gap: 0, mb: 2, alignItems: 'center', flexWrap: 'wrap' }}>
+                            <Stack direction='row' sx={{ gap: 0, mb: 4, alignItems: 'center', flexWrap: 'wrap' }}>
                                 {usecases.map((usecase, index) => (
                                     <FormControlLabel
                                         key={index}
