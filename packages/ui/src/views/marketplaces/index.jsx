@@ -24,7 +24,9 @@ import {
     Tab
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
-import { IconLayoutGrid, IconList, IconX } from '@tabler/icons-react'
+import { IconX } from '@tabler/icons-react'
+
+import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // project imports
 import MainCard from '@/ui-component/cards/MainCard'
@@ -523,35 +525,17 @@ const Marketplace = () => {
                             title='模版市场'
                         >
                             <ToggleButtonGroup
-                                sx={{ borderRadius: 2, height: '100%' }}
+                                sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
                                 value={view}
                                 color='primary'
                                 exclusive
                                 onChange={handleViewChange}
                             >
-                                <ToggleButton
-                                    sx={{
-                                        borderColor: theme.palette.grey[900] + 25,
-                                        borderRadius: 2,
-                                        color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
-                                    }}
-                                    variant='contained'
-                                    value='card'
-                                    title='Card View'
-                                >
-                                    <IconLayoutGrid />
+                                <ToggleButton variant='contained' value='card' title='Card View'>
+                                    <PiGridFour size='1.2rem' />
                                 </ToggleButton>
-                                <ToggleButton
-                                    sx={{
-                                        borderColor: theme.palette.grey[900] + 25,
-                                        borderRadius: 2,
-                                        color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
-                                    }}
-                                    variant='contained'
-                                    value='list'
-                                    title='List View'
-                                >
-                                    <IconList />
+                                <ToggleButton variant='contained' value='list' title='List View'>
+                                    <PiListDashes size='1.2rem' />
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </ViewHeader>

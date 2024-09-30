@@ -58,6 +58,7 @@ import {
 } from '@tabler/icons-react'
 import APIEmptySVG from '@/assets/images/api_empty.svg'
 import UploadJSONFileDialog from '@/views/apikey/UploadJSONFileDialog'
+import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // ==============================|| APIKey ||============================== //
 
@@ -369,7 +370,7 @@ const APIKey = () => {
                             <Button variant='contained' onClick={uploadDialog} startIcon={<IconFileUpload />} id='btn_importApiKeys'>
                                 导入
                             </Button>
-                            <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createApiKey'>
+                            <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                                 添加 Key
                             </Button>
                         </ViewHeader>

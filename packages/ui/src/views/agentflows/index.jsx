@@ -28,6 +28,7 @@ import { baseURL } from '@/store/constant'
 
 // icons
 import { IconPlus, IconLayoutGrid, IconList } from '@tabler/icons-react'
+import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // ==============================|| AGENTS ||============================== //
 
@@ -131,41 +132,23 @@ const Agentflows = () => {
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
                     <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='智能体'>
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            创建智能体
+                        </Button>
                         <ToggleButtonGroup
-                            sx={{ borderRadius: 2, maxHeight: 36 }}
+                            sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
                             value={view}
                             color='primary'
                             exclusive
                             onChange={handleChange}
                         >
-                            <ToggleButton
-                                sx={{
-                                    borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 16,
-                                    color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
-                                }}
-                                variant='contained'
-                                value='card'
-                                title='Card View'
-                            >
-                                <IconLayoutGrid />
+                            <ToggleButton variant='contained' value='card' title='Card View'>
+                                <PiGridFour size='1.2rem' />
                             </ToggleButton>
-                            <ToggleButton
-                                sx={{
-                                    borderColor: theme.palette.grey[900] + 25,
-                                    borderRadius: 16,
-                                    color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
-                                }}
-                                variant='contained'
-                                value='list'
-                                title='List View'
-                            >
-                                <IconList />
+                            <ToggleButton variant='contained' value='list' title='List View'>
+                                <PiListDashes size='1.2rem' />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<IconPlus />}>
-                            创建智能体
-                        </Button>
                     </ViewHeader>
                     {!view || view === 'card' ? (
                         <>

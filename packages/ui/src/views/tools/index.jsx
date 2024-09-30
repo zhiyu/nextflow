@@ -23,6 +23,7 @@ import { IconPlus, IconFileUpload, IconLayoutGrid, IconList } from '@tabler/icon
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
 import { useTheme } from '@mui/material/styles'
+import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // ==============================|| CHATFLOWS ||============================== //
 
@@ -128,38 +129,6 @@ const Tools = () => {
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader title='工具箱'>
-                            <ToggleButtonGroup
-                                sx={{ borderRadius: 2, maxHeight: 36 }}
-                                value={view}
-                                color='primary'
-                                exclusive
-                                onChange={handleChange}
-                            >
-                                <ToggleButton
-                                    sx={{
-                                        borderColor: theme.palette.grey[900] + 25,
-                                        borderRadius: 2,
-                                        color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
-                                    }}
-                                    variant='contained'
-                                    value='card'
-                                    title='Card View'
-                                >
-                                    <IconLayoutGrid />
-                                </ToggleButton>
-                                <ToggleButton
-                                    sx={{
-                                        borderColor: theme.palette.grey[900] + 25,
-                                        borderRadius: 2,
-                                        color: theme?.customization?.isDarkMode ? 'white' : 'inherit'
-                                    }}
-                                    variant='contained'
-                                    value='list'
-                                    title='List View'
-                                >
-                                    <IconList />
-                                </ToggleButton>
-                            </ToggleButtonGroup>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<IconFileUpload />}>
                                     导入
@@ -173,11 +142,23 @@ const Tools = () => {
                                     onChange={(e) => handleFileUpload(e)}
                                 />
                             </Box>
-                            <ButtonGroup disableElevation aria-label='outlined primary button group'>
-                                <Button variant='contained' onClick={addNew} startIcon={<IconPlus />}>
-                                    创建工具
-                                </Button>
-                            </ButtonGroup>
+                            <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                                创建工具
+                            </Button>
+                            <ToggleButtonGroup
+                                sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
+                                value={view}
+                                color='primary'
+                                exclusive
+                                onChange={handleChange}
+                            >
+                                <ToggleButton variant='contained' value='card' title='Card View'>
+                                    <PiGridFour size='1.2rem' />
+                                </ToggleButton>
+                                <ToggleButton variant='contained' value='list' title='List View'>
+                                    <PiListDashes size='1.2rem' />
+                                </ToggleButton>
+                            </ToggleButtonGroup>
                         </ViewHeader>
                         {!view || view === 'card' ? (
                             <>

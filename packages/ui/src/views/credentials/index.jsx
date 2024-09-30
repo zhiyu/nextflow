@@ -49,6 +49,7 @@ import { SET_COMPONENT_CREDENTIALS } from '@/store/actions'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
 import { BorderBottom } from '@mui/icons-material'
+import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
@@ -230,7 +231,7 @@ const Credentials = () => {
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='凭证'>
-                            <Button variant='contained' onClick={listCredential} startIcon={<IconPlus />}>
+                            <Button variant='contained' color='primary' onClick={listCredential} startIcon={<PiPlus size='0.8em' />}>
                                 添加凭证
                             </Button>
                         </ViewHeader>

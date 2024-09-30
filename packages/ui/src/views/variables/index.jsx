@@ -41,6 +41,7 @@ import useNotifier from '@/utils/useNotifier'
 // Icons
 import { IconTrash, IconEdit, IconX, IconPlus, IconVariable } from '@tabler/icons-react'
 import VariablesEmptySVG from '@/assets/images/variables_empty.svg'
+import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // const
 import AddEditVariableDialog from './AddEditVariableDialog'
@@ -204,7 +205,7 @@ const Variables = () => {
                             <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
                                 如何使用
                             </Button>
-                            <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createVariable'>
+                            <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                                 添加变量
                             </Button>
                         </ViewHeader>
