@@ -108,7 +108,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 >
                     <LogoSection />
                 </Box>
-                <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+                <ButtonBase sx={{ overflow: 'hidden' }}>
                     <Avatar
                         variant='rounded'
                         sx={{
@@ -116,12 +116,16 @@ const Header = ({ handleLeftDrawerToggle }) => {
                             ...theme.typography.mediumAvatar,
                             transition: 'all .2s ease-in-out',
                             background: 'none',
-                            color: theme.palette.primary.main
+                            color: theme.palette.primary.main,
+                            '&:hover': {
+                                background: theme.palette.primary.main,
+                                color: theme.palette.primary.light
+                            }
                         }}
                         onClick={handleLeftDrawerToggle}
                         color='inherit'
                     >
-                        <PiListDuotone size='1.5rem' />
+                        <PiListDuotone size='1.2rem' />
                     </Avatar>
                 </ButtonBase>
             </Box>
