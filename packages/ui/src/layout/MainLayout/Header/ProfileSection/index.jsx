@@ -368,66 +368,52 @@ const ProfileSection = ({ username, handleLogout }) => {
                                         </Box>
                                     )}
                                     <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
-                                        <Box sx={{ p: 2 }}>
+                                        <Box>
                                             <Divider />
                                             <List
                                                 component='nav'
                                                 sx={{
                                                     width: '100%',
                                                     maxWidth: 250,
-                                                    minWidth: 200,
-                                                    backgroundColor: theme.palette.background.paper,
-                                                    borderRadius: '10px',
-                                                    [theme.breakpoints.down('md')]: {
-                                                        minWidth: '100%'
-                                                    },
-                                                    '& .MuiListItemButton-root': {
-                                                        mt: 0.5
-                                                    }
+                                                    minWidth: 200
                                                 }}
                                             >
                                                 <ListItemButton
-                                                    sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     onClick={() => {
                                                         setExportDialogOpen(true)
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <IconFileExport stroke={1.5} size='1.3rem' />
+                                                        <IconFileExport />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>Export</Typography>} />
                                                 </ListItemButton>
                                                 <ListItemButton
-                                                    sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     onClick={() => {
                                                         importAll()
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <IconFileUpload stroke={1.5} size='1.3rem' />
+                                                        <IconFileUpload />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>Import</Typography>} />
                                                 </ListItemButton>
                                                 <input ref={inputRef} type='file' hidden onChange={fileChange} accept='.json' />
                                                 <ListItemButton
-                                                    sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     onClick={() => {
                                                         setOpen(false)
                                                         setAboutDialogOpen(true)
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <IconInfoCircle stroke={1.5} size='1.3rem' />
+                                                        <IconInfoCircle />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>About Flowise</Typography>} />
                                                 </ListItemButton>
                                                 {localStorage.getItem('username') && localStorage.getItem('password') && (
-                                                    <ListItemButton
-                                                        sx={{ borderRadius: `${customization.borderRadius}px` }}
-                                                        onClick={handleLogout}
-                                                    >
+                                                    <ListItemButton onClick={handleLogout}>
                                                         <ListItemIcon>
-                                                            <IconLogout stroke={1.5} size='1.3rem' />
+                                                            <IconLogout />
                                                         </ListItemIcon>
                                                         <ListItemText primary={<Typography variant='body2'>Logout</Typography>} />
                                                     </ListItemButton>
