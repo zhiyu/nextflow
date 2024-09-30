@@ -89,11 +89,7 @@ export const MarketplaceTable = ({
                             <StyledTableCell component='th' scope='row' key='6'>
                                 &nbsp;
                             </StyledTableCell>
-                            {onDelete && (
-                                <StyledTableCell component='th' scope='row' key='7'>
-                                    Delete
-                                </StyledTableCell>
-                            )}
+                            {onDelete && <StyledTableCell component='th' scope='row' key='7'></StyledTableCell>}
                         </TableRow>
                     </TableHead>
                     <TableBody>
