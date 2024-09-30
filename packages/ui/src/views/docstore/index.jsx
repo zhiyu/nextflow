@@ -180,7 +180,7 @@ const Documents = () => {
                             </ToggleButton>
                         </ToggleButtonGroup>
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<IconPlus />} id='btn_createVariable'>
-                            Add New
+                            创建知识库
                         </Button>
                     </ViewHeader>
                     {!view || view === 'card' ? (

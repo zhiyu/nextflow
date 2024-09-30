@@ -164,7 +164,7 @@ const Agentflows = () => {
                             </ToggleButton>
                         </ToggleButtonGroup>
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<IconPlus />}>
-                            Add New
+                            创建智能体
                         </Button>
                     </ViewHeader>
                     {!view || view === 'card' ? (

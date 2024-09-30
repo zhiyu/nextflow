@@ -373,7 +373,7 @@ const APIKey = () => {
                                 Import
                             </Button>
                             <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createApiKey'>
-                                Create Key
+                                添加 Key
                             </Button>
                         </ViewHeader>
                         {!isLoading && apiKeys.length <= 0 ? (

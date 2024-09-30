@@ -232,7 +232,7 @@ const Credentials = () => {
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Credentials' title='凭证'>
                             <Button variant='contained' onClick={listCredential} startIcon={<IconPlus />}>
-                                Add Credential
+                                添加凭证
                             </Button>
                         </ViewHeader>
                         {!isLoading && credentials.length <= 0 ? (

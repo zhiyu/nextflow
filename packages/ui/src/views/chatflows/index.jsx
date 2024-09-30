@@ -164,7 +164,7 @@ const Chatflows = () => {
                             </ToggleButton>
                         </ToggleButtonGroup>
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<IconPlus />}>
-                            Add New
+                            创建对话
                         </Button>
                     </ViewHeader>
                     {!view || view === 'card' ? (

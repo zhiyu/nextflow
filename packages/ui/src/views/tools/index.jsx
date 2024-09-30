@@ -175,7 +175,7 @@ const Tools = () => {
                             </Box>
                             <ButtonGroup disableElevation aria-label='outlined primary button group'>
                                 <Button variant='contained' onClick={addNew} startIcon={<IconPlus />}>
-                                    Create
+                                    创建工具
                                 </Button>
                             </ButtonGroup>
                         </ViewHeader>

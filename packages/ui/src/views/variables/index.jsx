@@ -206,7 +206,7 @@ const Variables = () => {
                                 How To Use
                             </Button>
                             <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createVariable'>
-                                Add Variable
+                                添加变量
                             </Button>
                         </ViewHeader>
                         {!isLoading && variables.length === 0 ? (
