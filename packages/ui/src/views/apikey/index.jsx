@@ -44,21 +44,10 @@ import useConfirm from '@/hooks/useConfirm'
 import useNotifier from '@/utils/useNotifier'
 
 // Icons
-import {
-    IconTrash,
-    IconEdit,
-    IconCopy,
-    IconChevronsUp,
-    IconChevronsDown,
-    IconX,
-    IconPlus,
-    IconEye,
-    IconEyeOff,
-    IconFileUpload
-} from '@tabler/icons-react'
+import { IconTrash, IconEdit, IconCopy, IconChevronsUp, IconChevronsDown, IconX, IconEye, IconEyeOff } from '@tabler/icons-react'
 import APIEmptySVG from '@/assets/images/api_empty.svg'
 import UploadJSONFileDialog from '@/views/apikey/UploadJSONFileDialog'
-import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
+import { PiPlus, PiGridFour, PiListDashes, PiUpload } from 'react-icons/pi'
 
 // ==============================|| APIKey ||============================== //
 
@@ -367,7 +356,7 @@ const APIKey = () => {
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='API Keys'>
-                            <Button variant='contained' onClick={uploadDialog} startIcon={<IconFileUpload />} id='btn_importApiKeys'>
+                            <Button variant='contained' onClick={uploadDialog} startIcon={<PiUpload size='0.8em' />} id='btn_importApiKeys'>
                                 导入
                             </Button>
                             <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
