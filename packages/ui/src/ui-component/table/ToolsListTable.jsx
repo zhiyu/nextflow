@@ -20,8 +20,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900],
-        borderBottom: '1px solid ' + theme.palette.primary.main
+        color: theme.palette.grey[900]
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -50,13 +49,9 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
                         }}
                     >
                         <TableRow>
-                            <StyledTableCell component='th' scope='row' key='0'>
-                                名称
-                            </StyledTableCell>
-                            <StyledTableCell key='1'>描述</StyledTableCell>
-                            <StyledTableCell component='th' scope='row' key='3'>
-                                &nbsp;
-                            </StyledTableCell>
+                            <StyledTableCell style={{ width: '200px' }}>名称</StyledTableCell>
+                            <StyledTableCell>描述</StyledTableCell>
+                            <StyledTableCell>&nbsp;</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

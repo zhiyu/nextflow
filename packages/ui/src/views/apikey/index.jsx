@@ -66,8 +66,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     padding: '6px 16px',
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900],
-        borderBottom: '1px solid ' + theme.palette.primary.main
+        color: theme.palette.grey[900]
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -135,8 +134,6 @@ function APIKeyRow(props) {
                     <IconButton title='Edit' color='primary' onClick={props.onEditClick}>
                         <IconEdit />
                     </IconButton>
-                </StyledTableCell>
-                <StyledTableCell>
                     <IconButton title='Delete' color='error' onClick={props.onDeleteClick}>
                         <IconTrash />
                     </IconButton>
@@ -399,9 +396,8 @@ const APIKey = () => {
                                             <StyledTableCell>Key 名称</StyledTableCell>
                                             <StyledTableCell>Key 值</StyledTableCell>
                                             <StyledTableCell>使用情况</StyledTableCell>
-                                            <StyledTableCell>创建时间</StyledTableCell>
-                                            <StyledTableCell> </StyledTableCell>
-                                            <StyledTableCell> </StyledTableCell>
+                                            <StyledTableCell style={{ width: '180px' }}>创建时间</StyledTableCell>
+                                            <StyledTableCell style={{ width: '120px' }}></StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -423,14 +419,8 @@ const APIKey = () => {
                                                     <StyledTableCell>
                                                         <Skeleton variant='text' />
                                                     </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
                                                 </StyledTableRow>
                                                 <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
                                                     <StyledTableCell>
                                                         <Skeleton variant='text' />
                                                     </StyledTableCell>

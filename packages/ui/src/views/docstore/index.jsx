@@ -213,13 +213,13 @@ const Documents = () => {
                                     }}
                                 >
                                     <TableRow>
-                                        <TableCell>&nbsp;</TableCell>
                                         <TableCell>名称</TableCell>
                                         <TableCell>描述</TableCell>
-                                        <TableCell>关联流程数</TableCell>
-                                        <TableCell>字符数</TableCell>
-                                        <TableCell>分块数量</TableCell>
+                                        <TableCell style={{ width: '120px' }}>关联流程数</TableCell>
+                                        <TableCell style={{ width: '100px' }}>字符数</TableCell>
+                                        <TableCell style={{ width: '100px' }}>分块数量</TableCell>
                                         <TableCell>文档类型</TableCell>
+                                        <TableCell style={{ width: '60px' }}>&nbsp;</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -230,9 +230,6 @@ const Documents = () => {
                                             key={index}
                                             sx={{ cursor: 'pointer', '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
-                                            <TableCell align='center'>
-                                                <DocumentStoreStatus isTableView={true} status={data.status} />
-                                            </TableCell>
                                             <TableCell>
                                                 <Typography
                                                     sx={{
@@ -310,6 +307,9 @@ const Documents = () => {
                                                         )}
                                                     </Box>
                                                 )}
+                                            </TableCell>
+                                            <TableCell align='center'>
+                                                <DocumentStoreStatus isTableView={true} status={data.status} />
                                             </TableCell>
                                         </TableRow>
                                     ))}

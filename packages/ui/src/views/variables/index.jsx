@@ -52,8 +52,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900],
-        borderBottom: '1px solid ' + theme.palette.primary.main
+        color: theme.palette.grey[900]
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -229,13 +228,12 @@ const Variables = () => {
                                         }}
                                     >
                                         <TableRow>
-                                            <StyledTableCell>变量名称</StyledTableCell>
+                                            <StyledTableCell style={{ width: '200px' }}>变量名称</StyledTableCell>
                                             <StyledTableCell>变量值</StyledTableCell>
-                                            <StyledTableCell>类型</StyledTableCell>
-                                            <StyledTableCell>最后更新</StyledTableCell>
-                                            <StyledTableCell>创建时间</StyledTableCell>
-                                            <StyledTableCell> </StyledTableCell>
-                                            <StyledTableCell> </StyledTableCell>
+                                            <StyledTableCell style={{ width: '100px' }}>类型</StyledTableCell>
+                                            <StyledTableCell style={{ width: '180px' }}>最后更新</StyledTableCell>
+                                            <StyledTableCell style={{ width: '180px' }}>创建时间</StyledTableCell>
+                                            <StyledTableCell style={{ width: '120px' }}></StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -260,14 +258,8 @@ const Variables = () => {
                                                     <StyledTableCell>
                                                         <Skeleton variant='text' />
                                                     </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
                                                 </StyledTableRow>
                                                 <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
                                                     <StyledTableCell>
                                                         <Skeleton variant='text' />
                                                     </StyledTableCell>
@@ -338,8 +330,6 @@ const Variables = () => {
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(variable)}>
                                                                 <IconEdit />
                                                             </IconButton>
-                                                        </StyledTableCell>
-                                                        <StyledTableCell>
                                                             <IconButton
                                                                 title='Delete'
                                                                 color='error'

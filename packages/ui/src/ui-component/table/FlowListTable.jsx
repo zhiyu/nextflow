@@ -89,18 +89,18 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                         }}
                     >
                         <TableRow>
-                            <StyledTableCell component='th' scope='row' style={{ width: '20%' }} key='0'>
+                            <StyledTableCell component='th' scope='row' key='0'>
                                 <TableSortLabel active={orderBy === 'name'} direction={order} onClick={() => handleRequestSort('name')}>
                                     名称
                                 </TableSortLabel>
                             </StyledTableCell>
-                            <StyledTableCell style={{ width: '25%' }} key='1'>
+                            <StyledTableCell style={{ width: '200px' }} key='1'>
                                 分类
                             </StyledTableCell>
                             <StyledTableCell style={{ width: '30%' }} key='2'>
                                 节点
                             </StyledTableCell>
-                            <StyledTableCell style={{ width: '15%' }} key='3'>
+                            <StyledTableCell style={{ width: '200px' }} key='3'>
                                 <TableSortLabel
                                     active={orderBy === 'updatedDate'}
                                     direction={order}
@@ -109,7 +109,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                     最后更新
                                 </TableSortLabel>
                             </StyledTableCell>
-                            <StyledTableCell style={{ width: '10%' }} key='4'>
+                            <StyledTableCell style={{ width: '100px' }} key='4'>
                                 操作
                             </StyledTableCell>
                         </TableRow>

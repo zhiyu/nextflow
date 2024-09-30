@@ -55,8 +55,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     padding: '6px 16px',
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900],
-        borderBottom: '1px solid ' + theme.palette.primary.main
+        color: theme.palette.grey[900]
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -256,10 +255,9 @@ const Credentials = () => {
                                     >
                                         <TableRow>
                                             <StyledTableCell>名称</StyledTableCell>
-                                            <StyledTableCell>最后更新</StyledTableCell>
-                                            <StyledTableCell>创建时间</StyledTableCell>
-                                            <StyledTableCell> </StyledTableCell>
-                                            <StyledTableCell> </StyledTableCell>
+                                            <StyledTableCell style={{ width: '180px' }}>最后更新</StyledTableCell>
+                                            <StyledTableCell style={{ width: '180px' }}>创建时间</StyledTableCell>
+                                            <StyledTableCell style={{ width: '120px' }}></StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -278,14 +276,8 @@ const Credentials = () => {
                                                     <StyledTableCell>
                                                         <Skeleton variant='text' />
                                                     </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
                                                 </StyledTableRow>
                                                 <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
                                                     <StyledTableCell>
                                                         <Skeleton variant='text' />
                                                     </StyledTableCell>
@@ -347,8 +339,6 @@ const Credentials = () => {
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(credential)}>
                                                                 <IconEdit />
                                                             </IconButton>
-                                                        </StyledTableCell>
-                                                        <StyledTableCell>
                                                             <IconButton
                                                                 title='Delete'
                                                                 color='error'
