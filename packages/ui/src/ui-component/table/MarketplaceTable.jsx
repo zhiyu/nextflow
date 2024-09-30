@@ -24,8 +24,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
 
     [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900],
-        borderBottom: '1px solid ' + theme.palette.primary.main
+        color: theme.palette.grey[900]
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
