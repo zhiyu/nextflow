@@ -1,10 +1,7 @@
-import logo from '@/assets/images/flowise_logo.png'
-import logoDark from '@/assets/images/flowise_logo_dark.png'
 import { useTheme } from '@mui/material/styles'
 import { useSelector } from 'react-redux'
 
-import { FaSchlix } from 'react-icons/fa'
-import { IoLogoXing } from 'react-icons/io5'
+import { PiInfinityDuotone } from 'react-icons/pi'
 
 // ==============================|| LOGO ||============================== //
 
@@ -23,8 +20,10 @@ const Logo = () => {
                 flexDirection: 'row'
             }}
         >
-            <IoLogoXing style={{ width: '32px', height: '32px', color: customization.isDarkMode ? '' : theme.palette.primary.main }} />{' '}
-            &nbsp;Agentune
+            <PiInfinityDuotone
+                style={{ width: '36px', height: '36px', color: customization.isDarkMode ? '' : theme.palette.primary.main }}
+            />{' '}
+            &nbsp;&nbsp;Agentune
         </div>
     )
 }

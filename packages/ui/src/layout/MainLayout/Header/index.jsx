@@ -13,7 +13,7 @@ import LogoSection from '../LogoSection'
 import ProfileSection from './ProfileSection'
 
 // assets
-import { IoMenuOutline } from 'react-icons/io5'
+import { PiListDuotone } from 'react-icons/pi'
 
 // store
 import { SET_DARKMODE } from '@/store/actions'
@@ -94,7 +94,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
             {/* logo & toggler button */}
             <Box
                 sx={{
-                    width: 228,
+                    width: 208,
                     display: 'flex',
                     [theme.breakpoints.down('md')]: {
                         width: 'auto'
@@ -115,17 +115,13 @@ const Header = ({ handleLeftDrawerToggle }) => {
                             ...theme.typography.commonAvatar,
                             ...theme.typography.mediumAvatar,
                             transition: 'all .2s ease-in-out',
-                            background: theme.palette.primary.light,
-                            color: theme.palette.primary.main,
-                            '&:hover': {
-                                background: theme.palette.primary.main,
-                                color: theme.palette.primary.light
-                            }
+                            background: 'none',
+                            color: theme.palette.primary.main
                         }}
                         onClick={handleLeftDrawerToggle}
                         color='inherit'
                     >
-                        <IoMenuOutline size='1.5rem' />
+                        <PiListDuotone size='1.5rem' />
                     </Avatar>
                 </ButtonBase>
             </Box>

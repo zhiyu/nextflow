@@ -1,6 +1,15 @@
 // assets
-
-import { GoArchive, GoDependabot, GoKey, GoLock, GoDatabase, GoTools, GoCode, GoCommentDiscussion, GoInfinity } from 'react-icons/go'
+import {
+    PiCodeDuotone,
+    PiLockDuotone,
+    PiKeyDuotone,
+    PiDatabaseDuotone,
+    PiChatsCircleDuotone,
+    PiShoppingCartSimpleDuotone,
+    PiRobotDuotone,
+    PiHammerDuotone,
+    PiFingerprintSimpleDuotone
+} from 'react-icons/pi'
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
@@ -15,7 +24,7 @@ const dashboard = [
                 title: '模版市场',
                 type: 'item',
                 url: '/marketplaces',
-                icon: GoArchive,
+                icon: PiShoppingCartSimpleDuotone,
                 breadcrumbs: true
             }
         ]
@@ -30,7 +39,7 @@ const dashboard = [
                 title: '对话流',
                 type: 'item',
                 url: '/chatflows',
-                icon: GoCommentDiscussion,
+                icon: PiChatsCircleDuotone,
                 breadcrumbs: true
             },
             {
@@ -38,7 +47,7 @@ const dashboard = [
                 title: '智能体',
                 type: 'item',
                 url: '/agentflows',
-                icon: GoDependabot,
+                icon: PiRobotDuotone,
                 breadcrumbs: true,
                 isBeta: false
             },
@@ -47,7 +56,7 @@ const dashboard = [
                 title: '知识库',
                 type: 'item',
                 url: '/document-stores',
-                icon: GoDatabase,
+                icon: PiDatabaseDuotone,
                 breadcrumbs: true
             },
             {
@@ -55,7 +64,7 @@ const dashboard = [
                 title: '工具箱',
                 type: 'item',
                 url: '/tools',
-                icon: GoInfinity,
+                icon: PiHammerDuotone,
                 breadcrumbs: true
             }
             // {
@@ -78,7 +87,7 @@ const dashboard = [
                 title: '凭证',
                 type: 'item',
                 url: '/credentials',
-                icon: GoLock,
+                icon: PiFingerprintSimpleDuotone,
                 breadcrumbs: true
             },
             {
@@ -86,7 +95,7 @@ const dashboard = [
                 title: '全局变量',
                 type: 'item',
                 url: '/variables',
-                icon: GoCode,
+                icon: PiCodeDuotone,
                 breadcrumbs: true
             },
             {
@@ -94,7 +103,7 @@ const dashboard = [
                 title: 'API Keys',
                 type: 'item',
                 url: '/apikey',
-                icon: GoKey,
+                icon: PiKeyDuotone,
                 breadcrumbs: true
             }
         ]

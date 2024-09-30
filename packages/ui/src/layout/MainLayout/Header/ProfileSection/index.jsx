@@ -44,6 +44,8 @@ import { IconFileExport, IconFileUpload, IconInfoCircle, IconLogout, IconSetting
 import './index.css'
 import ExportingGIF from '@/assets/images/Exporting.gif'
 
+import { PiGearSixDuotone } from 'react-icons/pi'
+
 //API
 import exportImportApi from '@/api/exportimport'
 
@@ -332,7 +334,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                     onClick={handleToggle}
                     color='inherit'
                 >
-                    <IconSettings stroke={1.5} size='1.3rem' />
+                    <PiGearSixDuotone size='1.3rem' />
                 </Avatar>
             </ButtonBase>
             <Popper
