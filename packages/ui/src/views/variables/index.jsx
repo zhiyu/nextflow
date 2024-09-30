@@ -202,16 +202,10 @@ const Variables = () => {
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Variables' title='Variables'>
-                            <Button variant='outlined' sx={{ borderRadius: 2, height: '100%' }} onClick={() => setShowHowToDialog(true)}>
+                            <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
                                 How To Use
                             </Button>
-                            <Button
-                                variant='outlined'
-                                sx={{ borderRadius: 2, height: '100%' }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                                id='btn_createVariable'
-                            >
+                            <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createVariable'>
                                 Add Variable
                             </Button>
                         </ViewHeader>

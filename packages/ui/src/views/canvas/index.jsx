@@ -553,7 +553,7 @@ const Canvas = () => {
                                 onInit={setReactFlowInstance}
                                 fitView
                                 deleteKeyCode={canvas.canvasDialogShow ? null : ['Delete']}
-                                minZoom={0.1}
+                                minZoom={0.5}
                             >
                                 <Controls
                                     style={{

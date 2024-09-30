@@ -148,7 +148,7 @@ const Documents = () => {
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
                     <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name' title='知识库'>
                         <ToggleButtonGroup
-                            sx={{ borderRadius: 2, maxHeight: 40 }}
+                            sx={{ borderRadius: 2, maxHeight: 36 }}
                             value={view}
                             color='primary'
                             exclusive
@@ -179,14 +179,7 @@ const Documents = () => {
                                 <IconList />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        <Button
-                            variant='outlined'
-                            sx={{ borderRadius: 2, height: '100%' }}
-                            color='primary'
-                            onClick={addNew}
-                            startIcon={<IconPlus />}
-                            id='btn_createVariable'
-                        >
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<IconPlus />} id='btn_createVariable'>
                             Add New
                         </Button>
                     </ViewHeader>

@@ -245,11 +245,11 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     ...theme.typography.commonAvatar,
                                     ...theme.typography.mediumAvatar,
                                     transition: 'all .2s ease-in-out',
-                                    background: theme.palette.secondary.light,
-                                    color: theme.palette.secondary.dark,
+                                    background: 'none',
+                                    color: theme.palette.grey[700],
                                     '&:hover': {
-                                        background: theme.palette.secondary.dark,
-                                        color: theme.palette.secondary.light
+                                        background: theme.palette.primary.light,
+                                        color: theme.palette.primary.main
                                     }
                                 }}
                                 color='inherit'
@@ -257,7 +257,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     window.history.state && window.history.state.idx > 0 ? navigate(-1) : navigate('/', { replace: true })
                                 }
                             >
-                                <IconChevronLeft stroke={1.5} size='1.3rem' />
+                                <IconChevronLeft size='1rem' />
                             </Avatar>
                         </ButtonBase>
                     </Box>
@@ -285,17 +285,17 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                                 ...theme.typography.mediumAvatar,
                                                 transition: 'all .2s ease-in-out',
                                                 ml: 1,
-                                                background: theme.palette.secondary.light,
-                                                color: theme.palette.secondary.dark,
+                                                background: 'none',
+                                                color: theme.palette.grey[700],
                                                 '&:hover': {
-                                                    background: theme.palette.secondary.dark,
-                                                    color: theme.palette.secondary.light
+                                                    background: theme.palette.primary.light,
+                                                    color: theme.palette.primary.main
                                                 }
                                             }}
                                             color='inherit'
                                             onClick={() => setEditingFlowName(true)}
                                         >
-                                            <IconPencil stroke={1.5} size='1.3rem' />
+                                            <IconPencil size='1rem' />
                                         </Avatar>
                                     </ButtonBase>
                                 )}
@@ -318,12 +318,12 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                             ...theme.typography.commonAvatar,
                                             ...theme.typography.mediumAvatar,
                                             transition: 'all .2s ease-in-out',
-                                            background: theme.palette.success.light,
-                                            color: theme.palette.success.dark,
                                             ml: 1,
+                                            background: 'none',
+                                            color: theme.palette.grey[700],
                                             '&:hover': {
-                                                background: theme.palette.success.dark,
-                                                color: theme.palette.success.light
+                                                background: theme.palette.primary.light,
+                                                color: theme.palette.primary.main
                                             }
                                         }}
                                         color='inherit'
@@ -339,12 +339,12 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                             ...theme.typography.commonAvatar,
                                             ...theme.typography.mediumAvatar,
                                             transition: 'all .2s ease-in-out',
-                                            background: theme.palette.error.light,
-                                            color: theme.palette.error.dark,
                                             ml: 1,
+                                            background: 'none',
+                                            color: theme.palette.grey[700],
                                             '&:hover': {
-                                                background: theme.palette.error.dark,
-                                                color: theme.palette.error.light
+                                                background: theme.palette.primary.light,
+                                                color: theme.palette.primary.main
                                             }
                                         }}
                                         color='inherit'
@@ -366,11 +366,11 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     ...theme.typography.commonAvatar,
                                     ...theme.typography.mediumAvatar,
                                     transition: 'all .2s ease-in-out',
-                                    background: theme.palette.canvasHeader.deployLight,
-                                    color: theme.palette.canvasHeader.deployDark,
+                                    background: 'none',
+                                    color: theme.palette.grey[700],
                                     '&:hover': {
-                                        background: theme.palette.canvasHeader.deployDark,
-                                        color: theme.palette.canvasHeader.deployLight
+                                        background: theme.palette.primary.light,
+                                        color: theme.palette.primary.main
                                     }
                                 }}
                                 color='inherit'
@@ -387,11 +387,11 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 ...theme.typography.commonAvatar,
                                 ...theme.typography.mediumAvatar,
                                 transition: 'all .2s ease-in-out',
-                                background: theme.palette.canvasHeader.saveLight,
-                                color: theme.palette.canvasHeader.saveDark,
+                                background: 'none',
+                                color: theme.palette.grey[700],
                                 '&:hover': {
-                                    background: theme.palette.canvasHeader.saveDark,
-                                    color: theme.palette.canvasHeader.saveLight
+                                    background: theme.palette.primary.light,
+                                    color: theme.palette.primary.main
                                 }
                             }}
                             color='inherit'
@@ -407,11 +407,11 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 ...theme.typography.commonAvatar,
                                 ...theme.typography.mediumAvatar,
                                 transition: 'all .2s ease-in-out',
-                                background: theme.palette.canvasHeader.settingsLight,
-                                color: theme.palette.canvasHeader.settingsDark,
+                                background: 'none',
+                                color: theme.palette.grey[700],
                                 '&:hover': {
-                                    background: theme.palette.canvasHeader.settingsDark,
-                                    color: theme.palette.canvasHeader.settingsLight
+                                    background: theme.palette.primary.light,
+                                    color: theme.palette.primary.main
                                 }
                             }}
                             onClick={() => setSettingsOpen(!isSettingsOpen)}

@@ -369,22 +369,10 @@ const APIKey = () => {
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search API Keys' title='API Keys'>
-                            <Button
-                                variant='outlined'
-                                sx={{ borderRadius: 2, height: '100%' }}
-                                onClick={uploadDialog}
-                                startIcon={<IconFileUpload />}
-                                id='btn_importApiKeys'
-                            >
+                            <Button variant='contained' onClick={uploadDialog} startIcon={<IconFileUpload />} id='btn_importApiKeys'>
                                 Import
                             </Button>
-                            <Button
-                                variant='outlined'
-                                sx={{ borderRadius: 2, height: '100%' }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                                id='btn_createApiKey'
-                            >
+                            <Button variant='contained' onClick={addNew} startIcon={<IconPlus />} id='btn_createApiKey'>
                                 Create Key
                             </Button>
                         </ViewHeader>

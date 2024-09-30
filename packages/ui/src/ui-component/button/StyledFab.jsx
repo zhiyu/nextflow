@@ -2,10 +2,10 @@ import { styled } from '@mui/material/styles'
 import { Fab } from '@mui/material'
 
 export const StyledFab = styled(Fab)(({ theme, color = 'primary' }) => ({
-    color: 'white',
-    backgroundColor: theme.palette[color].main,
+    color: theme.palette.grey[700],
+    backgroundColor: 'transparent',
     '&:hover': {
-        backgroundColor: theme.palette[color].main,
-        backgroundImage: `linear-gradient(rgb(0 0 0/10%) 0 0)`
+        color: theme.palette.primary.main,
+        backgroundColor: 'transparent'
     }
 }))

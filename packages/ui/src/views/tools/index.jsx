@@ -129,7 +129,7 @@ const Tools = () => {
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader title='Tools'>
                             <ToggleButtonGroup
-                                sx={{ borderRadius: 2, maxHeight: 40 }}
+                                sx={{ borderRadius: 2, maxHeight: 36 }}
                                 value={view}
                                 color='primary'
                                 exclusive
@@ -161,12 +161,7 @@ const Tools = () => {
                                 </ToggleButton>
                             </ToggleButtonGroup>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Button
-                                    variant='outlined'
-                                    onClick={() => inputRef.current.click()}
-                                    startIcon={<IconFileUpload />}
-                                    sx={{ borderRadius: 2, height: 40 }}
-                                >
+                                <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<IconFileUpload />}>
                                     Load
                                 </Button>
                                 <input
@@ -179,7 +174,7 @@ const Tools = () => {
                                 />
                             </Box>
                             <ButtonGroup disableElevation aria-label='outlined primary button group'>
-                                <Button variant='outlined' onClick={addNew} startIcon={<IconPlus />} sx={{ borderRadius: 2, height: 40 }}>
+                                <Button variant='contained' onClick={addNew} startIcon={<IconPlus />}>
                                     Create
                                 </Button>
                             </ButtonGroup>

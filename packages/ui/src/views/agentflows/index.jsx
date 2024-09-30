@@ -132,7 +132,7 @@ const Agentflows = () => {
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
                     <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Name or Category' title='智能体'>
                         <ToggleButtonGroup
-                            sx={{ borderRadius: 2, maxHeight: 40 }}
+                            sx={{ borderRadius: 2, maxHeight: 36 }}
                             value={view}
                             color='primary'
                             exclusive
@@ -163,13 +163,7 @@ const Agentflows = () => {
                                 <IconList />
                             </ToggleButton>
                         </ToggleButtonGroup>
-                        <Button
-                            variant='outlined'
-                            color='primary'
-                            onClick={addNew}
-                            startIcon={<IconPlus />}
-                            sx={{ borderRadius: 2, height: 40 }}
-                        >
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<IconPlus />}>
                             Add New
                         </Button>
                     </ViewHeader>

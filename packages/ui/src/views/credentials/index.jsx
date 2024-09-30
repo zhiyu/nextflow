@@ -231,12 +231,7 @@ const Credentials = () => {
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='Search Credentials' title='凭证'>
-                            <Button
-                                variant='outlined'
-                                sx={{ borderRadius: 2, height: '100%' }}
-                                onClick={listCredential}
-                                startIcon={<IconPlus />}
-                            >
+                            <Button variant='contained' onClick={listCredential} startIcon={<IconPlus />}>
                                 Add Credential
                             </Button>
                         </ViewHeader>
