@@ -76,7 +76,8 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
                 key={menu.id}
                 sx={{
                     alignItems: 'flex-start',
-                    pl: `16px`
+                    px: `16px`,
+                    py: '6px'
                 }}
                 onClick={() => {
                     if (menu.id === 'loadChatflow' && inputFile) {
@@ -86,7 +87,7 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
                     }
                 }}
             >
-                <ListItemIcon sx={{ my: 'auto', minWidth: !menu?.icon ? 18 : 36 }}>{itemIcon}</ListItemIcon>
+                <ListItemIcon sx={{ my: 'auto', minWidth: !menu?.icon ? 18 : 28 }}>{itemIcon}</ListItemIcon>
                 <ListItemText primary={<Typography color='inherit'>{menu.title}</Typography>} />
             </ListItemButton>
         )
