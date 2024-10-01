@@ -29,7 +29,16 @@ import ViewLeadsDialog from '@/ui-component/dialog/ViewLeadsDialog'
 import ExportAsTemplateDialog from '@/ui-component/dialog/ExportAsTemplateDialog'
 
 // icons
-import { PiCaretLeft, PiCheck, PiCodeDuotone, PiFloppyDiskBackDuotone, PiGearSixDuotone, PiPencil, PiX } from 'react-icons/pi'
+import {
+    PiCaretLeft,
+    PiCheck,
+    PiCodeDuotone,
+    PiFloppyDiskBackDuotone,
+    PiGearSixDuotone,
+    PiPencil,
+    PiPencilDuotone,
+    PiX
+} from 'react-icons/pi'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
@@ -295,7 +304,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                             color='inherit'
                                             onClick={() => setEditingFlowName(true)}
                                         >
-                                            <PiPencil size='1rem' />
+                                            <PiPencilDuotone size='1rem' />
                                         </Avatar>
                                     </ButtonBase>
                                 )}
