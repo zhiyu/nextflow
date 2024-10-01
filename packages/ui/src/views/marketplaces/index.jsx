@@ -544,13 +544,15 @@ const Marketplace = () => {
                             <Tab value={1} label='我的模版' />
                         </Tabs> */}
                         <TabPanel value={activeTabValue} index={0}>
-                            <Stack direction='row' sx={{ gap: 0, mb: 4, alignItems: 'center', flexWrap: 'wrap' }}>
+                            <Stack direction='row' sx={{ gap: 0, mb: 2, alignItems: 'center', flexWrap: 'wrap' }}>
                                 {usecases.map((usecase, index) => (
                                     <FormControlLabel
                                         key={index}
-                                        size='small'
+                                        sx={{ ml: '-4px', mr: '24px' }}
                                         control={
                                             <Checkbox
+                                                size='small'
+                                                sx={{ p: '10px 4px' }}
                                                 disabled={eligibleUsecases.length === 0 ? true : !eligibleUsecases.includes(usecase)}
                                                 checked={selectedUsecases.includes(usecase)}
                                                 onChange={(event) => {
