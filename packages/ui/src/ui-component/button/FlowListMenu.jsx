@@ -39,7 +39,8 @@ import {
     PiTag,
     PiTerminalWindow,
     PiBookmarks,
-    PiNotepad
+    PiNotepad,
+    PiCaretDown
 } from 'react-icons/pi'
 
 const StyledMenu = styled((props) => (
@@ -298,7 +299,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
                 aria-expanded={open ? 'true' : undefined}
                 disableElevation
                 onClick={handleClick}
-                endIcon={<KeyboardArrowDownIcon />}
+                endIcon={<PiCaretDown size={'1rem'} />}
             >
                 请选择
             </Button>
