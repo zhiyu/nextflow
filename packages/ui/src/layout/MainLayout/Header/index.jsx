@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
-import { Avatar, Box, ButtonBase, Switch } from '@mui/material'
+import { Avatar, Box, ButtonBase, Switch, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 // project imports
 import LogoSection from '../LogoSection'
+import NavBar from './NavBar'
 import ProfileSection from './ProfileSection'
 
 // assets
@@ -108,6 +109,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 >
                     <LogoSection />
                 </Box>
+
                 <ButtonBase sx={{ borderRadius: '8px', overflow: 'hidden' }}>
                     <Avatar
                         variant='rounded'
@@ -130,7 +132,13 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 </ButtonBase>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
+            <Box>
+                <NavBar />
+            </Box>
             {/* <MaterialUISwitch checked={isDark} onChange={changeDarkMode} /> */}
+            <Box sx={{ ml: 2 }}>
+                <Typography>{localStorage.getItem('username') ?? ''}</Typography>
+            </Box>
             <Box sx={{ ml: 2 }}></Box>
             <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />
         </>
