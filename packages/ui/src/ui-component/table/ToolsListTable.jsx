@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
 import {
     Button,
+    Link,
     Paper,
     Skeleton,
     Table,
@@ -85,20 +86,27 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
                                 {data?.map((row, index) => (
                                     <StyledTableRow key={index}>
                                         <StyledTableCell sx={{ display: 'flex', alignItems: 'center', gap: 1 }} key='0'>
-                                            <div
-                                                style={{
-                                                    width: 35,
-                                                    height: 35,
-                                                    display: 'flex',
-                                                    flexShrink: 0,
-                                                    marginRight: 10,
-                                                    borderRadius: '50%',
-                                                    backgroundImage: `url(${row.iconSrc})`,
-                                                    backgroundSize: 'contain',
-                                                    backgroundRepeat: 'no-repeat',
-                                                    backgroundPosition: 'center center'
-                                                }}
-                                            ></div>
+                                            {row.iconSrc ? (
+                                                <>
+                                                    <div
+                                                        style={{
+                                                            width: 35,
+                                                            height: 35,
+                                                            display: 'flex',
+                                                            flexShrink: 0,
+                                                            marginRight: 10,
+                                                            borderRadius: '50%',
+                                                            backgroundImage: `url(${row.iconSrc})`,
+                                                            backgroundSize: 'contain',
+                                                            backgroundRepeat: 'no-repeat',
+                                                            backgroundPosition: 'center center'
+                                                        }}
+                                                    ></div>
+                                                </>
+                                            ) : (
+                                                <></>
+                                            )}
+
                                             <Typography
                                                 sx={{
                                                     display: '-webkit-box',
@@ -110,9 +118,13 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
                                                     overflow: 'hidden'
                                                 }}
                                             >
-                                                <Button onClick={() => onSelect(row)} sx={{ textAlign: 'left' }}>
+                                                <Link
+                                                    onClick={() => onSelect(row)}
+                                                    sx={{ textAlign: 'left' }}
+                                                    style={{ cursor: 'pointer', color: '#2196f3', textDecoration: 'none' }}
+                                                >
                                                     {row.templateName || row.name}
-                                                </Button>
+                                                </Link>
                                             </Typography>
                                         </StyledTableCell>
                                         <StyledTableCell key='1'>
