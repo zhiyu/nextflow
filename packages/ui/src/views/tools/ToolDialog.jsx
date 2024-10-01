@@ -10,13 +10,12 @@ import { StyledButton } from '@/ui-component/button/StyledButton'
 import { Grid } from '@/ui-component/grid/Grid'
 import { TooltipWithParser } from '@/ui-component/tooltip/TooltipWithParser'
 import { GridActionsCellItem } from '@mui/x-data-grid'
-import DeleteIcon from '@mui/icons-material/Delete'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 import { CodeEditor } from '@/ui-component/editor/CodeEditor'
 import HowToUseFunctionDialog from './HowToUseFunctionDialog'
 
 // Icons
-import { IconX, IconFileDownload, IconPlus, IconTemplate } from '@tabler/icons-react'
+import { PiBookmarks, PiExport, PiPlus, PiTrash, PiX } from 'react-icons/pi'
 
 // API
 import toolsApi from '@/api/tools'
@@ -154,7 +153,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                 type: 'actions',
                 width: 80,
                 getActions: (params) => [
-                    <GridActionsCellItem key={'Delete'} icon={<DeleteIcon />} label='Delete' onClick={deleteItem(params.id)} />
+                    <GridActionsCellItem key={'Delete'} icon={<PiTrash size={'1.2rem'} />} label='Delete' onClick={deleteItem(params.id)} />
                 ]
             }
         ],
@@ -260,7 +259,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     persist: true,
                     action: (key) => (
                         <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                            <IconX />
+                            <PiX />
                         </Button>
                     )
                 }
@@ -288,7 +287,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                         variant: 'success',
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -306,7 +305,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     persist: true,
                     action: (key) => (
                         <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                            <IconX />
+                            <PiX />
                         </Button>
                     )
                 }
@@ -332,7 +331,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                         variant: 'success',
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -350,7 +349,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     persist: true,
                     action: (key) => (
                         <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                            <IconX />
+                            <PiX />
                         </Button>
                     )
                 }
@@ -379,7 +378,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                             variant: 'success',
                             action: (key) => (
                                 <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                    <IconX />
+                                    <PiX />
                                 </Button>
                             )
                         }
@@ -397,7 +396,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                         persist: true,
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -426,12 +425,12 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                                     style={{ marginRight: '10px' }}
                                     variant='contained'
                                     onClick={() => onSaveAsTemplate()}
-                                    startIcon={<IconTemplate />}
+                                    startIcon={<PiBookmarks />}
                                     color='primary'
                                 >
                                     保存为模版
                                 </Button>
-                                <Button variant='contained' onClick={() => exportTool()} startIcon={<IconFileDownload />}>
+                                <Button variant='contained' onClick={() => exportTool()} startIcon={<PiExport />}>
                                     导出
                                 </Button>
                             </>
@@ -444,7 +443,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
                             <Typography variant='overline'>
-                                Tool Name
+                                名称
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                             <TooltipWithParser title={'Tool name must be small capital letter with underscore. Ex: my_tool'} />
@@ -463,7 +462,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
                             <Typography variant='overline'>
-                                Tool description
+                                描述
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                             <TooltipWithParser
@@ -485,7 +484,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
-                            <Typography variant='overline'>Tool Icon Source</Typography>
+                            <Typography variant='overline'>图标</Typography>
                         </Stack>
                         <OutlinedInput
                             id='toolIcon'
@@ -501,12 +500,12 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     <Box>
                         <Stack sx={{ position: 'relative', justifyContent: 'space-between' }} direction='row'>
                             <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                <Typography variant='overline'>Input Schema</Typography>
+                                <Typography variant='overline'>输入参数</Typography>
                                 <TooltipWithParser title={'What is the input format in JSON?'} />
                             </Stack>
                             {dialogProps.type !== 'TEMPLATE' && (
-                                <Button variant='outlined' onClick={addNewRow} startIcon={<IconPlus />}>
-                                    Add Item
+                                <Button variant='outlined' onClick={addNewRow} startIcon={<PiPlus size={'1rem'} />}>
+                                    添加
                                 </Button>
                             )}
                         </Stack>
@@ -515,7 +514,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     <Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                <Typography variant='overline'>Javascript Function</Typography>
+                                <Typography variant='overline'>Javascript 函数</Typography>
                                 <TooltipWithParser title='Function to execute when tool is being used. You can use properties specified in Input Schema as variables. For example, if the property is <code>userid</code>, you can use as <code>$userid</code>. Return value must be a string. You can also override the code from API by following this <a target="_blank" href="https://docs.flowiseai.com/tools/custom-tool#override-function-from-api">guide</a>' />
                             </Stack>
                             <Stack direction='row'>
@@ -525,11 +524,11 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                                     variant='text'
                                     onClick={() => setShowHowToDialog(true)}
                                 >
-                                    How to use Function
+                                    如何使用函数
                                 </Button>
                                 {dialogProps.type !== 'TEMPLATE' && (
                                     <Button style={{ marginBottom: 10 }} variant='outlined' onClick={() => setToolFunc(exampleAPIFunc)}>
-                                        See Example
+                                        查看示例
                                     </Button>
                                 )}
                             </Stack>
@@ -547,12 +546,12 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
             <DialogActions sx={{ p: 3 }}>
                 {dialogProps.type === 'EDIT' && (
                     <StyledButton color='error' variant='contained' onClick={() => deleteTool()}>
-                        Delete
+                        删除
                     </StyledButton>
                 )}
                 {dialogProps.type === 'TEMPLATE' && (
                     <StyledButton color='primary' variant='contained' onClick={useToolTemplate}>
-                        Use Template
+                        使用模版
                     </StyledButton>
                 )}
                 {dialogProps.type !== 'TEMPLATE' && (

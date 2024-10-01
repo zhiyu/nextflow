@@ -27,7 +27,6 @@ import { useTheme, styled } from '@mui/material/styles'
 
 // project imports
 import MainCard from '@/ui-component/cards/MainCard'
-import { StyledButton } from '@/ui-component/button/StyledButton'
 import APIKeyDialog from './APIKeyDialog'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
@@ -44,10 +43,20 @@ import useConfirm from '@/hooks/useConfirm'
 import useNotifier from '@/utils/useNotifier'
 
 // Icons
-import { IconTrash, IconEdit, IconCopy, IconChevronsUp, IconChevronsDown, IconX, IconEye, IconEyeOff } from '@tabler/icons-react'
 import APIEmptySVG from '@/assets/images/api_empty.svg'
 import UploadJSONFileDialog from '@/views/apikey/UploadJSONFileDialog'
-import { PiPlus, PiTrash, PiNotePencil, PiUpload } from 'react-icons/pi'
+import {
+    PiPlus,
+    PiTrash,
+    PiNotePencil,
+    PiUpload,
+    PiCopy,
+    PiEyeClosed,
+    PiEye,
+    PiCaretDoubleDown,
+    PiCaretDoubleUp,
+    PiX
+} from 'react-icons/pi'
 
 // ==============================|| APIKey ||============================== //
 
@@ -88,10 +97,10 @@ function APIKeyRow(props) {
                               props.apiKey.apiKey.length - 5
                           )}`}
                     <IconButton title='Copy' color='success' onClick={props.onCopyClick}>
-                        <IconCopy />
+                        <PiCopy size={'1rem'} />
                     </IconButton>
                     <IconButton title='Show' color='inherit' onClick={props.onShowAPIClick}>
-                        {props.showApiKeys.includes(props.apiKey.apiKey) ? <IconEyeOff /> : <IconEye />}
+                        {props.showApiKeys.includes(props.apiKey.apiKey) ? <PiEye size={'1rem'} /> : <PiEyeClosed size={'1rem'} />}
                     </IconButton>
                     <Popover
                         open={props.open}
@@ -115,7 +124,11 @@ function APIKeyRow(props) {
                     {props.apiKey.chatFlows.length}{' '}
                     {props.apiKey.chatFlows.length > 0 && (
                         <IconButton aria-label='expand row' size='small' color='inherit' onClick={() => setOpen(!open)}>
-                            {props.apiKey.chatFlows.length > 0 && open ? <IconChevronsUp /> : <IconChevronsDown />}
+                            {props.apiKey.chatFlows.length > 0 && open ? (
+                                <PiCaretDoubleUp size={'1rem'} />
+                            ) : (
+                                <PiCaretDoubleDown size={'1rem'} />
+                            )}
                         </IconButton>
                     )}
                 </StyledTableCell>
@@ -246,7 +259,7 @@ const APIKey = () => {
 
     const edit = (key) => {
         const dialogProp = {
-            title: 'Edit API Key',
+            title: '编辑 API Key',
             type: 'EDIT',
             cancelButtonName: 'Cancel',
             confirmButtonName: 'Save',
@@ -292,7 +305,7 @@ const APIKey = () => {
                             variant: 'success',
                             action: (key) => (
                                 <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                    <IconX />
+                                    <PiX />
                                 </Button>
                             )
                         }
@@ -310,7 +323,7 @@ const APIKey = () => {
                         persist: true,
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }

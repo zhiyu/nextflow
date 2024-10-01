@@ -21,7 +21,7 @@ import { useTheme } from '@mui/material/styles'
 import { StyledButton } from '@/ui-component/button/StyledButton'
 
 // Icons
-import { IconX, IconCopy } from '@tabler/icons-react'
+import { PiCopy, PiX } from 'react-icons/pi'
 
 // API
 import apikeyApi from '@/api/apikey'
@@ -69,7 +69,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                         variant: 'success',
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -88,7 +88,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                     persist: true,
                     action: (key) => (
                         <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                            <IconX />
+                            <PiX />
                         </Button>
                     )
                 }
@@ -108,7 +108,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                         variant: 'success',
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -127,7 +127,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                     persist: true,
                     action: (key) => (
                         <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                            <IconX />
+                            <PiX />
                         </Button>
                     )
                 }
@@ -176,7 +176,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                                     }, 1500)
                                 }}
                             >
-                                <IconCopy />
+                                <PiCopy />
                             </IconButton>
                             <Popover
                                 open={openPopOver}
@@ -201,7 +201,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
 
                 <Box sx={{ p: 2 }}>
                     <Stack sx={{ position: 'relative' }} direction='row'>
-                        <Typography variant='overline'>Key Name</Typography>
+                        <Typography variant='overline'>Key 名称</Typography>
                     </Stack>
                     <OutlinedInput
                         id='keyName'
