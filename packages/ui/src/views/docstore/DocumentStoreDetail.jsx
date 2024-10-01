@@ -652,8 +652,8 @@ function LoaderRow(props) {
                     <div
                         style={{
                             display: 'flex',
-                            width: '20px',
-                            height: '20px',
+                            width: '10px',
+                            height: '10px',
                             backgroundColor: props.loader?.status === 'SYNC' ? '#00e676' : '#ffe57f',
                             borderRadius: '50%'
                         }}

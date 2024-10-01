@@ -65,8 +65,8 @@ const DocumentStoreStatus = ({ status, isTableView }) => {
                 <div
                     style={{
                         display: 'flex',
-                        width: '20px',
-                        height: '20px',
+                        width: '10px',
+                        height: '10px',
                         borderRadius: '50%',
                         backgroundColor: status === 'EMPTY' ? 'transparent' : getColor(status)[1],
                         border: status === 'EMPTY' ? '3px solid' : 'none',

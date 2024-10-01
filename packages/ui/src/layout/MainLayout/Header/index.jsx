@@ -136,7 +136,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 <NavBar />
             </Box>
             {/* <MaterialUISwitch checked={isDark} onChange={changeDarkMode} /> */}
-            <Box sx={{ ml: 2 }}>
+            <Box sx={{ ml: 4 }}>
                 <Typography>{localStorage.getItem('username') ?? ''}</Typography>
             </Box>
             <Box sx={{ ml: 2 }}></Box>
