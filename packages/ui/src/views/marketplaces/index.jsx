@@ -539,10 +539,10 @@ const Marketplace = () => {
                                 </ToggleButton>
                             </ToggleButtonGroup>
                         </ViewHeader>
-                        <Tabs value={activeTabValue} onChange={handleTabChange} textColor='primary' aria-label='tabs' centered>
+                        {/* <Tabs value={activeTabValue} onChange={handleTabChange} textColor='primary' aria-label='tabs' centered>
                             <Tab value={0} label='全部'></Tab>
                             <Tab value={1} label='我的模版' />
-                        </Tabs>
+                        </Tabs> */}
                         <TabPanel value={activeTabValue} index={0}>
                             <Stack direction='row' sx={{ gap: 0, mb: 4, alignItems: 'center', flexWrap: 'wrap' }}>
                                 {usecases.map((usecase, index) => (
