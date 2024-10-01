@@ -40,9 +40,10 @@ import AboutDialog from '@/ui-component/dialog/AboutDialog'
 import Transitions from '@/ui-component/extended/Transitions'
 
 // assets
-import { IconFileExport, IconFileUpload, IconInfoCircle, IconLogout, IconSettings, IconX } from '@tabler/icons-react'
+import { IconX } from '@tabler/icons-react'
 import './index.css'
 import ExportingGIF from '@/assets/images/Exporting.gif'
+import { PiExportDuotone, PiUploadDuotone, PiExclamationMarkDuotone, PiSignOutDuotone } from 'react-icons/pi'
 
 import { PiGearSixDuotone } from 'react-icons/pi'
 
@@ -384,9 +385,9 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <IconFileExport />
+                                                        <PiExportDuotone size='1.2rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Export</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>导出</Typography>} />
                                                 </ListItemButton>
                                                 <ListItemButton
                                                     onClick={() => {
@@ -394,9 +395,9 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <IconFileUpload />
+                                                        <PiUploadDuotone size='1.2rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Import</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>导入</Typography>} />
                                                 </ListItemButton>
                                                 <input ref={inputRef} type='file' hidden onChange={fileChange} accept='.json' />
                                                 <ListItemButton
@@ -406,16 +407,16 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <IconInfoCircle />
+                                                        <PiExclamationMarkDuotone size='1.2rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>About Flowise</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>关于</Typography>} />
                                                 </ListItemButton>
                                                 {localStorage.getItem('username') && localStorage.getItem('password') && (
                                                     <ListItemButton onClick={handleLogout}>
                                                         <ListItemIcon>
-                                                            <IconLogout />
+                                                            <PiSignOutDuotone size='1.2rem' />
                                                         </ListItemIcon>
-                                                        <ListItemText primary={<Typography variant='body2'>Logout</Typography>} />
+                                                        <ListItemText primary={<Typography variant='body2'>退出登录</Typography>} />
                                                     </ListItemButton>
                                                 )}
                                             </List>
