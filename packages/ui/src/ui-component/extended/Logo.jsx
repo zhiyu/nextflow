@@ -23,7 +23,7 @@ const Logo = () => {
             <PiInfinityDuotone
                 style={{ width: '36px', height: '36px', color: customization.isDarkMode ? '' : theme.palette.primary.main }}
             />
-            &nbsp;&nbsp;agentake
+            &nbsp;&nbsp;Agent loader
         </div>
     )
 }
