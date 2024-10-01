@@ -1,27 +1,16 @@
 // assets
-import {
-    IconTrash,
-    IconFileUpload,
-    IconFileExport,
-    IconCopy,
-    IconMessage,
-    IconDatabaseExport,
-    IconAdjustmentsHorizontal,
-    IconUsers,
-    IconTemplate
-} from '@tabler/icons-react'
+import { PiChatText, PiUsers, PiExport, PiUpload, PiTrash, PiCopy, PiBookmarks, PiDatabase, PiFadersHorizontal } from 'react-icons/pi'
 
-// constant
 const icons = {
-    IconTrash,
-    IconFileUpload,
-    IconFileExport,
-    IconCopy,
-    IconMessage,
-    IconDatabaseExport,
-    IconAdjustmentsHorizontal,
-    IconUsers,
-    IconTemplate
+    PiChatText,
+    PiUsers,
+    PiDatabase,
+    PiFadersHorizontal,
+    PiBookmarks,
+    PiCopy,
+    PiExport,
+    PiUpload,
+    PiTrash
 }
 
 // ==============================|| SETTINGS MENU ITEMS ||============================== //
@@ -36,63 +25,63 @@ const settings = {
             title: 'View Messages',
             type: 'item',
             url: '',
-            icon: icons.IconMessage
+            icon: icons.PiChatText
         },
         {
             id: 'viewLeads',
             title: 'View Leads',
             type: 'item',
             url: '',
-            icon: icons.IconUsers
+            icon: icons.PiUsers
         },
         {
             id: 'viewUpsertHistory',
             title: 'Upsert History',
             type: 'item',
             url: '',
-            icon: icons.IconDatabaseExport
+            icon: icons.PiDatabase
         },
         {
             id: 'chatflowConfiguration',
             title: 'Configuration',
             type: 'item',
             url: '',
-            icon: icons.IconAdjustmentsHorizontal
+            icon: icons.PiFadersHorizontal
         },
         {
             id: 'saveAsTemplate',
-            title: 'Save As Template',
+            title: '保存为模版',
             type: 'item',
             url: '',
-            icon: icons.IconTemplate
+            icon: icons.PiBookmarks
         },
         {
             id: 'duplicateChatflow',
-            title: 'Duplicate Chatflow',
+            title: '复制 Chatflow',
             type: 'item',
             url: '',
-            icon: icons.IconCopy
+            icon: icons.PiCopy
         },
         {
             id: 'loadChatflow',
-            title: 'Load Chatflow',
+            title: '加载 Chatflow',
             type: 'item',
             url: '',
-            icon: icons.IconFileUpload
+            icon: icons.PiUpload
         },
         {
             id: 'exportChatflow',
-            title: 'Export Chatflow',
+            title: '导出 Chatflow',
             type: 'item',
             url: '',
-            icon: icons.IconFileExport
+            icon: icons.PiExport
         },
         {
             id: 'deleteChatflow',
-            title: 'Delete Chatflow',
+            title: '删除 Chatflow',
             type: 'item',
             url: '',
-            icon: icons.IconTrash
+            icon: icons.PiTrash
         }
     ]
 }

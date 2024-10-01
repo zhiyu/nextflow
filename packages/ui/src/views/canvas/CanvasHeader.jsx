@@ -7,9 +7,6 @@ import { useEffect, useRef, useState } from 'react'
 import { useTheme } from '@mui/material/styles'
 import { Avatar, Box, ButtonBase, Typography, Stack, TextField, Button } from '@mui/material'
 
-// icons
-import { IconSettings, IconChevronLeft, IconDeviceFloppy, IconPencil, IconCheck, IconX, IconCode } from '@tabler/icons-react'
-
 // project imports
 import Settings from '@/views/settings'
 import SaveChatflowDialog from '@/ui-component/dialog/SaveChatflowDialog'
@@ -30,6 +27,9 @@ import { uiBaseURL } from '@/store/constant'
 import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 import ViewLeadsDialog from '@/ui-component/dialog/ViewLeadsDialog'
 import ExportAsTemplateDialog from '@/ui-component/dialog/ExportAsTemplateDialog'
+
+// icons
+import { PiCaretLeft, PiCheck, PiCodeDuotone, PiFloppyDiskBackDuotone, PiGearSixDuotone, PiPencil, PiX } from 'react-icons/pi'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
@@ -92,7 +92,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                         persist: true,
                         action: (key) => (
                             <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -257,7 +257,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     window.history.state && window.history.state.idx > 0 ? navigate(-1) : navigate('/', { replace: true })
                                 }
                             >
-                                <IconChevronLeft size='1rem' />
+                                <PiCaretLeft size='1.3rem' />
                             </Avatar>
                         </ButtonBase>
                     </Box>
@@ -295,7 +295,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                             color='inherit'
                                             onClick={() => setEditingFlowName(true)}
                                         >
-                                            <IconPencil size='1rem' />
+                                            <PiPencil size='1rem' />
                                         </Avatar>
                                     </ButtonBase>
                                 )}
@@ -329,7 +329,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         color='inherit'
                                         onClick={submitFlowName}
                                     >
-                                        <IconCheck stroke={1.5} size='1.3rem' />
+                                        <PiCheck size='1.3rem' />
                                     </Avatar>
                                 </ButtonBase>
                                 <ButtonBase title='Cancel' sx={{ borderRadius: '50%' }}>
@@ -350,7 +350,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         color='inherit'
                                         onClick={() => setEditingFlowName(false)}
                                     >
-                                        <IconX stroke={1.5} size='1.3rem' />
+                                        <PiX size='1.3rem' />
                                     </Avatar>
                                 </ButtonBase>
                             </Stack>
@@ -376,7 +376,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 color='inherit'
                                 onClick={onAPIDialogClick}
                             >
-                                <IconCode stroke={1.5} size='1.3rem' />
+                                <PiCodeDuotone size='1.3rem' />
                             </Avatar>
                         </ButtonBase>
                     )}
@@ -397,7 +397,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             color='inherit'
                             onClick={onSaveChatflowClick}
                         >
-                            <IconDeviceFloppy stroke={1.5} size='1.3rem' />
+                            <PiFloppyDiskBackDuotone size='1.3rem' />
                         </Avatar>
                     </ButtonBase>
                     <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
@@ -416,7 +416,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             }}
                             onClick={() => setSettingsOpen(!isSettingsOpen)}
                         >
-                            <IconSettings stroke={1.5} size='1.3rem' />
+                            <PiGearSixDuotone size='1.3rem' />
                         </Avatar>
                     </ButtonBase>
                 </Box>

@@ -61,7 +61,7 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
     const items = settingsMenu.map((menu) => {
         const Icon = menu.icon
         const itemIcon = menu?.icon ? (
-            <Icon stroke={1.5} size='1.3rem' />
+            <Icon size='1.2rem' />
         ) : (
             <FiberManualRecordIcon
                 sx={{
@@ -75,11 +75,8 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
             <ListItemButton
                 key={menu.id}
                 sx={{
-                    borderRadius: `${customization.borderRadius}px`,
-                    mb: 0.5,
                     alignItems: 'flex-start',
-                    py: 1.25,
-                    pl: `24px`
+                    pl: `16px`
                 }}
                 onClick={() => {
                     if (menu.id === 'loadChatflow' && inputFile) {
@@ -109,7 +106,7 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
                         {
                             name: 'offset',
                             options: {
-                                offset: [170, 20]
+                                offset: [0, 10]
                             }
                         }
                     ]
@@ -122,7 +119,7 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
                             <ClickAwayListener onClickAway={onClose}>
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
-                                        <Box sx={{ p: 2 }}>
+                                        <Box sx={{ p: 0 }}>
                                             <List>{items}</List>
                                         </Box>
                                     </PerfectScrollbar>
