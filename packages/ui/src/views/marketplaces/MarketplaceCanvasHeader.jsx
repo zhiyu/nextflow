@@ -7,7 +7,7 @@ import { Avatar, Box, ButtonBase, Typography, Stack } from '@mui/material'
 import { StyledButton } from '@/ui-component/button/StyledButton'
 
 // icons
-import { IconCopy, IconChevronLeft } from '@tabler/icons-react'
+import { PiCaretLeft, PiCopy } from 'react-icons/pi'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
@@ -35,7 +35,7 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                         color='inherit'
                         onClick={() => navigate(-1)}
                     >
-                        <IconChevronLeft size='1.2rem' />
+                        <PiCaretLeft size='1.3rem' />
                     </Avatar>
                 </ButtonBase>
             </Box>
@@ -58,9 +58,9 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                     variant='contained'
                     title='Use Chatflow'
                     onClick={() => onChatflowCopy(flowData)}
-                    startIcon={<IconCopy />}
+                    startIcon={<PiCopy />}
                 >
-                    Use Template
+                    使用模版
                 </StyledButton>
             </Box>
         </>
