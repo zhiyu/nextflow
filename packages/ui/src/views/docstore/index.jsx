@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // material-ui
+import { styled } from '@mui/material/styles'
+import { tableCellClasses } from '@mui/material/TableCell'
 import {
     Box,
     Button,
@@ -20,6 +22,23 @@ import {
     Typography
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        color: theme.palette.grey[900]
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+        height: 64
+    }
+}))
+
+const StyledTableRow = styled(TableRow)(() => ({
+    // hide last border
+    '&:last-child td, &:last-child th': {
+        border: 0
+    }
+}))
 
 // project imports
 import MainCard from '@/ui-component/cards/MainCard'
@@ -195,27 +214,27 @@ const Documents = () => {
                                     }}
                                 >
                                     <TableRow>
-                                        <TableCell style={{ width: '40px' }}>&nbsp;</TableCell>
-                                        <TableCell>名称</TableCell>
-                                        <TableCell>描述</TableCell>
-                                        <TableCell style={{ width: '120px' }}>关联流程数</TableCell>
-                                        <TableCell style={{ width: '100px' }}>字符数</TableCell>
-                                        <TableCell style={{ width: '100px' }}>分块数量</TableCell>
-                                        <TableCell>文档类型</TableCell>
+                                        <StyledTableCell style={{ width: '40px' }}>&nbsp;</StyledTableCell>
+                                        <StyledTableCell>名称</StyledTableCell>
+                                        <StyledTableCell>描述</StyledTableCell>
+                                        <StyledTableCell style={{ width: '120px' }}>关联流程数</StyledTableCell>
+                                        <StyledTableCell style={{ width: '100px' }}>字符数</StyledTableCell>
+                                        <StyledTableCell style={{ width: '100px' }}>分块数量</StyledTableCell>
+                                        <StyledTableCell>文档类型</StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {docStores?.filter(filterDocStores).map((data, index) => (
-                                        <TableRow
+                                        <StyledTableRow
                                             onClick={() => goToDocumentStore(data.id)}
                                             hover
                                             key={index}
                                             sx={{ cursor: 'pointer', '&:last-child td, &:last-child th': { border: 0 } }}
                                         >
-                                            <TableCell align='center'>
+                                            <StyledTableCell align='center'>
                                                 <DocumentStoreStatus isTableView={true} status={data.status} />
-                                            </TableCell>
-                                            <TableCell>
+                                            </StyledTableCell>
+                                            <StyledTableCell>
                                                 <Typography
                                                     sx={{
                                                         display: '-webkit-box',
@@ -227,8 +246,8 @@ const Documents = () => {
                                                 >
                                                     {data.name}
                                                 </Typography>
-                                            </TableCell>
-                                            <TableCell>
+                                            </StyledTableCell>
+                                            <StyledTableCell>
                                                 <Typography
                                                     sx={{
                                                         display: '-webkit-box',
@@ -240,11 +259,11 @@ const Documents = () => {
                                                 >
                                                     {data?.description}
                                                 </Typography>
-                                            </TableCell>
-                                            <TableCell>{data.whereUsed?.length ?? 0}</TableCell>
-                                            <TableCell>{data.totalChars}</TableCell>
-                                            <TableCell>{data.totalChunks}</TableCell>
-                                            <TableCell>
+                                            </StyledTableCell>
+                                            <StyledTableCell>{data.whereUsed?.length ?? 0}</StyledTableCell>
+                                            <StyledTableCell>{data.totalChars}</StyledTableCell>
+                                            <StyledTableCell>{data.totalChunks}</StyledTableCell>
+                                            <StyledTableCell>
                                                 {images[data.id] && (
                                                     <Box
                                                         sx={{
@@ -292,8 +311,8 @@ const Documents = () => {
                                                         )}
                                                     </Box>
                                                 )}
-                                            </TableCell>
-                                        </TableRow>
+                                            </StyledTableCell>
+                                        </StyledTableRow>
                                     ))}
                                 </TableBody>
                             </Table>

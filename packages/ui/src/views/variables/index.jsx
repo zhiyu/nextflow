@@ -50,9 +50,6 @@ import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    borderColor: theme.palette.grey[900] + 25,
-    padding: '6px 0px',
-
     [`&.${tableCellClasses.head}`]: {
         color: theme.palette.grey[900]
     },

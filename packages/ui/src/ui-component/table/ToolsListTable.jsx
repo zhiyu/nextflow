@@ -18,8 +18,6 @@ import {
 } from '@mui/material'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    borderColor: theme.palette.grey[900] + 25,
-
     [`&.${tableCellClasses.head}`]: {
         color: theme.palette.grey[900]
     },

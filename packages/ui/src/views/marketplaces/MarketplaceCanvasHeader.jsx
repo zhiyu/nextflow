@@ -58,9 +58,9 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                     variant='contained'
                     title='Use Chatflow'
                     onClick={() => onChatflowCopy(flowData)}
-                    startIcon={<PiCopy />}
+                    startIcon={<PiCopy size='0.8em' />}
                 >
-                    使用模版
+                    使用此模版
                 </StyledButton>
             </Box>
         </>
