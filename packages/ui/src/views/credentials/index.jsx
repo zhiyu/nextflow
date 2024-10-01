@@ -40,7 +40,7 @@ import useConfirm from '@/hooks/useConfirm'
 import useNotifier from '@/utils/useNotifier'
 
 // Icons
-import { IconTrash, IconEdit, IconX, IconPlus } from '@tabler/icons-react'
+import { IconTrash, IconEdit, IconX } from '@tabler/icons-react'
 import CredentialEmptySVG from '@/assets/images/credential_empty.svg'
 
 // const
@@ -49,11 +49,11 @@ import { SET_COMPONENT_CREDENTIALS } from '@/store/actions'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
 import { BorderBottom } from '@mui/icons-material'
-import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
+import { PiPlus, PiGridFour, PiListDashes, PiTrash, PiNotePencil } from 'react-icons/pi'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
-    padding: '6px 16px',
+    padding: '6px 0px',
 
     [`&.${tableCellClasses.head}`]: {
         color: theme.palette.grey[900]
@@ -336,16 +336,16 @@ const Credentials = () => {
                                                         <StyledTableCell>
                                                             {moment(credential.createdDate).format('MMMM Do, YYYY')}
                                                         </StyledTableCell>
-                                                        <StyledTableCell>
+                                                        <StyledTableCell sx={{ textAlign: 'right' }}>
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(credential)}>
-                                                                <IconEdit />
+                                                                <PiNotePencil />
                                                             </IconButton>
                                                             <IconButton
                                                                 title='Delete'
                                                                 color='error'
                                                                 onClick={() => deleteCredential(credential)}
                                                             >
-                                                                <IconTrash />
+                                                                <PiTrash />
                                                             </IconButton>
                                                         </StyledTableCell>
                                                     </StyledTableRow>

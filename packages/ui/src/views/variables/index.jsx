@@ -41,7 +41,7 @@ import useNotifier from '@/utils/useNotifier'
 // Icons
 import { IconTrash, IconEdit, IconX, IconPlus, IconVariable } from '@tabler/icons-react'
 import VariablesEmptySVG from '@/assets/images/variables_empty.svg'
-import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
+import { PiPlus, PiGridFour, PiListDashes, PiTrash, PiNotePencil } from 'react-icons/pi'
 
 // const
 import AddEditVariableDialog from './AddEditVariableDialog'
@@ -51,6 +51,7 @@ import ErrorBoundary from '@/ErrorBoundary'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
+    padding: '6px 0px',
 
     [`&.${tableCellClasses.head}`]: {
         color: theme.palette.grey[900]
@@ -327,16 +328,16 @@ const Variables = () => {
                                                         <StyledTableCell>
                                                             {moment(variable.createdDate).format('MMMM Do, YYYY')}
                                                         </StyledTableCell>
-                                                        <StyledTableCell>
+                                                        <StyledTableCell sx={{ textAlign: 'right' }}>
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(variable)}>
-                                                                <IconEdit />
+                                                                <PiNotePencil />
                                                             </IconButton>
                                                             <IconButton
                                                                 title='Delete'
                                                                 color='error'
                                                                 onClick={() => deleteVariable(variable)}
                                                             >
-                                                                <IconTrash />
+                                                                <PiTrash />
                                                             </IconButton>
                                                         </StyledTableCell>
                                                     </StyledTableRow>

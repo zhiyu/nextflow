@@ -47,13 +47,13 @@ import useNotifier from '@/utils/useNotifier'
 import { IconTrash, IconEdit, IconCopy, IconChevronsUp, IconChevronsDown, IconX, IconEye, IconEyeOff } from '@tabler/icons-react'
 import APIEmptySVG from '@/assets/images/api_empty.svg'
 import UploadJSONFileDialog from '@/views/apikey/UploadJSONFileDialog'
-import { PiPlus, PiGridFour, PiListDashes, PiUpload } from 'react-icons/pi'
+import { PiPlus, PiTrash, PiNotePencil, PiUpload } from 'react-icons/pi'
 
 // ==============================|| APIKey ||============================== //
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     borderColor: theme.palette.grey[900] + 25,
-    padding: '6px 16px',
+    padding: '6px 0px',
 
     [`&.${tableCellClasses.head}`]: {
         color: theme.palette.grey[900]
@@ -120,12 +120,12 @@ function APIKeyRow(props) {
                     )}
                 </StyledTableCell>
                 <StyledTableCell>{moment(props.apiKey.createdAt).format('MMMM Do, YYYY')}</StyledTableCell>
-                <StyledTableCell>
+                <StyledTableCell sx={{ textAlign: 'right' }}>
                     <IconButton title='Edit' color='primary' onClick={props.onEditClick}>
-                        <IconEdit />
+                        <PiNotePencil />
                     </IconButton>
                     <IconButton title='Delete' color='error' onClick={props.onDeleteClick}>
-                        <IconTrash />
+                        <PiTrash />
                     </IconButton>
                 </StyledTableCell>
             </TableRow>
