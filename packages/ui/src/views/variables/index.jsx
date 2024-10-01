@@ -39,7 +39,7 @@ import useConfirm from '@/hooks/useConfirm'
 import useNotifier from '@/utils/useNotifier'
 
 // Icons
-import { IconTrash, IconEdit, IconX, IconPlus, IconVariable } from '@tabler/icons-react'
+import { IconX, IconVariable } from '@tabler/icons-react'
 import VariablesEmptySVG from '@/assets/images/variables_empty.svg'
 import { PiPlus, PiGridFour, PiListDashes, PiTrash, PiNotePencil } from 'react-icons/pi'
 
@@ -330,14 +330,14 @@ const Variables = () => {
                                                         </StyledTableCell>
                                                         <StyledTableCell sx={{ textAlign: 'right' }}>
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(variable)}>
-                                                                <PiNotePencil />
+                                                                <PiNotePencil size='1.2rem' />
                                                             </IconButton>
                                                             <IconButton
                                                                 title='Delete'
                                                                 color='error'
                                                                 onClick={() => deleteVariable(variable)}
                                                             >
-                                                                <PiTrash />
+                                                                <PiTrash size='1.2rem' />
                                                             </IconButton>
                                                         </StyledTableCell>
                                                     </StyledTableRow>

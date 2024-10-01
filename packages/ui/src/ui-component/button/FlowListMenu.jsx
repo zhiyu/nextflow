@@ -5,17 +5,7 @@ import PropTypes from 'prop-types'
 import { styled, alpha } from '@mui/material/styles'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import EditIcon from '@mui/icons-material/Edit'
 import Divider from '@mui/material/Divider'
-import FileCopyIcon from '@mui/icons-material/FileCopy'
-import FileDownloadIcon from '@mui/icons-material/Downloading'
-import FileDeleteIcon from '@mui/icons-material/Delete'
-import FileCategoryIcon from '@mui/icons-material/Category'
-import PictureInPictureAltIcon from '@mui/icons-material/PictureInPictureAlt'
-import ThumbsUpDownOutlinedIcon from '@mui/icons-material/ThumbsUpDownOutlined'
-import VpnLockOutlinedIcon from '@mui/icons-material/VpnLockOutlined'
-import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined'
-import ExportTemplateOutlinedIcon from '@mui/icons-material/BookmarksOutlined'
 import Button from '@mui/material/Button'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { IconX } from '@tabler/icons-react'
@@ -37,6 +27,20 @@ import ChatFeedbackDialog from '../dialog/ChatFeedbackDialog'
 import AllowedDomainsDialog from '../dialog/AllowedDomainsDialog'
 import SpeechToTextDialog from '../dialog/SpeechToTextDialog'
 import ExportAsTemplateDialog from '@/ui-component/dialog/ExportAsTemplateDialog'
+
+import {
+    PiChatText,
+    PiExport,
+    PiUpload,
+    PiTrash,
+    PiCopy,
+    PiNotePencil,
+    PiMicrophone,
+    PiTag,
+    PiTerminalWindow,
+    PiBookmarks,
+    PiNotepad
+} from 'react-icons/pi'
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -62,7 +66,7 @@ const StyledMenu = styled((props) => (
             padding: '4px 0'
         },
         '& .MuiMenuItem-root': {
-            '& .MuiSvgIcon-root': {
+            '& svg': {
                 fontSize: 18,
                 color: theme.palette.text.secondary,
                 marginRight: theme.spacing(1.5)
@@ -296,7 +300,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
                 onClick={handleClick}
                 endIcon={<KeyboardArrowDownIcon />}
             >
-                Options
+                请选择
             </Button>
             <StyledMenu
                 id='demo-customized-menu'
@@ -308,46 +312,46 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
                 onClose={handleClose}
             >
                 <MenuItem onClick={handleFlowRename} disableRipple>
-                    <EditIcon />
-                    Rename
+                    <PiNotePencil size='1.2rem' />
+                    重命名
                 </MenuItem>
                 <MenuItem onClick={handleDuplicate} disableRipple>
-                    <FileCopyIcon />
-                    Duplicate
+                    <PiCopy size='1.2rem' />
+                    复制
                 </MenuItem>
                 <MenuItem onClick={handleExport} disableRipple>
-                    <FileDownloadIcon />
-                    Export
+                    <PiExport size='1.2rem' />
+                    导出
                 </MenuItem>
                 <MenuItem onClick={handleExportTemplate} disableRipple>
-                    <ExportTemplateOutlinedIcon />
-                    Save As Template
+                    <PiBookmarks size='1.2rem' />
+                    保存为模版
                 </MenuItem>
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleFlowStarterPrompts} disableRipple>
-                    <PictureInPictureAltIcon />
+                    <PiTerminalWindow size='1.2rem' />
                     Starter Prompts
                 </MenuItem>
                 <MenuItem onClick={handleFlowChatFeedback} disableRipple>
-                    <ThumbsUpDownOutlinedIcon />
+                    <PiChatText size='1.2rem' />
                     Chat Feedback
                 </MenuItem>
                 <MenuItem onClick={handleAllowedDomains} disableRipple>
-                    <VpnLockOutlinedIcon />
+                    <PiNotepad size='1.2rem' />
                     Allowed Domains
                 </MenuItem>
                 <MenuItem onClick={handleSpeechToText} disableRipple>
-                    <MicNoneOutlinedIcon />
-                    Speech To Text
+                    <PiMicrophone size='1.2rem' />
+                    语音转文字
                 </MenuItem>
                 <MenuItem onClick={handleFlowCategory} disableRipple>
-                    <FileCategoryIcon />
-                    Update Category
+                    <PiTag size='1.2rem' />
+                    更新标签
                 </MenuItem>
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleDelete} disableRipple>
-                    <FileDeleteIcon />
-                    Delete
+                    <PiTrash />
+                    删除
                 </MenuItem>
             </StyledMenu>
             <SaveChatflowDialog

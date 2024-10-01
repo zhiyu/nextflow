@@ -338,14 +338,14 @@ const Credentials = () => {
                                                         </StyledTableCell>
                                                         <StyledTableCell sx={{ textAlign: 'right' }}>
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(credential)}>
-                                                                <PiNotePencil />
+                                                                <PiNotePencil size='1.2rem' />
                                                             </IconButton>
                                                             <IconButton
                                                                 title='Delete'
                                                                 color='error'
                                                                 onClick={() => deleteCredential(credential)}
                                                             >
-                                                                <PiTrash />
+                                                                <PiTrash size='1.2rem' />
                                                             </IconButton>
                                                         </StyledTableCell>
                                                     </StyledTableRow>

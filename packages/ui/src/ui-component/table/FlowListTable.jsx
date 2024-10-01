@@ -109,7 +109,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                     最后更新
                                 </TableSortLabel>
                             </StyledTableCell>
-                            <StyledTableCell style={{ width: '100px' }} key='4'>
+                            <StyledTableCell style={{ width: '120px' }} key='4'>
                                 操作
                             </StyledTableCell>
                         </TableRow>

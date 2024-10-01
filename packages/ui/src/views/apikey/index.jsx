@@ -122,10 +122,10 @@ function APIKeyRow(props) {
                 <StyledTableCell>{moment(props.apiKey.createdAt).format('MMMM Do, YYYY')}</StyledTableCell>
                 <StyledTableCell sx={{ textAlign: 'right' }}>
                     <IconButton title='Edit' color='primary' onClick={props.onEditClick}>
-                        <PiNotePencil />
+                        <PiNotePencil size='1.2rem' />
                     </IconButton>
                     <IconButton title='Delete' color='error' onClick={props.onDeleteClick}>
-                        <PiTrash />
+                        <PiTrash size='1.2rem' />
                     </IconButton>
                 </StyledTableCell>
             </TableRow>
