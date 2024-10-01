@@ -26,7 +26,7 @@ import {
 import { useTheme } from '@mui/material/styles'
 import { IconX } from '@tabler/icons-react'
 
-import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
+import { PiPlus, PiGridFour, PiListDashes, PiX } from 'react-icons/pi'
 
 // project imports
 import MainCard from '@/ui-component/cards/MainCard'
@@ -552,7 +552,6 @@ const Marketplace = () => {
                                         control={
                                             <Checkbox
                                                 disabled={eligibleUsecases.length === 0 ? true : !eligibleUsecases.includes(usecase)}
-                                                color='success'
                                                 checked={selectedUsecases.includes(usecase)}
                                                 onChange={(event) => {
                                                     setSelectedUsecases(
@@ -569,12 +568,12 @@ const Marketplace = () => {
                             </Stack>
                             {selectedUsecases.length > 0 && (
                                 <Button
-                                    sx={{ width: 'max-content', mb: 2, borderRadius: '20px' }}
-                                    variant='outlined'
+                                    sx={{ width: 'max-content', height: 36, mb: 2 }}
+                                    variant='contained'
                                     onClick={() => clearAllUsecases()}
-                                    startIcon={<IconX />}
+                                    startIcon={<PiX size='0.8rem' />}
                                 >
-                                    Clear All
+                                    清除筛选条件
                                 </Button>
                             )}
 
@@ -676,7 +675,6 @@ const Marketplace = () => {
                                                         ? true
                                                         : !eligibleTemplateUsecases.includes(usecase)
                                                 }
-                                                color='success'
                                                 checked={selectedTemplateUsecases.includes(usecase)}
                                                 onChange={(event) => {
                                                     setSelectedTemplateUsecases(

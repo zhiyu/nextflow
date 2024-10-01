@@ -73,19 +73,19 @@ export const MarketplaceTable = ({
                     >
                         <TableRow>
                             <StyledTableCell sx={{ minWidth: '150px' }} component='th' scope='row' key='0'>
-                                Name
+                                名称
                             </StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} component='th' scope='row' key='1'>
-                                Type
+                                类型
                             </StyledTableCell>
-                            <StyledTableCell key='2'>Description</StyledTableCell>
+                            <StyledTableCell key='2'>描述</StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} key='3'>
-                                Framework
+                                框架
                             </StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} key='4'>
-                                Use cases
+                                使用场景
                             </StyledTableCell>
-                            <StyledTableCell key='5'>Nodes</StyledTableCell>
+                            <StyledTableCell key='5'>节点</StyledTableCell>
                             <StyledTableCell component='th' scope='row' key='6'>
                                 &nbsp;
                             </StyledTableCell>
