@@ -87,7 +87,7 @@ export default function themeTypography(theme) {
             }
         },
         mainContent: {
-            backgroundColor: theme.background,
+            backgroundColor: theme.customization.isDarkMode ? theme.colors.darkBackground : '#f6f6f9',
             width: '100%',
             minHeight: 'calc(100vh - 55px)',
             flexGrow: 1,
