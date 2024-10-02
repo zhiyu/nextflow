@@ -14,41 +14,38 @@ import themeTypography from './typography'
  */
 
 export const theme = (customization) => {
-    const color = colors
-
-    const themeOption = customization.isDarkMode
+    const _options = customization.isDarkMode
         ? {
-              colors: color,
-              heading: color.paper,
-              paper: color.darkPrimaryLight,
-              backgroundDefault: color.darkPaper,
-              background: color.darkPrimaryLight,
-              darkTextPrimary: color.paper,
-              darkTextSecondary: color.paper,
-              textDark: color.paper,
-              menuSelected: color.darkSecondaryDark,
-              menuSelectedBack: color.darkSecondaryLight,
-              divider: color.darkPaper,
+              colors: colors,
+              heading: colors.paper,
+              paper: colors.darkPrimaryLight,
+              backgroundDefault: colors.darkPaper,
+              background: colors.darkPrimaryLight,
+              darkTextPrimary: colors.paper,
+              darkTextSecondary: colors.paper,
+              textDark: colors.paper,
+              menuSelected: colors.darkSecondaryDark,
+              menuSelectedBack: colors.darkSecondaryLight,
+              divider: colors.darkPaper,
               customization
           }
         : {
-              colors: color,
-              heading: color.grey900,
-              paper: color.paper,
-              backgroundDefault: color.paper,
-              background: color.primaryLight,
-              darkTextPrimary: color.grey700,
-              darkTextSecondary: color.grey500,
-              textDark: color.grey900,
-              menuSelected: color.primaryMain,
-              menuSelectedBack: color.primaryLight,
-              divider: color.grey200,
+              colors: colors,
+              heading: colors.grey900,
+              paper: colors.paper,
+              backgroundDefault: colors.paper,
+              background: colors.primaryLight,
+              darkTextPrimary: colors.grey700,
+              darkTextSecondary: colors.grey500,
+              textDark: colors.grey900,
+              menuSelected: colors.primaryMain,
+              menuSelectedBack: colors.primaryLight,
+              divider: colors.grey200,
               customization
           }
 
-    const themeOptions = {
+    const options = {
         direction: 'ltr',
-        palette: themePalette(themeOption),
         mixins: {
             toolbar: {
                 minHeight: '24px',
@@ -58,13 +55,12 @@ export const theme = (customization) => {
                 }
             }
         },
-        typography: themeTypography(themeOption)
+        palette: themePalette(_options),
+        typography: themeTypography(_options),
+        components: componentStyleOverrides(_options)
     }
 
-    const themes = createTheme(themeOptions)
-    themes.components = componentStyleOverrides(themeOption)
-
-    return themes
+    return createTheme(options)
 }
 
 export default theme
