@@ -1,17 +1,28 @@
 import PropTypes from 'prop-types'
 
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+
 // material-ui
 import { useTheme } from '@mui/material/styles'
-import { Divider, List, Typography } from '@mui/material'
+import { Divider, List, Typography, Collapse } from '@mui/material'
 
 // project imports
 import NavItem from '../NavItem'
 import NavCollapse from '../NavCollapse'
 
+import { IconChevronDown, IconChevronUp } from '@tabler/icons-react'
+
 // ==============================|| SIDEBAR MENU LIST GROUP ||============================== //
 
 const NavGroup = ({ item }) => {
     const theme = useTheme()
+
+    const [open, setOpen] = useState(true)
+    const handleClick = () => {
+        setOpen(!open)
+        // setSelected(!selected ? menu.id : null)
+    }
 
     // menu list collapse & items
     const items = item.children?.map((menu) => {
@@ -34,8 +45,22 @@ const NavGroup = ({ item }) => {
             <List
                 subheader={
                     item.title && (
-                        <Typography variant='caption' sx={{ ...theme.typography.menuCaption }} display='block' gutterBottom>
-                            {item.title}
+                        <Typography
+                            onClick={handleClick}
+                            variant='caption'
+                            sx={{ ...theme.typography.menuCaption }}
+                            display='block'
+                            gutterBottom
+                        >
+                            <Typography sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                {item.title}
+                                {open ? (
+                                    <IconChevronUp stroke={1.5} size='1rem' style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+                                ) : (
+                                    <IconChevronDown stroke={1.5} size='1rem' style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+                                )}
+                            </Typography>
+
                             {item.caption && (
                                 <Typography variant='caption' sx={{ ...theme.typography.subMenuCaption }} display='block' gutterBottom>
                                     {item.caption}
@@ -46,7 +71,9 @@ const NavGroup = ({ item }) => {
                 }
                 sx={{ py: '0px' }}
             >
-                {items}
+                <Collapse in={open} timeout='auto' unmountOnExit>
+                    {items}
+                </Collapse>
             </List>
 
             {/* group divider */}

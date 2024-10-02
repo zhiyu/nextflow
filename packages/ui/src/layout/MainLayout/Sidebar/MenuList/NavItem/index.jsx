@@ -100,7 +100,6 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
             {...listItemProps}
             disabled={item.disabled}
             sx={{
-                borderRadius: 0,
                 mb: 0,
                 alignItems: 'flex-start',
                 backgroundColor: level > 1 ? 'transparent !important' : 'inherit',

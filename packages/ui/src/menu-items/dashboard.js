@@ -17,6 +17,7 @@ const dashboard = [
     {
         id: 'dashboard',
         title: '探索',
+        caption: '',
         type: 'group',
         children: [
             {
