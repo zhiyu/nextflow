@@ -62,6 +62,7 @@ import doc_store_details_emptySVG from '@/assets/images/doc_store_details_empty.
 
 // store
 import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackbarAction } from '@/store/actions'
+import { PiPlus, PiTrash } from 'react-icons/pi'
 
 // ==============================|| DOCUMENTS ||============================== //
 
@@ -365,15 +366,9 @@ const DocumentStoreDetails = () => {
                                 title='Delete Document Store'
                                 sx={{ mr: 2 }}
                             >
-                                <IconTrash />
+                                <PiTrash />
                             </IconButton>
-                            <Button
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: '100%' }}
-                                color='primary'
-                                startIcon={<IconPlus />}
-                                onClick={listLoaders}
-                            >
+                            <Button variant='contained' color='primary' startIcon={<PiPlus size='0.8em' />} onClick={listLoaders}>
                                 Add Document Loader
                             </Button>
                             {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
@@ -393,10 +388,6 @@ const DocumentStoreDetails = () => {
                                 <>
                                     <Button
                                         variant='contained'
-                                        sx={{
-                                            borderRadius: 2,
-                                            height: '100%'
-                                        }}
                                         color='primary'
                                         startIcon={<IconListDetails />}
                                         onClick={() => showStoredChunks('all')}
@@ -405,10 +396,6 @@ const DocumentStoreDetails = () => {
                                     </Button>
                                     <Button
                                         variant='contained'
-                                        sx={{
-                                            borderRadius: 2,
-                                            height: '100%'
-                                        }}
                                         color='primary'
                                         startIcon={<IconRowInsertTop />}
                                         onClick={() => showVectorStore(documentStore.id)}
@@ -421,8 +408,6 @@ const DocumentStoreDetails = () => {
                                 <Button
                                     variant='contained'
                                     sx={{
-                                        borderRadius: 2,
-                                        height: '100%',
                                         backgroundImage: `linear-gradient(to right, #3f5efb, #fc466b)`,
                                         '&:hover': {
                                             backgroundImage: `linear-gradient(to right, #2b4efb, #fe2752)`
