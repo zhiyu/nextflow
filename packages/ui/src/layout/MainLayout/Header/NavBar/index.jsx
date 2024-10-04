@@ -21,7 +21,7 @@ export default function NavBar() {
                 IconComponent={PiCaretDownDuotone}
                 onChange={handleChange}
             >
-                <MenuItem disabled value={0} sx={{ fontSize: 12 }}>
+                <MenuItem disabled value={0} sx={{ fontSize: 12, display: 'none' }}>
                     <em>切换平台</em>
                 </MenuItem>
                 <MenuItem value={1}>算力平台</MenuItem>

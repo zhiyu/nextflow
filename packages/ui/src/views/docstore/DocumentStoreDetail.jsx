@@ -67,9 +67,6 @@ import { PiPlus, PiTrash } from 'react-icons/pi'
 // ==============================|| DOCUMENTS ||============================== //
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    borderColor: theme.palette.grey[900] + 25,
-    padding: '6px 16px',
-
     [`&.${tableCellClasses.head}`]: {
         color: theme.palette.grey[900]
     },
@@ -470,10 +467,7 @@ const DocumentStoreDetails = () => {
                                 </StyledButton>
                             </Stack>
                         ) : (
-                            <TableContainer
-                                sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
-                                component={Paper}
-                            >
+                            <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                                     <TableHead
                                         sx={{

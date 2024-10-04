@@ -338,11 +338,7 @@ const ShowStoredChunks = () => {
                             {documentChunks.length > 0 &&
                                 documentChunks.map((row, index) => (
                                     <Grid item lg={4} md={4} sm={6} xs={6} key={index}>
-                                        <CardWrapper
-                                            content={false}
-                                            onClick={() => chunkSelected(row.id)}
-                                            sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
-                                        >
+                                        <CardWrapper content={false} onClick={() => chunkSelected(row.id)}>
                                             <Card>
                                                 <CardContent sx={{ p: 2 }}>
                                                     <Typography sx={{ wordWrap: 'break-word', mb: 1 }} variant='h5'>
