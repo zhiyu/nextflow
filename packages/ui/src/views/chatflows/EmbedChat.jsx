@@ -180,8 +180,8 @@ const chatwindowConfig = (isReact = false) => {
                     footer: {
                         textColor: '#303235',
                         text: 'Powered by',
-                        company: 'Flowise',
-                        companyLink: 'https://flowiseai.com',
+                        company: '紫金诚',
+                        companyLink: 'http://zijin.ai',
                     }
                 }`
         : `chatWindow: {
@@ -230,8 +230,8 @@ const chatwindowConfig = (isReact = false) => {
                 footer: {
                     textColor: '#303235',
                     text: 'Powered by',
-                    company: 'Flowise',
-                    companyLink: 'https://flowiseai.com',
+                    company: '紫金诚',
+                    companyLink: 'http://zijin.ai',
                 }
             }`
 }

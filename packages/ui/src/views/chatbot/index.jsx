@@ -109,6 +109,12 @@ const ChatbotFull = () => {
         setLoading(getSpecificChatflowFromPublicApi.loading || getSpecificChatflowApi.loading)
     }, [getSpecificChatflowFromPublicApi.loading, getSpecificChatflowApi.loading])
 
+    chatbotTheme.footer = {
+        textColor: '#303235',
+        text: 'AI 技术支持来自 ',
+        company: '紫金诚',
+        companyLink: 'http://zijin.ai'
+    }
     return (
         <>
             {!isLoading ? (
