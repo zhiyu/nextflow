@@ -287,7 +287,7 @@ const ShowStoredChunks = () => {
                                         }
                                     />
                                 </IconButton>
-                                Showing {Math.min(start, totalChunks)}-{end} of {totalChunks} chunks
+                                显示 {Math.min(start, totalChunks)}-{end} of {totalChunks} chunks
                                 <IconButton
                                     size='small'
                                     onClick={() => changePage(currentPage + 1)}
@@ -310,7 +310,7 @@ const ShowStoredChunks = () => {
                             </div>
                             <div style={{ marginRight: 20, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                 <IconLanguage style={{ marginRight: 10 }} size={20} />
-                                {getChunksApi.data?.file?.totalChars?.toLocaleString()} characters
+                                {getChunksApi.data?.file?.totalChars?.toLocaleString()} 字符
                             </div>
                         </div>
                     </div>
@@ -342,7 +342,7 @@ const ShowStoredChunks = () => {
                                             <Card>
                                                 <CardContent sx={{ p: 2 }}>
                                                     <Typography sx={{ wordWrap: 'break-word', mb: 1 }} variant='h5'>
-                                                        {`#${row.chunkNo}. Characters: ${row.pageContent.length}`}
+                                                        {`#${row.chunkNo}. 字符数: ${row.pageContent.length}`}
                                                     </Typography>
                                                     <Typography sx={{ wordWrap: 'break-word' }} variant='body2'>
                                                         {row.pageContent}

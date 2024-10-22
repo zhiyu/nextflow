@@ -108,7 +108,7 @@ const ChatbotFull = () => {
     useEffect(() => {
         setLoading(getSpecificChatflowFromPublicApi.loading || getSpecificChatflowApi.loading)
     }, [getSpecificChatflowFromPublicApi.loading, getSpecificChatflowApi.loading])
-
+    console.log(chatbotTheme)
     chatbotTheme.footer = {
         textColor: '#303235',
         text: 'AI 智能体服务支持来自 ',

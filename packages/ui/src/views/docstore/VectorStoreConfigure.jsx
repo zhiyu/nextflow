@@ -437,7 +437,7 @@ const VectorStoreConfigure = () => {
                             isBackButton={true}
                             search={false}
                             title={getSpecificDocumentStoreApi.data?.name}
-                            description='Configure Embeddings, Vector Store and Record Manager'
+                            description='配置 Embeddings, Vector Store 和 Record Manager'
                             onBack={() => navigate(-1)}
                         >
                             {(Object.keys(selectedEmbeddingsProvider).length > 0 ||
@@ -452,7 +452,7 @@ const VectorStoreConfigure = () => {
                                     startIcon={<IconRefresh />}
                                     onClick={() => resetVectorStoreConfig()}
                                 >
-                                    Reset
+                                    重置
                                 </Button>
                             )}
                             {(Object.keys(selectedEmbeddingsProvider).length > 0 ||
@@ -467,7 +467,7 @@ const VectorStoreConfigure = () => {
                                     startIcon={<IconDeviceFloppy />}
                                     onClick={() => saveVectorStoreConfig()}
                                 >
-                                    Save Config
+                                    保存配置
                                 </Button>
                             )}
                             {Object.keys(selectedEmbeddingsProvider).length > 0 && Object.keys(selectedVectorStoreProvider).length > 0 && (

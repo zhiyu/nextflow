@@ -168,7 +168,7 @@ const DocumentStoreDetails = () => {
 
     const listLoaders = () => {
         const dialogProp = {
-            title: 'Select Document Loader'
+            title: '请选择文档加载器'
         }
         setDocumentLoaderListDialogProps(dialogProp)
         setShowDocumentLoaderListDialog(true)
@@ -366,7 +366,7 @@ const DocumentStoreDetails = () => {
                                 <PiTrash />
                             </IconButton>
                             <Button variant='contained' color='primary' startIcon={<PiPlus size='0.8em' />} onClick={listLoaders}>
-                                Add Document Loader
+                                添加文档加载器
                             </Button>
                             {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
                                 <Button variant='contained' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
@@ -389,7 +389,7 @@ const DocumentStoreDetails = () => {
                                         startIcon={<IconListDetails />}
                                         onClick={() => showStoredChunks('all')}
                                     >
-                                        View Chunks
+                                        查看 Chunks
                                     </Button>
                                     <Button
                                         variant='contained'
@@ -397,7 +397,7 @@ const DocumentStoreDetails = () => {
                                         startIcon={<IconRowInsertTop />}
                                         onClick={() => showVectorStore(documentStore.id)}
                                     >
-                                        Upsert Config
+                                        插入或更新配置
                                     </Button>
                                 </>
                             )}
@@ -463,7 +463,7 @@ const DocumentStoreDetails = () => {
                                 </Box>
                                 <div>No Document Added Yet</div>
                                 <StyledButton variant='contained' startIcon={<IconPlus />} onClick={listLoaders}>
-                                    Add Document Loader
+                                    添加文档加载器
                                 </StyledButton>
                             </Stack>
                         ) : (
@@ -476,12 +476,12 @@ const DocumentStoreDetails = () => {
                                     >
                                         <TableRow>
                                             <StyledTableCell>&nbsp;</StyledTableCell>
-                                            <StyledTableCell>Loader</StyledTableCell>
+                                            <StyledTableCell>加载器</StyledTableCell>
                                             <StyledTableCell>Splitter</StyledTableCell>
-                                            <StyledTableCell>Source(s)</StyledTableCell>
+                                            <StyledTableCell>数据源</StyledTableCell>
                                             <StyledTableCell>Chunks</StyledTableCell>
                                             <StyledTableCell>Chars</StyledTableCell>
-                                            <StyledTableCell>Actions</StyledTableCell>
+                                            <StyledTableCell style={{ width: '120px' }}>操作</StyledTableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -660,7 +660,7 @@ function LoaderRow(props) {
                             onClick={(e) => handleClick(e)}
                             endIcon={<KeyboardArrowDownIcon />}
                         >
-                            Options
+                            请选择
                         </Button>
                         <StyledMenu
                             id='document-store-actions-customized-menu'
@@ -673,16 +673,16 @@ function LoaderRow(props) {
                         >
                             <MenuItem onClick={props.onEditClick} disableRipple>
                                 <FileEditIcon />
-                                Preview & Process
+                                预览 & 处理
                             </MenuItem>
                             <MenuItem onClick={props.onViewChunksClick} disableRipple>
                                 <FileChunksIcon />
-                                View & Edit Chunks
+                                查看 & 编辑 Chunks
                             </MenuItem>
                             <Divider sx={{ my: 0.5 }} />
                             <MenuItem onClick={props.onDeleteClick} disableRipple>
                                 <FileDeleteIcon />
-                                Delete
+                                删除
                             </MenuItem>
                         </StyledMenu>
                     </div>

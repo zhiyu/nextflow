@@ -57,6 +57,9 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
     const [isPublicChatflow, setChatflowIsPublic] = useState(chatflow.isPublic ?? false)
     const [generateNewSession, setGenerateNewSession] = useState(chatbotConfig?.generateNewSession ?? false)
 
+    const [buttonBackgroundColor, setButtonBackgroundColor] = useState(
+        chatbotConfig?.textInput?.sendButtonColor ?? defaultConfig.textInput.sendButtonColor
+    )
     const [title, setTitle] = useState(chatbotConfig?.title ?? '')
     const [titleAvatarSrc, setTitleAvatarSrc] = useState(chatbotConfig?.titleAvatarSrc ?? '')
 
@@ -104,6 +107,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
 
     const formatObj = () => {
         const obj = {
+            button: {},
             botMessage: {
                 showAvatar: false
             },
@@ -113,6 +117,8 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             textInput: {},
             overrideConfig: {}
         }
+
+        if (buttonBackgroundColor) obj.button.backgroundColor = buttonBackgroundColor
         if (title) obj.title = title
         if (titleAvatarSrc) obj.titleAvatarSrc = titleAvatarSrc
         if (welcomeMessage) obj.welcomeMessage = welcomeMessage
@@ -238,6 +244,9 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
 
     const onColorSelected = (hexColor) => {
         switch (selectedColorConfig) {
+            case 'buttonBackgroundColor':
+                setButtonBackgroundColor(hexColor)
+                break
             case 'backgroundColor':
                 setBackgroundColor(hexColor)
                 break
@@ -431,6 +440,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                 'string',
                 `https://raw.githubusercontent.com/FlowiseAI/Flowise/main/assets/FloWiseAI_dark.png`
             )}
+            {colorField(buttonBackgroundColor, 'buttonBackgroundColor', '背景颜色')}
             {textField(welcomeMessage, 'welcomeMessage', '欢迎词', 'string', 'Hello! This is custom welcome message')}
             {textField(errorMessage, 'errorMessage', '错误提示', 'string', 'This is custom error message')}
             {colorField(backgroundColor, 'backgroundColor', '背景颜色')}

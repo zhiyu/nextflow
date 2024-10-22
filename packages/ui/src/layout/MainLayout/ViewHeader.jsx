@@ -60,9 +60,9 @@ const ViewHeader = ({
                         {description && (
                             <Typography
                                 sx={{
-                                    fontSize: '1rem',
+                                    fontSize: '0.8rem',
                                     fontWeight: 500,
-                                    mt: 2,
+                                    mt: 0,
                                     display: '-webkit-box',
                                     WebkitLineClamp: 5,
                                     WebkitBoxOrient: 'vertical',
