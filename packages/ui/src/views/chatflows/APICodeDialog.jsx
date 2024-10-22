@@ -84,7 +84,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const codes = ['Embed', 'Python', 'JavaScript', 'cURL', 'Share Chatbot']
+    const codes = ['嵌入页面', 'Python', 'JavaScript', 'cURL', '通过链接分享']
     const [value, setValue] = useState(0)
     const [keyOptions, setKeyOptions] = useState([])
     const [apiKeys, setAPIKeys] = useState([])
@@ -276,11 +276,11 @@ query({"question": "Hey, how are you?"}).then((response) => {
             return pythonSVG
         } else if (codeLang === 'JavaScript') {
             return javascriptSVG
-        } else if (codeLang === 'Embed') {
+        } else if (codeLang === '嵌入页面') {
             return EmbedSVG
         } else if (codeLang === 'cURL') {
             return cURLSVG
-        } else if (codeLang === 'Share Chatbot') {
+        } else if (codeLang === '通过链接分享') {
             return ShareChatbotSVG
         } else if (codeLang === 'Configuration') {
             return settingsSVG
@@ -532,7 +532,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
         if (getAllAPIKeysApi.data) {
             const options = [
                 {
-                    label: 'No Authorization',
+                    label: '无需授权',
                     name: ''
                 }
             ]
@@ -607,7 +607,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                 <div style={{ marginTop: 10 }}></div>
                 {codes.map((codeLang, index) => (
                     <TabPanel key={index} value={value} index={index}>
-                        {(codeLang === 'Embed' || codeLang === 'Share Chatbot') && chatflowApiKeyId && (
+                        {(codeLang === '嵌入页面' || codeLang === '通过链接分享') && chatflowApiKeyId && (
                             <>
                                 <p>You cannot use API key while embedding/sharing chatbot.</p>
                                 <p>
@@ -615,8 +615,8 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                 </p>
                             </>
                         )}
-                        {codeLang === 'Embed' && !chatflowApiKeyId && <EmbedChat chatflowid={dialogProps.chatflowid} />}
-                        {codeLang !== 'Embed' && codeLang !== 'Share Chatbot' && codeLang !== 'Configuration' && (
+                        {codeLang === '嵌入页面' && !chatflowApiKeyId && <EmbedChat chatflowid={dialogProps.chatflowid} />}
+                        {codeLang !== '嵌入页面' && codeLang !== '通过链接分享' && codeLang !== 'Configuration' && (
                             <>
                                 <CopyBlock
                                     theme={atomOneDark}
@@ -625,7 +625,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                     showLineNumbers={false}
                                     wrapLines
                                 />
-                                <CheckboxInput label='Show Input Config' value={checkboxVal} onChange={onCheckBoxChanged} />
+                                <CheckboxInput label='显示输入参数' value={checkboxVal} onChange={onCheckBoxChanged} />
                                 {checkboxVal && getConfigApi.data && getConfigApi.data.length > 0 && (
                                     <>
                                         {Object.keys(nodeConfig)
@@ -709,7 +709,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                             >
                                                 <IconBulb size={30} color='#2d6a4f' />
                                                 <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>
-                                                    You can also specify multiple values for a config parameter by specifying the node id
+                                                    您还可以通过指定节点id为配置参数指定多个值
                                                 </span>
                                             </div>
                                             <div style={{ padding: 10 }}>
@@ -739,7 +739,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                 )}
                             </>
                         )}
-                        {codeLang === 'Share Chatbot' && !chatflowApiKeyId && (
+                        {codeLang === '通过链接分享' && !chatflowApiKeyId && (
                             <ShareChatbot isSessionMemory={dialogProps.isSessionMemory} isAgentCanvas={dialogProps.isAgentCanvas} />
                         )}
                     </TabPanel>

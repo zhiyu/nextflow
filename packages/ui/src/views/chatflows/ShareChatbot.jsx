@@ -419,66 +419,63 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                             onSwitchChange(event.target.checked)
                         }}
                     />
-                    <Typography>Make Public</Typography>
-                    <TooltipWithParser
-                        style={{ marginLeft: 10 }}
-                        title={'Making public will allow anyone to access the chatbot without username & password'}
-                    />
+                    <Typography>是否公开访问</Typography>
+                    <TooltipWithParser style={{ marginLeft: 10 }} title={'公开将允许任何人无需用户名和密码即可访问聊天机器人'} />
                 </div>
             </Stack>
-            {textField(title, 'title', 'Title', 'string', 'Flowise Assistant')}
+            {textField(title, 'title', '标题', 'string', 'Flowise Assistant')}
             {textField(
                 titleAvatarSrc,
                 'titleAvatarSrc',
-                'Title Avatar Link',
+                '标题栏头像',
                 'string',
                 `https://raw.githubusercontent.com/FlowiseAI/Flowise/main/assets/FloWiseAI_dark.png`
             )}
-            {textField(welcomeMessage, 'welcomeMessage', 'Welcome Message', 'string', 'Hello! This is custom welcome message')}
-            {textField(errorMessage, 'errorMessage', 'Error Message', 'string', 'This is custom error message')}
-            {colorField(backgroundColor, 'backgroundColor', 'Background Color')}
-            {textField(fontSize, 'fontSize', 'Font Size', 'number')}
-            {colorField(poweredByTextColor, 'poweredByTextColor', 'PoweredBy TextColor')}
-            {booleanField(showAgentMessages, 'showAgentMessages', 'Show Agent Reasoning')}
+            {textField(welcomeMessage, 'welcomeMessage', '欢迎词', 'string', 'Hello! This is custom welcome message')}
+            {textField(errorMessage, 'errorMessage', '错误提示', 'string', 'This is custom error message')}
+            {colorField(backgroundColor, 'backgroundColor', '背景颜色')}
+            {textField(fontSize, 'fontSize', '字体大小', 'number')}
+            {colorField(poweredByTextColor, 'poweredByTextColor', 'PoweredBy 文本颜色')}
+            {booleanField(showAgentMessages, 'showAgentMessages', '显示智能体响应信息')}
 
             {/*BOT Message*/}
             <Typography variant='h4' sx={{ mb: 1, mt: 2 }}>
-                Bot Message
+                智能体消息
             </Typography>
-            {colorField(botMessageBackgroundColor, 'botMessageBackgroundColor', 'Background Color')}
-            {colorField(botMessageTextColor, 'botMessageTextColor', 'Text Color')}
+            {colorField(botMessageBackgroundColor, 'botMessageBackgroundColor', '背景颜色')}
+            {colorField(botMessageTextColor, 'botMessageTextColor', '文本颜色')}
             {textField(
                 botMessageAvatarSrc,
                 'botMessageAvatarSrc',
-                'Avatar Link',
+                '头像',
                 'string',
                 `https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png`
             )}
-            {booleanField(botMessageShowAvatar, 'botMessageShowAvatar', 'Show Avatar')}
+            {booleanField(botMessageShowAvatar, 'botMessageShowAvatar', '是否显示头像')}
 
             {/*USER Message*/}
             <Typography variant='h4' sx={{ mb: 1, mt: 2 }}>
-                User Message
+                用户消息
             </Typography>
-            {colorField(userMessageBackgroundColor, 'userMessageBackgroundColor', 'Background Color')}
-            {colorField(userMessageTextColor, 'userMessageTextColor', 'Text Color')}
+            {colorField(userMessageBackgroundColor, 'userMessageBackgroundColor', '背景颜色')}
+            {colorField(userMessageTextColor, 'userMessageTextColor', '文本颜色')}
             {textField(
                 userMessageAvatarSrc,
                 'userMessageAvatarSrc',
-                'Avatar Link',
+                '头像',
                 'string',
                 `https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png`
             )}
-            {booleanField(userMessageShowAvatar, 'userMessageShowAvatar', 'Show Avatar')}
+            {booleanField(userMessageShowAvatar, 'userMessageShowAvatar', '是否显示头像')}
 
             {/*TEXT Input*/}
             <Typography variant='h4' sx={{ mb: 1, mt: 2 }}>
-                Text Input
+                聊天输入框
             </Typography>
-            {colorField(textInputBackgroundColor, 'textInputBackgroundColor', 'Background Color')}
-            {colorField(textInputTextColor, 'textInputTextColor', 'Text Color')}
-            {textField(textInputPlaceholder, 'textInputPlaceholder', 'TextInput Placeholder', 'string', `Type question..`)}
-            {colorField(textInputSendButtonColor, 'textInputSendButtonColor', 'TextIntput Send Button Color')}
+            {colorField(textInputBackgroundColor, 'textInputBackgroundColor', '背景颜色')}
+            {colorField(textInputTextColor, 'textInputTextColor', '文本颜色')}
+            {textField(textInputPlaceholder, 'textInputPlaceholder', '输入框 Placeholder', 'string', `Type question..`)}
+            {colorField(textInputSendButtonColor, 'textInputSendButtonColor', '消息发送按钮颜色')}
 
             {/*Session Memory Input*/}
             {isSessionMemory && (
@@ -491,7 +488,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             )}
 
             <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' onClick={() => onSave()}>
-                Save Changes
+                保存更改
             </StyledButton>
             <Popover
                 open={openColorPopOver}

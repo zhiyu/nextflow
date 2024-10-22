@@ -303,7 +303,7 @@ const App = () => {
 }
 
 const EmbedChat = ({ chatflowid }) => {
-    const codes = ['Popup Html', 'Fullpage Html', 'Popup React', 'Fullpage React']
+    const codes = ['弹窗模式（Html）', '全屏模式（Html）', '弹窗模式（React）', '全屏模式（React）']
     const [value, setValue] = useState(0)
     const [embedChatCheckboxVal, setEmbedChatCheckbox] = useState(false)
 
@@ -317,13 +317,13 @@ const EmbedChat = ({ chatflowid }) => {
 
     const getCode = (codeLang) => {
         switch (codeLang) {
-            case 'Popup Html':
+            case '弹窗模式（Html）':
                 return embedPopupHtmlCode(chatflowid)
-            case 'Fullpage Html':
+            case '全屏模式（Html）':
                 return embedFullpageHtmlCode(chatflowid)
-            case 'Popup React':
+            case '弹窗模式（React）':
                 return embedPopupReactCode(chatflowid)
-            case 'Fullpage React':
+            case '全屏模式（React）':
                 return embedFullpageReactCode(chatflowid)
             default:
                 return ''
@@ -332,13 +332,13 @@ const EmbedChat = ({ chatflowid }) => {
 
     const getCodeCustomization = (codeLang) => {
         switch (codeLang) {
-            case 'Popup Html':
+            case '弹窗模式（Html）':
                 return embedPopupHtmlCodeCustomization(chatflowid)
-            case 'Fullpage Html':
+            case '全屏模式（Html）':
                 return embedFullpageHtmlCodeCustomization(chatflowid)
-            case 'Popup React':
+            case '弹窗模式（React）':
                 return embedPopupReactCodeCustomization(chatflowid)
-            case 'Fullpage React':
+            case '全屏模式（React）':
                 return embedFullpageReactCodeCustomization(chatflowid)
             default:
                 return ''
@@ -380,7 +380,7 @@ const EmbedChat = ({ chatflowid }) => {
                     )}
                     <CopyBlock theme={atomOneDark} text={getCode(codeLang)} language='javascript' showLineNumbers={false} wrapLines />
 
-                    <CheckboxInput label='Show Embed Chat Config' value={embedChatCheckboxVal} onChange={onCheckBoxEmbedChatChanged} />
+                    <CheckboxInput label='显示配置信息' value={embedChatCheckboxVal} onChange={onCheckBoxEmbedChatChanged} />
 
                     {embedChatCheckboxVal && (
                         <CopyBlock

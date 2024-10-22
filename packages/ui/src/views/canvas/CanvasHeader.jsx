@@ -199,7 +199,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
         }
 
         setAPIDialogProps({
-            title: 'Embed in website or use as API',
+            title: '嵌入到网站或通过API来使用',
             chatflowid: chatflow.id,
             chatflowApiKeyId: chatflow.apikeyid,
             isFormDataRequired,
