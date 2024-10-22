@@ -181,7 +181,7 @@ const chatwindowConfig = (isReact = false) => {
                         textColor: '#303235',
                         text: 'Powered by',
                         company: '紫金诚',
-                        companyLink: 'http://zijin.ai',
+                        companyLink: 'https://zijin.ai',
                     }
                 }`
         : `chatWindow: {
@@ -231,7 +231,7 @@ const chatwindowConfig = (isReact = false) => {
                     textColor: '#303235',
                     text: 'Powered by',
                     company: '紫金诚',
-                    companyLink: 'http://zijin.ai',
+                    companyLink: 'https://zijin.ai',
                 }
             }`
 }

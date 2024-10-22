@@ -113,7 +113,7 @@ const ChatbotFull = () => {
         textColor: '#303235',
         text: 'AI 智能体服务支持来自 ',
         company: '紫金诚',
-        companyLink: 'http://zijin.ai'
+        companyLink: 'https://zijin.ai'
     }
     return (
         <>
