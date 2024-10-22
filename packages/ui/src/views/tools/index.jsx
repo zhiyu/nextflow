@@ -78,10 +78,10 @@ const Tools = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Tool',
+            title: '添加工具',
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: '取消',
+            confirmButtonName: '添加'
         }
         setDialogProps(dialogProp)
         setShowDialog(true)
@@ -91,8 +91,8 @@ const Tools = () => {
         const dialogProp = {
             title: '编辑工具',
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: '取消',
+            confirmButtonName: '保存',
             data: selectedTool
         }
         setDialogProps(dialogProp)

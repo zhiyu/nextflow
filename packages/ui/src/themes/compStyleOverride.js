@@ -18,7 +18,32 @@ export default function componentStyleOverrides(theme) {
                 }
             }
         },
+        MuiDialogActions: {
+            styleOverrides: {
+                root: {
+                    background: theme.colors.grey50,
+                    padding: '6px 24px !important'
+                }
+            }
+        },
 
+        MuiDialogTitle: {
+            styleOverrides: {
+                root: {
+                    background: theme.colors.primaryLight,
+                    borderBottom: '1px solid ' + theme.colors.grey200,
+                    padding: '12px 24px !important'
+                }
+            }
+        },
+
+        MuiDialogContent: {
+            styleOverrides: {
+                root: {
+                    paddingTop: '20px !important'
+                }
+            }
+        },
         MuiTableContainer: {
             styleOverrides: {
                 root: {

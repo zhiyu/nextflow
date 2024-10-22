@@ -84,7 +84,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             const createResp = await apikeyAPI.importAPI(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'Imported keys successfully!',
+                    message: '导入成功!',
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -129,14 +129,14 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <IconFileUpload style={{ marginRight: '10px' }} />
-                    Import API Keys
+                    导入 API Keys
                 </div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
                     <Stack sx={{ position: 'relative' }} direction='row'>
                         <Typography variant='overline'>
-                            Import api.json file
+                            导入 api.json 文件
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                     </Stack>
@@ -150,7 +150,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 <Box sx={{ p: 2 }}>
                     <Stack sx={{ position: 'relative' }} direction='row'>
                         <Typography variant='overline'>
-                            Import Mode
+                            导入模式
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                     </Stack>

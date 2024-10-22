@@ -5,7 +5,20 @@ import { useDispatch } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 
 // Material
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Typography, OutlinedInput } from '@mui/material'
+import {
+    Button,
+    Dialog,
+    FormControl,
+    InputLabel,
+    TextField,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Box,
+    Typography
+} from '@mui/material'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
 
 // Project imports
 import { StyledButton } from '@/ui-component/button/StyledButton'
@@ -186,64 +199,51 @@ const AddEditVariableDialog = ({ show, dialogProps, onCancel, onConfirm, setErro
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <IconVariable style={{ marginRight: '10px' }} />
-                    {dialogProps.type === 'ADD' ? 'Add Variable' : 'Edit Variable'}
-                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>{dialogProps.type === 'ADD' ? '添加变量' : '编辑变量'}</div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Typography>
-                            Variable Name<span style={{ color: 'red' }}>&nbsp;*</span>
-                        </Typography>
-
-                        <div style={{ flexGrow: 1 }}></div>
-                    </div>
-                    <OutlinedInput
-                        size='small'
-                        sx={{ mt: 1 }}
-                        type='string'
+                    <TextField
+                        required
                         fullWidth
+                        label='变量名称'
+                        defaultValue=''
                         key='variableName'
                         onChange={(e) => setVariableName(e.target.value)}
                         value={variableName ?? ''}
-                        id='txtInput_variableName'
                     />
                 </Box>
                 <Box sx={{ p: 2 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Typography>
-                            Type<span style={{ color: 'red' }}>&nbsp;*</span>
-                        </Typography>
-                        <div style={{ flexGrow: 1 }}></div>
-                    </div>
-                    <Dropdown
-                        key={variableType}
-                        name='variableType'
-                        options={variableTypes}
-                        onSelect={(newValue) => setVariableType(newValue)}
-                        value={variableType ?? 'choose an option'}
-                        id='dropdown_variableType'
-                    />
+                    <FormControl fullWidth>
+                        <InputLabel id='demo-simple-select-label'>类型</InputLabel>
+                        <Select
+                            labelId='demo-simple-select-label'
+                            required
+                            fullWidth
+                            label='类型'
+                            key={variableType}
+                            name='variableType'
+                            value={variableType ?? 'choose an option'}
+                            onChange={(e) => setVariableType(e.target.value)}
+                        >
+                            {variableTypes.map((tp) => (
+                                <MenuItem value={tp.name} label={tp.label}>
+                                    {tp.label}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                 </Box>
                 {variableType === 'static' && (
                     <Box sx={{ p: 2 }}>
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <Typography>
-                                Value<span style={{ color: 'red' }}>&nbsp;*</span>
-                            </Typography>
-                            <div style={{ flexGrow: 1 }}></div>
-                        </div>
-                        <OutlinedInput
-                            size='small'
-                            sx={{ mt: 1 }}
-                            type='string'
+                        <TextField
+                            required
                             fullWidth
+                            label='变量值'
+                            defaultValue=''
                             key='variableValue'
                             onChange={(e) => setVariableValue(e.target.value)}
                             value={variableValue ?? ''}
-                            id='txtInput_variableValue'
                         />
                     </Box>
                 )}

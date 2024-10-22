@@ -281,7 +281,7 @@ const DocumentStoreDetails = () => {
 
     const onStoreDelete = (vectorStoreConfig, recordManagerConfig) => {
         const props = {
-            title: `Delete`,
+            title: `删除`,
             description: `Delete Store ${getSpecificDocumentStore.data?.name} ? This will delete all the associated loaders and document chunks.`,
             vectorStoreConfig,
             recordManagerConfig,
@@ -299,10 +299,10 @@ const DocumentStoreDetails = () => {
             id: documentStore.id
         }
         const dialogProp = {
-            title: 'Edit Document Store',
+            title: '编辑知识库',
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Update',
+            cancelButtonName: '取消',
+            confirmButtonName: '更新',
             data: data
         }
         setDialogProps(dialogProp)

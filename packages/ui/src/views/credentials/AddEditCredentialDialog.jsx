@@ -6,7 +6,7 @@ import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackba
 import parser from 'html-react-parser'
 
 // Material
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Stack, OutlinedInput, Typography } from '@mui/material'
+import { Button, Dialog, TextField, DialogActions, DialogContent, DialogTitle, Box, Stack, OutlinedInput, Typography } from '@mui/material'
 
 // Project imports
 import { StyledButton } from '@/ui-component/button/StyledButton'
@@ -261,16 +261,11 @@ const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setEr
                 )}
                 {componentCredential && componentCredential.label && (
                     <Box sx={{ p: 2 }}>
-                        <Stack sx={{ position: 'relative' }} direction='row'>
-                            <Typography variant='overline'>
-                                Credential Name
-                                <span style={{ color: 'red' }}>&nbsp;*</span>
-                            </Typography>
-                        </Stack>
-                        <OutlinedInput
-                            id='credName'
-                            type='string'
+                        <TextField
+                            required
                             fullWidth
+                            label='凭证名称'
+                            defaultValue=''
                             placeholder={componentCredential.label}
                             value={name}
                             name='name'

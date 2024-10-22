@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 import { cloneDeep } from 'lodash'
 
-import { Box, Button, Typography, Dialog, DialogActions, DialogContent, DialogTitle, Stack, OutlinedInput } from '@mui/material'
+import { Box, Button, TextField, Typography, Dialog, DialogActions, DialogContent, DialogTitle, Stack, OutlinedInput } from '@mui/material'
 import { StyledButton } from '@/ui-component/button/StyledButton'
 import { Grid } from '@/ui-component/grid/Grid'
 import { TooltipWithParser } from '@/ui-component/tooltip/TooltipWithParser'
@@ -360,10 +360,10 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
 
     const deleteTool = async () => {
         const confirmPayload = {
-            title: `Delete Tool`,
-            description: `Delete tool ${toolName}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: `删除`,
+            description: `确定要删除${toolName}?`,
+            confirmButtonName: '删除',
+            cancelButtonName: '取消'
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -441,55 +441,31 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
             <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxHeight: '75vh', position: 'relative', px: 3, pb: 3 }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 2 }}>
                     <Box>
-                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>
-                                名称
-                                <span style={{ color: 'red' }}>&nbsp;*</span>
-                            </Typography>
-                            <TooltipWithParser title={'Tool name must be small capital letter with underscore. Ex: my_tool'} />
-                        </Stack>
-                        <OutlinedInput
-                            id='toolName'
-                            type='string'
+                        <TextField
+                            required
                             fullWidth
-                            disabled={dialogProps.type === 'TEMPLATE'}
-                            placeholder='My New Tool'
+                            label='名称'
+                            defaultValue=''
                             value={toolName}
                             name='toolName'
                             onChange={(e) => setToolName(e.target.value)}
                         />
                     </Box>
                     <Box>
-                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>
-                                描述
-                                <span style={{ color: 'red' }}>&nbsp;*</span>
-                            </Typography>
-                            <TooltipWithParser
-                                title={'Description of what the tool does. This is for ChatGPT to determine when to use this tool.'}
-                            />
-                        </Stack>
-                        <OutlinedInput
-                            id='toolDesc'
-                            type='string'
+                        <TextField
+                            required
                             fullWidth
-                            disabled={dialogProps.type === 'TEMPLATE'}
-                            placeholder='Description of what the tool does. This is for ChatGPT to determine when to use this tool.'
-                            multiline={true}
-                            rows={3}
+                            label='描述'
+                            defaultValue=''
                             value={toolDesc}
                             name='toolDesc'
                             onChange={(e) => setToolDesc(e.target.value)}
                         />
                     </Box>
                     <Box>
-                        <Stack sx={{ position: 'relative' }} direction='row'>
-                            <Typography variant='overline'>图标</Typography>
-                        </Stack>
-                        <OutlinedInput
-                            id='toolIcon'
-                            type='string'
+                        <TextField
                             fullWidth
+                            label='图标'
                             disabled={dialogProps.type === 'TEMPLATE'}
                             placeholder='https://raw.githubusercontent.com/gilbarbara/logos/main/logos/airtable.svg'
                             value={toolIcon}

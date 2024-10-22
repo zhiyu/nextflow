@@ -247,7 +247,7 @@ const APIKey = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New API Key',
+            title: '添加 API Key',
             type: 'ADD',
             cancelButtonName: 'Cancel',
             confirmButtonName: 'Add',
@@ -261,8 +261,8 @@ const APIKey = () => {
         const dialogProp = {
             title: '编辑 API Key',
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: '取消',
+            confirmButtonName: '保存',
             customBtnId: 'btn_confirmEditingApiKey',
             key
         }
@@ -273,8 +273,8 @@ const APIKey = () => {
     const uploadDialog = () => {
         const dialogProp = {
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Upload',
+            cancelButtonName: '取消',
+            confirmButtonName: '上传',
             data: {}
         }
         setUploadDialogProps(dialogProp)
@@ -283,13 +283,13 @@ const APIKey = () => {
 
     const deleteKey = async (key) => {
         const confirmPayload = {
-            title: `Delete`,
+            title: `删除`,
             description:
                 key.chatFlows.length === 0
-                    ? `Delete key [${key.keyName}] ? `
-                    : `Delete key [${key.keyName}] ?\n There are ${key.chatFlows.length} chatflows using this key.`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel',
+                    ? `确定要删除 "${key.keyName}" ? `
+                    : `有 ${key.chatFlows.length}个 chatflows 在使用"${key.keyName}"，确定要删除?`,
+            confirmButtonName: '删除',
+            cancelButtonName: '取消',
             customBtnId: 'btn_initiateDeleteApiKey'
         }
         const isConfirmed = await confirm(confirmPayload)

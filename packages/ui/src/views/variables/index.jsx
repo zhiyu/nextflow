@@ -99,8 +99,8 @@ const Variables = () => {
     const addNew = () => {
         const dialogProp = {
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: '取消',
+            confirmButtonName: '添加',
             customBtnId: 'btn_confirmAddingVariable',
             data: {}
         }
@@ -111,8 +111,8 @@ const Variables = () => {
     const edit = (variable) => {
         const dialogProp = {
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: '取消',
+            confirmButtonName: '保存',
             data: variable
         }
         setVariableDialogProps(dialogProp)
@@ -201,7 +201,7 @@ const Variables = () => {
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
                         <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='全局变量'>
                             <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
-                                如何使用
+                                如何使用变量
                             </Button>
                             <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                                 添加变量

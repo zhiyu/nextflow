@@ -69,7 +69,7 @@ const CredentialListDialog = ({ show, dialogProps, onCancel, onCredentialSelecte
                         id='input-search-credential'
                         value={searchValue}
                         onChange={(e) => filterSearch(e.target.value)}
-                        placeholder='Search credential'
+                        placeholder='搜索凭证...'
                         startAdornment={
                             <InputAdornment position='start'>
                                 <IconSearch stroke={1.5} size='1rem' color={theme.palette.grey[500]} />

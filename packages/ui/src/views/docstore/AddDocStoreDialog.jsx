@@ -10,7 +10,7 @@ import {
 } from '@/store/actions'
 
 // Material
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Typography, OutlinedInput } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Typography, OutlinedInput, TextField } from '@mui/material'
 
 // Project imports
 import { StyledButton } from '@/ui-component/button/StyledButton'
@@ -165,36 +165,23 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Typography>
-                            名称<span style={{ color: 'red' }}>&nbsp;*</span>
-                        </Typography>
-
-                        <div style={{ flexGrow: 1 }}></div>
-                    </div>
-                    <OutlinedInput
-                        size='small'
-                        sx={{ mt: 1 }}
-                        type='string'
+                    <TextField
+                        required
                         fullWidth
+                        label='名称'
+                        defaultValue=''
                         key='documentStoreName'
                         onChange={(e) => setDocumentStoreName(e.target.value)}
                         value={documentStoreName ?? ''}
                     />
                 </Box>
                 <Box sx={{ p: 2 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Typography>描述</Typography>
-
-                        <div style={{ flexGrow: 1 }}></div>
-                    </div>
-                    <OutlinedInput
-                        size='small'
-                        multiline={true}
-                        rows={7}
-                        sx={{ mt: 1 }}
-                        type='string'
+                    <TextField
                         fullWidth
+                        label='描述'
+                        multiline
+                        rows={7}
+                        defaultValue=''
                         key='documentStoreDesc'
                         onChange={(e) => setDocumentStoreDesc(e.target.value)}
                         value={documentStoreDesc ?? ''}
