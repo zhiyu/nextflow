@@ -515,60 +515,68 @@ const Marketplace = () => {
                             <Tab value={1} label='我的模版' />
                         </Tabs> */}
                         <TabPanel value={activeTabValue} index={0}>
-                            <Stack
-                                direction='row'
-                                sx={{
-                                    background: '#ffffff',
-                                    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
-                                    borderRadius: 1,
-                                    gap: 0,
-                                    mb: 3,
-                                    p: 2,
-                                    alignItems: 'center',
-                                    flexWrap: 'wrap'
-                                }}
-                            >
-                                {usecases.map((usecase, index) => {
-                                    return (
+                            {isLoading ? (
+                                <Box display='grid' sx={{ mb: 2 }}>
+                                    <Skeleton variant='rounded' height={160} />
+                                </Box>
+                            ) : (
+                                <Stack
+                                    direction='row'
+                                    sx={{
+                                        background: '#ffffff',
+                                        boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
+                                        borderRadius: 1,
+                                        gap: 0,
+                                        mb: 3,
+                                        p: 2,
+                                        alignItems: 'center',
+                                        flexWrap: 'wrap'
+                                    }}
+                                >
+                                    {usecases.map((usecase, index) => {
+                                        return (
+                                            <FormControlLabel
+                                                key={index}
+                                                sx={{ ml: '-4px', mr: '24px' }}
+                                                control={
+                                                    <Checkbox
+                                                        size='small'
+                                                        sx={{ p: '10px 4px' }}
+                                                        disabled={
+                                                            eligibleUsecases.length === 0 ? true : !eligibleUsecases.includes(usecase)
+                                                        }
+                                                        checked={selectedUsecases.includes(usecase)}
+                                                        onChange={(event) => {
+                                                            setSelectedUsecases(
+                                                                event.target.checked
+                                                                    ? [...selectedUsecases, usecase]
+                                                                    : selectedUsecases.filter((item) => item !== usecase)
+                                                            )
+                                                        }}
+                                                    />
+                                                }
+                                                label={usecase}
+                                            />
+                                        )
+                                    })}
+
+                                    {selectedUsecases.length > 0 && (
                                         <FormControlLabel
-                                            key={index}
                                             sx={{ ml: '-4px', mr: '24px' }}
                                             control={
-                                                <Checkbox
+                                                <Button
                                                     size='small'
-                                                    sx={{ p: '10px 4px' }}
-                                                    disabled={eligibleUsecases.length === 0 ? true : !eligibleUsecases.includes(usecase)}
-                                                    checked={selectedUsecases.includes(usecase)}
-                                                    onChange={(event) => {
-                                                        setSelectedUsecases(
-                                                            event.target.checked
-                                                                ? [...selectedUsecases, usecase]
-                                                                : selectedUsecases.filter((item) => item !== usecase)
-                                                        )
-                                                    }}
-                                                />
+                                                    variant='text'
+                                                    onClick={() => clearAllUsecases()}
+                                                    startIcon={<PiX size='0.8rem' />}
+                                                >
+                                                    清除筛选条件
+                                                </Button>
                                             }
-                                            label={usecase}
                                         />
-                                    )
-                                })}
-
-                                {selectedUsecases.length > 0 && (
-                                    <FormControlLabel
-                                        sx={{ ml: '-4px', mr: '24px' }}
-                                        control={
-                                            <Button
-                                                size='small'
-                                                variant='text'
-                                                onClick={() => clearAllUsecases()}
-                                                startIcon={<PiX size='0.8rem' />}
-                                            >
-                                                清除筛选条件
-                                            </Button>
-                                        }
-                                    />
-                                )}
-                            </Stack>
+                                    )}
+                                </Stack>
+                            )}
 
                             {!view || view === 'card' ? (
                                 <>
