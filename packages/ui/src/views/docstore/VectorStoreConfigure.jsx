@@ -32,10 +32,12 @@ import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackba
 import { baseURL } from '@/store/constant'
 
 // icons
-import { IconX, IconEditCircle, IconRowInsertTop, IconDeviceFloppy, IconRefresh, IconClock } from '@tabler/icons-react'
+import { IconX, IconEditCircle } from '@tabler/icons-react'
 import Embeddings from '@mui/icons-material/DynamicFeed'
 import Storage from '@mui/icons-material/Storage'
 import DynamicFeed from '@mui/icons-material/Filter1'
+
+import { PiArrowCounterClockwiseLight, PiFloppyDiskBackLight, PiRowsPlusTopLight, PiClockCountdownLight } from 'react-icons/pi'
 
 // utils
 import { initNode } from '@/utils/genericHelper'
@@ -443,13 +445,9 @@ const VectorStoreConfigure = () => {
                             {(Object.keys(selectedEmbeddingsProvider).length > 0 ||
                                 Object.keys(selectedVectorStoreProvider).length > 0) && (
                                 <Button
-                                    variant='outlined'
+                                    variant='contained'
                                     color='error'
-                                    sx={{
-                                        borderRadius: 2,
-                                        height: '100%'
-                                    }}
-                                    startIcon={<IconRefresh />}
+                                    startIcon={<PiArrowCounterClockwiseLight size='0.8em' />}
                                     onClick={() => resetVectorStoreConfig()}
                                 >
                                     重置
@@ -458,13 +456,9 @@ const VectorStoreConfigure = () => {
                             {(Object.keys(selectedEmbeddingsProvider).length > 0 ||
                                 Object.keys(selectedVectorStoreProvider).length > 0) && (
                                 <Button
-                                    variant='outlined'
+                                    variant='contained'
                                     color='primary'
-                                    sx={{
-                                        borderRadius: 2,
-                                        height: '100%'
-                                    }}
-                                    startIcon={<IconDeviceFloppy />}
+                                    startIcon={<PiFloppyDiskBackLight size='0.8em' />}
                                     onClick={() => saveVectorStoreConfig()}
                                 >
                                     保存配置
@@ -473,23 +467,19 @@ const VectorStoreConfigure = () => {
                             {Object.keys(selectedEmbeddingsProvider).length > 0 && Object.keys(selectedVectorStoreProvider).length > 0 && (
                                 <Button
                                     variant='contained'
-                                    sx={{
-                                        borderRadius: 2,
-                                        height: '100%',
-                                        backgroundImage: `linear-gradient(to right, #13547a, #2f9e91)`,
-                                        '&:hover': {
-                                            backgroundImage: `linear-gradient(to right, #0b3d5b, #1a8377)`
-                                        }
-                                    }}
-                                    startIcon={<IconRowInsertTop />}
+                                    startIcon={<PiRowsPlusTopLight size='0.8em' />}
                                     onClick={() => tryAndInsertIntoStore()}
                                 >
                                     Upsert
                                 </Button>
                             )}
-                            <IconButton onClick={showUpsertHistoryDrawer} size='small' color='inherit' title='Upsert History'>
-                                <IconClock />
-                            </IconButton>
+                            <Button
+                                variant='contained'
+                                startIcon={<PiClockCountdownLight size='0.8em' />}
+                                onClick={showUpsertHistoryDrawer}
+                            >
+                                操作记录
+                            </Button>
                         </ViewHeader>
                         <Steps />
                         <Grid container spacing={1}>
@@ -498,7 +488,6 @@ const VectorStoreConfigure = () => {
                                     <Button
                                         onClick={showEmbeddingsList}
                                         fullWidth={true}
-                                        startIcon={<Embeddings style={{ background: 'transparent', height: 32, width: 32 }} />}
                                         sx={{
                                             color: customization?.isDarkMode ? 'white' : 'inherit',
                                             borderRadius: '10px',

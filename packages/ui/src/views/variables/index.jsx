@@ -25,7 +25,6 @@ import {
 
 // project imports
 import MainCard from '@/ui-component/cards/MainCard'
-import { StyledButton } from '@/ui-component/button/StyledButton'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 
 // API
@@ -41,7 +40,7 @@ import useNotifier from '@/utils/useNotifier'
 // Icons
 import { IconX, IconVariable } from '@tabler/icons-react'
 import VariablesEmptySVG from '@/assets/images/variables_empty.svg'
-import { PiPlus, PiGridFour, PiListDashes, PiTrash, PiNotePencil } from 'react-icons/pi'
+import { PiPlus, PiTrash, PiNotePencil } from 'react-icons/pi'
 
 // const
 import AddEditVariableDialog from './AddEditVariableDialog'
@@ -329,11 +328,7 @@ const Variables = () => {
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(variable)}>
                                                                 <PiNotePencil size='1.2rem' />
                                                             </IconButton>
-                                                            <IconButton
-                                                                title='Delete'
-                                                                color='error'
-                                                                onClick={() => deleteVariable(variable)}
-                                                            >
+                                                            <IconButton title='Delete' onClick={() => deleteVariable(variable)}>
                                                                 <PiTrash size='1.2rem' />
                                                             </IconButton>
                                                         </StyledTableCell>

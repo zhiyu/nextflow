@@ -5,7 +5,20 @@ import { useDispatch } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 
 // Material
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Typography, Stack } from '@mui/material'
+import {
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Box,
+    Typography,
+    Stack,
+    Select,
+    FormControl,
+    InputLabel,
+    MenuItem
+} from '@mui/material'
 
 // Project imports
 import { StyledButton } from '@/ui-component/button/StyledButton'
@@ -13,7 +26,7 @@ import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 import { File } from '@/ui-component/file/File'
 
 // Icons
-import { IconFileUpload, IconX } from '@tabler/icons-react'
+import { IconX } from '@tabler/icons-react'
 
 // API
 import apikeyAPI from '@/api/apikey'
@@ -127,10 +140,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <IconFileUpload style={{ marginRight: '10px' }} />
-                    导入 API Keys
-                </div>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>导入 API Keys</div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
@@ -148,24 +158,30 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                     />
                 </Box>
                 <Box sx={{ p: 2 }}>
-                    <Stack sx={{ position: 'relative' }} direction='row'>
-                        <Typography variant='overline'>
-                            导入模式
-                            <span style={{ color: 'red' }}>&nbsp;*</span>
-                        </Typography>
-                    </Stack>
-                    <Dropdown
-                        key={importMode}
-                        name={importMode}
-                        options={importModes}
-                        onSelect={(newValue) => setImportMode(newValue)}
-                        value={importMode ?? 'choose an option'}
-                    />
+                    <FormControl fullWidth>
+                        <InputLabel id='demo-simple-select-label'>导入模式</InputLabel>
+                        <Select
+                            labelId='demo-simple-select-label'
+                            required
+                            fullWidth
+                            label='导入模式'
+                            key={importMode}
+                            name='importMode'
+                            value={importMode ?? 'choose an option'}
+                            onChange={(e) => setImportMode(e.target.value)}
+                        >
+                            {importModes.map((i) => (
+                                <MenuItem value={i.name} label={i.label}>
+                                    {i.label}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                 </Box>
             </DialogContent>
             <DialogActions>
                 <Button onClick={() => onCancel()}>{dialogProps.cancelButtonName}</Button>
-                <StyledButton disabled={!selectedFile} variant='contained' onClick={importKeys}>
+                <StyledButton disabled={!selectedFile} variant='text' onClick={importKeys}>
                     {dialogProps.confirmButtonName}
                 </StyledButton>
             </DialogActions>

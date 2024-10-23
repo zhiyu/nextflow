@@ -137,7 +137,7 @@ function APIKeyRow(props) {
                     <IconButton title='Edit' color='primary' onClick={props.onEditClick}>
                         <PiNotePencil size='1.2rem' />
                     </IconButton>
-                    <IconButton title='Delete' color='error' onClick={props.onDeleteClick}>
+                    <IconButton title='Delete' onClick={props.onDeleteClick}>
                         <PiTrash size='1.2rem' />
                     </IconButton>
                 </StyledTableCell>
@@ -249,8 +249,8 @@ const APIKey = () => {
         const dialogProp = {
             title: '添加 API Key',
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: '取消',
+            confirmButtonName: '添加',
             customBtnId: 'btn_confirmAddingApiKey'
         }
         setDialogProps(dialogProp)

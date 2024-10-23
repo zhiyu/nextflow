@@ -340,11 +340,7 @@ const Credentials = () => {
                                                             <IconButton title='Edit' color='primary' onClick={() => edit(credential)}>
                                                                 <PiNotePencil size='1.2rem' />
                                                             </IconButton>
-                                                            <IconButton
-                                                                title='Delete'
-                                                                color='error'
-                                                                onClick={() => deleteCredential(credential)}
-                                                            >
+                                                            <IconButton title='Delete' onClick={() => deleteCredential(credential)}>
                                                                 <PiTrash size='1.2rem' />
                                                             </IconButton>
                                                         </StyledTableCell>

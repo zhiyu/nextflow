@@ -20,8 +20,7 @@ import {
     MenuItem,
     Divider,
     Button,
-    Skeleton,
-    IconButton
+    Skeleton
 } from '@mui/material'
 import { alpha, styled, useTheme } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
@@ -44,25 +43,13 @@ import useApi from '@/hooks/useApi'
 import useNotifier from '@/utils/useNotifier'
 
 // icons
-import {
-    IconPlus,
-    IconRefresh,
-    IconListDetails,
-    IconTrash,
-    IconX,
-    IconVectorBezier2,
-    IconRowInsertTop,
-    IconZoomScan
-} from '@tabler/icons-react'
+import { IconPlus, IconRefresh, IconX, IconVectorBezier2, IconZoomScan } from '@tabler/icons-react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import FileDeleteIcon from '@mui/icons-material/Delete'
-import FileEditIcon from '@mui/icons-material/Edit'
-import FileChunksIcon from '@mui/icons-material/AppRegistration'
 import doc_store_details_emptySVG from '@/assets/images/doc_store_details_empty.svg'
 
 // store
 import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackbarAction } from '@/store/actions'
-import { PiPlus, PiTrash } from 'react-icons/pi'
+import { PiPlus, PiTrash, PiFilesLight, PiRowsPlusTopLight, PiEyeLight } from 'react-icons/pi'
 
 // ==============================|| DOCUMENTS ||============================== //
 
@@ -356,21 +343,20 @@ const DocumentStoreDetails = () => {
                             onBack={() => navigate('/document-stores')}
                             onEdit={() => onEditClicked()}
                         >
-                            <IconButton
-                                onClick={() => onStoreDelete(documentStore.vectorStoreConfig, documentStore.recordManagerConfig)}
-                                size='small'
+                            <Button
+                                variant='contained'
                                 color='error'
-                                title='Delete Document Store'
-                                sx={{ mr: 2 }}
+                                startIcon={<PiTrash size='0.8em' />}
+                                onClick={() => onStoreDelete(documentStore.vectorStoreConfig, documentStore.recordManagerConfig)}
                             >
-                                <PiTrash />
-                            </IconButton>
+                                删除知识库
+                            </Button>
                             <Button variant='contained' color='primary' startIcon={<PiPlus size='0.8em' />} onClick={listLoaders}>
                                 添加文档加载器
                             </Button>
                             {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
-                                <Button variant='contained' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
-                                    Refresh
+                                <Button variant='text' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
+                                    刷新
                                 </Button>
                             )}
                             {documentStore?.status === 'UPSERTING' && (
@@ -386,7 +372,7 @@ const DocumentStoreDetails = () => {
                                     <Button
                                         variant='contained'
                                         color='primary'
-                                        startIcon={<IconListDetails />}
+                                        startIcon={<PiFilesLight size='0.8em' />}
                                         onClick={() => showStoredChunks('all')}
                                     >
                                         查看 Chunks
@@ -394,7 +380,7 @@ const DocumentStoreDetails = () => {
                                     <Button
                                         variant='contained'
                                         color='primary'
-                                        startIcon={<IconRowInsertTop />}
+                                        startIcon={<PiRowsPlusTopLight size='0.8em' />}
                                         onClick={() => showVectorStore(documentStore.id)}
                                     >
                                         插入或更新配置
@@ -672,17 +658,17 @@ function LoaderRow(props) {
                             onClose={handleClose}
                         >
                             <MenuItem onClick={props.onEditClick} disableRipple>
-                                <FileEditIcon />
-                                预览 & 处理
+                                <PiEyeLight />
+                                &nbsp;预览 & 处理
                             </MenuItem>
                             <MenuItem onClick={props.onViewChunksClick} disableRipple>
-                                <FileChunksIcon />
-                                查看 & 编辑 Chunks
+                                <PiFilesLight />
+                                &nbsp;查看 & 编辑 Chunks
                             </MenuItem>
                             <Divider sx={{ my: 0.5 }} />
                             <MenuItem onClick={props.onDeleteClick} disableRipple>
-                                <FileDeleteIcon />
-                                删除
+                                <PiTrash />
+                                &nbsp;删除
                             </MenuItem>
                         </StyledMenu>
                     </div>

@@ -14,7 +14,7 @@ import {
     DialogTitle,
     Stack,
     IconButton,
-    OutlinedInput,
+    TextField,
     Popover
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
@@ -152,22 +152,22 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                 {dialogProps.type === 'EDIT' && (
                     <Box sx={{ p: 2 }}>
                         <Typography variant='overline'>API Key</Typography>
-                        <Stack direction='row' sx={{ mb: 1 }}>
+                        <Stack direction='row' alignItems='center' justifyContent='space-between' sx={{ mb: 1 }}>
                             <Typography
                                 sx={{
-                                    p: 1,
-                                    borderRadius: 10,
+                                    px: 2,
+                                    py: 1,
+                                    borderRadius: 1,
                                     backgroundColor: theme.palette.primary.light,
                                     width: 'max-content',
                                     height: 'max-content'
                                 }}
-                                variant='h5'
                             >
                                 {dialogProps.key.apiKey}
                             </Typography>
-                            <IconButton
-                                title='Copy API Key'
-                                color='success'
+                            <Button
+                                variant='text'
+                                startIcon={<PiCopy />}
                                 onClick={(event) => {
                                     navigator.clipboard.writeText(dialogProps.key.apiKey)
                                     setAnchorEl(event.currentTarget)
@@ -176,8 +176,8 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                                     }, 1500)
                                 }}
                             >
-                                <PiCopy />
-                            </IconButton>
+                                复制 Key
+                            </Button>
                             <Popover
                                 open={openPopOver}
                                 anchorEl={anchorEl}
@@ -200,13 +200,10 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                 )}
 
                 <Box sx={{ p: 2 }}>
-                    <Stack sx={{ position: 'relative' }} direction='row'>
-                        <Typography variant='overline'>Key 名称</Typography>
-                    </Stack>
-                    <OutlinedInput
-                        id='keyName'
-                        type='string'
+                    <TextField
+                        required
                         fullWidth
+                        label='Key 名称'
                         placeholder='My New Key'
                         value={keyName}
                         name='keyName'
@@ -216,7 +213,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
             </DialogContent>
             <DialogActions>
                 <StyledButton
-                    variant='contained'
+                    variant='text'
                     onClick={() => (dialogProps.type === 'ADD' ? addNewKey() : saveKey())}
                     id={dialogProps.customBtnId}
                 >

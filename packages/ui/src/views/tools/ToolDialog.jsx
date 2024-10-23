@@ -110,7 +110,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
 
     const onSaveAsTemplate = () => {
         setExportAsTemplateDialogProps({
-            title: 'Export As Template',
+            title: '保存为模版',
             tool: {
                 name: toolName,
                 description: toolDesc,
@@ -480,7 +480,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                                 <TooltipWithParser title={'What is the input format in JSON?'} />
                             </Stack>
                             {dialogProps.type !== 'TEMPLATE' && (
-                                <Button variant='outlined' onClick={addNewRow} startIcon={<PiPlus size={'1rem'} />}>
+                                <Button variant='text' onClick={addNewRow} startIcon={<PiPlus size={'1rem'} />}>
                                     添加
                                 </Button>
                             )}
@@ -503,7 +503,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                                     如何使用函数
                                 </Button>
                                 {dialogProps.type !== 'TEMPLATE' && (
-                                    <Button style={{ marginBottom: 10 }} variant='outlined' onClick={() => setToolFunc(exampleAPIFunc)}>
+                                    <Button style={{ marginBottom: 10 }} variant='text' onClick={() => setToolFunc(exampleAPIFunc)}>
                                         查看示例
                                     </Button>
                                 )}
@@ -521,7 +521,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
             </DialogContent>
             <DialogActions sx={{ p: 3 }}>
                 {dialogProps.type === 'EDIT' && (
-                    <StyledButton color='error' variant='contained' onClick={() => deleteTool()}>
+                    <StyledButton color='error' variant='text' onClick={() => deleteTool()}>
                         删除
                     </StyledButton>
                 )}
@@ -533,7 +533,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                 {dialogProps.type !== 'TEMPLATE' && (
                     <StyledButton
                         disabled={!(toolName && toolDesc)}
-                        variant='contained'
+                        variant='text'
                         onClick={() => (dialogProps.type === 'ADD' || dialogProps.type === 'IMPORT' ? addNewTool() : saveTool())}
                     >
                         {dialogProps.confirmButtonName}

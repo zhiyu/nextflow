@@ -251,7 +251,7 @@ const AddEditVariableDialog = ({ show, dialogProps, onCancel, onConfirm, setErro
             <DialogActions>
                 <StyledButton
                     disabled={!variableName || !variableType || (variableType === 'static' && !variableValue)}
-                    variant='contained'
+                    variant='text'
                     onClick={() => (dialogType === 'ADD' ? addNewVariable() : saveVariable())}
                     id='btn_confirmAddingNewVariable'
                 >

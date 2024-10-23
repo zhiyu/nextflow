@@ -158,10 +158,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle style={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <IconFiles style={{ marginRight: '10px' }} />
-                    {dialogProps.title}
-                </div>
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>{dialogProps.title}</div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
@@ -192,7 +189,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 <Button onClick={() => onCancel()}>取消</Button>
                 <StyledButton
                     disabled={!documentStoreName}
-                    variant='contained'
+                    variant='text'
                     onClick={() => (dialogType === 'ADD' ? createDocumentStore() : updateDocumentStore())}
                 >
                     {dialogProps.confirmButtonName}

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from '@mui/material/styles'
 import { FormControl, Button } from '@mui/material'
-import { IconUpload } from '@tabler/icons-react'
+import { PiUploadSimpleLight } from 'react-icons/pi'
 import { getFileName } from '@/utils/genericHelper'
 
 export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChange, disabled = false }) => {
@@ -79,7 +79,7 @@ export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChan
     }
 
     return (
-        <FormControl sx={{ mt: 1, width: '100%' }} size='small'>
+        <FormControl sx={{ width: '100%' }} size='small'>
             {!formDataUpload && (
                 <span
                     style={{
@@ -96,10 +96,10 @@ export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChan
                 variant='outlined'
                 component='label'
                 fullWidth
-                startIcon={<IconUpload />}
+                startIcon={<PiUploadSimpleLight />}
                 sx={{ marginRight: '1rem' }}
             >
-                {'上传文件'}
+                {'请选择上传文件'}
                 <input
                     type='file'
                     multiple

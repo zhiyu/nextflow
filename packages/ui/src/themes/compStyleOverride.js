@@ -21,22 +21,19 @@ export default function componentStyleOverrides(theme) {
         MuiDialogActions: {
             styleOverrides: {
                 root: {
-                    background: theme.colors.grey50,
-                    padding: '6px 24px !important'
+                    padding: '6px 40px !important',
+                    borderTop: '1px solid ' + theme.colors.grey200
                 }
             }
         },
-
         MuiDialogTitle: {
             styleOverrides: {
                 root: {
-                    background: theme.colors.primaryLight,
-                    borderBottom: '1px solid ' + theme.colors.grey200,
-                    padding: '12px 24px !important'
+                    padding: '12px 24px !important',
+                    borderBottom: '1px solid ' + theme.colors.grey200
                 }
             }
         },
-
         MuiDialogContent: {
             styleOverrides: {
                 root: {
