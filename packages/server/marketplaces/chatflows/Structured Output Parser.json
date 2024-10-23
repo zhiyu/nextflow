@@ -1,7 +1,7 @@
 {
     "description": "Return response as a specified JSON structure instead of a string/text",
     "framework": ["Langchain"],
-    "usecases": ["Extraction"],
+    "usecases": ["信息提取"],
     "nodes": [
         {
             "width": 300,

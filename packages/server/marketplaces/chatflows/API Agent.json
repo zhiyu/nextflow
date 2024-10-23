@@ -1,7 +1,7 @@
 {
     "description": "Given API docs, agent automatically decide which API to call, generating url and body request from conversation",
     "framework": ["Langchain"],
-    "usecases": ["Interacting with API"],
+    "usecases": ["API 调用"],
     "nodes": [
         {
             "width": 300,

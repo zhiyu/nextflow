@@ -90,10 +90,10 @@ const ViewHeader = ({
                                 width: '280px',
                                 height: '100%',
                                 display: { xs: 'none', sm: 'flex' },
-                                borderRadius: 16,
+                                borderRadius: 1,
 
                                 '& .MuiOutlinedInput-notchedOutline': {
-                                    borderRadius: 16
+                                    borderRadius: 1
                                 }
                             }}
                             variant='outlined'

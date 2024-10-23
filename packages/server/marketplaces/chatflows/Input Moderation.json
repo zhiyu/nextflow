@@ -1,7 +1,7 @@
 {
     "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
     "framework": ["Langchain"],
-    "usecases": ["Basic"],
+    "usecases": ["基础应用"],
     "nodes": [
         {
             "width": 300,

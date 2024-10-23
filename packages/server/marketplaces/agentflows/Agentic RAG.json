@@ -1,7 +1,7 @@
 {
     "description": "A self-improving RAG that check for relevance of a document to a user question",
     "framework": ["Langchain"],
-    "usecases": ["Reflective Agent"],
+    "usecases": ["反思型智能体"],
     "nodes": [
         {
             "id": "seqLLMNode_0",

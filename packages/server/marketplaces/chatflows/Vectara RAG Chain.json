@@ -1,6 +1,6 @@
 {
     "description": "Using Vectara for Retrieval Augmented Generation (RAG) to answer questions from documents",
-    "usecases": ["Documents QnA"],
+    "usecases": ["知识问答"],
     "framework": ["Langchain"],
     "nodes": [
         {

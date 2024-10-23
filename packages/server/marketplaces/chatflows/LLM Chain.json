@@ -1,6 +1,6 @@
 {
     "description": "Basic example of stateless (no memory) LLM Chain with a Prompt Template and LLM Model",
-    "usecases": ["Basic"],
+    "usecases": ["基础应用"],
     "framework": ["Langchain"],
     "nodes": [
         {

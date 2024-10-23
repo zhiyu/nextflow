@@ -1,6 +1,6 @@
 {
     "description": "Conversational Agent with ability to visit a website and extract information",
-    "usecases": ["Agent"],
+    "usecases": ["智能体"],
     "framework": ["Langchain"],
     "nodes": [
         {

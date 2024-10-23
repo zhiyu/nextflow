@@ -1,6 +1,6 @@
 {
     "description": "Scrape web pages to be used with Retrieval Augmented Generation (RAG) for question answering",
-    "usecases": ["Documents QnA"],
+    "usecases": ["知识问答"],
     "framework": ["Langchain"],
     "badge": "POPULAR",
     "nodes": [

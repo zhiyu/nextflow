@@ -1,7 +1,7 @@
 {
     "description": "Manually approve an action before executing tools",
     "framework": ["Langchain"],
-    "usecases": ["Human In Loop"],
+    "usecases": ["人机协同"],
     "nodes": [
         {
             "id": "seqStart_0",

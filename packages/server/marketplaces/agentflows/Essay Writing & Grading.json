@@ -1,7 +1,7 @@
 {
     "description": "One agent that writes essay, and another agent that grades the essay. Then loop back to first agent until the condition is met",
     "framework": ["Langchain"],
-    "usecases": ["Reflective Agent"],
+    "usecases": ["反思型智能体"],
     "nodes": [
         {
             "id": "seqStart_0",

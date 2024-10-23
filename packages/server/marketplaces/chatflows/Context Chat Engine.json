@@ -2,7 +2,7 @@
     "description": "Answer question based on retrieved documents (context) while remembering previous conversations",
     "framework": ["LlamaIndex"],
     "badge": "POPULAR",
-    "usecases": ["Documents QnA"],
+    "usecases": ["知识问答"],
     "nodes": [
         {
             "width": 300,

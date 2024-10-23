@@ -20,6 +20,7 @@ import {
     ToggleButtonGroup,
     MenuItem,
     Button,
+    TextField,
     Tabs,
     Tab
 } from '@mui/material'
@@ -53,8 +54,15 @@ import { gridSpacing } from '@/store/constant'
 import useNotifier from '@/utils/useNotifier'
 
 const badges = ['POPULAR', 'NEW']
-const types = ['Chatflow', 'Agentflow', 'Tool']
-const framework = ['Langchain', 'LlamaIndex']
+const types = {
+    Chatflow: '对话流',
+    Agentflow: '智能体',
+    Tool: '工具'
+}
+const framework = {
+    Langchain: 'Lang Chain',
+    LlamaIndex: 'Llama Index'
+}
 const MenuProps = {
     PaperProps: {
         style: {
@@ -63,8 +71,9 @@ const MenuProps = {
     }
 }
 const SelectStyles = {
+    height: '36px',
     '& .MuiOutlinedInput-notchedOutline': {
-        borderRadius: 2
+        borderRadius: '4px'
     }
 }
 // ==============================|| Marketplace ||============================== //
@@ -116,55 +125,35 @@ const Marketplace = () => {
         else setSelectedTemplateUsecases([])
     }
 
-    const handleBadgeFilterChange = (event) => {
+    const handleFilterChange = (event, filter) => {
         const {
             target: { value }
         } = event
-        setBadgeFilter(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value
-        )
-        const data = activeTabValue === 0 ? getAllTemplatesMarketplacesApi.data : getAllCustomTemplatesApi.data
-        getEligibleUsecases(data, {
-            typeFilter,
-            badgeFilter: typeof value === 'string' ? value.split(',') : value,
-            frameworkFilter,
-            search
-        })
-    }
 
-    const handleTypeFilterChange = (event) => {
-        const {
-            target: { value }
-        } = event
-        setTypeFilter(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value
-        )
-        const data = activeTabValue === 0 ? getAllTemplatesMarketplacesApi.data : getAllCustomTemplatesApi.data
-        getEligibleUsecases(data, {
-            typeFilter: typeof value === 'string' ? value.split(',') : value,
+        switch (filter) {
+            case 'badge':
+                setBadgeFilter(typeof value === 'string' ? value.split(',') : value)
+                break
+            case 'type':
+                setTypeFilter(typeof value === 'string' ? value.split(',') : value)
+
+                break
+            case 'framework':
+                setFrameworkFilter(typeof value === 'string' ? value.split(',') : value)
+                break
+            default:
+                break
+        }
+
+        var params = {
+            typeFilter,
             badgeFilter,
             frameworkFilter,
             search
-        })
-    }
-
-    const handleFrameworkFilterChange = (event) => {
-        const {
-            target: { value }
-        } = event
-        setFrameworkFilter(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value
-        )
+        }
         const data = activeTabValue === 0 ? getAllTemplatesMarketplacesApi.data : getAllCustomTemplatesApi.data
-        getEligibleUsecases(data, {
-            typeFilter,
-            badgeFilter,
-            frameworkFilter: typeof value === 'string' ? value.split(',') : value,
-            search
-        })
+
+        getEligibleUsecases(data, params)
     }
 
     const handleViewChange = (event, nextView) => {
@@ -261,7 +250,9 @@ const Marketplace = () => {
 
         let filteredData = data
         if (filter.badgeFilter.length > 0) filteredData = filteredData.filter((data) => filter.badgeFilter.includes(data.badge))
-        if (filter.typeFilter.length > 0) filteredData = filteredData.filter((data) => filter.typeFilter.includes(data.type))
+        if (filter.typeFilter != '') {
+            filteredData = filteredData.filter((data) => filter.typeFilter.includes(data.type))
+        }
         if (filter.frameworkFilter.length > 0)
             filteredData = filteredData.filter((data) => (data.framework || []).some((item) => filter.frameworkFilter.includes(item)))
         if (filter.search) {
@@ -409,12 +400,8 @@ const Marketplace = () => {
                         <ViewHeader
                             filters={
                                 <>
-                                    <FormControl
+                                    {/* <FormControl
                                         sx={{
-                                            borderRadius: 2,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            justifyContent: 'end',
                                             minWidth: 120
                                         }}
                                     >
@@ -427,24 +414,23 @@ const Marketplace = () => {
                                             size='small'
                                             multiple
                                             value={badgeFilter}
-                                            onChange={handleBadgeFilterChange}
+                                            onChange={(e) => {
+                                                handleFilterChange(e, 'badge')
+                                            }}
                                             input={<OutlinedInput label='Badge' />}
                                             renderValue={(selected) => selected.join(', ')}
                                             MenuProps={MenuProps}
                                             sx={SelectStyles}
                                         >
                                             {badges.map((name) => (
-                                                <MenuItem
-                                                    key={name}
-                                                    value={name}
-                                                    sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1 }}
-                                                >
-                                                    <Checkbox checked={badgeFilter.indexOf(name) > -1} sx={{ p: 0 }} />
+                                                <MenuItem key={name} value={name} sx={{ display: 'flex', alignItems: 'center' }}>
+                                                    <Checkbox size='small' checked={badgeFilter.indexOf(name) > -1} sx={{ p: 0 }} />
+                                                    &nbsp;
                                                     <ListItemText primary={name} />
                                                 </MenuItem>
                                             ))}
                                         </Select>
-                                    </FormControl>
+                                    </FormControl> */}
                                     <FormControl
                                         sx={{
                                             borderRadius: 2,
@@ -454,32 +440,26 @@ const Marketplace = () => {
                                             minWidth: 120
                                         }}
                                     >
-                                        <InputLabel size='small' id='type-badge-label'>
-                                            类型
-                                        </InputLabel>
-                                        <Select
-                                            size='small'
-                                            labelId='type-badge-label'
-                                            id='type-badge-checkbox'
+                                        <TextField
+                                            select
                                             multiple
+                                            label='类型'
                                             value={typeFilter}
-                                            onChange={handleTypeFilterChange}
-                                            input={<OutlinedInput label='Badge' />}
-                                            renderValue={(selected) => selected.join(', ')}
-                                            MenuProps={MenuProps}
-                                            sx={SelectStyles}
+                                            onChange={(e) => {
+                                                handleFilterChange(e, 'type')
+                                            }}
+                                            size='small'
+                                            sx={{ '& .MuiInputBase-input': { padding: '8px 12px !important' } }}
                                         >
-                                            {types.map((name) => (
-                                                <MenuItem
-                                                    key={name}
-                                                    value={name}
-                                                    sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1 }}
-                                                >
-                                                    <Checkbox checked={typeFilter.indexOf(name) > -1} sx={{ p: 0 }} />
-                                                    <ListItemText primary={name} />
+                                            <MenuItem key='' value={Object.keys(types).join(',')}>
+                                                全部
+                                            </MenuItem>
+                                            {Object.keys(types).map((i) => (
+                                                <MenuItem key={i} value={i}>
+                                                    {types[i]}
                                                 </MenuItem>
                                             ))}
-                                        </Select>
+                                        </TextField>
                                     </FormControl>
                                     <FormControl
                                         sx={{
@@ -490,32 +470,26 @@ const Marketplace = () => {
                                             minWidth: 120
                                         }}
                                     >
-                                        <InputLabel size='small' id='type-fw-label'>
-                                            框架
-                                        </InputLabel>
-                                        <Select
-                                            size='small'
-                                            labelId='type-fw-label'
-                                            id='type-fw-checkbox'
+                                        <TextField
+                                            select
                                             multiple
+                                            label='开发框架'
                                             value={frameworkFilter}
-                                            onChange={handleFrameworkFilterChange}
-                                            input={<OutlinedInput label='Badge' />}
-                                            renderValue={(selected) => selected.join(', ')}
-                                            MenuProps={MenuProps}
-                                            sx={SelectStyles}
+                                            onChange={(e) => {
+                                                handleFilterChange(e, 'framework')
+                                            }}
+                                            size='small'
+                                            sx={{ '& .MuiInputBase-input': { padding: '8px 12px !important' } }}
                                         >
-                                            {framework.map((name) => (
-                                                <MenuItem
-                                                    key={name}
-                                                    value={name}
-                                                    sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1 }}
-                                                >
-                                                    <Checkbox checked={frameworkFilter.indexOf(name) > -1} sx={{ p: 0 }} />
-                                                    <ListItemText primary={name} />
+                                            <MenuItem key='' value={Object.keys(framework).join(',')}>
+                                                全部
+                                            </MenuItem>
+                                            {Object.keys(framework).map((i) => (
+                                                <MenuItem key={i} value={i}>
+                                                    {framework[i]}
                                                 </MenuItem>
                                             ))}
-                                        </Select>
+                                        </TextField>
                                     </FormControl>
                                 </>
                             }
@@ -544,7 +518,19 @@ const Marketplace = () => {
                             <Tab value={1} label='我的模版' />
                         </Tabs> */}
                         <TabPanel value={activeTabValue} index={0}>
-                            <Stack direction='row' sx={{ gap: 0, mb: 2, alignItems: 'center', flexWrap: 'wrap' }}>
+                            <Stack
+                                direction='row'
+                                sx={{
+                                    background: '#ffffff',
+                                    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
+                                    borderRadius: 1,
+                                    gap: 0,
+                                    mb: 3,
+                                    p: 2,
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap'
+                                }}
+                            >
                                 {usecases.map((usecase, index) => (
                                     <FormControlLabel
                                         key={index}
@@ -567,17 +553,23 @@ const Marketplace = () => {
                                         label={usecase}
                                     />
                                 ))}
+
+                                {selectedUsecases.length > 0 && (
+                                    <FormControlLabel
+                                        sx={{ ml: '-4px', mr: '24px' }}
+                                        control={
+                                            <Button
+                                                size='small'
+                                                variant='text'
+                                                onClick={() => clearAllUsecases()}
+                                                startIcon={<PiX size='0.8rem' />}
+                                            >
+                                                清除筛选条件
+                                            </Button>
+                                        }
+                                    />
+                                )}
                             </Stack>
-                            {selectedUsecases.length > 0 && (
-                                <Button
-                                    sx={{ width: 'max-content', height: 36, mb: 2 }}
-                                    variant='contained'
-                                    onClick={() => clearAllUsecases()}
-                                    startIcon={<PiX size='0.8rem' />}
-                                >
-                                    清除筛选条件
-                                </Button>
-                            )}
 
                             {!view || view === 'card' ? (
                                 <>
@@ -606,7 +598,7 @@ const Marketplace = () => {
                                                                         right: 20
                                                                     }
                                                                 }}
-                                                                badgeContent={data.badge}
+                                                                // badgeContent={data.badge}
                                                                 color={data.badge === 'POPULAR' ? 'primary' : 'error'}
                                                             >
                                                                 {(data.type === 'Chatflow' || data.type === 'Agentflow') && (

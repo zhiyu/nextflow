@@ -1,7 +1,7 @@
 {
     "description": "AutoGPT - Autonomous agent with chain of thoughts for self-guided task completion",
     "framework": ["Langchain"],
-    "usecases": ["Reflective Agent"],
+    "usecases": ["反思型智能体"],
     "nodes": [
         {
             "width": 300,

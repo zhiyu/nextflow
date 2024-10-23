@@ -1,6 +1,6 @@
 {
     "description": "Conversational agent to choose between multiple Chain Tools, each connected to different vector databases",
-    "usecases": ["Documents QnA"],
+    "usecases": ["知识问答"],
     "framework": ["Langchain"],
     "nodes": [
         {

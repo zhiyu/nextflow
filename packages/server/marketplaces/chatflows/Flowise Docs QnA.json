@@ -1,7 +1,7 @@
 {
     "description": "Flowise Docs Github QnA using Retrieval Augmented Generation (RAG)",
     "badge": "POPULAR",
-    "usecases": ["Documents QnA"],
+    "usecases": ["知识问答"],
     "framework": ["Langchain"],
     "nodes": [
         {

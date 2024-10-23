@@ -1,7 +1,7 @@
 {
     "description": "Return response as a JSON structure as specified by a Zod schema",
     "framework": ["Langchain"],
-    "usecases": ["Extraction"],
+    "usecases": ["信息提取"],
     "nodes": [
         {
             "width": 300,

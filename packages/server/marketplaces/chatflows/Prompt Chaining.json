@@ -1,6 +1,6 @@
 {
     "description": "Use output from a chain as prompt for another chain, similar to chain of thought",
-    "usecases": ["Basic"],
+    "usecases": ["基础应用"],
     "framework": ["Langchain"],
     "nodes": [
         {

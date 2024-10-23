@@ -1,6 +1,6 @@
 {
     "description": "Return response as a list (array) instead of a string/text",
-    "usecases": ["Extraction"],
+    "usecases": ["信息提取"],
     "framework": ["Langchain"],
     "nodes": [
         {

@@ -1,6 +1,6 @@
 {
     "description": "Language translation using LLM Chain with a Chat Prompt Template and Chat Model",
-    "usecases": ["Basic"],
+    "usecases": ["基础应用"],
     "framework": ["Langchain"],
     "nodes": [
         {

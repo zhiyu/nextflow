@@ -1,7 +1,7 @@
 {
     "description": "Generate image using Replicate Stability text-to-image generative AI model",
     "framework": ["Langchain"],
-    "usecases": ["Image Generation"],
+    "usecases": ["图片生成"],
     "nodes": [
         {
             "width": 300,

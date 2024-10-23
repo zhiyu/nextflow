@@ -1,6 +1,6 @@
 {
     "description": "Analyse and summarize CSV data",
-    "usecases": ["Working with tables"],
+    "usecases": ["表格处理"],
     "framework": ["Langchain"],
     "nodes": [
         {

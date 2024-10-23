@@ -1,6 +1,6 @@
 {
     "description": "Use chat history to rephrase user question, then answer the rephrased question using retrieved docs from vector store",
-    "usecases": ["Documents QnA"],
+    "usecases": ["知识问答"],
     "framework": ["Langchain"],
     "nodes": [
         {

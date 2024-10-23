@@ -1,7 +1,7 @@
 {
     "description": "Use Anthropic Claude with 200k context window to ingest whole document for summarization",
     "framework": ["Langchain"],
-    "usecases": ["Summarization"],
+    "usecases": ["摘要生成"],
     "nodes": [
         {
             "width": 300,

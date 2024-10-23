@@ -1,7 +1,7 @@
 {
     "description": "Multi agents with supervisor and agents, constructed using Sequential Agents nodes",
     "framework": ["Langchain"],
-    "usecases": ["Reflective Agent"],
+    "usecases": ["反思型智能体"],
     "nodes": [
         {
             "id": "seqStart_0",

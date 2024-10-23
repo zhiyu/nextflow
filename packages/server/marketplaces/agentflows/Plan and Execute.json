@@ -1,7 +1,7 @@
 {
     "description": "Generate multi-step plans, go through each plan, finish the task, revisit the plan and update accordingly",
     "framework": ["Langchain"],
-    "usecases": ["Reflective Agent"],
+    "usecases": ["反思型智能体"],
     "nodes": [
         {
             "id": "seqStart_0",

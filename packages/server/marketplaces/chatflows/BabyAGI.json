@@ -1,7 +1,7 @@
 {
     "description": "Use BabyAGI to create tasks and reprioritize for a given objective",
     "framework": ["Langchain"],
-    "usecases": ["Reflective Agent"],
+    "usecases": ["反思型智能体"],
     "nodes": [
         {
             "width": 300,
