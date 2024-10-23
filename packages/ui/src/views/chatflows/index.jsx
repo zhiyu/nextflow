@@ -6,7 +6,6 @@ import { Breadcrumbs, Link, Typography, Box, Button, Skeleton, Stack, ToggleButt
 import { useTheme } from '@mui/material/styles'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import ItemCard from '@/ui-component/cards/ItemCard'
 import { gridSpacing } from '@/store/constant'
 import WorkflowEmptySVG from '@/assets/images/workflow_empty.svg'
@@ -125,7 +124,7 @@ const Chatflows = () => {
     }, [getAllChatflowsApi.data])
 
     return (
-        <MainCard>
+        <>
             {error ? (
                 <ErrorBoundary error={error} />
             ) : (
@@ -198,7 +197,7 @@ const Chatflows = () => {
 
             <LoginDialog show={loginDialogOpen} dialogProps={loginDialogProps} onConfirm={onLoginClick} />
             <ConfirmDialog />
-        </MainCard>
+        </>
     )
 }
 

@@ -6,7 +6,6 @@ import { Box, Button, Skeleton, Stack, ToggleButton, ToggleButtonGroup } from '@
 import { useTheme } from '@mui/material/styles'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import ItemCard from '@/ui-component/cards/ItemCard'
 import { gridSpacing } from '@/store/constant'
 import AgentsEmptySVG from '@/assets/images/agents_empty.svg'
@@ -126,7 +125,7 @@ const Agentflows = () => {
     }, [getAllAgentflows.data])
 
     return (
-        <MainCard>
+        <>
             {error ? (
                 <ErrorBoundary error={error} />
             ) : (
@@ -194,7 +193,7 @@ const Agentflows = () => {
 
             <LoginDialog show={loginDialogOpen} dialogProps={loginDialogProps} onConfirm={onLoginClick} />
             <ConfirmDialog />
-        </MainCard>
+        </>
     )
 }
 

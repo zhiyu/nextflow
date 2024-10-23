@@ -8,7 +8,8 @@ import {
     PiShoppingCartSimpleDuotone,
     PiRobotDuotone,
     PiHammerDuotone,
-    PiFingerprintSimpleDuotone
+    PiFingerprintSimpleDuotone,
+    PiOpenAiLogoDuotone
 } from 'react-icons/pi'
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
@@ -35,6 +36,14 @@ const dashboard = [
         title: '工作台',
         type: 'group',
         children: [
+            {
+                id: 'assistants',
+                title: 'OpenAI 助手',
+                type: 'item',
+                url: '/assistants',
+                icon: PiOpenAiLogoDuotone,
+                breadcrumbs: true
+            },
             {
                 id: 'chatflows',
                 title: '对话流',
@@ -68,14 +77,6 @@ const dashboard = [
                 icon: PiHammerDuotone,
                 breadcrumbs: true
             }
-            // {
-            //     id: 'assistants',
-            //     title: '助手',
-            //     type: 'item',
-            //     url: '/assistants',
-            //     icon: GoInfinity,
-            //     breadcrumbs: true
-            // }
         ]
     },
     {
@@ -85,7 +86,7 @@ const dashboard = [
         children: [
             {
                 id: 'credentials',
-                title: '凭证',
+                title: '访问凭证',
                 type: 'item',
                 url: '/credentials',
                 icon: PiFingerprintSimpleDuotone,

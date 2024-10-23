@@ -20,28 +20,8 @@ import {
     Typography,
     useTheme
 } from '@mui/material'
-import { tableCellClasses } from '@mui/material/TableCell'
 import FlowListMenu from '../button/FlowListMenu'
 import { Link } from 'react-router-dom'
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    borderColor: theme.palette.grey[900] + 25,
-
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
 
 const getLocalStorageKeyName = (name, isAgentCanvas) => {
     return (isAgentCanvas ? 'agentcanvas' : 'chatflowcanvas') + '_' + name
@@ -82,25 +62,21 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
     return (
         <>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
-                    <TableHead
-                        sx={{
-                            height: 56
-                        }}
-                    >
+                <Table sx={{ minWidth: 650 }}>
+                    <TableHead>
                         <TableRow>
-                            <StyledTableCell component='th' scope='row' key='0'>
+                            <TableCell component='th' scope='row' key='0'>
                                 <TableSortLabel active={orderBy === 'name'} direction={order} onClick={() => handleRequestSort('name')}>
                                     名称
                                 </TableSortLabel>
-                            </StyledTableCell>
-                            <StyledTableCell style={{ width: '200px' }} key='1'>
+                            </TableCell>
+                            <TableCell style={{ width: '200px' }} key='1'>
                                 分类
-                            </StyledTableCell>
-                            <StyledTableCell style={{ width: '30%' }} key='2'>
+                            </TableCell>
+                            <TableCell style={{ width: '30%' }} key='2'>
                                 节点
-                            </StyledTableCell>
-                            <StyledTableCell style={{ width: '200px' }} key='3'>
+                            </TableCell>
+                            <TableCell style={{ width: '200px' }} key='3'>
                                 <TableSortLabel
                                     active={orderBy === 'updatedDate'}
                                     direction={order}
@@ -108,55 +84,55 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                 >
                                     最后更新
                                 </TableSortLabel>
-                            </StyledTableCell>
-                            <StyledTableCell style={{ width: '120px' }} key='4'>
+                            </TableCell>
+                            <TableCell style={{ width: '120px' }} key='4'>
                                 操作
-                            </StyledTableCell>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {isLoading ? (
                             <>
-                                <StyledTableRow>
-                                    <StyledTableCell>
+                                <TableRow>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                </StyledTableRow>
-                                <StyledTableRow>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                </StyledTableRow>
+                                    </TableCell>
+                                </TableRow>
                             </>
                         ) : (
                             <>
                                 {sortedData.filter(filterFunction).map((row, index) => (
-                                    <StyledTableRow key={index}>
-                                        <StyledTableCell key='0'>
+                                    <TableRow hover key={index}>
+                                        <TableCell key='0'>
                                             <Tooltip title={row.templateName || row.name}>
                                                 <Typography
                                                     sx={{
@@ -171,14 +147,14 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                                 >
                                                     <Link
                                                         to={`/${isAgentCanvas ? 'agentcanvas' : 'canvas'}/${row.id}`}
-                                                        style={{ color: '#2196f3', textDecoration: 'none' }}
+                                                        style={{ color: theme.palette.primary.main, textDecoration: 'none' }}
                                                     >
                                                         {row.templateName || row.name}
                                                     </Link>
                                                 </Typography>
                                             </Tooltip>
-                                        </StyledTableCell>
-                                        <StyledTableCell key='1'>
+                                        </TableCell>
+                                        <TableCell key='1'>
                                             <div
                                                 style={{
                                                     display: 'flex',
@@ -195,8 +171,8 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                                             <Chip key={index} label={tag} style={{ marginRight: 5, marginBottom: 5 }} />
                                                         ))}
                                             </div>
-                                        </StyledTableCell>
-                                        <StyledTableCell key='2'>
+                                        </TableCell>
+                                        <TableCell key='2'>
                                             {images[row.id] && (
                                                 <Box
                                                     sx={{
@@ -246,9 +222,9 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                                     )}
                                                 </Box>
                                             )}
-                                        </StyledTableCell>
-                                        <StyledTableCell key='3'>{moment(row.updatedDate).format('MMMM Do, YYYY')}</StyledTableCell>
-                                        <StyledTableCell key='4'>
+                                        </TableCell>
+                                        <TableCell key='3'>{moment(row.updatedDate).format('MMMM Do, YYYY')}</TableCell>
+                                        <TableCell key='4'>
                                             <Stack
                                                 direction={{ xs: 'column', sm: 'row' }}
                                                 spacing={1}
@@ -262,8 +238,8 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                                     updateFlowsApi={updateFlowsApi}
                                                 />
                                             </Stack>
-                                        </StyledTableCell>
-                                    </StyledTableRow>
+                                        </TableCell>
+                                    </TableRow>
                                 ))}
                             </>
                         )}

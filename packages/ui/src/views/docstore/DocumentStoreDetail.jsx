@@ -23,10 +23,7 @@ import {
     Skeleton
 } from '@mui/material'
 import { alpha, styled, useTheme } from '@mui/material/styles'
-import { tableCellClasses } from '@mui/material/TableCell'
 
-// project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import AddDocStoreDialog from '@/views/docstore/AddDocStoreDialog'
 import { BackdropLoader } from '@/ui-component/loading/BackdropLoader'
 import DocumentLoaderListDialog from '@/views/docstore/DocumentLoaderListDialog'
@@ -52,23 +49,6 @@ import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackba
 import { PiPlus, PiTrash, PiFilesLight, PiRowsPlusTopLight, PiEyeLight } from 'react-icons/pi'
 
 // ==============================|| DOCUMENTS ||============================== //
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -329,237 +309,228 @@ const DocumentStoreDetails = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader
-                            isBackButton={true}
-                            isEditButton={true}
-                            search={false}
-                            title={documentStore?.name}
-                            description={documentStore?.description}
-                            onBack={() => navigate('/document-stores')}
-                            onEdit={() => onEditClicked()}
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader
+                        isBackButton={true}
+                        isEditButton={true}
+                        search={false}
+                        title={documentStore?.name}
+                        description={documentStore?.description}
+                        onBack={() => navigate('/document-stores')}
+                        onEdit={() => onEditClicked()}
+                    >
+                        <Button
+                            variant='contained'
+                            color='error'
+                            startIcon={<PiTrash size='0.8em' />}
+                            onClick={() => onStoreDelete(documentStore.vectorStoreConfig, documentStore.recordManagerConfig)}
                         >
-                            <Button
-                                variant='contained'
-                                color='error'
-                                startIcon={<PiTrash size='0.8em' />}
-                                onClick={() => onStoreDelete(documentStore.vectorStoreConfig, documentStore.recordManagerConfig)}
-                            >
-                                删除知识库
+                            删除知识库
+                        </Button>
+                        <Button variant='contained' color='primary' startIcon={<PiPlus size='0.8em' />} onClick={listLoaders}>
+                            添加文档加载器
+                        </Button>
+                        {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
+                            <Button variant='text' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
+                                刷新
                             </Button>
-                            <Button variant='contained' color='primary' startIcon={<PiPlus size='0.8em' />} onClick={listLoaders}>
-                                添加文档加载器
-                            </Button>
-                            {(documentStore?.status === 'STALE' || documentStore?.status === 'UPSERTING') && (
-                                <Button variant='text' sx={{ mr: 2 }} startIcon={<IconRefresh />} onClick={onConfirm}>
-                                    刷新
-                                </Button>
-                            )}
-                            {documentStore?.status === 'UPSERTING' && (
-                                <Chip
-                                    variant='raised'
-                                    label='Upserting to Vector Store'
-                                    color='warning'
-                                    sx={{ borderRadius: 2, height: '100%' }}
-                                />
-                            )}
-                            {documentStore?.totalChunks > 0 && documentStore?.status !== 'UPSERTING' && (
-                                <>
-                                    <Button
-                                        variant='contained'
-                                        color='primary'
-                                        startIcon={<PiFilesLight size='0.8em' />}
-                                        onClick={() => showStoredChunks('all')}
-                                    >
-                                        查看 Chunks
-                                    </Button>
-                                    <Button
-                                        variant='contained'
-                                        color='primary'
-                                        startIcon={<PiRowsPlusTopLight size='0.8em' />}
-                                        onClick={() => showVectorStore(documentStore.id)}
-                                    >
-                                        插入或更新配置
-                                    </Button>
-                                </>
-                            )}
-                            {documentStore?.totalChunks > 0 && documentStore?.status === 'UPSERTED' && (
+                        )}
+                        {documentStore?.status === 'UPSERTING' && (
+                            <Chip
+                                variant='raised'
+                                label='Upserting to Vector Store'
+                                color='warning'
+                                sx={{ borderRadius: 2, height: '100%' }}
+                            />
+                        )}
+                        {documentStore?.totalChunks > 0 && documentStore?.status !== 'UPSERTING' && (
+                            <>
                                 <Button
                                     variant='contained'
-                                    sx={{
-                                        backgroundImage: `linear-gradient(to right, #3f5efb, #fc466b)`,
-                                        '&:hover': {
-                                            backgroundImage: `linear-gradient(to right, #2b4efb, #fe2752)`
-                                        }
-                                    }}
-                                    startIcon={<IconZoomScan />}
-                                    onClick={() => showVectorStoreQuery(documentStore.id)}
+                                    color='primary'
+                                    startIcon={<PiFilesLight size='0.8em' />}
+                                    onClick={() => showStoredChunks('all')}
                                 >
-                                    Retrieval Query
+                                    查看 Chunks
                                 </Button>
-                            )}
-                        </ViewHeader>
-                        {getSpecificDocumentStore.data?.whereUsed?.length > 0 && (
-                            <Stack flexDirection='row' sx={{ gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
-                                <div
-                                    style={{
-                                        paddingLeft: '15px',
-                                        paddingRight: '15px',
-                                        paddingTop: '10px',
-                                        paddingBottom: '10px',
-                                        fontSize: '0.9rem',
-                                        width: 'max-content',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }}
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                    startIcon={<PiRowsPlusTopLight size='0.8em' />}
+                                    onClick={() => showVectorStore(documentStore.id)}
                                 >
-                                    <IconVectorBezier2 style={{ marginRight: 5 }} size={17} />
-                                    Chatflows Used:
-                                </div>
-                                {getSpecificDocumentStore.data.whereUsed.map((chatflowUsed, index) => (
-                                    <Chip
-                                        key={index}
-                                        clickable
-                                        style={{
-                                            width: 'max-content',
-                                            borderRadius: '25px',
-                                            boxShadow: customization.isDarkMode
-                                                ? '0 2px 14px 0 rgb(255 255 255 / 10%)'
-                                                : '0 2px 14px 0 rgb(32 40 45 / 10%)'
-                                        }}
-                                        label={chatflowUsed.name}
-                                        onClick={() => navigate('/canvas/' + chatflowUsed.id)}
-                                    ></Chip>
-                                ))}
-                            </Stack>
+                                    插入或更新配置
+                                </Button>
+                            </>
                         )}
-                        {!isLoading && documentStore && !documentStore?.loaders?.length ? (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '16vh', width: 'auto' }}
-                                        src={doc_store_details_emptySVG}
-                                        alt='doc_store_details_emptySVG'
-                                    />
-                                </Box>
-                                <div>No Document Added Yet</div>
-                                <StyledButton variant='contained' startIcon={<IconPlus />} onClick={listLoaders}>
-                                    添加文档加载器
-                                </StyledButton>
-                            </Stack>
-                        ) : (
-                            <TableContainer component={Paper}>
-                                <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-                                    <TableHead
-                                        sx={{
-                                            height: 56
-                                        }}
-                                    >
-                                        <TableRow>
-                                            <StyledTableCell>&nbsp;</StyledTableCell>
-                                            <StyledTableCell>加载器</StyledTableCell>
-                                            <StyledTableCell>Splitter</StyledTableCell>
-                                            <StyledTableCell>数据源</StyledTableCell>
-                                            <StyledTableCell>Chunks</StyledTableCell>
-                                            <StyledTableCell>Chars</StyledTableCell>
-                                            <StyledTableCell style={{ width: '120px' }}>操作</StyledTableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {isLoading ? (
-                                            <>
-                                                <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                                <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                            </>
-                                        ) : (
-                                            <>
-                                                {documentStore?.loaders &&
-                                                    documentStore?.loaders.length > 0 &&
-                                                    documentStore?.loaders.map((loader, index) => (
-                                                        <LoaderRow
-                                                            key={index}
-                                                            index={index}
-                                                            loader={loader}
-                                                            theme={theme}
-                                                            onEditClick={() => openPreviewSettings(loader.id)}
-                                                            onViewChunksClick={() => showStoredChunks(loader.id)}
-                                                            onDeleteClick={() =>
-                                                                onLoaderDelete(
-                                                                    loader,
-                                                                    documentStore?.vectorStoreConfig,
-                                                                    documentStore?.recordManagerConfig
-                                                                )
-                                                            }
-                                                        />
-                                                    ))}
-                                            </>
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
+                        {documentStore?.totalChunks > 0 && documentStore?.status === 'UPSERTED' && (
+                            <Button
+                                variant='contained'
+                                sx={{
+                                    backgroundImage: `linear-gradient(to right, #3f5efb, #fc466b)`,
+                                    '&:hover': {
+                                        backgroundImage: `linear-gradient(to right, #2b4efb, #fe2752)`
+                                    }
+                                }}
+                                startIcon={<IconZoomScan />}
+                                onClick={() => showVectorStoreQuery(documentStore.id)}
+                            >
+                                Retrieval Query
+                            </Button>
                         )}
-                        {getSpecificDocumentStore.data?.status === 'STALE' && (
-                            <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
-                                <Typography
-                                    color='warning'
-                                    style={{ color: 'darkred', fontWeight: 500, fontStyle: 'italic', fontSize: 12 }}
-                                >
-                                    Some files are pending processing. Please Refresh to get the latest status.
-                                </Typography>
+                    </ViewHeader>
+                    {getSpecificDocumentStore.data?.whereUsed?.length > 0 && (
+                        <Stack flexDirection='row' sx={{ gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
+                            <div
+                                style={{
+                                    paddingLeft: '15px',
+                                    paddingRight: '15px',
+                                    paddingTop: '10px',
+                                    paddingBottom: '10px',
+                                    fontSize: '0.9rem',
+                                    width: 'max-content',
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <IconVectorBezier2 style={{ marginRight: 5 }} size={17} />
+                                Chatflows Used:
                             </div>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+                            {getSpecificDocumentStore.data.whereUsed.map((chatflowUsed, index) => (
+                                <Chip
+                                    key={index}
+                                    clickable
+                                    style={{
+                                        width: 'max-content',
+                                        borderRadius: '25px',
+                                        boxShadow: customization.isDarkMode
+                                            ? '0 2px 14px 0 rgb(255 255 255 / 10%)'
+                                            : '0 2px 14px 0 rgb(32 40 45 / 10%)'
+                                    }}
+                                    label={chatflowUsed.name}
+                                    onClick={() => navigate('/canvas/' + chatflowUsed.id)}
+                                ></Chip>
+                            ))}
+                        </Stack>
+                    )}
+                    {!isLoading && documentStore && !documentStore?.loaders?.length ? (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img
+                                    style={{ objectFit: 'cover', height: '16vh', width: 'auto' }}
+                                    src={doc_store_details_emptySVG}
+                                    alt='doc_store_details_emptySVG'
+                                />
+                            </Box>
+                            <div>No Document Added Yet</div>
+                            <StyledButton variant='contained' startIcon={<IconPlus />} onClick={listLoaders}>
+                                添加文档加载器
+                            </StyledButton>
+                        </Stack>
+                    ) : (
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>&nbsp;</TableCell>
+                                        <TableCell>加载器</TableCell>
+                                        <TableCell>Splitter</TableCell>
+                                        <TableCell>数据源</TableCell>
+                                        <TableCell>Chunks</TableCell>
+                                        <TableCell>Chars</TableCell>
+                                        <TableCell style={{ width: '120px' }}>操作</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {isLoading ? (
+                                        <>
+                                            <TableRow>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                            </TableRow>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {documentStore?.loaders &&
+                                                documentStore?.loaders.length > 0 &&
+                                                documentStore?.loaders.map((loader, index) => (
+                                                    <LoaderRow
+                                                        key={index}
+                                                        index={index}
+                                                        loader={loader}
+                                                        theme={theme}
+                                                        onEditClick={() => openPreviewSettings(loader.id)}
+                                                        onViewChunksClick={() => showStoredChunks(loader.id)}
+                                                        onDeleteClick={() =>
+                                                            onLoaderDelete(
+                                                                loader,
+                                                                documentStore?.vectorStoreConfig,
+                                                                documentStore?.recordManagerConfig
+                                                            )
+                                                        }
+                                                    />
+                                                ))}
+                                        </>
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    )}
+                    {getSpecificDocumentStore.data?.status === 'STALE' && (
+                        <div style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}>
+                            <Typography color='warning' style={{ color: 'darkred', fontWeight: 500, fontStyle: 'italic', fontSize: 12 }}>
+                                Some files are pending processing. Please Refresh to get the latest status.
+                            </Typography>
+                        </div>
+                    )}
+                </Stack>
+            )}
             {showDialog && (
                 <AddDocStoreDialog
                     dialogProps={dialogProps}
@@ -612,8 +583,8 @@ function LoaderRow(props) {
 
     return (
         <>
-            <TableRow hover key={props.index} sx={{ '&:last-child td, &:last-child th': { border: 0 }, cursor: 'pointer' }}>
-                <StyledTableCell onClick={props.onViewChunksClick} scope='row' style={{ width: '5%' }}>
+            <TableRow hover key={props.index}>
+                <TableCell onClick={props.onViewChunksClick} scope='row' style={{ width: '5%' }}>
                     <div
                         style={{
                             display: 'flex',
@@ -623,19 +594,19 @@ function LoaderRow(props) {
                             borderRadius: '50%'
                         }}
                     ></div>
-                </StyledTableCell>
-                <StyledTableCell onClick={props.onViewChunksClick} scope='row'>
+                </TableCell>
+                <TableCell onClick={props.onViewChunksClick} scope='row'>
                     {props.loader.loaderName}
-                </StyledTableCell>
-                <StyledTableCell onClick={props.onViewChunksClick}>{props.loader.splitterName ?? 'None'}</StyledTableCell>
-                <StyledTableCell onClick={props.onViewChunksClick}>{formatSources(props.loader.source)}</StyledTableCell>
-                <StyledTableCell onClick={props.onViewChunksClick}>
+                </TableCell>
+                <TableCell onClick={props.onViewChunksClick}>{props.loader.splitterName ?? 'None'}</TableCell>
+                <TableCell onClick={props.onViewChunksClick}>{formatSources(props.loader.source)}</TableCell>
+                <TableCell onClick={props.onViewChunksClick}>
                     {props.loader.totalChunks && <Chip variant='outlined' size='small' label={props.loader.totalChunks.toLocaleString()} />}
-                </StyledTableCell>
-                <StyledTableCell onClick={props.onViewChunksClick}>
+                </TableCell>
+                <TableCell onClick={props.onViewChunksClick}>
                     {props.loader.totalChars && <Chip variant='outlined' size='small' label={props.loader.totalChars.toLocaleString()} />}
-                </StyledTableCell>
-                <StyledTableCell>
+                </TableCell>
+                <TableCell>
                     <div>
                         <Button
                             id='document-store-action-button'
@@ -672,7 +643,7 @@ function LoaderRow(props) {
                             </MenuItem>
                         </StyledMenu>
                     </div>
-                </StyledTableCell>
+                </TableCell>
             </TableRow>
         </>
     )

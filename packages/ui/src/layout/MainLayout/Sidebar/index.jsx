@@ -77,7 +77,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                             top: `${headerHeight + 1}px`
                         },
                         borderRight: drawerOpen ? '1px solid' : 'none',
-                        borderColor: drawerOpen ? theme.palette.grey[200] : 'transparent'
+                        borderColor: drawerOpen ? 'rgba(0, 0, 0, 0.12)' : 'transparent'
                     }
                 }}
                 ModalProps={{ keepMounted: true }}

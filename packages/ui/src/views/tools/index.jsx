@@ -4,11 +4,9 @@ import { useEffect, useState, useRef } from 'react'
 import { Box, Stack, Button, ButtonGroup, Skeleton, ToggleButtonGroup, ToggleButton } from '@mui/material'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import ItemCard from '@/ui-component/cards/ItemCard'
 import { gridSpacing } from '@/store/constant'
 import ToolEmptySVG from '@/assets/images/tools_empty.svg'
-import { StyledButton } from '@/ui-component/button/StyledButton'
 import ToolDialog from './ToolDialog'
 import { ToolsTable } from '@/ui-component/table/ToolsListTable'
 
@@ -122,78 +120,72 @@ const Tools = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader title='工具箱'>
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<PiUpload size='0.8em' />}>
-                                    导入
-                                </Button>
-                                <input
-                                    style={{ display: 'none' }}
-                                    ref={inputRef}
-                                    type='file'
-                                    hidden
-                                    accept='.json'
-                                    onChange={(e) => handleFileUpload(e)}
-                                />
-                            </Box>
-                            <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
-                                创建工具
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader title='工具箱'>
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<PiUpload size='0.8em' />}>
+                                导入
                             </Button>
-                            <ToggleButtonGroup
-                                sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
-                                value={view}
-                                color='primary'
-                                exclusive
-                                onChange={handleChange}
-                            >
-                                <ToggleButton variant='contained' value='card' title='Card View'>
-                                    <PiGridFour size='1.2rem' />
-                                </ToggleButton>
-                                <ToggleButton variant='contained' value='list' title='List View'>
-                                    <PiListDashes size='1.2rem' />
-                                </ToggleButton>
-                            </ToggleButtonGroup>
-                        </ViewHeader>
-                        {!view || view === 'card' ? (
-                            <>
-                                {isLoading ? (
-                                    <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                        <Skeleton variant='rounded' height={160} />
-                                        <Skeleton variant='rounded' height={160} />
-                                        <Skeleton variant='rounded' height={160} />
-                                    </Box>
-                                ) : (
-                                    <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                        {getAllToolsApi.data &&
-                                            getAllToolsApi.data.map((data, index) => (
-                                                <ItemCard data={data} key={index} onClick={() => edit(data)} />
-                                            ))}
-                                    </Box>
-                                )}
-                            </>
-                        ) : (
-                            <ToolsTable data={getAllToolsApi.data} isLoading={isLoading} onSelect={edit} />
-                        )}
-                        {!isLoading && (!getAllToolsApi.data || getAllToolsApi.data.length === 0) && (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
-                                        src={ToolEmptySVG}
-                                        alt='ToolEmptySVG'
-                                    />
+                            <input
+                                style={{ display: 'none' }}
+                                ref={inputRef}
+                                type='file'
+                                hidden
+                                accept='.json'
+                                onChange={(e) => handleFileUpload(e)}
+                            />
+                        </Box>
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            创建工具
+                        </Button>
+                        <ToggleButtonGroup
+                            sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
+                            value={view}
+                            color='primary'
+                            exclusive
+                            onChange={handleChange}
+                        >
+                            <ToggleButton variant='contained' value='card' title='Card View'>
+                                <PiGridFour size='1.2rem' />
+                            </ToggleButton>
+                            <ToggleButton variant='contained' value='list' title='List View'>
+                                <PiListDashes size='1.2rem' />
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </ViewHeader>
+                    {!view || view === 'card' ? (
+                        <>
+                            {isLoading ? (
+                                <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                                    <Skeleton variant='rounded' height={160} />
+                                    <Skeleton variant='rounded' height={160} />
+                                    <Skeleton variant='rounded' height={160} />
                                 </Box>
-                                <div>No Tools Created Yet</div>
-                            </Stack>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+                            ) : (
+                                <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                                    {getAllToolsApi.data &&
+                                        getAllToolsApi.data.map((data, index) => (
+                                            <ItemCard data={data} key={index} onClick={() => edit(data)} />
+                                        ))}
+                                </Box>
+                            )}
+                        </>
+                    ) : (
+                        <ToolsTable data={getAllToolsApi.data} isLoading={isLoading} onSelect={edit} />
+                    )}
+                    {!isLoading && (!getAllToolsApi.data || getAllToolsApi.data.length === 0) && (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img style={{ objectFit: 'cover', height: '20vh', width: 'auto' }} src={ToolEmptySVG} alt='ToolEmptySVG' />
+                            </Box>
+                            <div>No Tools Created Yet</div>
+                        </Stack>
+                    )}
+                </Stack>
+            )}
             <ToolDialog
                 show={showDialog}
                 dialogProps={dialogProps}

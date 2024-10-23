@@ -20,25 +20,6 @@ import {
 } from '@mui/material'
 import { IconTrash } from '@tabler/icons-react'
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    borderColor: theme.palette.grey[900] + 25,
-
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
-
 export const MarketplaceTable = ({
     data,
     filterFunction,
@@ -51,9 +32,6 @@ export const MarketplaceTable = ({
     isLoading,
     onDelete
 }) => {
-    const theme = useTheme()
-    const customization = useSelector((state) => state.customization)
-
     const openTemplate = (selectedTemplate) => {
         if (selectedTemplate.flowData) {
             goToCanvas(selectedTemplate)
@@ -66,91 +44,87 @@ export const MarketplaceTable = ({
         <>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
-                    <TableHead
-                        sx={{
-                            height: 56
-                        }}
-                    >
+                    <TableHead>
                         <TableRow>
-                            <StyledTableCell sx={{ minWidth: '150px' }} component='th' scope='row' key='0'>
+                            <TableCell sx={{ minWidth: '150px' }} component='th' scope='row' key='0'>
                                 名称
-                            </StyledTableCell>
-                            <StyledTableCell sx={{ minWidth: '100px' }} component='th' scope='row' key='1'>
+                            </TableCell>
+                            <TableCell sx={{ minWidth: '100px' }} component='th' scope='row' key='1'>
                                 类型
-                            </StyledTableCell>
-                            <StyledTableCell key='2'>描述</StyledTableCell>
-                            <StyledTableCell sx={{ minWidth: '100px' }} key='3'>
+                            </TableCell>
+                            <TableCell key='2'>描述</TableCell>
+                            <TableCell sx={{ minWidth: '100px' }} key='3'>
                                 框架
-                            </StyledTableCell>
-                            <StyledTableCell sx={{ minWidth: '100px' }} key='4'>
+                            </TableCell>
+                            <TableCell sx={{ minWidth: '100px' }} key='4'>
                                 使用场景
-                            </StyledTableCell>
-                            <StyledTableCell key='5'>节点</StyledTableCell>
-                            <StyledTableCell component='th' scope='row' key='6'>
+                            </TableCell>
+                            <TableCell key='5'>节点</TableCell>
+                            <TableCell component='th' scope='row' key='6'>
                                 &nbsp;
-                            </StyledTableCell>
-                            {onDelete && <StyledTableCell component='th' scope='row' key='7'></StyledTableCell>}
+                            </TableCell>
+                            {onDelete && <TableCell component='th' scope='row' key='7'></TableCell>}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {isLoading ? (
                             <>
-                                <StyledTableRow>
-                                    <StyledTableCell>
+                                <TableRow>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
+                                    </TableCell>
                                     {onDelete && (
-                                        <StyledTableCell>
+                                        <TableCell>
                                             <Skeleton variant='text' />
-                                        </StyledTableCell>
+                                        </TableCell>
                                     )}
-                                </StyledTableRow>
-                                <StyledTableRow>
-                                    <StyledTableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
+                                    </TableCell>
                                     {onDelete && (
-                                        <StyledTableCell>
+                                        <TableCell>
                                             <Skeleton variant='text' />
-                                        </StyledTableCell>
+                                        </TableCell>
                                     )}
-                                </StyledTableRow>
+                                </TableRow>
                             </>
                         ) : (
                             <>
@@ -161,8 +135,8 @@ export const MarketplaceTable = ({
                                     .filter(filterByFramework)
                                     .filter(filterByUsecases)
                                     .map((row, index) => (
-                                        <StyledTableRow key={index}>
-                                            <StyledTableCell key='0'>
+                                        <TableRow key={index}>
+                                            <TableCell key='0'>
                                                 <Typography
                                                     sx={{
                                                         display: '-webkit-box',
@@ -178,16 +152,16 @@ export const MarketplaceTable = ({
                                                         {row.templateName || row.name}
                                                     </Button>
                                                 </Typography>
-                                            </StyledTableCell>
-                                            <StyledTableCell key='1'>
+                                            </TableCell>
+                                            <TableCell key='1'>
                                                 <Typography>{row.type}</Typography>
-                                            </StyledTableCell>
-                                            <StyledTableCell key='2'>
+                                            </TableCell>
+                                            <TableCell key='2'>
                                                 <Typography sx={{ overflowWrap: 'break-word', whiteSpace: 'pre-line' }}>
                                                     {row.description || ''}
                                                 </Typography>
-                                            </StyledTableCell>
-                                            <StyledTableCell key='3'>
+                                            </TableCell>
+                                            <TableCell key='3'>
                                                 <Stack flexDirection='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
                                                     {row.framework &&
                                                         row.framework.length > 0 &&
@@ -201,8 +175,8 @@ export const MarketplaceTable = ({
                                                             />
                                                         ))}
                                                 </Stack>
-                                            </StyledTableCell>
-                                            <StyledTableCell key='4'>
+                                            </TableCell>
+                                            <TableCell key='4'>
                                                 <Stack flexDirection='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
                                                     {row.usecases &&
                                                         row.usecases.length > 0 &&
@@ -216,8 +190,8 @@ export const MarketplaceTable = ({
                                                             />
                                                         ))}
                                                 </Stack>
-                                            </StyledTableCell>
-                                            <StyledTableCell key='5'>
+                                            </TableCell>
+                                            <TableCell key='5'>
                                                 <Stack flexDirection='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
                                                     {row.categories &&
                                                         row.categories.map((tag, index) => (
@@ -230,8 +204,8 @@ export const MarketplaceTable = ({
                                                             />
                                                         ))}
                                                 </Stack>
-                                            </StyledTableCell>
-                                            <StyledTableCell key='6'>
+                                            </TableCell>
+                                            <TableCell key='6'>
                                                 <Typography>
                                                     {row.badge &&
                                                         row.badge
@@ -246,15 +220,15 @@ export const MarketplaceTable = ({
                                                                 />
                                                             ))}
                                                 </Typography>
-                                            </StyledTableCell>
+                                            </TableCell>
                                             {onDelete && (
-                                                <StyledTableCell key='7'>
+                                                <TableCell key='7'>
                                                     <IconButton title='Delete' color='error' onClick={() => onDelete(row)}>
                                                         <IconTrash />
                                                     </IconButton>
-                                                </StyledTableCell>
+                                                </TableCell>
                                             )}
-                                        </StyledTableRow>
+                                        </TableRow>
                                     ))}
                             </>
                         )}

@@ -41,7 +41,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
 
     return (
         <CardWrapper content={false} onClick={onClick} sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}>
-            <Box sx={{ height: '100%', p: 2.25 }}>
+            <Box sx={{ height: '100%', p: 2.25 }} onClick={onClick}>
                 <Grid container justifyContent='space-between' direction='column' sx={{ height: '100%' }} gap={2}>
                     <Box display='flex' flexDirection='column' sx={{ flex: 1, width: '100%' }}>
                         <div

@@ -26,7 +26,6 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import { useTheme, styled } from '@mui/material/styles'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import APIKeyDialog from './APIKeyDialog'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
@@ -59,38 +58,17 @@ import {
 } from 'react-icons/pi'
 
 // ==============================|| APIKey ||============================== //
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    borderColor: theme.palette.grey[900] + 25,
-    padding: '6px 0px',
-
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
-
 function APIKeyRow(props) {
     const [open, setOpen] = useState(false)
     const theme = useTheme()
 
     return (
         <>
-            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <StyledTableCell scope='row' style={{ width: '15%' }}>
+            <TableRow>
+                <TableCell scope='row' style={{ width: '15%' }}>
                     {props.apiKey.keyName}
-                </StyledTableCell>
-                <StyledTableCell style={{ width: '40%' }}>
+                </TableCell>
+                <TableCell style={{ width: '40%' }}>
                     {props.showApiKeys.includes(props.apiKey.apiKey)
                         ? props.apiKey.apiKey
                         : `${props.apiKey.apiKey.substring(0, 2)}${'•'.repeat(18)}${props.apiKey.apiKey.substring(
@@ -119,8 +97,8 @@ function APIKeyRow(props) {
                             Copied!
                         </Typography>
                     </Popover>
-                </StyledTableCell>
-                <StyledTableCell>
+                </TableCell>
+                <TableCell>
                     {props.apiKey.chatFlows.length}{' '}
                     {props.apiKey.chatFlows.length > 0 && (
                         <IconButton aria-label='expand row' size='small' color='inherit' onClick={() => setOpen(!open)}>
@@ -131,36 +109,36 @@ function APIKeyRow(props) {
                             )}
                         </IconButton>
                     )}
-                </StyledTableCell>
-                <StyledTableCell>{moment(props.apiKey.createdAt).format('MMMM Do, YYYY')}</StyledTableCell>
-                <StyledTableCell sx={{ textAlign: 'right' }}>
+                </TableCell>
+                <TableCell>{moment(props.apiKey.createdAt).format('MMMM Do, YYYY')}</TableCell>
+                <TableCell sx={{ textAlign: 'right' }}>
                     <IconButton title='Edit' color='primary' onClick={props.onEditClick}>
                         <PiNotePencil size='1.2rem' />
                     </IconButton>
                     <IconButton title='Delete' onClick={props.onDeleteClick}>
                         <PiTrash size='1.2rem' />
                     </IconButton>
-                </StyledTableCell>
+                </TableCell>
             </TableRow>
             {open && (
-                <TableRow sx={{ '& td': { border: 0 } }}>
-                    <StyledTableCell sx={{ p: 2 }} colSpan={6}>
+                <TableRow>
+                    <TableCell sx={{ p: 2 }} colSpan={6}>
                         <Collapse in={open} timeout='auto' unmountOnExit>
-                            <Box sx={{ borderRadius: 2, border: 1, borderColor: theme.palette.grey[900] + 25, overflow: 'hidden' }}>
-                                <Table aria-label='chatflow table'>
+                            <Box>
+                                <Table aria-label='chatflow table' size='small'>
                                     <TableHead sx={{ height: 48 }}>
                                         <TableRow>
-                                            <StyledTableCell sx={{ width: '30%' }}>Chatflow Name</StyledTableCell>
-                                            <StyledTableCell sx={{ width: '20%' }}>Modified On</StyledTableCell>
-                                            <StyledTableCell sx={{ width: '50%' }}>Category</StyledTableCell>
+                                            <TableCell sx={{ width: '30%' }}>Chatflow Name</TableCell>
+                                            <TableCell sx={{ width: '20%' }}>Modified On</TableCell>
+                                            <TableCell sx={{ width: '50%' }}>Category</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
                                         {props.apiKey.chatFlows.map((flow, index) => (
                                             <TableRow key={index}>
-                                                <StyledTableCell>{flow.flowName}</StyledTableCell>
-                                                <StyledTableCell>{moment(flow.updatedDate).format('MMMM Do, YYYY')}</StyledTableCell>
-                                                <StyledTableCell>
+                                                <TableCell>{flow.flowName}</TableCell>
+                                                <TableCell>{moment(flow.updatedDate).format('MMMM Do, YYYY')}</TableCell>
+                                                <TableCell>
                                                     &nbsp;
                                                     {flow.category &&
                                                         flow.category
@@ -168,14 +146,14 @@ function APIKeyRow(props) {
                                                             .map((tag, index) => (
                                                                 <Chip key={index} label={tag} style={{ marginRight: 5, marginBottom: 5 }} />
                                                             ))}
-                                                </StyledTableCell>
+                                                </TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
                                 </Table>
                             </Box>
                         </Collapse>
-                    </StyledTableCell>
+                    </TableCell>
                 </TableRow>
             )}
         </>
@@ -363,116 +341,106 @@ const APIKey = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='API Keys'>
-                            <Button variant='contained' onClick={uploadDialog} startIcon={<PiUpload size='0.8em' />} id='btn_importApiKeys'>
-                                导入
-                            </Button>
-                            <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
-                                添加 Key
-                            </Button>
-                        </ViewHeader>
-                        {!isLoading && apiKeys.length <= 0 ? (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
-                                        src={APIEmptySVG}
-                                        alt='APIEmptySVG'
-                                    />
-                                </Box>
-                                <div>No API Keys Yet</div>
-                            </Stack>
-                        ) : (
-                            <TableContainer component={Paper}>
-                                <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-                                    <TableHead
-                                        sx={{
-                                            height: 56
-                                        }}
-                                    >
-                                        <TableRow>
-                                            <StyledTableCell>Key 名称</StyledTableCell>
-                                            <StyledTableCell>Key 值</StyledTableCell>
-                                            <StyledTableCell>使用情况</StyledTableCell>
-                                            <StyledTableCell style={{ width: '180px' }}>创建时间</StyledTableCell>
-                                            <StyledTableCell style={{ width: '120px' }}></StyledTableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {isLoading ? (
-                                            <>
-                                                <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                                <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                            </>
-                                        ) : (
-                                            <>
-                                                {apiKeys.filter(filterKeys).map((key, index) => (
-                                                    <APIKeyRow
-                                                        key={index}
-                                                        apiKey={key}
-                                                        showApiKeys={showApiKeys}
-                                                        onCopyClick={(event) => {
-                                                            navigator.clipboard.writeText(key.apiKey)
-                                                            setAnchorEl(event.currentTarget)
-                                                            setTimeout(() => {
-                                                                handleClosePopOver()
-                                                            }, 1500)
-                                                        }}
-                                                        onShowAPIClick={() => onShowApiKeyClick(key.apiKey)}
-                                                        open={openPopOver}
-                                                        anchorEl={anchorEl}
-                                                        onClose={handleClosePopOver}
-                                                        theme={theme}
-                                                        onEditClick={() => edit(key)}
-                                                        onDeleteClick={() => deleteKey(key)}
-                                                    />
-                                                ))}
-                                            </>
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='API Keys'>
+                        <Button variant='contained' onClick={uploadDialog} startIcon={<PiUpload size='0.8em' />} id='btn_importApiKeys'>
+                            导入
+                        </Button>
+                        <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            添加 Key
+                        </Button>
+                    </ViewHeader>
+                    {!isLoading && apiKeys.length <= 0 ? (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img style={{ objectFit: 'cover', height: '20vh', width: 'auto' }} src={APIEmptySVG} alt='APIEmptySVG' />
+                            </Box>
+                            <div>No API Keys Yet</div>
+                        </Stack>
+                    ) : (
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Key 名称</TableCell>
+                                        <TableCell>Key 值</TableCell>
+                                        <TableCell>使用情况</TableCell>
+                                        <TableCell style={{ width: '180px' }}>创建时间</TableCell>
+                                        <TableCell style={{ width: '120px' }}></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {isLoading ? (
+                                        <>
+                                            <TableRow>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                            </TableRow>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {apiKeys.filter(filterKeys).map((key, index) => (
+                                                <APIKeyRow
+                                                    key={index}
+                                                    apiKey={key}
+                                                    showApiKeys={showApiKeys}
+                                                    onCopyClick={(event) => {
+                                                        navigator.clipboard.writeText(key.apiKey)
+                                                        setAnchorEl(event.currentTarget)
+                                                        setTimeout(() => {
+                                                            handleClosePopOver()
+                                                        }, 1500)
+                                                    }}
+                                                    onShowAPIClick={() => onShowApiKeyClick(key.apiKey)}
+                                                    open={openPopOver}
+                                                    anchorEl={anchorEl}
+                                                    onClose={handleClosePopOver}
+                                                    theme={theme}
+                                                    onEditClick={() => edit(key)}
+                                                    onDeleteClick={() => deleteKey(key)}
+                                                />
+                                            ))}
+                                        </>
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    )}
+                </Stack>
+            )}
             <APIKeyDialog
                 show={showDialog}
                 dialogProps={dialogProps}

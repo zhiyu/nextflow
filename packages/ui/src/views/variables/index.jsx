@@ -4,8 +4,6 @@ import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackba
 import moment from 'moment'
 
 // material-ui
-import { styled } from '@mui/material/styles'
-import { tableCellClasses } from '@mui/material/TableCell'
 import {
     Button,
     Box,
@@ -24,7 +22,6 @@ import {
 } from '@mui/material'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 
 // API
@@ -47,23 +44,6 @@ import AddEditVariableDialog from './AddEditVariableDialog'
 import HowToUseVariablesDialog from './HowToUseVariablesDialog'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
 
 // ==============================|| Credentials ||============================== //
 
@@ -193,156 +173,146 @@ const Variables = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='全局变量'>
-                            <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
-                                如何使用变量
-                            </Button>
-                            <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
-                                添加变量
-                            </Button>
-                        </ViewHeader>
-                        {!isLoading && variables.length === 0 ? (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
-                                        src={VariablesEmptySVG}
-                                        alt='VariablesEmptySVG'
-                                    />
-                                </Box>
-                                <div>No Variables Yet</div>
-                            </Stack>
-                        ) : (
-                            <TableContainer component={Paper}>
-                                <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-                                    <TableHead
-                                        sx={{
-                                            height: 56
-                                        }}
-                                    >
-                                        <TableRow>
-                                            <StyledTableCell style={{ width: '200px' }}>变量名称</StyledTableCell>
-                                            <StyledTableCell>变量值</StyledTableCell>
-                                            <StyledTableCell style={{ width: '100px' }}>类型</StyledTableCell>
-                                            <StyledTableCell style={{ width: '180px' }}>最后更新</StyledTableCell>
-                                            <StyledTableCell style={{ width: '180px' }}>创建时间</StyledTableCell>
-                                            <StyledTableCell style={{ width: '120px' }}></StyledTableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {isLoading ? (
-                                            <>
-                                                <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                                <StyledTableRow>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                    <StyledTableCell>
-                                                        <Skeleton variant='text' />
-                                                    </StyledTableCell>
-                                                </StyledTableRow>
-                                            </>
-                                        ) : (
-                                            <>
-                                                {variables.filter(filterVariables).map((variable, index) => (
-                                                    <StyledTableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                                        <StyledTableCell component='th' scope='row'>
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='全局变量'>
+                        <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
+                            如何使用变量
+                        </Button>
+                        <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            添加变量
+                        </Button>
+                    </ViewHeader>
+                    {!isLoading && variables.length === 0 ? (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img
+                                    style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
+                                    src={VariablesEmptySVG}
+                                    alt='VariablesEmptySVG'
+                                />
+                            </Box>
+                            <div>No Variables Yet</div>
+                        </Stack>
+                    ) : (
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell style={{ width: '200px' }}>变量名称</TableCell>
+                                        <TableCell>变量值</TableCell>
+                                        <TableCell style={{ width: '100px' }}>类型</TableCell>
+                                        <TableCell style={{ width: '180px' }}>最后更新</TableCell>
+                                        <TableCell style={{ width: '180px' }}>创建时间</TableCell>
+                                        <TableCell style={{ width: '120px' }}></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {isLoading ? (
+                                        <>
+                                            <TableRow>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Skeleton variant='text' />
+                                                </TableCell>
+                                            </TableRow>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {variables.filter(filterVariables).map((variable, index) => (
+                                                <TableRow key={index} hover>
+                                                    <TableCell scope='row'>
+                                                        <div
+                                                            style={{
+                                                                display: 'flex',
+                                                                flexDirection: 'row',
+                                                                alignItems: 'center'
+                                                            }}
+                                                        >
                                                             <div
                                                                 style={{
-                                                                    display: 'flex',
-                                                                    flexDirection: 'row',
-                                                                    alignItems: 'center'
+                                                                    width: 25,
+                                                                    height: 25,
+                                                                    marginRight: 10,
+                                                                    borderRadius: '50%'
                                                                 }}
                                                             >
-                                                                <div
+                                                                <IconVariable
                                                                     style={{
-                                                                        width: 25,
-                                                                        height: 25,
-                                                                        marginRight: 10,
-                                                                        borderRadius: '50%'
+                                                                        width: '100%',
+                                                                        height: '100%',
+                                                                        borderRadius: '50%',
+                                                                        objectFit: 'contain'
                                                                     }}
-                                                                >
-                                                                    <IconVariable
-                                                                        style={{
-                                                                            width: '100%',
-                                                                            height: '100%',
-                                                                            borderRadius: '50%',
-                                                                            objectFit: 'contain'
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                {variable.name}
+                                                                />
                                                             </div>
-                                                        </StyledTableCell>
-                                                        <StyledTableCell>{variable.value}</StyledTableCell>
-                                                        <StyledTableCell>
-                                                            <Chip
-                                                                color={variable.type === 'static' ? 'info' : 'secondary'}
-                                                                size='small'
-                                                                label={variable.type}
-                                                            />
-                                                        </StyledTableCell>
-                                                        <StyledTableCell>
-                                                            {moment(variable.updatedDate).format('MMMM Do, YYYY')}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell>
-                                                            {moment(variable.createdDate).format('MMMM Do, YYYY')}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell sx={{ textAlign: 'right' }}>
-                                                            <IconButton title='Edit' color='primary' onClick={() => edit(variable)}>
-                                                                <PiNotePencil size='1.2rem' />
-                                                            </IconButton>
-                                                            <IconButton title='Delete' onClick={() => deleteVariable(variable)}>
-                                                                <PiTrash size='1.2rem' />
-                                                            </IconButton>
-                                                        </StyledTableCell>
-                                                    </StyledTableRow>
-                                                ))}
-                                            </>
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+                                                            {variable.name}
+                                                        </div>
+                                                    </TableCell>
+                                                    <TableCell>{variable.value}</TableCell>
+                                                    <TableCell>
+                                                        <Chip
+                                                            color={variable.type === 'static' ? 'info' : 'secondary'}
+                                                            size='small'
+                                                            label={variable.type}
+                                                        />
+                                                    </TableCell>
+                                                    <TableCell>{moment(variable.updatedDate).format('MMMM Do, YYYY')}</TableCell>
+                                                    <TableCell>{moment(variable.createdDate).format('MMMM Do, YYYY')}</TableCell>
+                                                    <TableCell sx={{ textAlign: 'right' }}>
+                                                        <IconButton title='Edit' color='primary' onClick={() => edit(variable)}>
+                                                            <PiNotePencil size='1.2rem' />
+                                                        </IconButton>
+                                                        <IconButton title='Delete' onClick={() => deleteVariable(variable)}>
+                                                            <PiTrash size='1.2rem' />
+                                                        </IconButton>
+                                                    </TableCell>
+                                                </TableRow>
+                                            ))}
+                                        </>
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    )}
+                </Stack>
+            )}
             <AddEditVariableDialog
                 show={showVariableDialog}
                 dialogProps={variableDialogProps}

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { Box, Stack, Button, Skeleton } from '@mui/material'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import ItemCard from '@/ui-component/cards/ItemCard'
 import { gridSpacing } from '@/store/constant'
 import AssistantEmptySVG from '@/assets/images/assistant_empty.svg'
@@ -19,9 +18,9 @@ import assistantsApi from '@/api/assistants'
 import useApi from '@/hooks/useApi'
 
 // icons
-import { IconPlus, IconFileUpload } from '@tabler/icons-react'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import ErrorBoundary from '@/ErrorBoundary'
+import { PiPlus, PiUpload } from 'react-icons/pi'
 
 // ==============================|| CHATFLOWS ||============================== //
 
@@ -96,66 +95,54 @@ const Assistants = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader title='OpenAI Assistants'>
-                            <Button
-                                variant='outlined'
-                                onClick={loadExisting}
-                                startIcon={<IconFileUpload />}
-                                sx={{ borderRadius: 2, height: 40 }}
-                            >
-                                Load
-                            </Button>
-                            <StyledButton
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: 40 }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                            >
-                                Add
-                            </StyledButton>
-                        </ViewHeader>
-                        {isLoading ? (
-                            <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                <Skeleton variant='rounded' height={160} />
-                                <Skeleton variant='rounded' height={160} />
-                                <Skeleton variant='rounded' height={160} />
-                            </Box>
-                        ) : (
-                            <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                {getAllAssistantsApi.data &&
-                                    getAllAssistantsApi.data.map((data, index) => (
-                                        <ItemCard
-                                            data={{
-                                                name: JSON.parse(data.details)?.name,
-                                                description: JSON.parse(data.details)?.instructions,
-                                                iconSrc: data.iconSrc
-                                            }}
-                                            key={index}
-                                            onClick={() => edit(data)}
-                                        />
-                                    ))}
-                            </Box>
-                        )}
-                        {!isLoading && (!getAllAssistantsApi.data || getAllAssistantsApi.data.length === 0) && (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
-                                        src={AssistantEmptySVG}
-                                        alt='AssistantEmptySVG'
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader title='OpenAI 助手'>
+                        <Button variant='contained' onClick={loadExisting} startIcon={<PiUpload size='0.8em' />}>
+                            导入
+                        </Button>
+                        <StyledButton variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            添加
+                        </StyledButton>
+                    </ViewHeader>
+                    {isLoading ? (
+                        <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} />
+                        </Box>
+                    ) : (
+                        <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                            {getAllAssistantsApi.data &&
+                                getAllAssistantsApi.data.map((data, index) => (
+                                    <ItemCard
+                                        data={{
+                                            name: JSON.parse(data.details)?.name,
+                                            description: JSON.parse(data.details)?.instructions,
+                                            iconSrc: data.iconSrc
+                                        }}
+                                        key={index}
+                                        onClick={() => edit(data)}
                                     />
-                                </Box>
-                                <div>No Assistants Added Yet</div>
-                            </Stack>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+                                ))}
+                        </Box>
+                    )}
+                    {!isLoading && (!getAllAssistantsApi.data || getAllAssistantsApi.data.length === 0) && (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img
+                                    style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
+                                    src={AssistantEmptySVG}
+                                    alt='AssistantEmptySVG'
+                                />
+                            </Box>
+                            <div>No Assistants Added Yet</div>
+                        </Stack>
+                    )}
+                </Stack>
+            )}
             <LoadAssistantDialog
                 show={showLoadDialog}
                 dialogProps={loadDialogProps}

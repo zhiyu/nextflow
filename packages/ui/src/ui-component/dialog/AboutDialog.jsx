@@ -70,7 +70,7 @@ const AboutDialog = ({ show, onCancel }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                <TableRow>
                                     <TableCell component='th' scope='row'>
                                         {data.currentVersion}
                                     </TableCell>

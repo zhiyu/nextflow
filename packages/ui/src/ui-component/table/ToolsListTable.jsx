@@ -17,73 +17,49 @@ import {
     useTheme
 } from '@mui/material'
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
-
 export const ToolsTable = ({ data, isLoading, onSelect }) => {
-    const theme = useTheme()
-    const customization = useSelector((state) => state.customization)
-
     return (
         <>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
-                    <TableHead
-                        sx={{
-                            height: 56
-                        }}
-                    >
+                <Table sx={{ minWidth: 650 }}>
+                    <TableHead>
                         <TableRow>
-                            <StyledTableCell style={{ width: '200px' }}>名称</StyledTableCell>
-                            <StyledTableCell>描述</StyledTableCell>
-                            <StyledTableCell>&nbsp;</StyledTableCell>
+                            <TableCell style={{ width: '200px' }}>名称</TableCell>
+                            <TableCell>描述</TableCell>
+                            <TableCell>&nbsp;</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {isLoading ? (
                             <>
-                                <StyledTableRow>
-                                    <StyledTableCell>
+                                <TableRow>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                </StyledTableRow>
-                                <StyledTableRow>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                    <StyledTableCell>
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton variant='text' />
-                                    </StyledTableCell>
-                                </StyledTableRow>
+                                    </TableCell>
+                                </TableRow>
                             </>
                         ) : (
                             <>
                                 {data?.map((row, index) => (
-                                    <StyledTableRow key={index}>
-                                        <StyledTableCell sx={{ display: 'flex', alignItems: 'center', gap: 1 }} key='0'>
+                                    <TableRow key={index} hover>
+                                        <TableCell>
                                             {row.iconSrc ? (
                                                 <>
                                                     <div
@@ -124,14 +100,14 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
                                                     {row.templateName || row.name}
                                                 </Link>
                                             </Typography>
-                                        </StyledTableCell>
-                                        <StyledTableCell key='1'>
+                                        </TableCell>
+                                        <TableCell>
                                             <Typography sx={{ overflowWrap: 'break-word', whiteSpace: 'pre-line' }}>
                                                 {row.description || ''}
                                             </Typography>
-                                        </StyledTableCell>
-                                        <StyledTableCell key='3'></StyledTableCell>
-                                    </StyledTableRow>
+                                        </TableCell>
+                                        <TableCell key='3'></TableCell>
+                                    </TableRow>
                                 ))}
                             </>
                         )}

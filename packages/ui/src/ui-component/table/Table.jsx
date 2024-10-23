@@ -15,7 +15,7 @@ export const TableViewOnly = ({ columns, rows, sx }) => {
                     </TableHead>
                     <TableBody>
                         {rows.map((row, index) => (
-                            <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableRow key={index}>
                                 {Object.keys(row).map((key, index) => (
                                     <TableCell key={index}>{row[key]}</TableCell>
                                 ))}

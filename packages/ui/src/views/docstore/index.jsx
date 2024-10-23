@@ -23,27 +23,7 @@ import {
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        color: theme.palette.grey[900]
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-        height: 64
-    }
-}))
-
-const StyledTableRow = styled(TableRow)(() => ({
-    // hide last border
-    '&:last-child td, &:last-child th': {
-        border: 0
-    }
-}))
-
-// project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import DocumentStoreCard from '@/ui-component/cards/DocumentStoreCard'
-import { StyledButton } from '@/ui-component/button/StyledButton'
 import AddDocStoreDialog from '@/views/docstore/AddDocStoreDialog'
 import ErrorBoundary from '@/ErrorBoundary'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
@@ -160,7 +140,7 @@ const Documents = () => {
     }, [getAllDocumentStores.error])
 
     return (
-        <MainCard>
+        <>
             {error ? (
                 <ErrorBoundary error={error} />
             ) : (
@@ -208,33 +188,24 @@ const Documents = () => {
                     ) : (
                         <TableContainer component={Paper}>
                             <Table aria-label='documents table'>
-                                <TableHead
-                                    sx={{
-                                        height: 56
-                                    }}
-                                >
+                                <TableHead>
                                     <TableRow>
-                                        <StyledTableCell style={{ width: '40px' }}>&nbsp;</StyledTableCell>
-                                        <StyledTableCell>名称</StyledTableCell>
-                                        <StyledTableCell>描述</StyledTableCell>
-                                        <StyledTableCell style={{ width: '120px' }}>关联流程数</StyledTableCell>
-                                        <StyledTableCell style={{ width: '100px' }}>字符数</StyledTableCell>
-                                        <StyledTableCell style={{ width: '100px' }}>分块数量</StyledTableCell>
-                                        <StyledTableCell>文档类型</StyledTableCell>
+                                        <TableCell style={{ width: '40px' }}>&nbsp;</TableCell>
+                                        <TableCell>名称</TableCell>
+                                        <TableCell>描述</TableCell>
+                                        <TableCell style={{ width: '120px' }}>关联流程数</TableCell>
+                                        <TableCell style={{ width: '100px' }}>字符数</TableCell>
+                                        <TableCell style={{ width: '100px' }}>分块数量</TableCell>
+                                        <TableCell>文档类型</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {docStores?.filter(filterDocStores).map((data, index) => (
-                                        <StyledTableRow
-                                            onClick={() => goToDocumentStore(data.id)}
-                                            hover
-                                            key={index}
-                                            sx={{ cursor: 'pointer', '&:last-child td, &:last-child th': { border: 0 } }}
-                                        >
-                                            <StyledTableCell align='center'>
+                                        <TableRow onClick={() => goToDocumentStore(data.id)} hover key={index}>
+                                            <TableCell align='center'>
                                                 <DocumentStoreStatus isTableView={true} status={data.status} />
-                                            </StyledTableCell>
-                                            <StyledTableCell>
+                                            </TableCell>
+                                            <TableCell>
                                                 <Typography
                                                     sx={{
                                                         display: '-webkit-box',
@@ -246,8 +217,8 @@ const Documents = () => {
                                                 >
                                                     {data.name}
                                                 </Typography>
-                                            </StyledTableCell>
-                                            <StyledTableCell>
+                                            </TableCell>
+                                            <TableCell>
                                                 <Typography
                                                     sx={{
                                                         display: '-webkit-box',
@@ -259,11 +230,11 @@ const Documents = () => {
                                                 >
                                                     {data?.description}
                                                 </Typography>
-                                            </StyledTableCell>
-                                            <StyledTableCell>{data.whereUsed?.length ?? 0}</StyledTableCell>
-                                            <StyledTableCell>{data.totalChars}</StyledTableCell>
-                                            <StyledTableCell>{data.totalChunks}</StyledTableCell>
-                                            <StyledTableCell>
+                                            </TableCell>
+                                            <TableCell>{data.whereUsed?.length ?? 0}</TableCell>
+                                            <TableCell>{data.totalChars}</TableCell>
+                                            <TableCell>{data.totalChunks}</TableCell>
+                                            <TableCell>
                                                 {images[data.id] && (
                                                     <Box
                                                         sx={{
@@ -311,8 +282,8 @@ const Documents = () => {
                                                         )}
                                                     </Box>
                                                 )}
-                                            </StyledTableCell>
-                                        </StyledTableRow>
+                                            </TableCell>
+                                        </TableRow>
                                     ))}
                                 </TableBody>
                             </Table>
@@ -340,7 +311,7 @@ const Documents = () => {
                     onConfirm={onConfirm}
                 />
             )}
-        </MainCard>
+        </>
     )
 }
 
