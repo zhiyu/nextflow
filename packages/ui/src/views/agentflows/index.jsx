@@ -186,7 +186,7 @@ const Agentflows = () => {
                                     alt='AgentsEmptySVG'
                                 />
                             </Box>
-                            <div>No Agents Yet</div>
+                            <div>暂无数据</div>
                         </Stack>
                     )}
                 </Stack>

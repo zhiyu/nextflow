@@ -9,12 +9,8 @@ import {
     Stack,
     Badge,
     ToggleButton,
-    InputLabel,
     FormControl,
-    Select,
-    OutlinedInput,
     Checkbox,
-    ListItemText,
     Skeleton,
     FormControlLabel,
     ToggleButtonGroup,
@@ -136,7 +132,6 @@ const Marketplace = () => {
                 break
             case 'type':
                 setTypeFilter(typeof value === 'string' ? value.split(',') : value)
-
                 break
             case 'framework':
                 setFrameworkFilter(typeof value === 'string' ? value.split(',') : value)
@@ -144,6 +139,10 @@ const Marketplace = () => {
             default:
                 break
         }
+    }
+
+    useEffect(() => {
+        const data = activeTabValue === 0 ? getAllTemplatesMarketplacesApi.data : getAllCustomTemplatesApi.data
 
         var params = {
             typeFilter,
@@ -151,10 +150,8 @@ const Marketplace = () => {
             frameworkFilter,
             search
         }
-        const data = activeTabValue === 0 ? getAllTemplatesMarketplacesApi.data : getAllCustomTemplatesApi.data
-
         getEligibleUsecases(data, params)
-    }
+    }, [badgeFilter, typeFilter, frameworkFilter, search])
 
     const handleViewChange = (event, nextView) => {
         if (nextView === null) return
@@ -531,28 +528,30 @@ const Marketplace = () => {
                                     flexWrap: 'wrap'
                                 }}
                             >
-                                {usecases.map((usecase, index) => (
-                                    <FormControlLabel
-                                        key={index}
-                                        sx={{ ml: '-4px', mr: '24px' }}
-                                        control={
-                                            <Checkbox
-                                                size='small'
-                                                sx={{ p: '10px 4px' }}
-                                                disabled={eligibleUsecases.length === 0 ? true : !eligibleUsecases.includes(usecase)}
-                                                checked={selectedUsecases.includes(usecase)}
-                                                onChange={(event) => {
-                                                    setSelectedUsecases(
-                                                        event.target.checked
-                                                            ? [...selectedUsecases, usecase]
-                                                            : selectedUsecases.filter((item) => item !== usecase)
-                                                    )
-                                                }}
-                                            />
-                                        }
-                                        label={usecase}
-                                    />
-                                ))}
+                                {usecases.map((usecase, index) => {
+                                    return (
+                                        <FormControlLabel
+                                            key={index}
+                                            sx={{ ml: '-4px', mr: '24px' }}
+                                            control={
+                                                <Checkbox
+                                                    size='small'
+                                                    sx={{ p: '10px 4px' }}
+                                                    disabled={eligibleUsecases.length === 0 ? true : !eligibleUsecases.includes(usecase)}
+                                                    checked={selectedUsecases.includes(usecase)}
+                                                    onChange={(event) => {
+                                                        setSelectedUsecases(
+                                                            event.target.checked
+                                                                ? [...selectedUsecases, usecase]
+                                                                : selectedUsecases.filter((item) => item !== usecase)
+                                                        )
+                                                    }}
+                                                />
+                                            }
+                                            label={usecase}
+                                        />
+                                    )
+                                })}
 
                                 {selectedUsecases.length > 0 && (
                                     <FormControlLabel
