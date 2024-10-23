@@ -1,11 +1,10 @@
 // assets
 import {
     PiCodeDuotone,
-    PiLockDuotone,
     PiKeyDuotone,
     PiDatabaseDuotone,
     PiChatsCircleDuotone,
-    PiShoppingCartSimpleDuotone,
+    PiAppStoreLogoDuotone,
     PiRobotDuotone,
     PiHammerDuotone,
     PiFingerprintSimpleDuotone,
@@ -15,22 +14,6 @@ import {
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
 const dashboard = [
-    {
-        id: 'dashboard',
-        title: '探索',
-        caption: '',
-        type: 'group',
-        children: [
-            {
-                id: 'marketplaces',
-                title: '模版市场',
-                type: 'item',
-                url: '/marketplaces',
-                icon: PiShoppingCartSimpleDuotone,
-                breadcrumbs: true
-            }
-        ]
-    },
     {
         id: 'studio',
         title: '工作台',
@@ -46,7 +29,7 @@ const dashboard = [
             },
             {
                 id: 'chatflows',
-                title: '对话流',
+                title: '对话编排',
                 type: 'item',
                 url: '/chatflows',
                 icon: PiChatsCircleDuotone,
@@ -54,13 +37,28 @@ const dashboard = [
             },
             {
                 id: 'agentflows',
-                title: '智能体',
+                title: '智能体编排',
                 type: 'item',
                 url: '/agentflows',
                 icon: PiRobotDuotone,
                 breadcrumbs: true,
                 isBeta: false
             },
+            {
+                id: 'marketplaces',
+                title: '模板库',
+                type: 'item',
+                url: '/marketplaces',
+                icon: PiAppStoreLogoDuotone,
+                breadcrumbs: true
+            }
+        ]
+    },
+    {
+        id: 'studio2',
+        title: '知识库 & 工具',
+        type: 'group',
+        children: [
             {
                 id: 'document-stores',
                 title: '知识库',
@@ -80,7 +78,7 @@ const dashboard = [
         ]
     },
     {
-        id: 'security',
+        id: 'settings',
         title: '设置',
         type: 'group',
         children: [

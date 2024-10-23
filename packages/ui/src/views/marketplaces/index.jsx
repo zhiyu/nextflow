@@ -491,7 +491,7 @@ const Marketplace = () => {
                         onSearchChange={onSearchChange}
                         search={true}
                         searchPlaceholder='搜索...'
-                        title='模版市场'
+                        title='模版库'
                     >
                         <ToggleButtonGroup
                             sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
