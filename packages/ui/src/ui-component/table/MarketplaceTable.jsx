@@ -43,7 +43,7 @@ export const MarketplaceTable = ({
                 <Table sx={{ minWidth: 650 }} aria-label='a dense table'>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ minWidth: '150px' }} key='0'>
+                            <TableCell sx={{ minWidth: '250px' }} key='0'>
                                 名称
                             </TableCell>
                             <TableCell sx={{ minWidth: '100px' }} key='1'>

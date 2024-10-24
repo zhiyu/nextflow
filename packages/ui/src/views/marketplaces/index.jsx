@@ -48,6 +48,7 @@ import { gridSpacing } from '@/store/constant'
 import useNotifier from '@/utils/useNotifier'
 
 const badges = ['POPULAR', 'NEW']
+
 const types = {
     Chatflow: '对话编排',
     Agentflow: '智能体编排',
@@ -56,13 +57,6 @@ const types = {
 const framework = {
     Langchain: 'Lang Chain',
     LlamaIndex: 'Llama Index'
-}
-const MenuProps = {
-    PaperProps: {
-        style: {
-            width: 160
-        }
-    }
 }
 
 // ==============================|| Marketplace ||============================== //

@@ -70,7 +70,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                     名称
                                 </TableSortLabel>
                             </TableCell>
-                            <TableCell style={{ width: '200px' }} key='1'>
+                            <TableCell style={{ width: '210px' }} key='1'>
                                 标签
                             </TableCell>
                             <TableCell style={{ width: '30%' }} key='2'>
