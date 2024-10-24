@@ -49,7 +49,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 width: '100%',
                                 display: 'flex',
                                 flexDirection: 'row',
-                                alignItems: 'center',
+                                alignItems: 'start',
                                 overflow: 'hidden'
                             }}
                         >
@@ -83,70 +83,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                             {data.description || ' '}
                         </span>
                     </Box>
-                    <Grid container columnGap={2} rowGap={1}>
-                        <div
-                            style={{
-                                paddingLeft: '7px',
-                                paddingRight: '7px',
-                                paddingTop: '3px',
-                                paddingBottom: '3px',
-                                fontSize: '11px',
-                                width: 'max-content',
-                                borderRadius: '25px',
-                                boxShadow: customization.isDarkMode
-                                    ? '0 2px 14px 0 rgb(255 255 255 / 20%)'
-                                    : '0 2px 14px 0 rgb(32 40 45 / 20%)',
 
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <IconVectorBezier2 style={{ marginRight: 5 }} size={15} />
-                            {data.whereUsed?.length ?? 0} {data.whereUsed?.length <= 1 ? 'flow' : 'flows'}
-                        </div>
-                        <div
-                            style={{
-                                paddingLeft: '7px',
-                                paddingRight: '7px',
-                                paddingTop: '3px',
-                                paddingBottom: '3px',
-                                fontSize: '11px',
-                                width: 'max-content',
-                                borderRadius: '25px',
-                                boxShadow: customization.isDarkMode
-                                    ? '0 2px 14px 0 rgb(255 255 255 / 20%)'
-                                    : '0 2px 14px 0 rgb(32 40 45 / 20%)',
-
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <IconLanguage style={{ marginRight: 5 }} size={15} />
-                            {kFormatter(data.totalChars ?? 0)} chars
-                        </div>
-                        <div
-                            style={{
-                                paddingLeft: '7px',
-                                paddingRight: '7px',
-                                paddingTop: '3px',
-                                paddingBottom: '3px',
-                                fontSize: '11px',
-                                width: 'max-content',
-                                borderRadius: '25px',
-                                boxShadow: customization.isDarkMode
-                                    ? '0 2px 14px 0 rgb(255 255 255 / 20%)'
-                                    : '0 2px 14px 0 rgb(32 40 45 / 20%)',
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <IconScissors style={{ marginRight: 5 }} size={15} />
-                            {kFormatter(data.totalChunks ?? 0)} chunks
-                        </div>
-                    </Grid>
                     {images && images.length > 0 && (
                         <Box
                             sx={{
@@ -178,6 +115,53 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                             )}
                         </Box>
                     )}
+                    <Grid container columnGap={1} rowGap={1}>
+                        <div
+                            style={{
+                                padding: '3px 10px',
+                                fontSize: '11px',
+                                width: 'max-content',
+                                borderRadius: '2px',
+                                background: theme.palette.primary.light,
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <IconVectorBezier2 style={{ marginRight: 5 }} size={10} />
+                            {data.whereUsed?.length ?? 0} {data.whereUsed?.length <= 1 ? 'flow' : 'flows'}
+                        </div>
+                        <div
+                            style={{
+                                padding: '3px 10px',
+                                fontSize: '11px',
+                                width: 'max-content',
+                                borderRadius: '2px',
+                                background: theme.palette.primary.light,
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <IconLanguage style={{ marginRight: 5 }} size={10} />
+                            {kFormatter(data.totalChars ?? 0)} chars
+                        </div>
+                        <div
+                            style={{
+                                padding: '3px 10px',
+                                fontSize: '11px',
+                                width: 'max-content',
+                                borderRadius: '2px',
+                                background: theme.palette.primary.light,
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <IconScissors style={{ marginRight: 5 }} size={10} />
+                            {kFormatter(data.totalChunks ?? 0)} chunks
+                        </div>
+                    </Grid>
                 </Grid>
             </Box>
         </CardWrapper>

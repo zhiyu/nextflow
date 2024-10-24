@@ -20,7 +20,8 @@ import {
     MenuItem,
     Divider,
     Button,
-    Skeleton
+    Skeleton,
+    Link
 } from '@mui/material'
 import { alpha, styled, useTheme } from '@mui/material/styles'
 
@@ -397,24 +398,18 @@ const DocumentStoreDetails = () => {
                                     alignItems: 'center'
                                 }}
                             >
-                                <IconVectorBezier2 style={{ marginRight: 5 }} size={17} />
-                                Chatflows Used:
+                                <IconVectorBezier2 style={{ marginRight: 5 }} size={14} />
+                                关联的流程：
+                                {getSpecificDocumentStore.data.whereUsed.map((chatflowUsed, index) => (
+                                    <Link
+                                        onClick={() => navigate('/canvas/' + chatflowUsed.id)}
+                                        sx={{ textAlign: 'left' }}
+                                        style={{ cursor: 'pointer', color: '#2196f3', textDecoration: 'none' }}
+                                    >
+                                        {chatflowUsed.name}
+                                    </Link>
+                                ))}
                             </div>
-                            {getSpecificDocumentStore.data.whereUsed.map((chatflowUsed, index) => (
-                                <Chip
-                                    key={index}
-                                    clickable
-                                    style={{
-                                        width: 'max-content',
-                                        borderRadius: '25px',
-                                        boxShadow: customization.isDarkMode
-                                            ? '0 2px 14px 0 rgb(255 255 255 / 10%)'
-                                            : '0 2px 14px 0 rgb(32 40 45 / 10%)'
-                                    }}
-                                    label={chatflowUsed.name}
-                                    onClick={() => navigate('/canvas/' + chatflowUsed.id)}
-                                ></Chip>
-                            ))}
                         </Stack>
                     )}
                     {!isLoading && documentStore && !documentStore?.loaders?.length ? (
@@ -601,10 +596,10 @@ function LoaderRow(props) {
                 <TableCell onClick={props.onViewChunksClick}>{props.loader.splitterName ?? 'None'}</TableCell>
                 <TableCell onClick={props.onViewChunksClick}>{formatSources(props.loader.source)}</TableCell>
                 <TableCell onClick={props.onViewChunksClick}>
-                    {props.loader.totalChunks && <Chip variant='outlined' size='small' label={props.loader.totalChunks.toLocaleString()} />}
+                    {props.loader.totalChunks && <>{props.loader.totalChunks.toLocaleString()}</>}
                 </TableCell>
                 <TableCell onClick={props.onViewChunksClick}>
-                    {props.loader.totalChars && <Chip variant='outlined' size='small' label={props.loader.totalChars.toLocaleString()} />}
+                    {props.loader.totalChars && <>{props.loader.totalChars.toLocaleString()}</>}
                 </TableCell>
                 <TableCell>
                     <div>

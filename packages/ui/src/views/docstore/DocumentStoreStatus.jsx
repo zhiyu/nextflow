@@ -13,7 +13,7 @@ const DocumentStoreStatus = ({ status, isTableView }) => {
                     ? [theme.palette.grey[400], theme.palette.grey[600], theme.palette.grey[700]]
                     : [theme.palette.grey[300], theme.palette.grey[500], theme.palette.grey[700]]
             case 'EMPTY':
-                return ['#673ab7', '#673ab7', '#673ab7']
+                return ['#aaaaaa', '#aaaaaa', '#aaaaaa']
             case 'SYNCING':
             case 'UPSERTING':
                 return ['#fff8e1', '#ffe57f', '#ffc107']
@@ -38,10 +38,6 @@ const DocumentStoreStatus = ({ status, isTableView }) => {
                         flexDirection: 'row',
                         alignContent: 'center',
                         alignItems: 'center',
-                        background: status === 'EMPTY' ? 'transparent' : getColor(status)[0],
-                        border: status === 'EMPTY' ? '1px solid' : 'none',
-                        borderColor: status === 'EMPTY' ? getColor(status)[0] : 'transparent',
-                        borderRadius: '25px',
                         paddingTop: '3px',
                         paddingBottom: '3px',
                         paddingLeft: '10px',

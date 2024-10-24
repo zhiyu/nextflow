@@ -93,7 +93,7 @@ const MainLayout = () => {
             <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
 
             {/* main content */}
-            <Main theme={theme} open={leftDrawerOpened}>
+            <Main theme={theme} open={leftDrawerOpened} sx={{ borderRadius: 0 }}>
                 <Outlet />
             </Main>
         </Box>

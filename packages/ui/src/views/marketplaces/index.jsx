@@ -502,7 +502,7 @@ const Marketplace = () => {
                         </Tabs> */}
                     <TabPanel value={activeTabValue} index={0}>
                         {isLoading ? (
-                            <Box display='grid' sx={{ mb: 2 }}>
+                            <Box display='grid' sx={{ mb: 2, mt: 1 }}>
                                 <Skeleton variant='rounded' height={160} />
                             </Box>
                         ) : (
@@ -514,6 +514,7 @@ const Marketplace = () => {
                                     borderRadius: 1,
                                     gap: 0,
                                     mb: 3,
+                                    mt: 1,
                                     p: 2,
                                     alignItems: 'center',
                                     flexWrap: 'wrap'
