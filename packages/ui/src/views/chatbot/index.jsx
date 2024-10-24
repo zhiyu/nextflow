@@ -115,6 +115,7 @@ const ChatbotFull = () => {
         company: '紫金诚',
         companyLink: 'https://zijin.ai'
     }
+    console.log(chatbotTheme)
     return (
         <>
             {!isLoading ? (

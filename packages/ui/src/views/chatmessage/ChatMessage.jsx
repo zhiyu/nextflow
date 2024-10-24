@@ -167,7 +167,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState([
         {
-            message: 'Hi there! How can I help?',
+            message: '你好，有什么可以帮忙的吗?',
             type: 'apiMessage'
         }
     ])
@@ -1057,7 +1057,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
             setLoading(false)
             setMessages([
                 {
-                    message: 'Hi there! How can I help?',
+                    message: '你好，有什么可以帮忙的吗?',
                     type: 'apiMessage'
                 }
             ])
