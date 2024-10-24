@@ -135,7 +135,7 @@ const Chatflows = () => {
                             对话流
                         </Link>
                     </Breadcrumbs> */}
-                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='对话流'>
+                    <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='对话编排'>
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             创建对话
                         </Button>

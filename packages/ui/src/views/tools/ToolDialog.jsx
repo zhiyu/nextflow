@@ -415,7 +415,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
             aria-labelledby='alert-dialog-title'
             aria-describedby='alert-dialog-description'
         >
-            <DialogTitle sx={{ fontSize: '1rem', p: 3, pb: 0 }} id='alert-dialog-title'>
+            <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                     {dialogProps.title}
                     <Box>
@@ -519,7 +519,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                     </Box>
                 </Box>
             </DialogContent>
-            <DialogActions sx={{ p: 3 }}>
+            <DialogActions>
                 {dialogProps.type === 'EDIT' && (
                     <StyledButton color='error' variant='text' onClick={() => deleteTool()}>
                         删除

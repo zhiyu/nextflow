@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import dotenv from 'dotenv'
+import tailwindcss from 'tailwindcss'
 
 export default defineConfig(async ({ mode }) => {
     let proxy = undefined
@@ -28,6 +29,11 @@ export default defineConfig(async ({ mode }) => {
         resolve: {
             alias: {
                 '@': resolve(__dirname, 'src')
+            }
+        },
+        css: {
+            postcss: {
+                plugins: [tailwindcss()]
             }
         },
         root: resolve(__dirname),

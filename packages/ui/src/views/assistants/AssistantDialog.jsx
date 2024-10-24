@@ -686,7 +686,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                OpenAI Credential
+                                OpenAI 访问凭证
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -705,7 +705,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                Assistant Model
+                                模型
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -719,7 +719,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Name</Typography>
+                            <Typography variant='overline'>助手名称</Typography>
                             <TooltipWithParser title={'The name of the assistant. The maximum length is 256 characters.'} />
                         </Stack>
                         <OutlinedInput
@@ -735,7 +735,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Description</Typography>
+                            <Typography variant='overline'>描述</Typography>
                             <TooltipWithParser title={'The description of the assistant. The maximum length is 512 characters.'} />
                         </Stack>
                         <OutlinedInput
@@ -753,7 +753,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
-                            <Typography variant='overline'>Assistant Icon Src</Typography>
+                            <Typography variant='overline'>头像</Typography>
                         </Stack>
                         <div
                             style={{
@@ -788,7 +788,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Instruction</Typography>
+                            <Typography variant='overline'>助手头像</Typography>
                             <TooltipWithParser
                                 title={'The system instructions that the assistant uses. The maximum length is 32768 characters.'}
                             />
@@ -808,7 +808,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Temperature</Typography>
+                            <Typography variant='overline'>Temperature</Typography>
                             <TooltipWithParser
                                 title={
                                     'Controls randomness: Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive.'
@@ -827,7 +827,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Top P</Typography>
+                            <Typography variant='overline'>Top P</Typography>
                             <TooltipWithParser
                                 title={
                                     'Controls diversity via nucleus sampling: 0.5 means half of all likelihood-weighted options are considered.'
@@ -1018,18 +1018,18 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             </DialogContent>
             <DialogActions sx={{ p: 3, pt: 0 }}>
                 {dialogProps.type === 'EDIT' && (
-                    <StyledButton color='primary' variant='contained' onClick={() => onSyncClick()}>
-                        Sync
+                    <StyledButton color='primary' variant='text' onClick={() => onSyncClick()}>
+                        同步
                     </StyledButton>
                 )}
                 {dialogProps.type === 'EDIT' && (
-                    <StyledButton color='error' variant='contained' onClick={() => onDeleteClick()}>
-                        Delete
+                    <StyledButton color='error' variant='text' onClick={() => onDeleteClick()}>
+                        删除
                     </StyledButton>
                 )}
                 <StyledButton
                     disabled={!(assistantModel && assistantCredential)}
-                    variant='contained'
+                    variant='text'
                     onClick={() => (dialogProps.type === 'ADD' ? addNewAssistant() : saveAssistant())}
                 >
                     {dialogProps.confirmButtonName}

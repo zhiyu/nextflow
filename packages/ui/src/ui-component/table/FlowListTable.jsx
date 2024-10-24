@@ -71,7 +71,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                 </TableSortLabel>
                             </TableCell>
                             <TableCell style={{ width: '200px' }} key='1'>
-                                分类
+                                标签
                             </TableCell>
                             <TableCell style={{ width: '30%' }} key='2'>
                                 节点
