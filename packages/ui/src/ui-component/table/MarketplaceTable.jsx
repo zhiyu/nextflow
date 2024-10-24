@@ -1,7 +1,4 @@
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
-import { styled } from '@mui/material/styles'
-import { tableCellClasses } from '@mui/material/TableCell'
 import {
     Button,
     Chip,
@@ -43,27 +40,26 @@ export const MarketplaceTable = ({
     return (
         <>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
+                <Table sx={{ minWidth: 650 }} aria-label='a dense table'>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ minWidth: '150px' }} component='th' scope='row' key='0'>
+                            <TableCell sx={{ minWidth: '150px' }} key='0'>
                                 名称
                             </TableCell>
-                            <TableCell sx={{ minWidth: '100px' }} component='th' scope='row' key='1'>
+                            <TableCell sx={{ minWidth: '100px' }} key='1'>
                                 类型
                             </TableCell>
-                            <TableCell key='2'>描述</TableCell>
                             <TableCell sx={{ minWidth: '100px' }} key='3'>
                                 框架
                             </TableCell>
                             <TableCell sx={{ minWidth: '100px' }} key='4'>
                                 使用场景
                             </TableCell>
-                            <TableCell key='5'>节点</TableCell>
-                            <TableCell component='th' scope='row' key='6'>
-                                &nbsp;
-                            </TableCell>
-                            {onDelete && <TableCell component='th' scope='row' key='7'></TableCell>}
+                            <TableCell key='2'>描述</TableCell>
+
+                            {/* <TableCell key='5'>节点</TableCell> */}
+                            {/* <TableCell key='6'>&nbsp;</TableCell> */}
+                            {onDelete && <TableCell key='7'></TableCell>}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -85,12 +81,12 @@ export const MarketplaceTable = ({
                                     <TableCell>
                                         <Skeleton variant='text' />
                                     </TableCell>
-                                    <TableCell>
+                                    {/* <TableCell>
                                         <Skeleton variant='text' />
-                                    </TableCell>
-                                    <TableCell>
+                                    </TableCell> */}
+                                    {/* <TableCell>
                                         <Skeleton variant='text' />
-                                    </TableCell>
+                                    </TableCell> */}
                                     {onDelete && (
                                         <TableCell>
                                             <Skeleton variant='text' />
@@ -113,12 +109,12 @@ export const MarketplaceTable = ({
                                     <TableCell>
                                         <Skeleton variant='text' />
                                     </TableCell>
-                                    <TableCell>
+                                    {/* <TableCell>
                                         <Skeleton variant='text' />
-                                    </TableCell>
-                                    <TableCell>
+                                    </TableCell> */}
+                                    {/* <TableCell>
                                         <Skeleton variant='text' />
-                                    </TableCell>
+                                    </TableCell> */}
                                     {onDelete && (
                                         <TableCell>
                                             <Skeleton variant='text' />
@@ -156,11 +152,6 @@ export const MarketplaceTable = ({
                                             <TableCell key='1'>
                                                 <Typography>{row.type}</Typography>
                                             </TableCell>
-                                            <TableCell key='2'>
-                                                <Typography sx={{ overflowWrap: 'break-word', whiteSpace: 'pre-line' }}>
-                                                    {row.description || ''}
-                                                </Typography>
-                                            </TableCell>
                                             <TableCell key='3'>
                                                 <Stack flexDirection='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
                                                     {row.framework &&
@@ -191,7 +182,13 @@ export const MarketplaceTable = ({
                                                         ))}
                                                 </Stack>
                                             </TableCell>
-                                            <TableCell key='5'>
+                                            <TableCell key='2'>
+                                                <Typography sx={{ overflowWrap: 'break-word', whiteSpace: 'pre-line' }}>
+                                                    {row.description || ''}
+                                                </Typography>
+                                            </TableCell>
+
+                                            {/* <TableCell key='5'>
                                                 <Stack flexDirection='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
                                                     {row.categories &&
                                                         row.categories.map((tag, index) => (
@@ -204,8 +201,8 @@ export const MarketplaceTable = ({
                                                             />
                                                         ))}
                                                 </Stack>
-                                            </TableCell>
-                                            <TableCell key='6'>
+                                            </TableCell> */}
+                                            {/* <TableCell key='6'>
                                                 <Typography>
                                                     {row.badge &&
                                                         row.badge
@@ -220,7 +217,7 @@ export const MarketplaceTable = ({
                                                                 />
                                                             ))}
                                                 </Typography>
-                                            </TableCell>
+                                            </TableCell> */}
                                             {onDelete && (
                                                 <TableCell key='7'>
                                                     <IconButton title='Delete' color='error' onClick={() => onDelete(row)}>

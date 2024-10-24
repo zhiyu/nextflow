@@ -65,7 +65,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                 <Table sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>
-                            <TableCell component='th' scope='row' key='0'>
+                            <TableCell scope='row' key='0'>
                                 <TableSortLabel active={orderBy === 'name'} direction={order} onClick={() => handleRequestSort('name')}>
                                     名称
                                 </TableSortLabel>

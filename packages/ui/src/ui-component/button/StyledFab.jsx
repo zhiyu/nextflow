@@ -3,9 +3,9 @@ import { Fab } from '@mui/material'
 
 export const StyledFab = styled(Fab)(({ theme, color = 'primary' }) => ({
     color: theme.palette.grey[100],
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.main,
     '&:hover': {
         color: theme.palette.grey[100],
-        backgroundColor: theme.palette.secondary.main
+        backgroundColor: theme.palette.primary.dark
     }
 }))

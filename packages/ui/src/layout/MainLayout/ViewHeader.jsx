@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles'
 import { StyledFab } from '@/ui-component/button/StyledFab'
 
 // icons
-import { IconSearch, IconArrowLeft, IconEdit } from '@tabler/icons-react'
+import { PiArrowLeftLight, PiNotePencilLight, PiMagnifyingGlassLight } from 'react-icons/pi'
 
 const ViewHeader = ({
     children,
@@ -37,7 +37,7 @@ const ViewHeader = ({
                 <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
                     {isBackButton && (
                         <StyledFab sx={{ mr: 3 }} size='small' color='primary' aria-label='back' title='Back' onClick={onBack}>
-                            <IconArrowLeft />
+                            <PiArrowLeftLight size='1.5rem' />
                         </StyledFab>
                     )}
                     <Box sx={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
@@ -77,8 +77,8 @@ const ViewHeader = ({
                         )}
                     </Box>
                     {isEditButton && (
-                        <IconButton sx={{ ml: 3 }} color='primary' title='Edit' onClick={onEdit}>
-                            <IconEdit />
+                        <IconButton sx={{ ml: 3 }} title='Edit' onClick={onEdit}>
+                            <PiNotePencilLight />
                         </IconButton>
                     )}
                 </Box>
@@ -109,7 +109,7 @@ const ViewHeader = ({
                                         mr: 1
                                     }}
                                 >
-                                    <IconSearch style={{ color: 'inherit', width: 16, height: 16 }} />
+                                    <PiMagnifyingGlassLight style={{ color: 'inherit', width: 16, height: 16 }} />
                                 </Box>
                             }
                             type='search'

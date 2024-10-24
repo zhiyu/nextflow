@@ -25,7 +25,6 @@ import { IconX } from '@tabler/icons-react'
 
 import { PiGridFour, PiListDashes, PiX } from 'react-icons/pi'
 
-import MainCard from '@/ui-component/cards/MainCard'
 import ItemCard from '@/ui-component/cards/ItemCard'
 import WorkflowEmptySVG from '@/assets/images/workflow_empty.svg'
 import ToolDialog from '@/views/tools/ToolDialog'
@@ -65,12 +64,7 @@ const MenuProps = {
         }
     }
 }
-const SelectStyles = {
-    height: '36px',
-    '& .MuiOutlinedInput-notchedOutline': {
-        borderRadius: '4px'
-    }
-}
+
 // ==============================|| Marketplace ||============================== //
 
 const Marketplace = () => {
