@@ -36,7 +36,7 @@ import {
     PiFloppyDiskBackDuotone,
     PiGearSixDuotone,
     PiPencil,
-    PiPencilDuotone,
+    PiNotePencilLight,
     PiX
 } from 'react-icons/pi'
 
@@ -301,10 +301,9 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                                     color: theme.palette.primary.main
                                                 }
                                             }}
-                                            color='inherit'
                                             onClick={() => setEditingFlowName(true)}
                                         >
-                                            <PiPencilDuotone size='1rem' />
+                                            <PiNotePencilLight size='1rem' />
                                         </Avatar>
                                     </ButtonBase>
                                 )}

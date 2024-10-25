@@ -77,7 +77,22 @@ const ViewHeader = ({
                         )}
                     </Box>
                     {isEditButton && (
-                        <IconButton sx={{ ml: 3 }} title='Edit' onClick={onEdit}>
+                        <IconButton
+                            sx={{
+                                ...theme.typography.commonAvatar,
+                                ...theme.typography.mediumAvatar,
+                                transition: 'all .2s ease-in-out',
+                                ml: 1,
+                                background: 'none',
+                                color: theme.palette.grey[700],
+                                '&:hover': {
+                                    background: theme.palette.primary.light,
+                                    color: theme.palette.primary.main
+                                }
+                            }}
+                            title='Edit'
+                            onClick={onEdit}
+                        >
                             <PiNotePencilLight />
                         </IconButton>
                     )}
