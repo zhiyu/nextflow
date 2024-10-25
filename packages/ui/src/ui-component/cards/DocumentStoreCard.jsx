@@ -118,23 +118,21 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                     <Grid container columnGap={1} rowGap={1}>
                         <div
                             style={{
-                                padding: '3px 10px',
-                                fontSize: '11px',
+                                padding: '5px 10px',
                                 width: 'max-content',
                                 borderRadius: '2px',
-                                background: theme.palette.primary.light,
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
+                                background: theme.palette.primary.light
                             }}
+                            className='flex items-center '
                         >
-                            <IconVectorBezier2 style={{ marginRight: 5 }} size={10} />
-                            {data.whereUsed?.length ?? 0} {data.whereUsed?.length <= 1 ? 'flow' : 'flows'}
+                            <IconVectorBezier2 style={{ marginRight: 5 }} size={14} />
+                            <span>
+                                {data.whereUsed?.length ?? 0} {data.whereUsed?.length <= 1 ? 'flow' : 'flows'}
+                            </span>
                         </div>
                         <div
                             style={{
                                 padding: '3px 10px',
-                                fontSize: '11px',
                                 width: 'max-content',
                                 borderRadius: '2px',
                                 background: theme.palette.primary.light,
@@ -143,13 +141,12 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 alignItems: 'center'
                             }}
                         >
-                            <IconLanguage style={{ marginRight: 5 }} size={10} />
+                            <IconLanguage style={{ marginRight: 5 }} size={14} />
                             {kFormatter(data.totalChars ?? 0)} chars
                         </div>
                         <div
                             style={{
                                 padding: '3px 10px',
-                                fontSize: '11px',
                                 width: 'max-content',
                                 borderRadius: '2px',
                                 background: theme.palette.primary.light,
@@ -158,7 +155,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 alignItems: 'center'
                             }}
                         >
-                            <IconScissors style={{ marginRight: 5 }} size={10} />
+                            <IconScissors style={{ marginRight: 5 }} size={14} />
                             {kFormatter(data.totalChunks ?? 0)} chunks
                         </div>
                     </Grid>
