@@ -16,8 +16,6 @@ import { SET_MENU } from '@/store/actions'
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
     ...theme.typography.mainContent,
     ...(!open && {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
         transition: theme.transitions.create('all', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
@@ -46,8 +44,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
         }),
         marginLeft: 0,
         marginRight: 0,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
         width: `calc(100% - ${drawerWidth}px)`
     })
 }))
@@ -80,20 +76,20 @@ const MainLayout = () => {
                 color='inherit'
                 elevation={0}
                 sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: 'transparent',
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
                 }}
             >
-                <Toolbar sx={{ height: `${headerHeight}px`, borderBottom: '1px solid', borderColor: theme.palette.primary[200] + 75 }}>
-                    <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
+                <Toolbar sx={{ height: `${headerHeight}px`, position: 'relative', zIndex: -1 }}>
+                    <Header handleLeftDrawerToggle={handleLeftDrawerToggle} drawerOpen={leftDrawerOpened} />
                 </Toolbar>
             </AppBar>
 
             {/* drawer */}
-            <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
+            <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} className='relative shadow-main' />
 
             {/* main content */}
-            <Main theme={theme} open={leftDrawerOpened} sx={{ borderRadius: 0 }}>
+            <Main theme={theme} open={leftDrawerOpened} sx={{ borderRadius: 0, zIndex: 999 }} className='relative shadow-main'>
                 <Outlet />
             </Main>
         </Box>

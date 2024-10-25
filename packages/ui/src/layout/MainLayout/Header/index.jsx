@@ -14,7 +14,7 @@ import NavBar from './NavBar'
 import ProfileSection from './ProfileSection'
 
 // assets
-import { PiList, PiMoon, PiSun } from 'react-icons/pi'
+import { PiArrowLineLeftThin, PiArrowLineRightThin, PiMoon, PiSun } from 'react-icons/pi'
 
 // store
 import { SET_DARKMODE } from '@/store/actions'
@@ -27,7 +27,7 @@ const ModeButton = styled(IconButton)(({ theme }) => ({
     height: 32
 }))
 
-const Header = ({ handleLeftDrawerToggle }) => {
+const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
     const theme = useTheme()
     const navigate = useNavigate()
 
@@ -86,7 +86,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
                         onClick={handleLeftDrawerToggle}
                         color='inherit'
                     >
-                        <PiList size='1.2rem' />
+                        {drawerOpen && <PiArrowLineLeftThin size='1.2rem' />}
+                        {!drawerOpen && <PiArrowLineRightThin size='1.2rem' />}
                     </Avatar>
                 </ButtonBase>
             </Box>
@@ -115,7 +116,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
 }
 
 Header.propTypes = {
-    handleLeftDrawerToggle: PropTypes.func
+    handleLeftDrawerToggle: PropTypes.func,
+    drawerOpen: PropTypes.bool
 }
 
 export default Header

@@ -33,13 +33,14 @@ export const theme = (customization) => {
               colors: colors,
               heading: colors.grey900,
               paper: colors.paper,
-              backgroundDefault: colors.paper,
+              //   backgroundDefault: colors.paper,
+              backgroundDefault: 'rgb(232 234 236)',
               background: colors.primaryLight,
               darkTextPrimary: colors.grey700,
               darkTextSecondary: colors.grey500,
               textDark: colors.grey900,
               menuSelected: colors.primaryMain,
-              menuSelectedBack: colors.primaryLight,
+              menuSelectedBack: 'rgb(247,247,247)',
               divider: colors.grey200,
               customization
           }

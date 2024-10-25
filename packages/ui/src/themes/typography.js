@@ -87,14 +87,14 @@ export default function themeTypography(theme) {
             }
         },
         mainContent: {
-            backgroundColor: theme.customization.isDarkMode ? theme.colors.darkBackground : '#f6f6f9',
+            backgroundColor: theme.customization.isDarkMode ? theme.colors.darkBackground : 'rgb(247,247,247)',
             width: '100%',
             minHeight: 'calc(100vh - 55px)',
             flexGrow: 1,
-            padding: '20px',
+            padding: '10px 20px',
             marginTop: '55px',
-            marginRight: '20px',
-            borderRadius: `${theme?.customization?.borderRadius}px`
+            borderRadius: '8px !important',
+            borderBottomRightRadius: '0px !important'
         },
         menuCaption: {
             fontSize: '0.875rem',

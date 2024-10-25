@@ -512,7 +512,6 @@ const Marketplace = () => {
                                 direction='row'
                                 sx={{
                                     background: theme.palette.card.main,
-                                    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
                                     borderRadius: 1,
                                     gap: 0,
                                     mb: 3,

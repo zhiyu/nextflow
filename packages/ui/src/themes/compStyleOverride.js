@@ -4,8 +4,8 @@ export default function componentStyleOverrides(theme) {
         MuiAppBar: {
             styleOverrides: {
                 root: {
-                    boxShadow: 'none',
-                    borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
+                    boxShadow: 'none'
+                    // borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
                 }
             }
         },
@@ -26,7 +26,7 @@ export default function componentStyleOverrides(theme) {
         MuiTableContainer: {
             styleOverrides: {
                 root: {
-                    boxShadow: '1px 1px 6px rgba(33, 33, 52, 0.1)',
+                    boxShadow: '0px 0px 0px rgba(33, 33, 52, 0.1)',
                     padding: '0px 16px',
                     'th,td': {
                         borderBottom: '1px solid ' + theme.divider
@@ -49,8 +49,10 @@ export default function componentStyleOverrides(theme) {
                     color: theme.darkTextPrimary,
                     paddingTop: '10px',
                     paddingBottom: '10px',
+                    borderLeft: '2px solid transparent',
                     '&.Mui-selected': {
                         color: theme.menuSelected,
+                        borderLeft: '2px solid ' + theme.menuSelected,
                         backgroundColor: theme.menuSelectedBack,
                         '&:hover': {
                             backgroundColor: theme.menuSelectedBack

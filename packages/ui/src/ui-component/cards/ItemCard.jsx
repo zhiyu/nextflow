@@ -13,7 +13,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
+    boxShadow: '0px 0px 0px rgba(33, 33, 52, 0.1)',
     border: 'none !important',
     borderRadius: '4px !important',
     cursor: 'pointer',
