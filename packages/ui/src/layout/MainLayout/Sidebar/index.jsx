@@ -58,14 +58,10 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             component='nav'
             sx={{
                 flexShrink: { md: 0 },
-                position: 'relative',
-                top: `${headerHeight + 1}px`,
                 width: matchUpMd ? drawerWidth : 'auto'
             }}
-            aria-label='mailbox folders'
         >
-            {drawer}
-            {/* <Drawer
+            <Drawer
                 container={container}
                 variant={matchUpMd ? 'persistent' : 'temporary'}
                 anchor='left'
@@ -74,7 +70,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                 sx={{
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
-                        background: 'transparent',
+                        background: theme.palette.background.default,
                         color: theme.palette.text.primary,
                         [theme.breakpoints.up('md')]: {
                             top: `${headerHeight + 1}px`
@@ -87,7 +83,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                 color='inherit'
             >
                 {drawer}
-            </Drawer> */}
+            </Drawer>
         </Box>
     )
 }
