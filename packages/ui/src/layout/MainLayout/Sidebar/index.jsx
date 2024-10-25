@@ -40,7 +40,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                         paddingRight: '0px'
                     }}
                 >
-                    <MenuList />
+                    <MenuList drawerOpen={drawerOpen} />
                 </PerfectScrollbar>
             </BrowserView>
             <MobileView>
@@ -58,11 +58,14 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             component='nav'
             sx={{
                 flexShrink: { md: 0 },
+                position: 'relative',
+                top: `${headerHeight + 1}px`,
                 width: matchUpMd ? drawerWidth : 'auto'
             }}
             aria-label='mailbox folders'
         >
-            <Drawer
+            {drawer}
+            {/* <Drawer
                 container={container}
                 variant={matchUpMd ? 'persistent' : 'temporary'}
                 anchor='left'
@@ -84,7 +87,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                 color='inherit'
             >
                 {drawer}
-            </Drawer>
+            </Drawer> */}
         </Box>
     )
 }

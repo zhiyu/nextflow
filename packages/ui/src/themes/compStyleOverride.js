@@ -49,10 +49,10 @@ export default function componentStyleOverrides(theme) {
                     color: theme.darkTextPrimary,
                     paddingTop: '10px',
                     paddingBottom: '10px',
-                    borderLeft: '2px solid transparent',
+                    // borderLeft: '2px solid transparent',
                     '&.Mui-selected': {
                         color: theme.menuSelected,
-                        borderLeft: '2px solid ' + theme.menuSelected,
+                        borderRight: '2px solid ' + theme.menuSelected,
                         backgroundColor: theme.menuSelectedBack,
                         '&:hover': {
                             backgroundColor: theme.menuSelectedBack
@@ -81,6 +81,11 @@ export default function componentStyleOverrides(theme) {
         },
         MuiListItemText: {
             styleOverrides: {
+                root: {
+                    '.MuiTypography-root': {
+                        // fontWeight: '400'
+                    }
+                },
                 primary: {
                     color: theme.textDark
                 }

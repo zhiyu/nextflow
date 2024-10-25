@@ -7,7 +7,7 @@ import menuItems from '@/menu-items'
 
 // ==============================|| SIDEBAR MENU LIST ||============================== //
 
-const MenuList = () => {
+const MenuList = ({ drawerOpen }) => {
     const navItems = menuItems.items.map((item) => {
         return <NavGroup key={item.id} item={item} />
     })

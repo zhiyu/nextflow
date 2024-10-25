@@ -37,7 +37,7 @@ const ViewHeader = ({
                 <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
                     {isBackButton && (
                         <StyledFab sx={{ mr: 3 }} size='small' color='primary' aria-label='back' title='Back' onClick={onBack}>
-                            <PiArrowLeftLight size='1.5rem' />
+                            <PiArrowLeftLight size='1.2rem' />
                         </StyledFab>
                     )}
                     <Box sx={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
