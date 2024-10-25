@@ -17,14 +17,10 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0px 1px 4px rgba(33, 33, 52, 0.1)',
+    boxShadow: '0px 0px 0px rgba(33, 33, 52, 0.1)',
     border: 'none !important',
     borderRadius: '4px !important',
     cursor: 'pointer',
-    '&:hover': {
-        background: theme.palette.card.hover,
-        boxShadow: '0 2px 14px 0 rgb(32 40 45 / 20%)'
-    },
     height: '100%',
     minHeight: '160px',
     maxHeight: '300px',
@@ -33,14 +29,17 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     whiteSpace: 'pre-line'
 }))
 
-// ===========================|| DOC STORE CARD ||=========================== //
-
 const DocumentStoreCard = ({ data, images, onClick }) => {
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
 
     return (
-        <CardWrapper content={false} onClick={onClick} sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}>
+        <CardWrapper
+            className='hover:shadow-lg'
+            content={false}
+            onClick={onClick}
+            sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
+        >
             <Box sx={{ height: '100%', p: 2.25 }} onClick={onClick}>
                 <Grid container justifyContent='space-between' direction='column' sx={{ height: '100%' }} gap={2}>
                     <Box display='flex' flexDirection='column' sx={{ flex: 1, width: '100%' }}>
