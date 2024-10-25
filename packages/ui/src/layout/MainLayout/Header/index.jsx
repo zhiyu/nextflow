@@ -14,7 +14,7 @@ import NavBar from './NavBar'
 import ProfileSection from './ProfileSection'
 
 // assets
-import { PiListDuotone, PiMoon, PiSun } from 'react-icons/pi'
+import { PiList, PiMoon, PiSun } from 'react-icons/pi'
 
 // store
 import { SET_DARKMODE } from '@/store/actions'
@@ -86,7 +86,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                         onClick={handleLeftDrawerToggle}
                         color='inherit'
                     >
-                        <PiListDuotone size='1.2rem' />
+                        <PiList size='1.2rem' />
                     </Avatar>
                 </ButtonBase>
             </Box>

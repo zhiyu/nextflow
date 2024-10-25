@@ -1,7 +1,7 @@
 import { useTheme } from '@mui/material/styles'
 import { useSelector } from 'react-redux'
 
-import { PiInfinityDuotone } from 'react-icons/pi'
+import { PiInfinity } from 'react-icons/pi'
 
 // ==============================|| LOGO ||============================== //
 
@@ -20,9 +20,7 @@ const Logo = () => {
                 flexDirection: 'row'
             }}
         >
-            <PiInfinityDuotone
-                style={{ width: '36px', height: '36px', color: customization.isDarkMode ? '' : theme.palette.primary.main }}
-            />
+            <PiInfinity style={{ width: '36px', height: '36px', color: customization.isDarkMode ? '' : theme.palette.primary.main }} />
             &nbsp;&nbsp;智能体开发平台
         </div>
     )

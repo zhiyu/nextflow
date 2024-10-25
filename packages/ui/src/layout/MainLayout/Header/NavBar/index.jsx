@@ -3,7 +3,7 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
 // assets
-import { PiCaretDownDuotone } from 'react-icons/pi'
+import { PiCaretDown } from 'react-icons/pi'
 
 export default function NavBar() {
     const handleChange = (event) => {}
@@ -19,7 +19,7 @@ export default function NavBar() {
         //                 display: 'none'
         //             }
         //         }}
-        //         IconComponent={PiCaretDownDuotone}
+        //         IconComponent={PiCaretDown}
         //         onChange={handleChange}
         //     >
         //         <MenuItem disabled value={0} sx={{ fontSize: 12, display: 'none' }}>

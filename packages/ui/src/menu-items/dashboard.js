@@ -1,14 +1,14 @@
 // assets
 import {
-    PiCodeDuotone,
-    PiKeyDuotone,
-    PiDatabaseDuotone,
-    PiChatsCircleDuotone,
-    PiAppStoreLogoDuotone,
-    PiRobotDuotone,
-    PiHammerDuotone,
-    PiFingerprintSimpleDuotone,
-    PiOpenAiLogoDuotone
+    PiCode,
+    PiKey,
+    PiDatabase,
+    PiChatsCircle,
+    PiAppStoreLogo,
+    PiRobot,
+    PiHammer,
+    PiFingerprintSimple,
+    PiOpenAiLogo
 } from 'react-icons/pi'
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
@@ -24,7 +24,7 @@ const dashboard = [
                 title: 'OpenAI 助手',
                 type: 'item',
                 url: '/assistants',
-                icon: PiOpenAiLogoDuotone,
+                icon: PiOpenAiLogo,
                 breadcrumbs: true
             },
             {
@@ -32,7 +32,7 @@ const dashboard = [
                 title: '对话编排',
                 type: 'item',
                 url: '/chatflows',
-                icon: PiChatsCircleDuotone,
+                icon: PiChatsCircle,
                 breadcrumbs: true
             },
             {
@@ -40,7 +40,7 @@ const dashboard = [
                 title: '智能体编排',
                 type: 'item',
                 url: '/agentflows',
-                icon: PiRobotDuotone,
+                icon: PiRobot,
                 breadcrumbs: true,
                 isBeta: false
             },
@@ -49,7 +49,7 @@ const dashboard = [
                 title: '模板库',
                 type: 'item',
                 url: '/marketplaces',
-                icon: PiAppStoreLogoDuotone,
+                icon: PiAppStoreLogo,
                 breadcrumbs: true
             }
         ]
@@ -64,7 +64,7 @@ const dashboard = [
                 title: '知识库',
                 type: 'item',
                 url: '/document-stores',
-                icon: PiDatabaseDuotone,
+                icon: PiDatabase,
                 breadcrumbs: true
             },
             {
@@ -72,7 +72,7 @@ const dashboard = [
                 title: '工具箱',
                 type: 'item',
                 url: '/tools',
-                icon: PiHammerDuotone,
+                icon: PiHammer,
                 breadcrumbs: true
             }
         ]
@@ -87,7 +87,7 @@ const dashboard = [
                 title: '访问凭证',
                 type: 'item',
                 url: '/credentials',
-                icon: PiFingerprintSimpleDuotone,
+                icon: PiFingerprintSimple,
                 breadcrumbs: true
             },
             {
@@ -95,7 +95,7 @@ const dashboard = [
                 title: '全局变量',
                 type: 'item',
                 url: '/variables',
-                icon: PiCodeDuotone,
+                icon: PiCode,
                 breadcrumbs: true
             },
             {
@@ -103,7 +103,7 @@ const dashboard = [
                 title: 'API Keys',
                 type: 'item',
                 url: '/apikey',
-                icon: PiKeyDuotone,
+                icon: PiKey,
                 breadcrumbs: true
             }
         ]

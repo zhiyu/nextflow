@@ -72,7 +72,8 @@ export default function componentStyleOverrides(theme) {
         MuiListItemIcon: {
             styleOverrides: {
                 root: {
-                    color: theme.darkTextPrimary
+                    color: theme.darkTextPrimary,
+                    minWidth: 24
                 }
             }
         },

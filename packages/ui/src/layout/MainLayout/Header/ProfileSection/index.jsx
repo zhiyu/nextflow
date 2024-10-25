@@ -43,9 +43,9 @@ import Transitions from '@/ui-component/extended/Transitions'
 import { IconX } from '@tabler/icons-react'
 import './index.css'
 import ExportingGIF from '@/assets/images/Exporting.gif'
-import { PiExportDuotone, PiUploadDuotone, PiExclamationMarkDuotone, PiSignOutDuotone } from 'react-icons/pi'
+import { PiExport, PiUpload, PiExclamationMark, PiSignOut } from 'react-icons/pi'
 
-import { PiGearSixDuotone } from 'react-icons/pi'
+import { PiGearSix } from 'react-icons/pi'
 
 //API
 import exportImportApi from '@/api/exportimport'
@@ -335,7 +335,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                     onClick={handleToggle}
                     color='inherit'
                 >
-                    <PiGearSixDuotone size='1.3rem' />
+                    <PiGearSix size='1.3rem' />
                 </Avatar>
             </ButtonBase>
             <Popper
@@ -375,7 +375,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                 component='nav'
                                                 sx={{
                                                     width: '100%',
-                                                    maxWidth: 250,
+                                                    maxWidth: 200,
                                                     minWidth: 200
                                                 }}
                                             >
@@ -385,7 +385,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <PiExportDuotone size='1.2rem' />
+                                                        <PiExport size='1rem' />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>导出</Typography>} />
                                                 </ListItemButton>
@@ -395,7 +395,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <PiUploadDuotone size='1.2rem' />
+                                                        <PiUpload size='1rem' />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>导入</Typography>} />
                                                 </ListItemButton>
@@ -407,14 +407,14 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     }}
                                                 >
                                                     <ListItemIcon>
-                                                        <PiExclamationMarkDuotone size='1.2rem' />
+                                                        <PiExclamationMark size='1rem' />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant='body2'>关于</Typography>} />
                                                 </ListItemButton>
                                                 {localStorage.getItem('username') && localStorage.getItem('password') && (
                                                     <ListItemButton onClick={handleLogout}>
                                                         <ListItemIcon>
-                                                            <PiSignOutDuotone size='1.2rem' />
+                                                            <PiSignOut size='1rem' />
                                                         </ListItemIcon>
                                                         <ListItemText primary={<Typography variant='body2'>退出登录</Typography>} />
                                                     </ListItemButton>

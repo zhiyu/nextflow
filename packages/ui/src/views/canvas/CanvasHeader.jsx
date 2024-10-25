@@ -29,16 +29,7 @@ import ViewLeadsDialog from '@/ui-component/dialog/ViewLeadsDialog'
 import ExportAsTemplateDialog from '@/ui-component/dialog/ExportAsTemplateDialog'
 
 // icons
-import {
-    PiCaretLeft,
-    PiCheck,
-    PiCodeDuotone,
-    PiFloppyDiskBackDuotone,
-    PiGearSixDuotone,
-    PiPencil,
-    PiNotePencilLight,
-    PiX
-} from 'react-icons/pi'
+import { PiCaretLeft, PiCheck, PiCode, PiFloppyDiskBack, PiGearSix, PiPencil, PiNotePencilLight, PiX } from 'react-icons/pi'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
@@ -384,7 +375,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 color='inherit'
                                 onClick={onAPIDialogClick}
                             >
-                                <PiCodeDuotone size='1.3rem' />
+                                <PiCode size='1.3rem' />
                             </Avatar>
                         </ButtonBase>
                     )}
@@ -405,7 +396,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             color='inherit'
                             onClick={onSaveChatflowClick}
                         >
-                            <PiFloppyDiskBackDuotone size='1.3rem' />
+                            <PiFloppyDiskBack size='1.3rem' />
                         </Avatar>
                     </ButtonBase>
                     <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
@@ -424,7 +415,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             }}
                             onClick={() => setSettingsOpen(!isSettingsOpen)}
                         >
-                            <PiGearSixDuotone size='1.3rem' />
+                            <PiGearSix size='1.3rem' />
                         </Avatar>
                     </ButtonBase>
                 </Box>
