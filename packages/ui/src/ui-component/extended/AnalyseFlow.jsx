@@ -155,8 +155,9 @@ const AnalyseFlow = ({ dialogProps }) => {
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
+                        anchorOrigin: { vertical: 'top', horizontal: 'center' },
                         action: (key) => (
-                            <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                            <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
                                 <IconX />
                             </Button>
                         )
@@ -173,8 +174,9 @@ const AnalyseFlow = ({ dialogProps }) => {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
                     persist: true,
+                    anchorOrigin: { vertical: 'top', horizontal: 'center' },
                     action: (key) => (
-                        <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                        <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
                             <IconX />
                         </Button>
                     )

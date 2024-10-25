@@ -136,8 +136,9 @@ const LoaderConfigPreviewChunks = () => {
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'warning',
+                    anchorOrigin: { vertical: 'top', horizontal: 'center' },
                     action: (key) => (
-                        <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                        <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
                             <IconX />
                         </Button>
                     )
@@ -170,8 +171,9 @@ const LoaderConfigPreviewChunks = () => {
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
+                        anchorOrigin: { vertical: 'top', horizontal: 'center' },
                         action: (key) => (
-                            <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                            <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
                                 <IconX />
                             </Button>
                         )
@@ -194,8 +196,9 @@ const LoaderConfigPreviewChunks = () => {
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
+                            anchorOrigin: { vertical: 'top', horizontal: 'center' },
                             action: (key) => (
-                                <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                                <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
                                     <IconX />
                                 </Button>
                             )
@@ -212,8 +215,9 @@ const LoaderConfigPreviewChunks = () => {
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
+                        anchorOrigin: { vertical: 'top', horizontal: 'center' },
                         action: (key) => (
-                            <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                            <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
                                 <IconX />
                             </Button>
                         )

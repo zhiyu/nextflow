@@ -40,12 +40,11 @@ import AboutDialog from '@/ui-component/dialog/AboutDialog'
 import Transitions from '@/ui-component/extended/Transitions'
 
 // assets
-import { IconX } from '@tabler/icons-react'
 import './index.css'
 import ExportingGIF from '@/assets/images/Exporting.gif'
 import { PiExport, PiUpload, PiExclamationMark, PiSignOut } from 'react-icons/pi'
 
-import { PiGearSix } from 'react-icons/pi'
+import { PiGearSix, PiX } from 'react-icons/pi'
 
 //API
 import exportImportApi from '@/api/exportimport'
@@ -199,9 +198,10 @@ const ProfileSection = ({ username, handleLogout }) => {
                 key: new Date().getTime() + Math.random(),
                 variant: 'error',
                 persist: true,
+                anchorOrigin: { vertical: 'top', horizontal: 'center' },
                 action: (key) => (
-                    <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                        <IconX />
+                    <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
+                        <PiX />
                     </Button>
                 )
             }
@@ -231,9 +231,10 @@ const ProfileSection = ({ username, handleLogout }) => {
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
+                anchorOrigin: { vertical: 'top', horizontal: 'center' },
                 action: (key) => (
-                    <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                        <IconX />
+                    <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
+                        <PiX />
                     </Button>
                 )
             }

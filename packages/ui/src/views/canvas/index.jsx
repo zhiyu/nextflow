@@ -349,8 +349,8 @@ const Canvas = () => {
                 variant: 'success',
                 anchorOrigin: { vertical: 'top', horizontal: 'center' },
                 action: (key) => (
-                    <Button style={{ color: 'white', minWidth: 'fit-content' }}>
-                        <PiX onClick={() => closeSnackbar(key)} />
+                    <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
+                        <PiX />
                     </Button>
                 )
             }
