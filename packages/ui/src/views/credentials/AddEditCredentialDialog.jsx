@@ -282,7 +282,7 @@ const AddEditCredentialDialog = ({ show, dialogProps, onCancel, onConfirm, setEr
             <DialogActions>
                 <StyledButton
                     disabled={!name}
-                    variant='contained'
+                    variant='text'
                     onClick={() => (dialogProps.type === 'ADD' ? addNewCredential() : saveCredential())}
                 >
                     {dialogProps.confirmButtonName}

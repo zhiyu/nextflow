@@ -81,7 +81,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             handleDeleteFlow()
         } else if (setting === 'viewMessages') {
             setViewMessagesDialogProps({
-                title: 'View Messages',
+                title: '消息记录',
                 chatflow: chatflow
             })
             setViewMessagesDialogOpen(true)

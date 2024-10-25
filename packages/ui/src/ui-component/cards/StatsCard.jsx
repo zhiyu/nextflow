@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 const StatsCard = ({ title, stat }) => {
     const customization = useSelector((state) => state.customization)
     return (
-        <Card sx={{ border: '1px solid #e0e0e0', borderRadius: `${customization.borderRadius}px` }}>
+        <Card className='shadow-lg'>
             <CardContent>
                 <Typography sx={{ fontSize: '0.875rem' }} color='text.primary' gutterBottom>
                     {title}

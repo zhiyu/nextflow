@@ -10,6 +10,8 @@ import remarkMath from 'remark-math'
 import axios from 'axios'
 import { cloneDeep } from 'lodash'
 
+import { PiExport, PiTrash } from 'react-icons/pi'
+
 // material-ui
 import {
     Button,
@@ -679,29 +681,20 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
             aria-labelledby='alert-dialog-title'
             aria-describedby='alert-dialog-description'
         >
-            <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
+            <DialogTitle id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     {dialogProps.title}
                     <div style={{ flex: 1 }} />
-                    <Button variant='outlined' onClick={() => exportMessages()} startIcon={<IconFileExport />}>
-                        Export
+                    <Button variant='contained' onClick={() => exportMessages()} startIcon={<PiExport size='1rem' />}>
+                        导出
                     </Button>
                 </div>
             </DialogTitle>
             <DialogContent>
                 <>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            marginBottom: 16,
-                            marginLeft: 8,
-                            marginRight: 8
-                        }}
-                    >
-                        <div style={{ marginRight: 10 }}>
-                            <b style={{ marginRight: 10 }}>From Date</b>
+                    <div className='flex items-center m-2 mb-8'>
+                        <div className='flex items-center mr-4'>
+                            <p className='mr-1'>开始时间</p>
                             <DatePicker
                                 selected={startDate}
                                 onChange={(date) => onStartDateSelected(date)}
@@ -711,8 +704,8 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                 customInput={<DatePickerCustomInput />}
                             />
                         </div>
-                        <div style={{ marginRight: 10 }}>
-                            <b style={{ marginRight: 10 }}>To Date</b>
+                        <div className='flex items-center mr-4'>
+                            <p className='mr-1'>结束时间</p>
                             <DatePicker
                                 selected={endDate}
                                 onChange={(date) => onEndDateSelected(date)}
@@ -724,16 +717,8 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                 customInput={<DatePickerCustomInput />}
                             />
                         </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                minWidth: '200px',
-                                marginRight: 10
-                            }}
-                        >
-                            <b style={{ marginRight: 10 }}>Source</b>
+                        <div className='flex items-center mr-4'>
+                            <p className='mr-1'>来源</p>
                             <MultiDropdown
                                 key={JSON.stringify(chatTypeFilter)}
                                 name='chatType'
@@ -752,16 +737,8 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                 formControlSx={{ mt: 0 }}
                             />
                         </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                minWidth: '200px',
-                                marginRight: 10
-                            }}
-                        >
-                            <b style={{ marginRight: 10 }}>Feedback</b>
+                        <div className='flex items-center mr-4'>
+                            <p className='mr-1'>反馈</p>
                             <MultiDropdown
                                 key={JSON.stringify(feedbackTypeFilter)}
                                 name='chatType'
@@ -780,26 +757,13 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                 formControlSx={{ mt: 0 }}
                             />
                         </div>
-                        <div style={{ flex: 1 }}></div>
                     </div>
-                    <div
-                        style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-                            gap: 10,
-                            marginBottom: 16,
-                            marginLeft: 8,
-                            marginRight: 8
-                        }}
-                    >
-                        <StatsCard title='Total Messages' stat={`${stats.totalMessages}`} />
-                        <StatsCard title='Total Feedback Received' stat={`${stats.totalFeedback}`} />
-                        <StatsCard
-                            title='Positive Feedback'
-                            stat={`${((stats.positiveFeedback / stats.totalFeedback) * 100 || 0).toFixed(2)}%`}
-                        />
+                    <div className='m-2 grid grid-cols-3 gap-2'>
+                        <StatsCard title='消息总数' stat={`${stats.totalMessages}`} />
+                        <StatsCard title='收到的反馈' stat={`${stats.totalFeedback}`} />
+                        <StatsCard title='正向反馈' stat={`${((stats.positiveFeedback / stats.totalFeedback) * 100 || 0).toFixed(2)}%`} />
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <div className='flex'>
                         {chatlogs && chatlogs.length == 0 && (
                             <Stack sx={{ alignItems: 'center', justifyContent: 'center', width: '100%' }} flexDirection='column'>
                                 <Box sx={{ p: 5, height: 'auto' }}>
@@ -899,14 +863,11 @@ const ViewMessagesDialog = ({ show, dialogProps, onCancel }) => {
                                             }}
                                         >
                                             <StyledButton
-                                                sx={{ height: 'max-content', width: 'max-content' }}
-                                                variant='outlined'
                                                 color='error'
-                                                title='Clear Message'
                                                 onClick={() => clearChat(chatMessages[1])}
-                                                startIcon={<IconEraser />}
+                                                startIcon={<PiTrash size='1rem' />}
                                             >
-                                                Clear
+                                                清空
                                             </StyledButton>
                                             {chatMessages[1].sessionId && (
                                                 <Tooltip

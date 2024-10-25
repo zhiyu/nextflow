@@ -22,7 +22,7 @@ const settings = {
     children: [
         {
             id: 'viewMessages',
-            title: 'View Messages',
+            title: '消息记录',
             type: 'item',
             url: '',
             icon: icons.PiChatText
@@ -36,14 +36,14 @@ const settings = {
         },
         {
             id: 'viewUpsertHistory',
-            title: 'Upsert History',
+            title: '更新记录',
             type: 'item',
             url: '',
             icon: icons.PiDatabase
         },
         {
             id: 'chatflowConfiguration',
-            title: 'Configuration',
+            title: '参数设置',
             type: 'item',
             url: '',
             icon: icons.PiFadersHorizontal
@@ -57,28 +57,28 @@ const settings = {
         },
         {
             id: 'duplicateChatflow',
-            title: '复制 Chatflow',
+            title: '复制',
             type: 'item',
             url: '',
             icon: icons.PiCopy
         },
         {
             id: 'loadChatflow',
-            title: '加载 Chatflow',
+            title: '加载',
             type: 'item',
             url: '',
             icon: icons.PiUpload
         },
         {
             id: 'exportChatflow',
-            title: '导出 Chatflow',
+            title: '导出',
             type: 'item',
             url: '',
             icon: icons.PiExport
         },
         {
             id: 'deleteChatflow',
-            title: '删除 Chatflow',
+            title: '删除',
             type: 'item',
             url: '',
             icon: icons.PiTrash
