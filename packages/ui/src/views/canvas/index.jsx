@@ -37,7 +37,8 @@ import useApi from '@/hooks/useApi'
 import useConfirm from '@/hooks/useConfirm'
 
 // icons
-import { IconX, IconRefreshAlert } from '@tabler/icons-react'
+import { IconRefreshAlert } from '@tabler/icons-react'
+import { PiX } from 'react-icons/pi'
 
 // utils
 import {
@@ -187,9 +188,10 @@ const Canvas = () => {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
                         persist: true,
+                        anchorOrigin: { vertical: 'top', horizontal: 'center' },
                         action: (key) => (
-                            <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                            <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
+                                <PiX />
                             </Button>
                         )
                     }
@@ -341,13 +343,14 @@ const Canvas = () => {
     const saveChatflowSuccess = () => {
         dispatch({ type: REMOVE_DIRTY })
         enqueueSnackbar({
-            message: `${canvasTitle} 已保存`,
+            message: `${canvasTitle}已保存！`,
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
+                anchorOrigin: { vertical: 'top', horizontal: 'center' },
                 action: (key) => (
-                    <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                        <IconX />
+                    <Button style={{ color: 'white', minWidth: 'fit-content' }}>
+                        <PiX onClick={() => closeSnackbar(key)} />
                     </Button>
                 )
             }
@@ -361,9 +364,10 @@ const Canvas = () => {
                 key: new Date().getTime() + Math.random(),
                 variant: 'error',
                 persist: true,
+                anchorOrigin: { vertical: 'top', horizontal: 'center' },
                 action: (key) => (
-                    <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
-                        <IconX />
+                    <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
+                        <PiX />
                     </Button>
                 )
             }
