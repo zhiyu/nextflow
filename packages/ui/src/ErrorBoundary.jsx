@@ -12,21 +12,13 @@ const ErrorBoundary = ({ error }) => {
     }
 
     return (
-        <Box sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2, padding: '20px', maxWidth: '1280px' }}>
+        <Box sx={{ padding: '120px 20px' }}>
             <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 3 }}>
                 <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 1 }}>
-                    <Typography variant='h2'>Oh snap!</Typography>
-                    <Typography variant='h3'>The following error occured when loading this page.</Typography>
+                    <Typography variant='h2'>出错啦!</Typography>
                 </Stack>
                 <Card variant='outlined'>
                     <Box sx={{ position: 'relative', px: 2, py: 3 }}>
-                        <IconButton
-                            onClick={copyToClipboard}
-                            size='small'
-                            sx={{ position: 'absolute', top: 1, right: 1, color: theme.palette.grey[900] + 25 }}
-                        >
-                            <IconCopy />
-                        </IconButton>
                         <pre style={{ margin: 0 }}>
                             <code>{`Status: ${error.response.status}`}</code>
                             <br />
@@ -35,9 +27,7 @@ const ErrorBoundary = ({ error }) => {
                     </Box>
                 </Card>
                 <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center', lineHeight: '1.5' }}>
-                    Please retry after some time. If the issue persists, reach out to us on our Discord server.
-                    <br />
-                    Alternatively, you can raise an issue on Github.
+                    请稍后重试。
                 </Typography>
             </Stack>
         </Box>
