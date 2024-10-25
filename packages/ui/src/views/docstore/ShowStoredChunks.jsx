@@ -234,25 +234,7 @@ const ShowStoredChunks = () => {
                     {fileNames.length > 0 && (
                         <Grid sx={{ mt: 1 }} container>
                             {fileNames.map((fileName, index) => (
-                                <div
-                                    key={index}
-                                    style={{
-                                        paddingLeft: '15px',
-                                        paddingRight: '15px',
-                                        paddingTop: '10px',
-                                        paddingBottom: '10px',
-                                        fontSize: '0.9rem',
-                                        width: 'max-content',
-                                        borderRadius: '25px',
-                                        boxShadow: customization.isDarkMode
-                                            ? '0 2px 14px 0 rgb(255 255 255 / 20%)'
-                                            : '0 2px 14px 0 rgb(32 40 45 / 20%)',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center',
-                                        marginRight: '10px'
-                                    }}
-                                >
+                                <div key={index} className='m-2'>
                                     {fileName}
                                 </div>
                             ))}

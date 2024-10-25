@@ -389,19 +389,7 @@ const DocumentStoreDetails = () => {
                     </ViewHeader>
                     {getSpecificDocumentStore.data?.whereUsed?.length > 0 && (
                         <Stack flexDirection='row' sx={{ gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
-                            <div
-                                style={{
-                                    paddingLeft: '15px',
-                                    paddingRight: '15px',
-                                    paddingTop: '10px',
-                                    paddingBottom: '10px',
-                                    fontSize: '0.9rem',
-                                    width: 'max-content',
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
-                                }}
-                            >
+                            <div className='flex items-center m-2'>
                                 <IconVectorBezier2 style={{ marginRight: 5 }} size={14} />
                                 关联的流程：
                                 {getSpecificDocumentStore.data.whereUsed.map((chatflowUsed, index) => (
