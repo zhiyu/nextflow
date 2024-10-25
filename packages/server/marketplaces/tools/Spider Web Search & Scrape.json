@@ -1,6 +1,6 @@
 {
     "name": "metasearch_engine",
-    "description": "This tool provides real-time information from the internet using a Metasearch Engine, ensuring up-to-date and relevant responses. Use it to research complex topics by strategically breaking them down into multiple, targeted search queries, exploring different facets and subtopics to gather a comprehensive understanding. If needed, you can use this tool multiple times, but refine your queries based on previous results rather than repeating the same search. Before using the tool, make sure to improve the user's search query to make it clear, thorough, and optimized for the most relevant results.\n",
+    "description": "该工具使用元搜索引擎提供来自互联网的实时信息，确保最新和相关的响应。使用它来研究复杂的主题，将其战略性地分解为多个有针对性的搜索查询，探索不同的方面和子主题，以获得全面的理解。如果需要，您可以多次使用此工具，但可以根据以前的结果优化您的查询，而不是重复相同的搜索。在使用该工具之前，请确保改进用户的搜索查询，使其清晰、彻底，并针对最相关的结果进行优化。",
     "color": "linear-gradient(rgb(181,220,163), rgb(216,1,106))",
     "iconSrc": "https://raw.githubusercontent.com/FlowiseAI/Flowise/main/packages/components/nodes/documentloaders/Spider/spider.svg",
     "schema": "[{\"id\":0,\"property\":\"query\",\"description\":\"This is the search query\",\"type\":\"string\",\"required\":true}]",

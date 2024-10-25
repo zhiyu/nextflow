@@ -1,13 +1,13 @@
 {
-    "description": "使用由SQL专家、SQL审阅者和SQL执行者3个代理组成的团队进行文本到SQL的查询处理",
+    "description": "一个由投资组合经理、财务分析师和风险经理组成的团队，共同优化投资组合。",
     "framework": ["Langchain"],
-    "usecases": ["SQL"],
+    "usecases": ["金融&财会"],
     "nodes": [
         {
             "id": "supervisor_0",
             "position": {
-                "x": -275.4818449163403,
-                "y": 462.4424369159454
+                "x": 242.0267719253082,
+                "y": 185.62152813526978
             },
             "type": "customNode",
             "data": {
@@ -88,16 +88,16 @@
             "height": 431,
             "selected": false,
             "positionAbsolute": {
-                "x": -275.4818449163403,
-                "y": 462.4424369159454
+                "x": 242.0267719253082,
+                "y": 185.62152813526978
             },
             "dragging": false
         },
         {
             "id": "worker_0",
             "position": {
-                "x": 483.6310212673076,
-                "y": 304.6138109554939
+                "x": 637.3247841463353,
+                "y": 115.189653148269
             },
             "type": "customNode",
             "data": {
@@ -166,12 +166,12 @@
                     }
                 ],
                 "inputs": {
-                    "workerName": "SQL Expert",
-                    "workerPrompt": "As an SQL Expert at {company}, you are a critical member of our data team, responsible for designing, optimizing, and maintaining our database systems. Your expertise in SQL and database management ensures that our data is accurate, accessible, and efficiently processed.\n\nYour goal is to develop and optimize complex SQL queries to answer the question.\n\nYou are given the following schema:\n{schema}\n\nYour task is to use the provided schema, and produce the SQL query needed to answer user question. Collaborate with SQL Reviewer and SQL Executor for feedback and review, ensuring that your SQL solutions is correct and follow best practices in database design and query optimization to enhance performance and reliability.\n\nThe output should be a an optimized SQL query. Ensure that your output only contains SQL query, nothing else. Remember, only output SQL query.",
-                    "tools": [],
+                    "workerName": "Portfolio Manager",
+                    "workerPrompt": "As the Portfolio Manager at {company}, you play a crucial role in overseeing and optimizing our investment portfolio. Your expertise in market analysis, strategic planning, and risk management is essential for making informed investment decisions that drive our financial growth.\n\nYour goal is to develop and implement effective investment strategies that align with our clients' financial goals and risk tolerance.\n\nAnalyze market trends, economic data, and financial reports to identify potential investment opportunities. Collaborate with the Financial Analyst and Risk Manager to ensure that your strategies are well-informed and balanced. Continuously monitor the portfolio's performance and make adjustments as necessary to maximize returns while managing risk.\n\nYour task is to create a comprehensive investment strategy for {portfolio_name}, taking into account the client's financial objectives and risk tolerance. Ensure that your strategy is backed by thorough market research and financial analysis, and includes a plan for regular performance reviews and adjustments.\n\nThe output should be a detailed investment strategy report for {portfolio_name}, including market analysis, recommended investments, risk management approaches, and performance monitoring plans. Ensure that the strategy is designed to achieve the client's financial goals while maintaining an appropriate risk level.",
+                    "tools": ["{{googleCustomSearch_0.data.instance}}"],
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\",\"schema\":\"{{customFunction_0.data.instance}}\"}",
+                    "promptValues": "{\"company\":\"Flowise Inc\",\"portfolio_name\":\"Tesla Inc\"}",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
@@ -190,16 +190,16 @@
             "height": 808,
             "selected": false,
             "positionAbsolute": {
-                "x": 483.6310212673076,
-                "y": 304.6138109554939
+                "x": 637.3247841463353,
+                "y": 115.189653148269
             },
             "dragging": false
         },
         {
             "id": "worker_1",
             "position": {
-                "x": 1214.157684503848,
-                "y": 248.8294849061827
+                "x": 1037.3247841463353,
+                "y": 115.189653148269
             },
             "type": "customNode",
             "data": {
@@ -268,12 +268,12 @@
                     }
                 ],
                 "inputs": {
-                    "workerName": "SQL Executor",
-                    "workerPrompt": "As an SQL Executor at {company}, you must ensure the SQL query can be executed with no error.\n\nYou must use the execute_sql tool to execute the SQL query provided by SQL Expert and get the result. Verify the result is indeed correct and error-free. Collaborate with the SQL Expert and SQL Reviewer to make sure the SQL query is valid and successfully fetches back the right information.\n\nREMEMBER, always use the execute_sql tool!",
-                    "tools": ["{{customTool_0.data.instance}}"],
+                    "workerName": "Financial Analyst",
+                    "workerPrompt": "As a Financial Analyst at {company}, you are a vital member of our portfolio management team, providing in-depth research and analysis to support informed investment decisions. Your analytical skills and market insights are key to identifying profitable opportunities and enhancing the overall performance of our portfolio.\n\nYour goal is to conduct thorough financial analysis and market research to support the Portfolio Manager in developing effective investment strategies.\n\nAnalyze financial data, market trends, and economic indicators to identify potential investment opportunities. Prepare detailed reports and presentations that highlight your findings and recommendations. Collaborate closely with the Portfolio Manager and Risk Manager to ensure that your analyses contribute to well-informed and balanced investment strategies.\n\nYour task is to perform a comprehensive analysis of {investment_opportunity} for inclusion in {portfolio_name}. Use various financial metrics and market data to evaluate the potential risks and returns. Provide clear, actionable insights and recommendations based on your analysis.\n\nThe output should be a detailed financial analysis report for {investment_opportunity}, including key financial metrics, market trends, risk assessment, and your investment recommendation. Ensure that the report is well-supported by data and provides valuable insights to inform the Portfolio Manager's decision-making process.",
+                    "tools": ["{{googleCustomSearch_1.data.instance}}"],
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\"}",
+                    "promptValues": "{\"company\":\"Flowise Inc\",\"investment_opportunity\":\"Tech Summit Fund\",\"portfolio_name\":\"Tesla Inc\"}",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
@@ -292,16 +292,118 @@
             "height": 808,
             "selected": false,
             "positionAbsolute": {
-                "x": 1214.157684503848,
-                "y": 248.8294849061827
+                "x": 1037.3247841463353,
+                "y": 115.189653148269
+            },
+            "dragging": false
+        },
+        {
+            "id": "worker_2",
+            "position": {
+                "x": 1482.836195011232,
+                "y": 119.54481208270889
+            },
+            "type": "customNode",
+            "data": {
+                "id": "worker_2",
+                "label": "Worker",
+                "version": 1,
+                "name": "worker",
+                "type": "Worker",
+                "baseClasses": ["Worker"],
+                "category": "Multi Agents",
+                "inputParams": [
+                    {
+                        "label": "Worker Name",
+                        "name": "workerName",
+                        "type": "string",
+                        "placeholder": "Worker",
+                        "id": "worker_2-input-workerName-string"
+                    },
+                    {
+                        "label": "Worker Prompt",
+                        "name": "workerPrompt",
+                        "type": "string",
+                        "rows": 4,
+                        "default": "You are a research assistant who can search for up-to-date info using search engine.",
+                        "id": "worker_2-input-workerPrompt-string"
+                    },
+                    {
+                        "label": "Format Prompt Values",
+                        "name": "promptValues",
+                        "type": "json",
+                        "optional": true,
+                        "acceptVariable": true,
+                        "list": true,
+                        "id": "worker_2-input-promptValues-json"
+                    },
+                    {
+                        "label": "Max Iterations",
+                        "name": "maxIterations",
+                        "type": "number",
+                        "optional": true,
+                        "id": "worker_2-input-maxIterations-number"
+                    }
+                ],
+                "inputAnchors": [
+                    {
+                        "label": "Tools",
+                        "name": "tools",
+                        "type": "Tool",
+                        "list": true,
+                        "optional": true,
+                        "id": "worker_2-input-tools-Tool"
+                    },
+                    {
+                        "label": "Supervisor",
+                        "name": "supervisor",
+                        "type": "Supervisor",
+                        "id": "worker_2-input-supervisor-Supervisor"
+                    },
+                    {
+                        "label": "Tool Calling Chat Model",
+                        "name": "model",
+                        "type": "BaseChatModel",
+                        "optional": true,
+                        "description": "Only compatible with models that are capable of function calling: ChatOpenAI, ChatMistral, ChatAnthropic, ChatGoogleGenerativeAI, ChatVertexAI, GroqChat. If not specified, supervisor's model will be used",
+                        "id": "worker_2-input-model-BaseChatModel"
+                    }
+                ],
+                "inputs": {
+                    "workerName": "Risk Manager",
+                    "workerPrompt": "As the Risk Manager at {company}, you play a pivotal role in ensuring the stability and resilience of our investment portfolio. Your expertise in risk assessment and mitigation is essential for maintaining an appropriate balance between risk and return, aligning with our clients' risk tolerance and financial goals.\n\nYour goal is to identify, assess, and mitigate risks associated with the investment portfolio to safeguard its performance and align with our clients' risk tolerance.\n\nEvaluate potential risks for current and prospective investments using quantitative and qualitative analysis. Collaborate with the Portfolio Manager and Financial Analyst to integrate risk management strategies into the overall investment approach. Continuously monitor the portfolio to identify emerging risks and implement measures to mitigate them.\n\nYour task is to perform a comprehensive risk assessment for {portfolio_name}, focusing on potential market, credit, and operational risks. Develop and recommend risk mitigation strategies that align with the client's risk tolerance and investment objectives.\n\nThe output should be a detailed risk assessment report for {portfolio_name}, including identification of key risks, risk metrics, and recommended mitigation strategies. Ensure that the report provides actionable insights and supports the Portfolio Manager in maintaining a balanced and resilient portfolio.",
+                    "tools": ["{{googleCustomSearch_2.data.instance}}"],
+                    "supervisor": "{{supervisor_0.data.instance}}",
+                    "model": "",
+                    "promptValues": "{\"company\":\"Flowise Inc\",\"portfolio_name\":\"Tesla Inc\"}",
+                    "maxIterations": ""
+                },
+                "outputAnchors": [
+                    {
+                        "id": "worker_2-output-worker-Worker",
+                        "name": "worker",
+                        "label": "Worker",
+                        "description": "",
+                        "type": "Worker"
+                    }
+                ],
+                "outputs": {},
+                "selected": false
+            },
+            "width": 300,
+            "height": 808,
+            "selected": false,
+            "positionAbsolute": {
+                "x": 1482.836195011232,
+                "y": 119.54481208270889
             },
             "dragging": false
         },
         {
             "id": "chatOpenAI_0",
             "position": {
-                "x": -636.2452233568264,
-                "y": 233.06616199339652
+                "x": -120.80560304817006,
+                "y": 71.63806380387018
             },
             "type": "customNode",
             "data": {
@@ -472,252 +574,181 @@
             "height": 669,
             "selected": false,
             "positionAbsolute": {
-                "x": -636.2452233568264,
-                "y": 233.06616199339652
+                "x": -120.80560304817006,
+                "y": 71.63806380387018
             },
             "dragging": false
         },
         {
-            "id": "customFunction_0",
+            "id": "googleCustomSearch_0",
             "position": {
-                "x": 90.45254468977657,
-                "y": 626.487889256008
+                "x": 268.39206549032804,
+                "y": -209.224097209214
             },
             "type": "customNode",
             "data": {
-                "id": "customFunction_0",
-                "label": "Custom JS Function",
+                "id": "googleCustomSearch_0",
+                "label": "Google Custom Search",
                 "version": 1,
-                "name": "customFunction",
-                "type": "CustomFunction",
-                "baseClasses": ["CustomFunction", "Utilities"],
-                "category": "Utilities",
-                "description": "Execute custom javascript function",
-                "inputParams": [
-                    {
-                        "label": "Input Variables",
-                        "name": "functionInputVariables",
-                        "description": "Input variables can be used in the function with prefix $. For example: $var",
-                        "type": "json",
-                        "optional": true,
-                        "acceptVariable": true,
-                        "list": true,
-                        "id": "customFunction_0-input-functionInputVariables-json"
-                    },
-                    {
-                        "label": "Function Name",
-                        "name": "functionName",
-                        "type": "string",
-                        "optional": true,
-                        "placeholder": "My Function",
-                        "id": "customFunction_0-input-functionName-string"
-                    },
-                    {
-                        "label": "Javascript Function",
-                        "name": "javascriptFunction",
-                        "type": "code",
-                        "id": "customFunction_0-input-javascriptFunction-code"
-                    }
-                ],
-                "inputAnchors": [],
-                "inputs": {
-                    "functionInputVariables": "",
-                    "functionName": "",
-                    "javascriptFunction": "// Fetch schema info\nconst sqlSchema = `CREATE TABLE customers (\n  customerNumber int NOT NULL,\n  customerName varchar(50) NOT NULL,\n  contactLastName varchar(50) NOT NULL,\n  contactFirstName varchar(50) NOT NULL,\n  phone varchar(50) NOT NULL,\n  addressLine1 varchar(50) NOT NULL,\n  addressLine2 varchar(50) DEFAULT NULL,\n  city varchar(50) NOT NULL,\n  state varchar(50) DEFAULT NULL,\n  postalCode varchar(15) DEFAULT NULL,\n  country varchar(50) NOT NULL,\n  salesRepEmployeeNumber int DEFAULT NULL,\n  creditLimit decimal(10,2) DEFAULT NULL,\n)`\n\nreturn sqlSchema;"
-                },
-                "outputAnchors": [
-                    {
-                        "name": "output",
-                        "label": "Output",
-                        "type": "options",
-                        "description": "",
-                        "options": [
-                            {
-                                "id": "customFunction_0-output-output-string|number|boolean|json|array",
-                                "name": "output",
-                                "label": "Output",
-                                "description": "",
-                                "type": "string | number | boolean | json | array"
-                            },
-                            {
-                                "id": "customFunction_0-output-EndingNode-CustomFunction",
-                                "name": "EndingNode",
-                                "label": "Ending Node",
-                                "description": "",
-                                "type": "CustomFunction"
-                            }
-                        ],
-                        "default": "output"
-                    }
-                ],
-                "outputs": {
-                    "output": "output"
-                },
-                "selected": false
-            },
-            "width": 300,
-            "height": 669,
-            "selected": false,
-            "positionAbsolute": {
-                "x": 90.45254468977657,
-                "y": 626.487889256008
-            },
-            "dragging": false
-        },
-        {
-            "id": "customTool_0",
-            "position": {
-                "x": 823.759726626879,
-                "y": 87.97240806811993
-            },
-            "type": "customNode",
-            "data": {
-                "id": "customTool_0",
-                "label": "Custom Tool",
-                "version": 1,
-                "name": "customTool",
-                "type": "CustomTool",
-                "baseClasses": ["CustomTool", "Tool", "StructuredTool", "Runnable"],
+                "name": "googleCustomSearch",
+                "type": "GoogleCustomSearchAPI",
+                "baseClasses": ["GoogleCustomSearchAPI", "Tool", "StructuredTool", "Runnable"],
                 "category": "Tools",
-                "description": "Use custom tool you've created in Flowise within chatflow",
+                "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
                 "inputParams": [
                     {
-                        "label": "Select Tool",
-                        "name": "selectedTool",
-                        "type": "asyncOptions",
-                        "loadMethod": "listTools",
-                        "id": "customTool_0-input-selectedTool-asyncOptions"
+                        "label": "Connect Credential",
+                        "name": "credential",
+                        "type": "credential",
+                        "credentialNames": ["googleCustomSearchApi"],
+                        "id": "googleCustomSearch_0-input-credential-credential"
                     }
                 ],
                 "inputAnchors": [],
-                "inputs": {
-                    "selectedTool": "4d723d69-e854-4351-90c0-6385ce908213"
-                },
+                "inputs": {},
                 "outputAnchors": [
                     {
-                        "id": "customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable",
-                        "name": "customTool",
-                        "label": "CustomTool",
-                        "description": "Use custom tool you've created in Flowise within chatflow",
-                        "type": "CustomTool | Tool | StructuredTool | Runnable"
+                        "id": "googleCustomSearch_0-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable",
+                        "name": "googleCustomSearch",
+                        "label": "GoogleCustomSearchAPI",
+                        "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
+                        "type": "GoogleCustomSearchAPI | Tool | StructuredTool | Runnable"
                     }
                 ],
                 "outputs": {},
                 "selected": false
             },
             "width": 300,
-            "height": 285,
+            "height": 275,
             "selected": false,
             "positionAbsolute": {
-                "x": 823.759726626879,
-                "y": 87.97240806811993
+                "x": 268.39206549032804,
+                "y": -209.224097209214
             },
             "dragging": false
         },
         {
-            "id": "worker_2",
+            "id": "googleCustomSearch_1",
             "position": {
-                "x": 1643.1366621404572,
-                "y": 253.12633995235484
+                "x": 708.2007597123056,
+                "y": -214.21906914647434
             },
             "type": "customNode",
             "data": {
-                "id": "worker_2",
-                "label": "Worker",
+                "id": "googleCustomSearch_1",
+                "label": "Google Custom Search",
                 "version": 1,
-                "name": "worker",
-                "type": "Worker",
-                "baseClasses": ["Worker"],
-                "category": "Multi Agents",
+                "name": "googleCustomSearch",
+                "type": "GoogleCustomSearchAPI",
+                "baseClasses": ["GoogleCustomSearchAPI", "Tool", "StructuredTool", "Runnable"],
+                "category": "Tools",
+                "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
                 "inputParams": [
                     {
-                        "label": "Worker Name",
-                        "name": "workerName",
-                        "type": "string",
-                        "placeholder": "Worker",
-                        "id": "worker_2-input-workerName-string"
-                    },
-                    {
-                        "label": "Worker Prompt",
-                        "name": "workerPrompt",
-                        "type": "string",
-                        "rows": 4,
-                        "default": "You are a research assistant who can search for up-to-date info using search engine.",
-                        "id": "worker_2-input-workerPrompt-string"
-                    },
-                    {
-                        "label": "Format Prompt Values",
-                        "name": "promptValues",
-                        "type": "json",
-                        "optional": true,
-                        "acceptVariable": true,
-                        "list": true,
-                        "id": "worker_2-input-promptValues-json"
-                    },
-                    {
-                        "label": "Max Iterations",
-                        "name": "maxIterations",
-                        "type": "number",
-                        "optional": true,
-                        "id": "worker_2-input-maxIterations-number"
+                        "label": "Connect Credential",
+                        "name": "credential",
+                        "type": "credential",
+                        "credentialNames": ["googleCustomSearchApi"],
+                        "id": "googleCustomSearch_1-input-credential-credential"
                     }
                 ],
-                "inputAnchors": [
-                    {
-                        "label": "Tools",
-                        "name": "tools",
-                        "type": "Tool",
-                        "list": true,
-                        "optional": true,
-                        "id": "worker_2-input-tools-Tool"
-                    },
-                    {
-                        "label": "Supervisor",
-                        "name": "supervisor",
-                        "type": "Supervisor",
-                        "id": "worker_2-input-supervisor-Supervisor"
-                    },
-                    {
-                        "label": "Tool Calling Chat Model",
-                        "name": "model",
-                        "type": "BaseChatModel",
-                        "optional": true,
-                        "description": "Only compatible with models that are capable of function calling: ChatOpenAI, ChatMistral, ChatAnthropic, ChatGoogleGenerativeAI, ChatVertexAI, GroqChat. If not specified, supervisor's model will be used",
-                        "id": "worker_2-input-model-BaseChatModel"
-                    }
-                ],
-                "inputs": {
-                    "workerName": "SQL Reviewer",
-                    "workerPrompt": "As an SQL Code Reviewer at {company}, you play a crucial role in ensuring the accuracy, efficiency, and reliability of our SQL queries and database systems. Your expertise in SQL and best practices in database management is essential for maintaining high standards in our data operations.\n\nYour goal is to thoroughly review and validate the SQL queries developed by the SQL Expert to ensure they meet our performance and accuracy standards. Check for potential issues such as syntax errors, performance bottlenecks, and logical inaccuracies. Collaborate with the SQL Expert and SQL Executor to provide constructive feedback and suggest improvements where necessary.\n\nThe output should be a detailed code review report that includes an assessment of each SQL query's accuracy, performance, and correctness. Provide actionable feedback and suggestions to enhance the quality of the SQL code, ensuring it supports our data-driven initiatives effectively.",
-                    "tools": [],
-                    "supervisor": "{{supervisor_0.data.instance}}",
-                    "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\"}",
-                    "maxIterations": ""
-                },
+                "inputAnchors": [],
+                "inputs": {},
                 "outputAnchors": [
                     {
-                        "id": "worker_2-output-worker-Worker",
-                        "name": "worker",
-                        "label": "Worker",
-                        "description": "",
-                        "type": "Worker"
+                        "id": "googleCustomSearch_1-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable",
+                        "name": "googleCustomSearch",
+                        "label": "GoogleCustomSearchAPI",
+                        "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
+                        "type": "GoogleCustomSearchAPI | Tool | StructuredTool | Runnable"
                     }
                 ],
                 "outputs": {},
                 "selected": false
             },
             "width": 300,
-            "height": 808,
+            "height": 275,
             "selected": false,
             "positionAbsolute": {
-                "x": 1643.1366621404572,
-                "y": 253.12633995235484
+                "x": 708.2007597123056,
+                "y": -214.21906914647434
+            },
+            "dragging": false
+        },
+        {
+            "id": "googleCustomSearch_2",
+            "position": {
+                "x": 1148.6913242910439,
+                "y": -216.29397639610963
+            },
+            "type": "customNode",
+            "data": {
+                "id": "googleCustomSearch_2",
+                "label": "Google Custom Search",
+                "version": 1,
+                "name": "googleCustomSearch",
+                "type": "GoogleCustomSearchAPI",
+                "baseClasses": ["GoogleCustomSearchAPI", "Tool", "StructuredTool", "Runnable"],
+                "category": "Tools",
+                "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
+                "inputParams": [
+                    {
+                        "label": "Connect Credential",
+                        "name": "credential",
+                        "type": "credential",
+                        "credentialNames": ["googleCustomSearchApi"],
+                        "id": "googleCustomSearch_2-input-credential-credential"
+                    }
+                ],
+                "inputAnchors": [],
+                "inputs": {},
+                "outputAnchors": [
+                    {
+                        "id": "googleCustomSearch_2-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable",
+                        "name": "googleCustomSearch",
+                        "label": "GoogleCustomSearchAPI",
+                        "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
+                        "type": "GoogleCustomSearchAPI | Tool | StructuredTool | Runnable"
+                    }
+                ],
+                "outputs": {},
+                "selected": false
+            },
+            "width": 300,
+            "height": 275,
+            "selected": false,
+            "positionAbsolute": {
+                "x": 1148.6913242910439,
+                "y": -216.29397639610963
             },
             "dragging": false
         }
     ],
     "edges": [
+        {
+            "source": "googleCustomSearch_0",
+            "sourceHandle": "googleCustomSearch_0-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable",
+            "target": "worker_0",
+            "targetHandle": "worker_0-input-tools-Tool",
+            "type": "buttonedge",
+            "id": "googleCustomSearch_0-googleCustomSearch_0-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable-worker_0-worker_0-input-tools-Tool"
+        },
+        {
+            "source": "googleCustomSearch_1",
+            "sourceHandle": "googleCustomSearch_1-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable",
+            "target": "worker_1",
+            "targetHandle": "worker_1-input-tools-Tool",
+            "type": "buttonedge",
+            "id": "googleCustomSearch_1-googleCustomSearch_1-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable-worker_1-worker_1-input-tools-Tool"
+        },
+        {
+            "source": "googleCustomSearch_2",
+            "sourceHandle": "googleCustomSearch_2-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable",
+            "target": "worker_2",
+            "targetHandle": "worker_2-input-tools-Tool",
+            "type": "buttonedge",
+            "id": "googleCustomSearch_2-googleCustomSearch_2-output-googleCustomSearch-GoogleCustomSearchAPI|Tool|StructuredTool|Runnable-worker_2-worker_2-input-tools-Tool"
+        },
         {
             "source": "chatOpenAI_0",
             "sourceHandle": "chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
@@ -725,14 +756,6 @@
             "targetHandle": "supervisor_0-input-model-BaseChatModel",
             "type": "buttonedge",
             "id": "chatOpenAI_0-chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable-supervisor_0-supervisor_0-input-model-BaseChatModel"
-        },
-        {
-            "source": "customFunction_0",
-            "sourceHandle": "customFunction_0-output-output-string|number|boolean|json|array",
-            "target": "worker_0",
-            "targetHandle": "worker_0-input-promptValues-json",
-            "type": "buttonedge",
-            "id": "customFunction_0-customFunction_0-output-output-string|number|boolean|json|array-worker_0-worker_0-input-promptValues-json"
         },
         {
             "source": "supervisor_0",
@@ -749,14 +772,6 @@
             "targetHandle": "worker_1-input-supervisor-Supervisor",
             "type": "buttonedge",
             "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_1-worker_1-input-supervisor-Supervisor"
-        },
-        {
-            "source": "customTool_0",
-            "sourceHandle": "customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable",
-            "target": "worker_1",
-            "targetHandle": "worker_1-input-tools-Tool",
-            "type": "buttonedge",
-            "id": "customTool_0-customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable-worker_1-worker_1-input-tools-Tool"
         },
         {
             "source": "supervisor_0",

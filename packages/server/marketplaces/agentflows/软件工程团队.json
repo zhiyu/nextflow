@@ -1,13 +1,13 @@
 {
-    "description": "使用由SQL专家、SQL审阅者和SQL执行者3个代理组成的团队进行文本到SQL的查询处理",
+    "description": "共同构建功能、解决问题或完成任务的软件工程团队。",
     "framework": ["Langchain"],
-    "usecases": ["SQL"],
+    "usecases": ["工程"],
     "nodes": [
         {
             "id": "supervisor_0",
             "position": {
-                "x": -275.4818449163403,
-                "y": 462.4424369159454
+                "x": 577,
+                "y": 156
             },
             "type": "customNode",
             "data": {
@@ -86,18 +86,17 @@
             },
             "width": 300,
             "height": 431,
-            "selected": false,
             "positionAbsolute": {
-                "x": -275.4818449163403,
-                "y": 462.4424369159454
+                "x": 577,
+                "y": 156
             },
-            "dragging": false
+            "selected": false
         },
         {
             "id": "worker_0",
             "position": {
-                "x": 483.6310212673076,
-                "y": 304.6138109554939
+                "x": 969.3717362716295,
+                "y": 77.52271438462338
             },
             "type": "customNode",
             "data": {
@@ -166,12 +165,12 @@
                     }
                 ],
                 "inputs": {
-                    "workerName": "SQL Expert",
-                    "workerPrompt": "As an SQL Expert at {company}, you are a critical member of our data team, responsible for designing, optimizing, and maintaining our database systems. Your expertise in SQL and database management ensures that our data is accurate, accessible, and efficiently processed.\n\nYour goal is to develop and optimize complex SQL queries to answer the question.\n\nYou are given the following schema:\n{schema}\n\nYour task is to use the provided schema, and produce the SQL query needed to answer user question. Collaborate with SQL Reviewer and SQL Executor for feedback and review, ensuring that your SQL solutions is correct and follow best practices in database design and query optimization to enhance performance and reliability.\n\nThe output should be a an optimized SQL query. Ensure that your output only contains SQL query, nothing else. Remember, only output SQL query.",
-                    "tools": [],
+                    "workerName": "Senior Software Engineer",
+                    "workerPrompt": "As a Senior Software Engineer at {company}, you are a pivotal part of our innovative development team. Your expertise and leadership drive the creation of robust, scalable software solutions that meet the needs of our diverse clientele. By applying best practices in software development, you ensure that our products are reliable, efficient, and maintainable.\n\nYour goal is to lead the development of high-quality software solutions.\n\nUtilize your deep technical knowledge and experience to architect, design, and implement software systems that address complex problems. Collaborate closely with other engineers, reviewers to ensure that the solutions you develop align with business objectives and user needs.\n\nDesign and implement new feature for the given task, ensuring it integrates seamlessly with existing systems and meets performance requirements. Use your understanding of {technology} to build this feature. Make sure to adhere to our coding standards and follow best practices.\n\nThe output should be a fully functional, well-documented feature that enhances our product's capabilities. Include detailed comments in the code. Pass the code to Quality Assurance Engineer for review if neccessary. Once ther review is good enough, produce a finalized version of the code.",
+                    "tools": "",
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\",\"schema\":\"{{customFunction_0.data.instance}}\"}",
+                    "promptValues": "{\"company\":\"Flowise Inc\",\"technology\":\"React, NodeJS, ExpressJS, Tailwindcss\"}",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
@@ -190,16 +189,16 @@
             "height": 808,
             "selected": false,
             "positionAbsolute": {
-                "x": 483.6310212673076,
-                "y": 304.6138109554939
+                "x": 969.3717362716295,
+                "y": 77.52271438462338
             },
             "dragging": false
         },
         {
             "id": "worker_1",
             "position": {
-                "x": 1214.157684503848,
-                "y": 248.8294849061827
+                "x": 1369.3717362716295,
+                "y": 77.52271438462338
             },
             "type": "customNode",
             "data": {
@@ -268,9 +267,9 @@
                     }
                 ],
                 "inputs": {
-                    "workerName": "SQL Executor",
-                    "workerPrompt": "As an SQL Executor at {company}, you must ensure the SQL query can be executed with no error.\n\nYou must use the execute_sql tool to execute the SQL query provided by SQL Expert and get the result. Verify the result is indeed correct and error-free. Collaborate with the SQL Expert and SQL Reviewer to make sure the SQL query is valid and successfully fetches back the right information.\n\nREMEMBER, always use the execute_sql tool!",
-                    "tools": ["{{customTool_0.data.instance}}"],
+                    "workerName": "Code Reviewer",
+                    "workerPrompt": "As a Quality Assurance Engineer at {company}, you are an integral part of our development team, ensuring that our software products are of the highest quality. Your meticulous attention to detail and expertise in testing methodologies are crucial in identifying defects and ensuring that our code meets the highest standards.\n\nYour goal is to ensure the delivery of high-quality software through thorough code review and testing.\n\nReview the codebase for the new feature designed and implemented by the Senior Software Engineer. Your expertise goes beyond mere code inspection; you are adept at ensuring that developments not only function as intended but also adhere to the team's coding standards, enhance maintainability, and seamlessly integrate with existing systems. \n\nWith a deep appreciation for collaborative development, you provide constructive feedback, guiding contributors towards best practices and fostering a culture of continuous improvement. Your meticulous approach to reviewing code, coupled with your ability to foresee potential issues and recommend proactive solutions, ensures the delivery of high-quality software that is robust, scalable, and aligned with the team's strategic goals.\n\nAlways pass back the review and feedback to Senior Software Engineer.",
+                    "tools": "",
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
                     "promptValues": "{\"company\":\"Flowise Inc\"}",
@@ -292,16 +291,16 @@
             "height": 808,
             "selected": false,
             "positionAbsolute": {
-                "x": 1214.157684503848,
-                "y": 248.8294849061827
+                "x": 1369.3717362716295,
+                "y": 77.52271438462338
             },
             "dragging": false
         },
         {
             "id": "chatOpenAI_0",
             "position": {
-                "x": -636.2452233568264,
-                "y": 233.06616199339652
+                "x": 201.1230948105134,
+                "y": 70.78573663723421
             },
             "type": "customNode",
             "data": {
@@ -472,247 +471,8 @@
             "height": 669,
             "selected": false,
             "positionAbsolute": {
-                "x": -636.2452233568264,
-                "y": 233.06616199339652
-            },
-            "dragging": false
-        },
-        {
-            "id": "customFunction_0",
-            "position": {
-                "x": 90.45254468977657,
-                "y": 626.487889256008
-            },
-            "type": "customNode",
-            "data": {
-                "id": "customFunction_0",
-                "label": "Custom JS Function",
-                "version": 1,
-                "name": "customFunction",
-                "type": "CustomFunction",
-                "baseClasses": ["CustomFunction", "Utilities"],
-                "category": "Utilities",
-                "description": "Execute custom javascript function",
-                "inputParams": [
-                    {
-                        "label": "Input Variables",
-                        "name": "functionInputVariables",
-                        "description": "Input variables can be used in the function with prefix $. For example: $var",
-                        "type": "json",
-                        "optional": true,
-                        "acceptVariable": true,
-                        "list": true,
-                        "id": "customFunction_0-input-functionInputVariables-json"
-                    },
-                    {
-                        "label": "Function Name",
-                        "name": "functionName",
-                        "type": "string",
-                        "optional": true,
-                        "placeholder": "My Function",
-                        "id": "customFunction_0-input-functionName-string"
-                    },
-                    {
-                        "label": "Javascript Function",
-                        "name": "javascriptFunction",
-                        "type": "code",
-                        "id": "customFunction_0-input-javascriptFunction-code"
-                    }
-                ],
-                "inputAnchors": [],
-                "inputs": {
-                    "functionInputVariables": "",
-                    "functionName": "",
-                    "javascriptFunction": "// Fetch schema info\nconst sqlSchema = `CREATE TABLE customers (\n  customerNumber int NOT NULL,\n  customerName varchar(50) NOT NULL,\n  contactLastName varchar(50) NOT NULL,\n  contactFirstName varchar(50) NOT NULL,\n  phone varchar(50) NOT NULL,\n  addressLine1 varchar(50) NOT NULL,\n  addressLine2 varchar(50) DEFAULT NULL,\n  city varchar(50) NOT NULL,\n  state varchar(50) DEFAULT NULL,\n  postalCode varchar(15) DEFAULT NULL,\n  country varchar(50) NOT NULL,\n  salesRepEmployeeNumber int DEFAULT NULL,\n  creditLimit decimal(10,2) DEFAULT NULL,\n)`\n\nreturn sqlSchema;"
-                },
-                "outputAnchors": [
-                    {
-                        "name": "output",
-                        "label": "Output",
-                        "type": "options",
-                        "description": "",
-                        "options": [
-                            {
-                                "id": "customFunction_0-output-output-string|number|boolean|json|array",
-                                "name": "output",
-                                "label": "Output",
-                                "description": "",
-                                "type": "string | number | boolean | json | array"
-                            },
-                            {
-                                "id": "customFunction_0-output-EndingNode-CustomFunction",
-                                "name": "EndingNode",
-                                "label": "Ending Node",
-                                "description": "",
-                                "type": "CustomFunction"
-                            }
-                        ],
-                        "default": "output"
-                    }
-                ],
-                "outputs": {
-                    "output": "output"
-                },
-                "selected": false
-            },
-            "width": 300,
-            "height": 669,
-            "selected": false,
-            "positionAbsolute": {
-                "x": 90.45254468977657,
-                "y": 626.487889256008
-            },
-            "dragging": false
-        },
-        {
-            "id": "customTool_0",
-            "position": {
-                "x": 823.759726626879,
-                "y": 87.97240806811993
-            },
-            "type": "customNode",
-            "data": {
-                "id": "customTool_0",
-                "label": "Custom Tool",
-                "version": 1,
-                "name": "customTool",
-                "type": "CustomTool",
-                "baseClasses": ["CustomTool", "Tool", "StructuredTool", "Runnable"],
-                "category": "Tools",
-                "description": "Use custom tool you've created in Flowise within chatflow",
-                "inputParams": [
-                    {
-                        "label": "Select Tool",
-                        "name": "selectedTool",
-                        "type": "asyncOptions",
-                        "loadMethod": "listTools",
-                        "id": "customTool_0-input-selectedTool-asyncOptions"
-                    }
-                ],
-                "inputAnchors": [],
-                "inputs": {
-                    "selectedTool": "4d723d69-e854-4351-90c0-6385ce908213"
-                },
-                "outputAnchors": [
-                    {
-                        "id": "customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable",
-                        "name": "customTool",
-                        "label": "CustomTool",
-                        "description": "Use custom tool you've created in Flowise within chatflow",
-                        "type": "CustomTool | Tool | StructuredTool | Runnable"
-                    }
-                ],
-                "outputs": {},
-                "selected": false
-            },
-            "width": 300,
-            "height": 285,
-            "selected": false,
-            "positionAbsolute": {
-                "x": 823.759726626879,
-                "y": 87.97240806811993
-            },
-            "dragging": false
-        },
-        {
-            "id": "worker_2",
-            "position": {
-                "x": 1643.1366621404572,
-                "y": 253.12633995235484
-            },
-            "type": "customNode",
-            "data": {
-                "id": "worker_2",
-                "label": "Worker",
-                "version": 1,
-                "name": "worker",
-                "type": "Worker",
-                "baseClasses": ["Worker"],
-                "category": "Multi Agents",
-                "inputParams": [
-                    {
-                        "label": "Worker Name",
-                        "name": "workerName",
-                        "type": "string",
-                        "placeholder": "Worker",
-                        "id": "worker_2-input-workerName-string"
-                    },
-                    {
-                        "label": "Worker Prompt",
-                        "name": "workerPrompt",
-                        "type": "string",
-                        "rows": 4,
-                        "default": "You are a research assistant who can search for up-to-date info using search engine.",
-                        "id": "worker_2-input-workerPrompt-string"
-                    },
-                    {
-                        "label": "Format Prompt Values",
-                        "name": "promptValues",
-                        "type": "json",
-                        "optional": true,
-                        "acceptVariable": true,
-                        "list": true,
-                        "id": "worker_2-input-promptValues-json"
-                    },
-                    {
-                        "label": "Max Iterations",
-                        "name": "maxIterations",
-                        "type": "number",
-                        "optional": true,
-                        "id": "worker_2-input-maxIterations-number"
-                    }
-                ],
-                "inputAnchors": [
-                    {
-                        "label": "Tools",
-                        "name": "tools",
-                        "type": "Tool",
-                        "list": true,
-                        "optional": true,
-                        "id": "worker_2-input-tools-Tool"
-                    },
-                    {
-                        "label": "Supervisor",
-                        "name": "supervisor",
-                        "type": "Supervisor",
-                        "id": "worker_2-input-supervisor-Supervisor"
-                    },
-                    {
-                        "label": "Tool Calling Chat Model",
-                        "name": "model",
-                        "type": "BaseChatModel",
-                        "optional": true,
-                        "description": "Only compatible with models that are capable of function calling: ChatOpenAI, ChatMistral, ChatAnthropic, ChatGoogleGenerativeAI, ChatVertexAI, GroqChat. If not specified, supervisor's model will be used",
-                        "id": "worker_2-input-model-BaseChatModel"
-                    }
-                ],
-                "inputs": {
-                    "workerName": "SQL Reviewer",
-                    "workerPrompt": "As an SQL Code Reviewer at {company}, you play a crucial role in ensuring the accuracy, efficiency, and reliability of our SQL queries and database systems. Your expertise in SQL and best practices in database management is essential for maintaining high standards in our data operations.\n\nYour goal is to thoroughly review and validate the SQL queries developed by the SQL Expert to ensure they meet our performance and accuracy standards. Check for potential issues such as syntax errors, performance bottlenecks, and logical inaccuracies. Collaborate with the SQL Expert and SQL Executor to provide constructive feedback and suggest improvements where necessary.\n\nThe output should be a detailed code review report that includes an assessment of each SQL query's accuracy, performance, and correctness. Provide actionable feedback and suggestions to enhance the quality of the SQL code, ensuring it supports our data-driven initiatives effectively.",
-                    "tools": [],
-                    "supervisor": "{{supervisor_0.data.instance}}",
-                    "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\"}",
-                    "maxIterations": ""
-                },
-                "outputAnchors": [
-                    {
-                        "id": "worker_2-output-worker-Worker",
-                        "name": "worker",
-                        "label": "Worker",
-                        "description": "",
-                        "type": "Worker"
-                    }
-                ],
-                "outputs": {},
-                "selected": false
-            },
-            "width": 300,
-            "height": 808,
-            "selected": false,
-            "positionAbsolute": {
-                "x": 1643.1366621404572,
-                "y": 253.12633995235484
+                "x": 201.1230948105134,
+                "y": 70.78573663723421
             },
             "dragging": false
         }
@@ -727,22 +487,6 @@
             "id": "chatOpenAI_0-chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable-supervisor_0-supervisor_0-input-model-BaseChatModel"
         },
         {
-            "source": "customFunction_0",
-            "sourceHandle": "customFunction_0-output-output-string|number|boolean|json|array",
-            "target": "worker_0",
-            "targetHandle": "worker_0-input-promptValues-json",
-            "type": "buttonedge",
-            "id": "customFunction_0-customFunction_0-output-output-string|number|boolean|json|array-worker_0-worker_0-input-promptValues-json"
-        },
-        {
-            "source": "supervisor_0",
-            "sourceHandle": "supervisor_0-output-supervisor-Supervisor",
-            "target": "worker_0",
-            "targetHandle": "worker_0-input-supervisor-Supervisor",
-            "type": "buttonedge",
-            "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_0-worker_0-input-supervisor-Supervisor"
-        },
-        {
             "source": "supervisor_0",
             "sourceHandle": "supervisor_0-output-supervisor-Supervisor",
             "target": "worker_1",
@@ -751,20 +495,12 @@
             "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_1-worker_1-input-supervisor-Supervisor"
         },
         {
-            "source": "customTool_0",
-            "sourceHandle": "customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable",
-            "target": "worker_1",
-            "targetHandle": "worker_1-input-tools-Tool",
-            "type": "buttonedge",
-            "id": "customTool_0-customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable-worker_1-worker_1-input-tools-Tool"
-        },
-        {
             "source": "supervisor_0",
             "sourceHandle": "supervisor_0-output-supervisor-Supervisor",
-            "target": "worker_2",
-            "targetHandle": "worker_2-input-supervisor-Supervisor",
+            "target": "worker_0",
+            "targetHandle": "worker_0-input-supervisor-Supervisor",
             "type": "buttonedge",
-            "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_2-worker_2-input-supervisor-Supervisor"
+            "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_0-worker_0-input-supervisor-Supervisor"
         }
     ]
 }

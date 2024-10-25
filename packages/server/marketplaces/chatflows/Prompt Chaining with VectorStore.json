@@ -1,5 +1,5 @@
 {
-    "description": "Use chat history to rephrase user question, then answer the rephrased question using retrieved docs from vector store",
+    "description": "使用聊天历史记录改写用户问题，然后从矢量存储中检索文档回答改写后的问题",
     "usecases": ["知识问答"],
     "framework": ["Langchain"],
     "nodes": [

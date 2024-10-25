@@ -1,13 +1,13 @@
 {
-    "description": "使用由SQL专家、SQL审阅者和SQL执行者3个代理组成的团队进行文本到SQL的查询处理",
+    "description": "为您的AgentFLow制定提示词的提示工程团队。",
     "framework": ["Langchain"],
-    "usecases": ["SQL"],
+    "usecases": ["工程"],
     "nodes": [
         {
             "id": "supervisor_0",
             "position": {
-                "x": -275.4818449163403,
-                "y": 462.4424369159454
+                "x": 485.1357844985962,
+                "y": 324.1719351589139
             },
             "type": "customNode",
             "data": {
@@ -85,19 +85,19 @@
                 "selected": false
             },
             "width": 300,
-            "height": 431,
+            "height": 430,
             "selected": false,
             "positionAbsolute": {
-                "x": -275.4818449163403,
-                "y": 462.4424369159454
+                "x": 485.1357844985962,
+                "y": 324.1719351589139
             },
             "dragging": false
         },
         {
             "id": "worker_0",
             "position": {
-                "x": 483.6310212673076,
-                "y": 304.6138109554939
+                "x": 807.6882204663332,
+                "y": 326.15881845953294
             },
             "type": "customNode",
             "data": {
@@ -166,12 +166,12 @@
                     }
                 ],
                 "inputs": {
-                    "workerName": "SQL Expert",
-                    "workerPrompt": "As an SQL Expert at {company}, you are a critical member of our data team, responsible for designing, optimizing, and maintaining our database systems. Your expertise in SQL and database management ensures that our data is accurate, accessible, and efficiently processed.\n\nYour goal is to develop and optimize complex SQL queries to answer the question.\n\nYou are given the following schema:\n{schema}\n\nYour task is to use the provided schema, and produce the SQL query needed to answer user question. Collaborate with SQL Reviewer and SQL Executor for feedback and review, ensuring that your SQL solutions is correct and follow best practices in database design and query optimization to enhance performance and reliability.\n\nThe output should be a an optimized SQL query. Ensure that your output only contains SQL query, nothing else. Remember, only output SQL query.",
-                    "tools": [],
+                    "workerName": " Prompt Creator",
+                    "workerPrompt": "You are a Prompt Engineer. Your job is to craft system prompts for AI Agents based on user requests.\n\nHere is an example:\n\n1. User asks you to craft two AI Agent prompt messages for \"researching leads and creating personalized email drafts for the sales team\".\n\n2. You generate the following:\n\nAGENT 1\n\nName: \nLead Research\n\nSytyem Prompt: \nAs a member of the sales team at company, your mission is to explore the digital landscape for potential leads. Equipped with advanced tools and a strategic approach, you analyze data, trends, and interactions to discover opportunities that others might miss. Your efforts are vital in creating pathways for meaningful engagements and driving the company's growth.\nYour goal is to identify high-value leads that align with our ideal customer profile.\nPerform a thorough analysis of lead_company, a company that has recently shown interest in our solutions. Use all available data sources to create a detailed profile, concentrating on key decision-makers, recent business developments, and potential needs that match our offerings. This task is essential for effectively customizing our engagement strategy.\nAvoid making assumptions and only use information you are certain about.\nYou should produce a comprehensive report on lead_person, including company background, key personnel, recent milestones, and identified needs. Emphasize potential areas where our solutions can add value and suggest tailored engagement strategies. Pass the info to Lead Sales Representative.\n\nAGENT 2\n\nName: \nLead Sales Representative\n\nSystem Prompt: \nYou play a crucial role within company as the link between potential clients and the solutions they need. By crafting engaging, personalized messages, you not only inform leads about our company offerings but also make them feel valued and understood. Your role is essential in transforming interest into action, guiding leads from initial curiosity to committed engagement.\nYour goal is to nurture leads with tailored, compelling communications.\nLeveraging the insights from the lead profiling report on lead_company, create a personalized outreach campaign targeting lead_person, the position of lead_company. he campaign should highlight their recent lead_activity and demonstrate how our solutions can support their objectives. Your communication should align with lead_company's company culture and values, showcasing a thorough understanding of their business and needs. Avoid making assumptions and use only verified information.\nThe output should be a series of personalized email drafts customized for lead_company, specifically addressing lead_person. Each draft should present a compelling narrative that connects our solutions to their recent accomplishments and future goals. Ensure the tone is engaging, professional, and consistent with lead_company's corporate identity. Keep in natural, don't use strange and fancy words.\n\n3. IMPORTANT: Notice how the prompts in this example work together and are connected by \"Pass the info to Lead Sales Representative.\" The first prompt focuses on researching leads, while the second leverages that information to create personalized email drafts. This creates a cohesive workflow for the AI Agents.\n\n4. If the AI agent needs to use a tool to perform its task, it will indicate this on the system prompt, but you will not write any code for them (they already have the code for the tools they use).",
+                    "tools": "",
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\",\"schema\":\"{{customFunction_0.data.instance}}\"}",
+                    "promptValues": "",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
@@ -187,19 +187,19 @@
                 "selected": false
             },
             "width": 300,
-            "height": 808,
+            "height": 807,
             "selected": false,
             "positionAbsolute": {
-                "x": 483.6310212673076,
-                "y": 304.6138109554939
+                "x": 807.6882204663332,
+                "y": 326.15881845953294
             },
             "dragging": false
         },
         {
             "id": "worker_1",
             "position": {
-                "x": 1214.157684503848,
-                "y": 248.8294849061827
+                "x": 1149.1084792409956,
+                "y": 324.68074278187794
             },
             "type": "customNode",
             "data": {
@@ -268,12 +268,12 @@
                     }
                 ],
                 "inputs": {
-                    "workerName": "SQL Executor",
-                    "workerPrompt": "As an SQL Executor at {company}, you must ensure the SQL query can be executed with no error.\n\nYou must use the execute_sql tool to execute the SQL query provided by SQL Expert and get the result. Verify the result is indeed correct and error-free. Collaborate with the SQL Expert and SQL Reviewer to make sure the SQL query is valid and successfully fetches back the right information.\n\nREMEMBER, always use the execute_sql tool!",
-                    "tools": ["{{customTool_0.data.instance}}"],
+                    "workerName": "Prompt Reviewer",
+                    "workerPrompt": "You are a meticulous and insightful AI specializing in reviewing and enhancing custom prompts created for other AI agents. Your role is crucial in ensuring that the prompts are not only accurate and clear but also optimized for the best performance of the AI agents. You pay close attention to detail and strive for perfection in prompt design. Your goal is to review and improve the custom prompts created by the prompt_creator AI. Examine the provided system prompt thoroughly, identifying any areas that can be improved for clarity, specificity, or effectiveness. Suggest modifications that enhance the prompt's structure, language, and overall quality. Ensure that the final prompt is free from ambiguity and provides precise, actionable instructions for the AI agent. The output should be an improved version of the system prompt, with clear annotations or explanations of the changes made to enhance its quality and effectiveness.\n",
+                    "tools": "",
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\"}",
+                    "promptValues": "",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
@@ -289,19 +289,19 @@
                 "selected": false
             },
             "width": 300,
-            "height": 808,
+            "height": 807,
             "selected": false,
             "positionAbsolute": {
-                "x": 1214.157684503848,
-                "y": 248.8294849061827
+                "x": 1149.1084792409956,
+                "y": 324.68074278187794
             },
             "dragging": false
         },
         {
             "id": "chatOpenAI_0",
             "position": {
-                "x": -636.2452233568264,
-                "y": 233.06616199339652
+                "x": 134.3531319624069,
+                "y": 318.3354688270578
             },
             "type": "customNode",
             "data": {
@@ -445,7 +445,7 @@
                 "inputs": {
                     "cache": "",
                     "modelName": "gpt-4o",
-                    "temperature": "0",
+                    "temperature": "0.4",
                     "maxTokens": "",
                     "topP": "",
                     "frequencyPenalty": "",
@@ -469,271 +469,68 @@
                 "selected": false
             },
             "width": 300,
-            "height": 669,
+            "height": 668,
             "selected": false,
             "positionAbsolute": {
-                "x": -636.2452233568264,
-                "y": 233.06616199339652
+                "x": 134.3531319624069,
+                "y": 318.3354688270578
             },
             "dragging": false
         },
         {
-            "id": "customFunction_0",
+            "id": "stickyNote_0",
             "position": {
-                "x": 90.45254468977657,
-                "y": 626.487889256008
+                "x": -204.73108806492982,
+                "y": 321.243965769327
             },
-            "type": "customNode",
+            "type": "stickyNote",
             "data": {
-                "id": "customFunction_0",
-                "label": "Custom JS Function",
+                "id": "stickyNote_0",
+                "label": "Sticky Note",
                 "version": 1,
-                "name": "customFunction",
-                "type": "CustomFunction",
-                "baseClasses": ["CustomFunction", "Utilities"],
+                "name": "stickyNote",
+                "type": "StickyNote",
+                "baseClasses": ["StickyNote"],
                 "category": "Utilities",
-                "description": "Execute custom javascript function",
+                "description": "Add a sticky note",
                 "inputParams": [
                     {
-                        "label": "Input Variables",
-                        "name": "functionInputVariables",
-                        "description": "Input variables can be used in the function with prefix $. For example: $var",
-                        "type": "json",
-                        "optional": true,
-                        "acceptVariable": true,
-                        "list": true,
-                        "id": "customFunction_0-input-functionInputVariables-json"
-                    },
-                    {
-                        "label": "Function Name",
-                        "name": "functionName",
+                        "label": "",
+                        "name": "note",
                         "type": "string",
+                        "rows": 1,
+                        "placeholder": "Type something here",
                         "optional": true,
-                        "placeholder": "My Function",
-                        "id": "customFunction_0-input-functionName-string"
-                    },
-                    {
-                        "label": "Javascript Function",
-                        "name": "javascriptFunction",
-                        "type": "code",
-                        "id": "customFunction_0-input-javascriptFunction-code"
+                        "id": "stickyNote_0-input-note-string"
                     }
                 ],
                 "inputAnchors": [],
                 "inputs": {
-                    "functionInputVariables": "",
-                    "functionName": "",
-                    "javascriptFunction": "// Fetch schema info\nconst sqlSchema = `CREATE TABLE customers (\n  customerNumber int NOT NULL,\n  customerName varchar(50) NOT NULL,\n  contactLastName varchar(50) NOT NULL,\n  contactFirstName varchar(50) NOT NULL,\n  phone varchar(50) NOT NULL,\n  addressLine1 varchar(50) NOT NULL,\n  addressLine2 varchar(50) DEFAULT NULL,\n  city varchar(50) NOT NULL,\n  state varchar(50) DEFAULT NULL,\n  postalCode varchar(15) DEFAULT NULL,\n  country varchar(50) NOT NULL,\n  salesRepEmployeeNumber int DEFAULT NULL,\n  creditLimit decimal(10,2) DEFAULT NULL,\n)`\n\nreturn sqlSchema;"
+                    "note": "How it works?\nSimply explain the app you want to create, and it will generate the system prompt for each Worker.\n\nExample:\nI want to create an AI app with two AI agents. One agent would perform a Google search using the SerpApi tool on any topic provided by the user. The other agent would then send the information to my email,\ntest@test.test, using a custom tool at its disposal."
                 },
                 "outputAnchors": [
                     {
-                        "name": "output",
-                        "label": "Output",
-                        "type": "options",
-                        "description": "",
-                        "options": [
-                            {
-                                "id": "customFunction_0-output-output-string|number|boolean|json|array",
-                                "name": "output",
-                                "label": "Output",
-                                "description": "",
-                                "type": "string | number | boolean | json | array"
-                            },
-                            {
-                                "id": "customFunction_0-output-EndingNode-CustomFunction",
-                                "name": "EndingNode",
-                                "label": "Ending Node",
-                                "description": "",
-                                "type": "CustomFunction"
-                            }
-                        ],
-                        "default": "output"
-                    }
-                ],
-                "outputs": {
-                    "output": "output"
-                },
-                "selected": false
-            },
-            "width": 300,
-            "height": 669,
-            "selected": false,
-            "positionAbsolute": {
-                "x": 90.45254468977657,
-                "y": 626.487889256008
-            },
-            "dragging": false
-        },
-        {
-            "id": "customTool_0",
-            "position": {
-                "x": 823.759726626879,
-                "y": 87.97240806811993
-            },
-            "type": "customNode",
-            "data": {
-                "id": "customTool_0",
-                "label": "Custom Tool",
-                "version": 1,
-                "name": "customTool",
-                "type": "CustomTool",
-                "baseClasses": ["CustomTool", "Tool", "StructuredTool", "Runnable"],
-                "category": "Tools",
-                "description": "Use custom tool you've created in Flowise within chatflow",
-                "inputParams": [
-                    {
-                        "label": "Select Tool",
-                        "name": "selectedTool",
-                        "type": "asyncOptions",
-                        "loadMethod": "listTools",
-                        "id": "customTool_0-input-selectedTool-asyncOptions"
-                    }
-                ],
-                "inputAnchors": [],
-                "inputs": {
-                    "selectedTool": "4d723d69-e854-4351-90c0-6385ce908213"
-                },
-                "outputAnchors": [
-                    {
-                        "id": "customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable",
-                        "name": "customTool",
-                        "label": "CustomTool",
-                        "description": "Use custom tool you've created in Flowise within chatflow",
-                        "type": "CustomTool | Tool | StructuredTool | Runnable"
+                        "id": "stickyNote_0-output-stickyNote-StickyNote",
+                        "name": "stickyNote",
+                        "label": "StickyNote",
+                        "description": "Add a sticky note",
+                        "type": "StickyNote"
                     }
                 ],
                 "outputs": {},
                 "selected": false
             },
             "width": 300,
-            "height": 285,
+            "height": 283,
             "selected": false,
             "positionAbsolute": {
-                "x": 823.759726626879,
-                "y": 87.97240806811993
-            },
-            "dragging": false
-        },
-        {
-            "id": "worker_2",
-            "position": {
-                "x": 1643.1366621404572,
-                "y": 253.12633995235484
-            },
-            "type": "customNode",
-            "data": {
-                "id": "worker_2",
-                "label": "Worker",
-                "version": 1,
-                "name": "worker",
-                "type": "Worker",
-                "baseClasses": ["Worker"],
-                "category": "Multi Agents",
-                "inputParams": [
-                    {
-                        "label": "Worker Name",
-                        "name": "workerName",
-                        "type": "string",
-                        "placeholder": "Worker",
-                        "id": "worker_2-input-workerName-string"
-                    },
-                    {
-                        "label": "Worker Prompt",
-                        "name": "workerPrompt",
-                        "type": "string",
-                        "rows": 4,
-                        "default": "You are a research assistant who can search for up-to-date info using search engine.",
-                        "id": "worker_2-input-workerPrompt-string"
-                    },
-                    {
-                        "label": "Format Prompt Values",
-                        "name": "promptValues",
-                        "type": "json",
-                        "optional": true,
-                        "acceptVariable": true,
-                        "list": true,
-                        "id": "worker_2-input-promptValues-json"
-                    },
-                    {
-                        "label": "Max Iterations",
-                        "name": "maxIterations",
-                        "type": "number",
-                        "optional": true,
-                        "id": "worker_2-input-maxIterations-number"
-                    }
-                ],
-                "inputAnchors": [
-                    {
-                        "label": "Tools",
-                        "name": "tools",
-                        "type": "Tool",
-                        "list": true,
-                        "optional": true,
-                        "id": "worker_2-input-tools-Tool"
-                    },
-                    {
-                        "label": "Supervisor",
-                        "name": "supervisor",
-                        "type": "Supervisor",
-                        "id": "worker_2-input-supervisor-Supervisor"
-                    },
-                    {
-                        "label": "Tool Calling Chat Model",
-                        "name": "model",
-                        "type": "BaseChatModel",
-                        "optional": true,
-                        "description": "Only compatible with models that are capable of function calling: ChatOpenAI, ChatMistral, ChatAnthropic, ChatGoogleGenerativeAI, ChatVertexAI, GroqChat. If not specified, supervisor's model will be used",
-                        "id": "worker_2-input-model-BaseChatModel"
-                    }
-                ],
-                "inputs": {
-                    "workerName": "SQL Reviewer",
-                    "workerPrompt": "As an SQL Code Reviewer at {company}, you play a crucial role in ensuring the accuracy, efficiency, and reliability of our SQL queries and database systems. Your expertise in SQL and best practices in database management is essential for maintaining high standards in our data operations.\n\nYour goal is to thoroughly review and validate the SQL queries developed by the SQL Expert to ensure they meet our performance and accuracy standards. Check for potential issues such as syntax errors, performance bottlenecks, and logical inaccuracies. Collaborate with the SQL Expert and SQL Executor to provide constructive feedback and suggest improvements where necessary.\n\nThe output should be a detailed code review report that includes an assessment of each SQL query's accuracy, performance, and correctness. Provide actionable feedback and suggestions to enhance the quality of the SQL code, ensuring it supports our data-driven initiatives effectively.",
-                    "tools": [],
-                    "supervisor": "{{supervisor_0.data.instance}}",
-                    "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\"}",
-                    "maxIterations": ""
-                },
-                "outputAnchors": [
-                    {
-                        "id": "worker_2-output-worker-Worker",
-                        "name": "worker",
-                        "label": "Worker",
-                        "description": "",
-                        "type": "Worker"
-                    }
-                ],
-                "outputs": {},
-                "selected": false
-            },
-            "width": 300,
-            "height": 808,
-            "selected": false,
-            "positionAbsolute": {
-                "x": 1643.1366621404572,
-                "y": 253.12633995235484
+                "x": -204.73108806492982,
+                "y": 321.243965769327
             },
             "dragging": false
         }
     ],
     "edges": [
-        {
-            "source": "chatOpenAI_0",
-            "sourceHandle": "chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
-            "target": "supervisor_0",
-            "targetHandle": "supervisor_0-input-model-BaseChatModel",
-            "type": "buttonedge",
-            "id": "chatOpenAI_0-chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable-supervisor_0-supervisor_0-input-model-BaseChatModel"
-        },
-        {
-            "source": "customFunction_0",
-            "sourceHandle": "customFunction_0-output-output-string|number|boolean|json|array",
-            "target": "worker_0",
-            "targetHandle": "worker_0-input-promptValues-json",
-            "type": "buttonedge",
-            "id": "customFunction_0-customFunction_0-output-output-string|number|boolean|json|array-worker_0-worker_0-input-promptValues-json"
-        },
         {
             "source": "supervisor_0",
             "sourceHandle": "supervisor_0-output-supervisor-Supervisor",
@@ -751,20 +548,12 @@
             "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_1-worker_1-input-supervisor-Supervisor"
         },
         {
-            "source": "customTool_0",
-            "sourceHandle": "customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable",
-            "target": "worker_1",
-            "targetHandle": "worker_1-input-tools-Tool",
+            "source": "chatOpenAI_0",
+            "sourceHandle": "chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable",
+            "target": "supervisor_0",
+            "targetHandle": "supervisor_0-input-model-BaseChatModel",
             "type": "buttonedge",
-            "id": "customTool_0-customTool_0-output-customTool-CustomTool|Tool|StructuredTool|Runnable-worker_1-worker_1-input-tools-Tool"
-        },
-        {
-            "source": "supervisor_0",
-            "sourceHandle": "supervisor_0-output-supervisor-Supervisor",
-            "target": "worker_2",
-            "targetHandle": "worker_2-input-supervisor-Supervisor",
-            "type": "buttonedge",
-            "id": "supervisor_0-supervisor_0-output-supervisor-Supervisor-worker_2-worker_2-input-supervisor-Supervisor"
+            "id": "chatOpenAI_0-chatOpenAI_0-output-chatOpenAI-ChatOpenAI|BaseChatModel|BaseLanguageModel|Runnable-supervisor_0-supervisor_0-input-model-BaseChatModel"
         }
     ]
 }

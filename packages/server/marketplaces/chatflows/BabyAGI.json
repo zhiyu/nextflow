@@ -1,5 +1,5 @@
 {
-    "description": "Use BabyAGI to create tasks and reprioritize for a given objective",
+    "description": "使用BabyAGI创建任务并为给定目标重新确定优先级",
     "framework": ["Langchain"],
     "usecases": ["反思型智能体"],
     "nodes": [

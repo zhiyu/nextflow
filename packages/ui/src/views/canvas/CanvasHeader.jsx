@@ -258,7 +258,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     window.history.state && window.history.state.idx > 0 ? navigate(-1) : navigate('/', { replace: true })
                                 }
                             >
-                                <PiCaretLeft size='1.3rem' />
+                                <PiCaretLeft size='1.2rem' />
                             </Avatar>
                         </ButtonBase>
                     </Box>
@@ -267,8 +267,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             <Stack flexDirection='row' alignItems='center'>
                                 <Typography
                                     sx={{
-                                        fontSize: '1.2rem',
-                                        fontWeight: 600,
+                                        fontSize: '1rem',
                                         ml: 2,
                                         textOverflow: 'ellipsis',
                                         overflow: 'hidden',
@@ -301,17 +300,20 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 )}
                             </Stack>
                         ) : (
-                            <Stack flexDirection='row' sx={{ width: '100%' }}>
+                            <Stack flexDirection='row' className='flex items-center'>
                                 <TextField
                                     size='small'
                                     inputRef={flowNameRef}
                                     sx={{
-                                        width: '100%',
-                                        ml: 2
+                                        ml: 2,
+                                        '.MuiOutlinedInput-input': {
+                                            padding: '4px 10px'
+                                        }
                                     }}
+                                    className='ml-2'
                                     defaultValue={flowName}
                                 />
-                                <ButtonBase title='Save Name' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title='Save Name'>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -329,17 +331,16 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         color='inherit'
                                         onClick={submitFlowName}
                                     >
-                                        <PiCheck size='1.3rem' />
+                                        <PiCheck size='1rem' />
                                     </Avatar>
                                 </ButtonBase>
-                                <ButtonBase title='Cancel' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title='Cancel'>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
                                             ...theme.typography.commonAvatar,
                                             ...theme.typography.mediumAvatar,
                                             transition: 'all .2s ease-in-out',
-                                            ml: 1,
                                             background: 'none',
                                             color: theme.palette.grey[700],
                                             '&:hover': {
@@ -350,7 +351,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                         color='inherit'
                                         onClick={() => setEditingFlowName(false)}
                                     >
-                                        <PiX size='1.3rem' />
+                                        <PiX size='1rem' />
                                     </Avatar>
                                 </ButtonBase>
                             </Stack>
@@ -376,7 +377,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 color='inherit'
                                 onClick={onAPIDialogClick}
                             >
-                                <PiCode size='1.3rem' />
+                                <PiCode size='1.2rem' />
                             </Avatar>
                         </ButtonBase>
                     )}
@@ -397,7 +398,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             color='inherit'
                             onClick={onSaveChatflowClick}
                         >
-                            <PiFloppyDiskBack size='1.3rem' />
+                            <PiFloppyDiskBack size='1.2rem' />
                         </Avatar>
                     </ButtonBase>
                     <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
@@ -416,7 +417,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             }}
                             onClick={() => setSettingsOpen(!isSettingsOpen)}
                         >
-                            <PiGearSix size='1.3rem' />
+                            <PiGearSix size='1.2rem' />
                         </Avatar>
                     </ButtonBase>
                 </Box>

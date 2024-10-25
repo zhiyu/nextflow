@@ -1,5 +1,5 @@
 {
-    "description": "AutoGPT - Autonomous agent with chain of thoughts for self-guided task completion",
+    "description": "AutoGPT-具有自我引导任务完成思路链的自主代理",
     "framework": ["Langchain"],
     "usecases": ["反思型智能体"],
     "nodes": [

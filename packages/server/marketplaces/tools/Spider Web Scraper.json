@@ -1,6 +1,6 @@
 {
     "name": "webpage_scraper",
-    "description": "This tool is useful for extracting up-to-date information (text) from web pages, making it ideal for gathering data for analysis. If the user provides multiple URLs, process each one separately and then synthesize the extracted information into a single, comprehensive response. Make sure to add the HTTP protocol (https://) to website URLs if the user forgets to do so.\n\nImportant: The webpage_scraper function retrieves the raw text content of any webpage. It does not provide any structural information like headings, paragraphs, or specific elements.",
+    "description": "此工具可用于从网页中提取最新信息（文本），使其成为收集数据进行分析的理想选择。如果用户提供了多个URL，请分别处理每个URL，然后将提取的信息合成为一个完整的响应。如果用户忘记将HTTP协议（https://）添加到网站URL中，请确保这样做。重要提示：webpage_scraper函数检索任何网页的原始文本内容。它不提供任何结构信息，如标题、段落或特定元素。",
     "color": "linear-gradient(rgb(75,205,223), rgb(4,90,12))",
     "iconSrc": "https://raw.githubusercontent.com/FlowiseAI/Flowise/main/packages/components/nodes/documentloaders/Spider/spider.svg",
     "schema": "[{\"id\":0,\"property\":\"url\",\"description\":\"This is the URL provided by the user\",\"type\":\"string\",\"required\":true}]",

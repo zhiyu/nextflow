@@ -1,5 +1,5 @@
 {
-    "description": "A self-improving RAG that check for relevance of a document to a user question",
+    "description": "一种自我改进的RAG，用于检查文档与用户问题的相关性",
     "framework": ["Langchain"],
     "usecases": ["反思型智能体"],
     "nodes": [

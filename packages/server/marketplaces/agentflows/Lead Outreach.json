@@ -1,5 +1,5 @@
 {
-    "description": "Research leads and create personalized email drafts for sales team",
+    "description": "为销售团队研究潜在客户并创建个性化的电子邮件草稿",
     "framework": ["Langchain"],
     "usecases": ["领域专家"],
     "nodes": [
