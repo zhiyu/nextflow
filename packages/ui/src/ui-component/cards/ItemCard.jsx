@@ -17,10 +17,6 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     border: 'none !important',
     borderRadius: '4px !important',
     cursor: 'pointer',
-    '&:hover': {
-        background: theme.palette.card.hover,
-        boxShadow: '0 2px 14px 0 rgb(32 40 45 / 20%)'
-    },
     height: '100%',
     minHeight: '160px',
     maxHeight: '300px',
@@ -29,14 +25,17 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     whiteSpace: 'pre-line'
 }))
 
-// ===========================|| CONTRACT CARD ||=========================== //
-
 const ItemCard = ({ data, images, onClick }) => {
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
 
     return (
-        <CardWrapper content={false} onClick={onClick} sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}>
+        <CardWrapper
+            content={false}
+            className='hover:shadow-lg'
+            onClick={onClick}
+            sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
+        >
             <Box sx={{ height: '100%', p: 2.25 }}>
                 <Grid container justifyContent='space-between' direction='column' sx={{ height: '100%', gap: 3 }}>
                     <Box display='flex' flexDirection='column' sx={{ width: '100%' }}>
