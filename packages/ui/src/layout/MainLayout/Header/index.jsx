@@ -54,7 +54,7 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
             {/* logo & toggler button */}
             <Box
                 sx={{
-                    width: 200,
+                    width: 240,
                     display: 'flex',
                     [theme.breakpoints.down('md')]: {
                         width: 'auto'
@@ -91,10 +91,6 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
                     </Avatar>
                 </ButtonBase>
             </Box>
-            <Box sx={{ ml: 6 }}>
-                <NavBar />
-            </Box>
-            <Box sx={{ flexGrow: 1 }} />
             <Box>
                 {isDark ? (
                     <ModeButton sx={{ color: theme.palette.primary.main }} onClick={changeDarkMode}>
@@ -106,6 +102,11 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
                     </ModeButton>
                 )}
             </Box>
+            <Box sx={{ ml: 6 }}>
+                <NavBar />
+            </Box>
+            <Box sx={{ flexGrow: 1 }} />
+
             <Box sx={{ ml: 4 }}>
                 <Typography>{localStorage.getItem('username') ?? ''}</Typography>
             </Box>
