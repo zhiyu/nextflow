@@ -133,26 +133,24 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                 {sortedData.filter(filterFunction).map((row, index) => (
                                     <TableRow hover key={index}>
                                         <TableCell key='0'>
-                                            <Tooltip title={row.templateName || row.name}>
-                                                <Typography
-                                                    sx={{
-                                                        display: '-webkit-box',
-                                                        fontSize: 14,
-                                                        fontWeight: 500,
-                                                        WebkitLineClamp: 2,
-                                                        WebkitBoxOrient: 'vertical',
-                                                        textOverflow: 'ellipsis',
-                                                        overflow: 'hidden'
-                                                    }}
+                                            <Typography
+                                                sx={{
+                                                    display: '-webkit-box',
+                                                    fontSize: 14,
+                                                    fontWeight: 500,
+                                                    WebkitLineClamp: 2,
+                                                    WebkitBoxOrient: 'vertical',
+                                                    textOverflow: 'ellipsis',
+                                                    overflow: 'hidden'
+                                                }}
+                                            >
+                                                <Link
+                                                    to={`/${isAgentCanvas ? 'agentcanvas' : 'canvas'}/${row.id}`}
+                                                    style={{ color: theme.palette.primary.main, textDecoration: 'none' }}
                                                 >
-                                                    <Link
-                                                        to={`/${isAgentCanvas ? 'agentcanvas' : 'canvas'}/${row.id}`}
-                                                        style={{ color: theme.palette.primary.main, textDecoration: 'none' }}
-                                                    >
-                                                        {row.templateName || row.name}
-                                                    </Link>
-                                                </Typography>
-                                            </Tooltip>
+                                                    {row.templateName || row.name}
+                                                </Link>
+                                            </Typography>
                                         </TableCell>
                                         <TableCell key='1'>
                                             <div
