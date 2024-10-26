@@ -32,7 +32,7 @@ const ItemCard = ({ data, images, onClick }) => {
     return (
         <CardWrapper
             content={false}
-            className='hover:shadow-lg'
+            className='transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
             onClick={onClick}
             sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
         >
