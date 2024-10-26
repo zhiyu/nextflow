@@ -22,7 +22,7 @@ const agent_settings = {
     children: [
         {
             id: 'viewMessages',
-            title: 'View Messages',
+            title: '消息记录',
             type: 'item',
             url: '',
             icon: icons.PiChatText
@@ -36,42 +36,42 @@ const agent_settings = {
         },
         {
             id: 'chatflowConfiguration',
-            title: 'Configuration',
+            title: '参数设置',
             type: 'item',
             url: '',
             icon: icons.PiFadersHorizontal
         },
         {
             id: 'saveAsTemplate',
-            title: 'Save As Template',
+            title: '保存为模版',
             type: 'item',
             url: '',
             icon: icons.PiBookmarks
         },
         {
             id: 'duplicateChatflow',
-            title: 'Duplicate Agents',
+            title: '复制',
             type: 'item',
             url: '',
             icon: icons.PiCopy
         },
         {
             id: 'loadChatflow',
-            title: 'Load Agents',
+            title: '加载',
             type: 'item',
             url: '',
             icon: icons.PiUpload
         },
         {
             id: 'exportChatflow',
-            title: 'Export Agents',
+            title: '导出',
             type: 'item',
             url: '',
             icon: icons.PiExport
         },
         {
             id: 'deleteChatflow',
-            title: 'Delete Agents',
+            title: '删除',
             type: 'item',
             url: '',
             icon: icons.PiTrash

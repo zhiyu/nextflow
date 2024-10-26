@@ -4,7 +4,18 @@ import { useSelector } from 'react-redux'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
-import { ListItemButton, ListItemIcon, ListItemText, Typography, Box, List, Paper, Popper, ClickAwayListener } from '@mui/material'
+import {
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    MenuItem,
+    Typography,
+    Box,
+    MenuList,
+    Paper,
+    Popper,
+    ClickAwayListener
+} from '@mui/material'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 
 // third-party
@@ -61,7 +72,7 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
     const items = settingsMenu.map((menu) => {
         const Icon = menu.icon
         const itemIcon = menu?.icon ? (
-            <Icon size='1.2rem' />
+            <Icon size='1rem' />
         ) : (
             <FiberManualRecordIcon
                 sx={{
@@ -72,13 +83,9 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
             />
         )
         return (
-            <ListItemButton
+            <MenuItem
                 key={menu.id}
-                sx={{
-                    alignItems: 'flex-start',
-                    px: `16px`,
-                    py: '6px'
-                }}
+                disableRipple
                 onClick={() => {
                     if (menu.id === 'loadChatflow' && inputFile) {
                         inputFile?.current.click()
@@ -87,9 +94,11 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
                     }
                 }}
             >
-                <ListItemIcon sx={{ my: 'auto', minWidth: !menu?.icon ? 18 : 28 }}>{itemIcon}</ListItemIcon>
-                <ListItemText primary={<Typography color='inherit'>{menu.title}</Typography>} />
-            </ListItemButton>
+                <ListItemIcon sx={{ minWidth: '0px !important' }} className='mr-2'>
+                    {itemIcon}
+                </ListItemIcon>
+                <Typography color='inherit'>{menu.title}</Typography>
+            </MenuItem>
         )
     })
 
@@ -121,7 +130,7 @@ const Settings = ({ chatflow, isSettingsOpen, anchorEl, isAgentCanvas, onSetting
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
                                         <Box sx={{ p: 0 }}>
-                                            <List>{items}</List>
+                                            <MenuList>{items}</MenuList>
                                         </Box>
                                     </PerfectScrollbar>
                                     <input
