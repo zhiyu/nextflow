@@ -505,7 +505,7 @@ const Marketplace = () => {
                     <TabPanel value={activeTabValue} index={0}>
                         {isLoading ? (
                             <Box display='grid' sx={{ mb: 2, mt: 1 }}>
-                                <Skeleton variant='rounded' height={160} />
+                                <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
                             </Box>
                         ) : (
                             <Stack
@@ -568,9 +568,9 @@ const Marketplace = () => {
                             <>
                                 {isLoading ? (
                                     <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                        <Skeleton variant='rounded' height={160} />
-                                        <Skeleton variant='rounded' height={160} />
-                                        <Skeleton variant='rounded' height={160} />
+                                        <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                                        <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                                        <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
                                     </Box>
                                 ) : (
                                     <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
@@ -684,9 +684,9 @@ const Marketplace = () => {
                             <>
                                 {isLoading ? (
                                     <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                        <Skeleton variant='rounded' height={160} />
-                                        <Skeleton variant='rounded' height={160} />
-                                        <Skeleton variant='rounded' height={160} />
+                                        <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                                        <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                                        <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
                                     </Box>
                                 ) : (
                                     <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>

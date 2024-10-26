@@ -158,9 +158,9 @@ const Chatflows = () => {
                         <>
                             {isLoading && !getAllChatflowsApi.data ? (
                                 <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                    <Skeleton variant='rounded' height={160} />
-                                    <Skeleton variant='rounded' height={160} />
-                                    <Skeleton variant='rounded' height={160} />
+                                    <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                                    <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                                    <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
                                 </Box>
                             ) : (
                                 <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 // material-ui
 import { Box, Stack, Button, Skeleton } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 
 // project imports
 import ItemCard from '@/ui-component/cards/ItemCard'
@@ -25,6 +26,7 @@ import { PiPlus, PiUpload } from 'react-icons/pi'
 // ==============================|| CHATFLOWS ||============================== //
 
 const Assistants = () => {
+    const theme = useTheme()
     const getAllAssistantsApi = useApi(assistantsApi.getAllAssistants)
 
     const [isLoading, setLoading] = useState(true)
@@ -109,9 +111,9 @@ const Assistants = () => {
                     </ViewHeader>
                     {isLoading ? (
                         <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                            <Skeleton variant='rounded' height={160} />
-                            <Skeleton variant='rounded' height={160} />
-                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                            <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
+                            <Skeleton variant='rounded' height={160} sx={{ bgcolor: theme.palette.background.default }} />
                         </Box>
                     ) : (
                         <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
