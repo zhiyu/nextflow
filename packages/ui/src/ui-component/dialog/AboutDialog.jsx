@@ -56,7 +56,7 @@ const AboutDialog = ({ show, onCancel }) => {
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                Flowise Version
+                版本
             </DialogTitle>
             <DialogContent>
                 {data && (
@@ -64,17 +64,15 @@ const AboutDialog = ({ show, onCancel }) => {
                         <Table aria-label='simple table'>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Current Version</TableCell>
-                                    <TableCell>Latest Version</TableCell>
-                                    <TableCell>Published At</TableCell>
+                                    <TableCell>当前版本</TableCell>
+                                    <TableCell>最新版本</TableCell>
+                                    <TableCell>发布时间</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell component='th' scope='row'>
-                                        {data.currentVersion}
-                                    </TableCell>
-                                    <TableCell component='th' scope='row'>
+                                    <TableCell>{data.currentVersion}</TableCell>
+                                    <TableCell>
                                         <a target='_blank' rel='noreferrer' href={data.html_url}>
                                             {data.name}
                                         </a>
