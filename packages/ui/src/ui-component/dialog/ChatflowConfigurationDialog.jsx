@@ -13,27 +13,27 @@ import Leads from '@/ui-component/extended/Leads'
 
 const CHATFLOW_CONFIGURATION_TABS = [
     {
-        label: 'Rate Limiting',
+        label: '流量限制',
         id: 'rateLimiting'
     },
     {
-        label: 'Starter Prompts',
+        label: '启动提示词',
         id: 'conversationStarters'
     },
     {
-        label: 'Speech to Text',
+        label: '语音转文本',
         id: 'speechToText'
     },
     {
-        label: 'Chat Feedback',
+        label: '聊天反馈',
         id: 'chatFeedback'
     },
     {
-        label: 'Allowed Domains',
+        label: '授权的域名',
         id: 'allowedDomains'
     },
     {
-        label: 'Analyse Chatflow',
+        label: '分析',
         id: 'analyseChatflow'
     },
     {
@@ -105,7 +105,7 @@ const ChatflowConfigurationDialog = ({ show, dialogProps, onCancel }) => {
                 >
                     {CHATFLOW_CONFIGURATION_TABS.map((item, index) => (
                         <Tab
-                            sx={{ minHeight: '40px', height: '40px', textAlign: 'left', display: 'flex', alignItems: 'start', mb: 1 }}
+                            sx={{ minHeight: '40px', height: '40px', textAlign: 'left', display: 'flex', mb: 1 }}
                             key={index}
                             label={item.label}
                             {...a11yProps(index)}

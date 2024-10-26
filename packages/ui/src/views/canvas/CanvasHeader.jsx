@@ -113,7 +113,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             setUpsertHistoryDialogOpen(true)
         } else if (setting === 'chatflowConfiguration') {
             setChatflowConfigurationDialogProps({
-                title: `${title} Configuration`,
+                title: `${title} 参数设置`,
                 chatflow: chatflow
             })
             setChatflowConfigurationDialogOpen(true)
@@ -227,7 +227,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             // if configuration dialog is open, update its data
             if (chatflowConfigurationDialogOpen) {
                 setChatflowConfigurationDialogProps({
-                    title: `${title} Configuration`,
+                    title: `${title} 参数设置`,
                     chatflow
                 })
             }

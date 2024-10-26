@@ -123,7 +123,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
     const handleFlowStarterPrompts = () => {
         setAnchorEl(null)
         setConversationStartersDialogProps({
-            title: 'Starter Prompts - ' + chatflow.name,
+            title: '启动提示词 - ' + chatflow.name,
             chatflow: chatflow
         })
         setConversationStartersDialogOpen(true)
@@ -334,15 +334,15 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleFlowStarterPrompts} disableRipple>
                     <PiTerminalWindow size='1.2rem' />
-                    Starter Prompts
+                    启动提示词
                 </MenuItem>
                 <MenuItem onClick={handleFlowChatFeedback} disableRipple>
                     <PiChatText size='1.2rem' />
-                    Chat Feedback
+                    聊天反馈
                 </MenuItem>
                 <MenuItem onClick={handleAllowedDomains} disableRipple>
                     <PiNotepad size='1.2rem' />
-                    Allowed Domains
+                    授权的域名
                 </MenuItem>
                 <MenuItem onClick={handleSpeechToText} disableRipple>
                     <PiMicrophone size='1.2rem' />
