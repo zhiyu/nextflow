@@ -180,7 +180,7 @@ const APIKeyDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
                                     }, 1500)
                                 }}
                             >
-                                复制 Key
+                                复制
                             </Button>
                             <Popover
                                 open={openPopOver}

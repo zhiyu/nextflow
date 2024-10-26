@@ -336,7 +336,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                     onClick={handleToggle}
                     color='inherit'
                 >
-                    <PiGearSix size='1.3rem' />
+                    <PiGearSix size='1.2rem' />
                 </Avatar>
             </ButtonBase>
             <Popper

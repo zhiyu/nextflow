@@ -35,7 +35,7 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                         color='inherit'
                         onClick={() => navigate(-1)}
                     >
-                        <PiCaretLeft size='1.3rem' />
+                        <PiCaretLeft size='1.2rem' />
                     </Avatar>
                 </ButtonBase>
             </Box>

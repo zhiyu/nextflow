@@ -288,13 +288,7 @@ const Variables = () => {
                                                         </div>
                                                     </TableCell>
                                                     <TableCell>{variable.value}</TableCell>
-                                                    <TableCell>
-                                                        <Chip
-                                                            color={variable.type === 'static' ? 'info' : 'secondary'}
-                                                            size='small'
-                                                            label={variable.type}
-                                                        />
-                                                    </TableCell>
+                                                    <TableCell>{variable.type}</TableCell>
                                                     <TableCell>{moment(variable.updatedDate).format('MMMM Do, YYYY')}</TableCell>
                                                     <TableCell>{moment(variable.createdDate).format('MMMM Do, YYYY')}</TableCell>
                                                     <TableCell sx={{ textAlign: 'right' }}>
