@@ -153,22 +153,12 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
                                             </Typography>
                                         </TableCell>
                                         <TableCell key='1'>
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    flexDirection: 'row',
-                                                    flexWrap: 'wrap',
-                                                    marginTop: 5
-                                                }}
-                                            >
-                                                &nbsp;
-                                                {row.category &&
-                                                    row.category
-                                                        .split(';')
-                                                        .map((tag, index) => (
-                                                            <Chip key={index} label={tag} style={{ marginRight: 5, marginBottom: 5 }} />
-                                                        ))}
-                                            </div>
+                                            {row.category &&
+                                                row.category
+                                                    .split(';')
+                                                    .map((tag, index) => (
+                                                        <Chip size='small' key={index} label={tag} style={{ marginRight: 5 }} />
+                                                    ))}
                                         </TableCell>
                                         <TableCell key='2'>
                                             {images[row.id] && (
