@@ -23,6 +23,13 @@ export default function componentStyleOverrides(theme) {
                 }
             }
         },
+        MuiToggleButton: {
+            styleOverrides: {
+                root: {
+                    '&.Mui-selected': {}
+                }
+            }
+        },
         MuiTableContainer: {
             styleOverrides: {
                 root: {

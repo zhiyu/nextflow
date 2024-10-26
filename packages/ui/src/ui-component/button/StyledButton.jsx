@@ -12,8 +12,8 @@ export const StyledButton = styled(Button)(({ theme, color = 'primary' }) => ({
 }))
 
 export const StyledToggleButton = styled(MuiToggleButton)(({ theme, color = 'primary' }) => ({
-    '&.Mui-selected, &.Mui-selected:hover': {
-        color: 'white',
-        backgroundColor: theme.palette[color].main
-    }
+    // '&.Mui-selected, &.Mui-selected:hover': {
+    //     color: 'white',
+    //     backgroundColor: theme.palette[color].main
+    // }
 }))
