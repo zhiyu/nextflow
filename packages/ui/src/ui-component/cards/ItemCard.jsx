@@ -123,7 +123,7 @@ const ItemCard = ({ data, images, onClick }) => {
                                     sx={{
                                         width: 30,
                                         height: 30,
-                                        borderRadius: '50%',
+                                        borderRadius: `${customization.borderRadius}px`,
                                         backgroundColor: customization.isDarkMode
                                             ? theme.palette.common.white
                                             : theme.palette.grey[300] + 75
@@ -134,7 +134,7 @@ const ItemCard = ({ data, images, onClick }) => {
                             ))}
                             {images.length > 3 && (
                                 <Typography sx={{ alignItems: 'center', display: 'flex', fontSize: '.9rem', fontWeight: 200 }}>
-                                    + {images.length - 3} More
+                                    + {images.length - 3} 更多
                                 </Typography>
                             )}
                         </Box>
