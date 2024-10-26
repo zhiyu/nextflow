@@ -72,6 +72,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                 sx={{
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
+                        // background:'linear-gradient(145deg, rgba(192, 132, 252, 0) 20%, rgb(243 180 252 / 26%) 40%, rgba(204, 171, 238, 0) 60%)',
                         background: theme.palette.background.default,
                         color: theme.palette.text.primary,
                         [theme.breakpoints.up('md')]: {

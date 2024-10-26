@@ -67,7 +67,12 @@ const MainLayout = () => {
     }, [matchDownMd])
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box
+            sx={{
+                display: 'flex'
+                // background:'linear-gradient(100deg, rgba(192, 132, 252, 0) 20.79%, rgb(241 170 252 / 26%) 40.92%, rgba(204, 171, 238, 0) 70.35%)'
+            }}
+        >
             <CssBaseline />
             {/* header */}
             <AppBar
