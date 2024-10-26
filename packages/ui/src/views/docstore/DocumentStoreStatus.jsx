@@ -40,8 +40,8 @@ const DocumentStoreStatus = ({ status, isTableView }) => {
                         alignItems: 'center',
                         paddingTop: '3px',
                         paddingBottom: '3px',
-                        paddingLeft: '10px',
-                        paddingRight: '10px'
+                        paddingLeft: '0px',
+                        paddingRight: '0px'
                     }}
                 >
                     <div
