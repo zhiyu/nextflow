@@ -56,24 +56,7 @@ const MarketplaceCanvas = () => {
     return (
         <>
             <Box>
-                <AppBar
-                    enableColorOnDark
-                    position='fixed'
-                    color='inherit'
-                    elevation={1}
-                    sx={{
-                        bgcolor: theme.palette.background.default
-                    }}
-                >
-                    <Toolbar>
-                        <MarketplaceCanvasHeader
-                            flowName={name}
-                            flowData={JSON.parse(flowData)}
-                            onChatflowCopy={(flowData) => onChatflowCopy(flowData)}
-                        />
-                    </Toolbar>
-                </AppBar>
-                <Box sx={{ pt: '55px', height: '100vh', width: '100%' }}>
+                <Box sx={{ height: '100vh', width: '100%' }}>
                     <div className='reactflow-parent-wrapper'>
                         <div className='reactflow-wrapper' ref={reactFlowWrapper}>
                             <ReactFlow
@@ -87,6 +70,23 @@ const MarketplaceCanvas = () => {
                                 fitView
                                 minZoom={0.1}
                             >
+                                <AppBar
+                                    enableColorOnDark
+                                    position='fixed'
+                                    color='inherit'
+                                    elevation={1}
+                                    sx={{
+                                        bgcolor: 'transparent'
+                                    }}
+                                >
+                                    <Toolbar sx={{ paddingLeft: '10px !important' }}>
+                                        <MarketplaceCanvasHeader
+                                            flowName={name}
+                                            flowData={JSON.parse(flowData)}
+                                            onChatflowCopy={(flowData) => onChatflowCopy(flowData)}
+                                        />
+                                    </Toolbar>
+                                </AppBar>
                                 <Controls
                                     style={{
                                         display: 'flex',
