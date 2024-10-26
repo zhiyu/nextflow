@@ -258,7 +258,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
     return (
         <>
             <StyledFab
-                sx={{ left: 20, top: 20 }}
+                sx={{ left: 20, top: 70 }}
                 ref={anchorRef}
                 size='small'
                 color='primary'

@@ -520,26 +520,7 @@ const Canvas = () => {
     return (
         <>
             <Box>
-                <AppBar
-                    enableColorOnDark
-                    position='fixed'
-                    color='inherit'
-                    elevation={1}
-                    sx={{
-                        bgcolor: theme.palette.background.default
-                    }}
-                >
-                    <Toolbar>
-                        <CanvasHeader
-                            chatflow={chatflow}
-                            handleSaveFlow={handleSaveFlow}
-                            handleDeleteFlow={handleDeleteFlow}
-                            handleLoadFlow={handleLoadFlow}
-                            isAgentCanvas={isAgentCanvas}
-                        />
-                    </Toolbar>
-                </AppBar>
-                <Box sx={{ pt: '55px', height: '100vh', width: '100%' }}>
+                <Box sx={{ height: '100vh', width: '100%' }}>
                     <div className='reactflow-parent-wrapper'>
                         <div className='reactflow-wrapper' ref={reactFlowWrapper}>
                             <ReactFlow
@@ -559,6 +540,25 @@ const Canvas = () => {
                                 deleteKeyCode={canvas.canvasDialogShow ? null : ['Delete']}
                                 minZoom={0.5}
                             >
+                                <AppBar
+                                    enableColorOnDark
+                                    position='fixed'
+                                    color='inherit'
+                                    elevation={1}
+                                    sx={{
+                                        bgcolor: 'transparent'
+                                    }}
+                                >
+                                    <Toolbar sx={{ paddingLeft: '10px !important', paddingRight: '10px !important' }}>
+                                        <CanvasHeader
+                                            chatflow={chatflow}
+                                            handleSaveFlow={handleSaveFlow}
+                                            handleDeleteFlow={handleDeleteFlow}
+                                            handleLoadFlow={handleLoadFlow}
+                                            isAgentCanvas={isAgentCanvas}
+                                        />
+                                    </Toolbar>
+                                </AppBar>
                                 <Controls
                                     style={{
                                         display: 'flex',
@@ -573,7 +573,7 @@ const Canvas = () => {
                                     <Fab
                                         sx={{
                                             left: 40,
-                                            top: 20,
+                                            top: 70,
                                             color: 'white',
                                             background: 'orange',
                                             '&:hover': {

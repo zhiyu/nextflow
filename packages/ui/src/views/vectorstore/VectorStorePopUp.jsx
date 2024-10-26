@@ -41,7 +41,7 @@ export const VectorStorePopUp = ({ chatflowid }) => {
     return (
         <>
             <StyledFab
-                sx={{ position: 'absolute', right: 80, top: 20 }}
+                sx={{ position: 'absolute', right: 80, top: 70 }}
                 ref={anchorRef}
                 size='small'
                 color='teal'
