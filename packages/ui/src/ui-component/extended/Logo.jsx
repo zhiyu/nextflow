@@ -13,15 +13,15 @@ const Logo = () => {
         <div
             style={{
                 color: customization.isDarkMode ? '' : theme.palette.primary.main,
-                fontSize: '0.9rem',
+                fontSize: '1rem',
                 fontWeight: 600,
                 alignItems: 'center',
                 display: 'flex',
                 flexDirection: 'row'
             }}
         >
-            <PiInfinity style={{ width: '36px', height: '36px', color: customization.isDarkMode ? '' : theme.palette.primary.main }} />
-            &nbsp;&nbsp;智能体开发平台
+            <PiInfinity size='2rem' style={{ color: customization.isDarkMode ? '' : theme.palette.primary.main }} />
+            &nbsp;&nbsp;AGENTS
         </div>
     )
 }
