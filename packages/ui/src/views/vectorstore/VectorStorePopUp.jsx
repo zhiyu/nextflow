@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { IconDatabaseImport, IconX } from '@tabler/icons-react'
+import { PiX, PiUpload } from 'react-icons/pi'
 
 // project import
 import { StyledFab } from '@/ui-component/button/StyledFab'
@@ -49,7 +49,7 @@ export const VectorStorePopUp = ({ chatflowid }) => {
                 title='Upsert Vector Database'
                 onClick={handleToggle}
             >
-                {open ? <IconX /> : <IconDatabaseImport />}
+                {open ? <PiX size='1.2rem' /> : <PiUpload size='1.2rem' />}
             </StyledFab>
             <VectorStoreDialog
                 show={showExpandDialog}

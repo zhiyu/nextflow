@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 
 import { ClickAwayListener, Paper, Popper, Button } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
-import { IconMessage, IconX, IconEraser, IconArrowsMaximize } from '@tabler/icons-react'
+
+import { PiX, PiChatText, PiEraser, PiArrowsOut } from 'react-icons/pi'
 
 // project import
 import { StyledFab } from '@/ui-component/button/StyledFab'
@@ -102,7 +103,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                         anchorOrigin: { vertical: 'top', horizontal: 'center' },
                         action: (key) => (
                             <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -117,7 +118,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                         anchorOrigin: { vertical: 'top', horizontal: 'center' },
                         action: (key) => (
                             <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
-                                <IconX />
+                                <PiX />
                             </Button>
                         )
                     }
@@ -146,7 +147,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                 title='Chat'
                 onClick={handleToggle}
             >
-                {open ? <IconX /> : <IconMessage />}
+                {open ? <PiX size='1.2rem' /> : <PiChatText size='1.2rem' />}
             </StyledFab>
             {open && (
                 <StyledFab
@@ -157,7 +158,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                     aria-label='clear'
                     title='清空聊天记录'
                 >
-                    <IconEraser />
+                    <PiEraser size='1.2rem' />
                 </StyledFab>
             )}
             {open && (
@@ -169,7 +170,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                     aria-label='expand'
                     title='Expand Chat'
                 >
-                    <IconArrowsMaximize />
+                    <PiArrowsOut size='1.2rem' />
                 </StyledFab>
             )}
             <Popper

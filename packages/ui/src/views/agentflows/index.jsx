@@ -26,7 +26,6 @@ import useApi from '@/hooks/useApi'
 import { baseURL } from '@/store/constant'
 
 // icons
-import { IconPlus, IconLayoutGrid, IconList } from '@tabler/icons-react'
 import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // ==============================|| AGENTS ||============================== //

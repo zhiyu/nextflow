@@ -37,7 +37,8 @@ import Transitions from '@/ui-component/extended/Transitions'
 import { StyledFab } from '@/ui-component/button/StyledFab'
 
 // icons
-import { IconPlus, IconSearch, IconMinus, IconX } from '@tabler/icons-react'
+import { PiPlus, PiMinus, PiX, PiMagnifyingGlassLight } from 'react-icons/pi'
+
 import LlamaindexPNG from '@/assets/images/llamaindex.png'
 import LangChainPNG from '@/assets/images/langchain.png'
 import utilNodesPNG from '@/assets/images/utilNodes.png'
@@ -266,7 +267,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                 title='Add Node'
                 onClick={handleToggle}
             >
-                {open ? <IconMinus /> : <IconPlus />}
+                {open ? <PiMinus size='1.2rem' /> : <PiPlus size='1.2rem' />}
             </StyledFab>
             <Popper
                 placement='top-start'
@@ -306,7 +307,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                             placeholder='Search nodes'
                                             startAdornment={
                                                 <InputAdornment position='start'>
-                                                    <IconSearch stroke={1.5} size='1rem' color={theme.palette.grey[500]} />
+                                                    <PiMagnifyingGlassLight color={theme.palette.grey[500]} />
                                                 </InputAdornment>
                                             }
                                             endAdornment={
@@ -321,9 +322,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                     }}
                                                     title='Clear Search'
                                                 >
-                                                    <IconX
-                                                        stroke={1.5}
-                                                        size='1rem'
+                                                    <PiX
                                                         onClick={() => filterSearch('')}
                                                         style={{
                                                             cursor: 'pointer'

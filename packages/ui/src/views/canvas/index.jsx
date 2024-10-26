@@ -37,8 +37,7 @@ import useApi from '@/hooks/useApi'
 import useConfirm from '@/hooks/useConfirm'
 
 // icons
-import { IconRefreshAlert } from '@tabler/icons-react'
-import { PiX } from 'react-icons/pi'
+import { PiX, PiArrowsClockwise } from 'react-icons/pi'
 
 // utils
 import {
@@ -573,7 +572,7 @@ const Canvas = () => {
                                     <Fab
                                         sx={{
                                             position: 'absolute',
-                                            left: 40,
+                                            left: 70,
                                             bottom: 20,
                                             color: 'white',
                                             background: 'orange',
@@ -587,7 +586,7 @@ const Canvas = () => {
                                         title='Sync Nodes'
                                         onClick={() => syncNodes()}
                                     >
-                                        <IconRefreshAlert />
+                                        <PiArrowsClockwise size='1.2rem' />
                                     </Fab>
                                 )}
                                 {isUpsertButtonEnabled && <VectorStorePopUp chatflowid={chatflowId} />}

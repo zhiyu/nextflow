@@ -29,17 +29,18 @@ import { useTheme } from '@mui/material/styles'
 import {
     IconCircleDot,
     IconDownload,
-    IconSend,
     IconMicrophone,
     IconPhotoPlus,
     IconTrash,
-    IconX,
     IconTool,
     IconSquareFilled,
     IconDeviceSdCard,
     IconCheck,
     IconPaperclip
 } from '@tabler/icons-react'
+
+import { PiX, PiPaperPlaneTiltFill } from 'react-icons/pi'
+
 import robotPNG from '@/assets/images/robot.png'
 import userPNG from '@/assets/images/account.png'
 import multiagent_supervisorPNG from '@/assets/images/multiagent_supervisor.png'
@@ -426,7 +427,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                     anchorOrigin: { vertical: 'top', horizontal: 'center' },
                     action: (key) => (
                         <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
-                            <IconX />
+                            <PiX />
                         </Button>
                     )
                 }
@@ -587,7 +588,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                 anchorOrigin: { vertical: 'top', horizontal: 'center' },
                 action: (key) => (
                     <Button style={{ color: 'white', minWidth: 'fit-content' }} onClick={() => closeSnackbar(key)}>
-                        <IconX />
+                        <PiX />
                     </Button>
                 )
             }
@@ -1901,7 +1902,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                                                                     variant='outlined'
                                                                     color='error'
                                                                     key={index}
-                                                                    startIcon={<IconX />}
+                                                                    startIcon={<PiX />}
                                                                     onClick={() => handleActionClick(elem, message.action)}
                                                                 >
                                                                     {elem.label}
@@ -2024,13 +2025,25 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                                 </div>
                                 <div className='recording-control-buttons-container'>
                                     <IconButton onClick={onRecordingCancelled} size='small'>
-                                        <IconX
-                                            color={loading || !chatflowid ? '#9e9e9e' : customization.isDarkMode ? 'white' : '#1e88e5'}
+                                        <PiX
+                                            color={
+                                                loading || !chatflowid
+                                                    ? '#9e9e9e'
+                                                    : customization.isDarkMode
+                                                    ? 'white'
+                                                    : theme.palette.primary.main
+                                            }
                                         />
                                     </IconButton>
                                     <IconButton onClick={onRecordingStopped} size='small'>
-                                        <IconSend
-                                            color={loading || !chatflowid ? '#9e9e9e' : customization.isDarkMode ? 'white' : '#1e88e5'}
+                                        <PiPaperPlaneTiltFill
+                                            color={
+                                                loading || !chatflowid
+                                                    ? '#9e9e9e'
+                                                    : customization.isDarkMode
+                                                    ? 'white'
+                                                    : theme.palette.primary.main
+                                            }
                                         />
                                     </IconButton>
                                 </div>
@@ -2048,7 +2061,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                             onKeyDown={handleEnter}
                             id='userInput'
                             name='userInput'
-                            placeholder={loading ? 'Waiting for response...' : 'Type your question...'}
+                            placeholder={loading ? 'Waiting for response...' : '请输入...'}
                             value={userInput}
                             onChange={onChange}
                             multiline={true}
@@ -2129,7 +2142,7 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                                         </InputAdornment>
                                     )}
                                     {!isAgentCanvas && (
-                                        <InputAdornment position='end' sx={{ paddingRight: '15px' }}>
+                                        <InputAdornment position='end' sx={{ paddingRight: '10px' }}>
                                             <IconButton type='submit' disabled={getInputDisabled()} edge='end'>
                                                 {loading ? (
                                                     <div>
@@ -2137,9 +2150,13 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                                                     </div>
                                                 ) : (
                                                     // Send icon SVG in input field
-                                                    <IconSend
+                                                    <PiPaperPlaneTiltFill
                                                         color={
-                                                            getInputDisabled() ? '#9e9e9e' : customization.isDarkMode ? 'white' : '#1e88e5'
+                                                            getInputDisabled()
+                                                                ? '#9e9e9e'
+                                                                : customization.isDarkMode
+                                                                ? 'white'
+                                                                : theme.palette.primary.main
                                                         }
                                                     />
                                                 )}
@@ -2149,9 +2166,9 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                                     {isAgentCanvas && (
                                         <>
                                             {!loading && (
-                                                <InputAdornment position='end' sx={{ paddingRight: '15px' }}>
+                                                <InputAdornment position='end' sx={{ paddingRight: '10px' }}>
                                                     <IconButton type='submit' disabled={getInputDisabled()} edge='end'>
-                                                        <IconSend
+                                                        <PiPaperPlaneTiltFill
                                                             color={
                                                                 getInputDisabled()
                                                                     ? '#9e9e9e'
