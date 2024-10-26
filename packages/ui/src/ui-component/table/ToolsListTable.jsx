@@ -18,6 +18,7 @@ import {
 } from '@mui/material'
 
 export const ToolsTable = ({ data, isLoading, onSelect }) => {
+    const theme = useTheme()
     return (
         <>
             <TableContainer component={Paper}>
@@ -89,13 +90,14 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
                                                     WebkitLineClamp: 2,
                                                     WebkitBoxOrient: 'vertical',
                                                     textOverflow: 'ellipsis',
-                                                    overflow: 'hidden'
+                                                    overflow: 'hidden',
+                                                    color: theme.palette.primary.main
                                                 }}
                                             >
                                                 <Link
                                                     onClick={() => onSelect(row)}
                                                     sx={{ textAlign: 'left' }}
-                                                    style={{ cursor: 'pointer', color: '#2196f3', textDecoration: 'none' }}
+                                                    style={{ cursor: 'pointer', textDecoration: 'none' }}
                                                 >
                                                     {row.templateName || row.name}
                                                 </Link>

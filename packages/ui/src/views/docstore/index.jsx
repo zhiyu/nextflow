@@ -201,22 +201,14 @@ const Documents = () => {
                                 </TableHead>
                                 <TableBody>
                                     {docStores?.filter(filterDocStores).map((data, index) => (
-                                        <TableRow onClick={() => goToDocumentStore(data.id)} hover key={index}>
+                                        <TableRow key={index}>
                                             <TableCell align='center'>
                                                 <DocumentStoreStatus isTableView={true} status={data.status} />
                                             </TableCell>
                                             <TableCell>
-                                                <Typography
-                                                    sx={{
-                                                        display: '-webkit-box',
-                                                        WebkitLineClamp: 5,
-                                                        WebkitBoxOrient: 'vertical',
-                                                        textOverflow: 'ellipsis',
-                                                        overflow: 'hidden'
-                                                    }}
-                                                >
+                                                <Button onClick={() => goToDocumentStore(data.id)} sx={{ textAlign: 'left' }}>
                                                     {data.name}
-                                                </Typography>
+                                                </Button>
                                             </TableCell>
                                             <TableCell>
                                                 <Typography

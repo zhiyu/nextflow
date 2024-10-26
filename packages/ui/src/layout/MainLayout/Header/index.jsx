@@ -77,7 +77,7 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
                             ...theme.typography.mediumAvatar,
                             transition: 'all .2s ease-in-out',
                             background: 'none',
-                            color: theme.palette.primary.main,
+                            color: theme.palette.text.primary,
                             '&:hover': {
                                 background: theme.palette.primary.main,
                                 color: theme.palette.primary.light

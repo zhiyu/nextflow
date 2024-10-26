@@ -49,7 +49,8 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 display: 'flex',
                                 flexDirection: 'row',
                                 alignItems: 'start',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
+                                color: theme.palette.primary.main
                             }}
                         >
                             <Typography
@@ -120,7 +121,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 padding: '5px 10px',
                                 width: 'max-content',
                                 borderRadius: '2px',
-                                background: theme.palette.primary.light
+                                background: theme.palette.background.default
                             }}
                             className='flex items-center '
                         >
@@ -134,7 +135,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 padding: '3px 10px',
                                 width: 'max-content',
                                 borderRadius: '2px',
-                                background: theme.palette.primary.light,
+                                background: theme.palette.background.default,
                                 display: 'flex',
                                 flexDirection: 'row',
                                 alignItems: 'center'
@@ -148,7 +149,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                                 padding: '3px 10px',
                                 width: 'max-content',
                                 borderRadius: '2px',
-                                background: theme.palette.primary.light,
+                                background: theme.palette.background.default,
                                 display: 'flex',
                                 flexDirection: 'row',
                                 alignItems: 'center'

@@ -48,11 +48,17 @@ export default function componentStyleOverrides(theme) {
                 root: {
                     color: theme.darkTextPrimary,
                     paddingTop: '10px',
-                    paddingBottom: '10px',
+                    paddingBottom: '10px !important',
+                    paddingLeft: '14px !important',
+                    paddingRight: '14px !important',
+                    margin: '0px 10px',
+                    borderRadius: `${theme?.customization?.borderRadius}px`,
                     // borderLeft: '2px solid transparent',
+                    // borderRight: '2px solid transparent',
                     '&.Mui-selected': {
                         color: theme.menuSelected,
-                        borderRight: '2px solid ' + theme.menuSelected,
+                        // borderRight: '2px solid ' + theme.menuSelected,
+                        // borderLeft: '2px solid ' + theme.menuSelected,
                         backgroundColor: theme.menuSelectedBack,
                         '&:hover': {
                             backgroundColor: theme.menuSelectedBack
@@ -62,7 +68,7 @@ export default function componentStyleOverrides(theme) {
                         }
                     },
                     '&:hover': {
-                        backgroundColor: theme.menuSelectedBack,
+                        backgroundColor: 'transparent',
                         color: theme.menuSelected,
                         '& .MuiListItemIcon-root': {
                             color: theme.menuSelected

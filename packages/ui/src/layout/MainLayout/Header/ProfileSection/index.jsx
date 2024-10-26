@@ -326,8 +326,8 @@ const ProfileSection = ({ username, handleLogout }) => {
                         ...theme.typography.commonAvatar,
                         ...theme.typography.mediumAvatar,
                         transition: 'all .2s ease-in-out',
-                        background: theme.palette.primary.light,
-                        color: theme.palette.primary.main,
+                        background: 'transparent',
+                        color: theme.palette.text.primary,
                         '&:hover': {
                             background: theme.palette.primary.main,
                             color: theme.palette.primary.light

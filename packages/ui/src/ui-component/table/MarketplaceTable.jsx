@@ -133,21 +133,9 @@ export const MarketplaceTable = ({
                                     .map((row, index) => (
                                         <TableRow key={index}>
                                             <TableCell key='0'>
-                                                <Typography
-                                                    sx={{
-                                                        display: '-webkit-box',
-                                                        fontSize: 14,
-                                                        fontWeight: 500,
-                                                        WebkitLineClamp: 2,
-                                                        WebkitBoxOrient: 'vertical',
-                                                        textOverflow: 'ellipsis',
-                                                        overflow: 'hidden'
-                                                    }}
-                                                >
-                                                    <Button onClick={() => openTemplate(row)} sx={{ textAlign: 'left' }}>
-                                                        {row.templateName || row.name}
-                                                    </Button>
-                                                </Typography>
+                                                <Button onClick={() => openTemplate(row)} sx={{ textAlign: 'left' }}>
+                                                    {row.templateName || row.name}
+                                                </Button>
                                             </TableCell>
                                             <TableCell key='1'>
                                                 <Typography>{row.type}</Typography>

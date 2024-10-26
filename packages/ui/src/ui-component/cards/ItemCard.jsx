@@ -85,7 +85,8 @@ const ItemCard = ({ data, images, onClick }) => {
                                     WebkitLineClamp: 2,
                                     WebkitBoxOrient: 'vertical',
                                     textOverflow: 'ellipsis',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    color: theme.palette.primary.main
                                 }}
                             >
                                 {data.templateName || data.name}
