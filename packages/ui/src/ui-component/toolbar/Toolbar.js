@@ -13,10 +13,10 @@ export default function Toolbar() {
 
     return (
         <ToggleButtonGroup value={view} exclusive onChange={handleChange}>
-            <StyledToggleButton variant='contained' value='list' aria-label='list'>
+            <StyledToggleButton value='list' aria-label='list'>
                 <ViewListIcon />
             </StyledToggleButton>
-            <StyledToggleButton variant='contained' value='module' aria-label='module'>
+            <StyledToggleButton value='module' aria-label='module'>
                 <ViewModuleIcon />
             </StyledToggleButton>
         </ToggleButtonGroup>

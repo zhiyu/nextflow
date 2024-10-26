@@ -156,10 +156,10 @@ const Documents = () => {
                             exclusive
                             onChange={handleChange}
                         >
-                            <ToggleButton variant='contained' value='card' title='Card View'>
+                            <ToggleButton value='card' title='Card View'>
                                 <PiGridFour size='1.2rem' />
                             </ToggleButton>
-                            <ToggleButton variant='contained' value='list' title='List View'>
+                            <ToggleButton value='list' title='List View'>
                                 <PiListDashes size='1.2rem' />
                             </ToggleButton>
                         </ToggleButtonGroup>
