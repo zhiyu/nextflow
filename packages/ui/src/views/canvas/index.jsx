@@ -566,7 +566,7 @@ const Canvas = () => {
                                         transform: 'translate(-50%, -50%)'
                                     }}
                                 />
-                                <Background color='#aaa' gap={16} />
+                                <Background color='#999' gap={16} />
                                 <AddNodes isAgentCanvas={isAgentCanvas} nodesData={getNodesApi.data} node={selectedNode} />
                                 {isSyncNodesButtonEnabled && (
                                     <Fab
