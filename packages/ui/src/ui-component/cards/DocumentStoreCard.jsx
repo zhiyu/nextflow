@@ -35,7 +35,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
 
     return (
         <CardWrapper
-            className='transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
+            className='shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
             content={false}
             onClick={onClick}
             sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}

@@ -520,6 +520,7 @@ const Marketplace = () => {
                                     alignItems: 'center',
                                     flexWrap: 'wrap'
                                 }}
+                                className='shadow-card'
                             >
                                 {usecases.map((usecase, index) => {
                                     return (

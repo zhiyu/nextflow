@@ -4,7 +4,8 @@ module.exports = {
     theme: {
         extend: {
             boxShadow: {
-                main: '0 0px 16px 0px rgba(0, 0, 0, 0.05)'
+                'card-inset': 'inset 0 0px 16px 0px rgba(0, 0, 0, 0.05)',
+                card: '0 0px 16px 0px rgba(0, 0, 0, 0.05)'
             },
             backgroundColor: {
                 side: 'rgb(232 234 236)'

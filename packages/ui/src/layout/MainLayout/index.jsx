@@ -94,7 +94,7 @@ const MainLayout = () => {
             <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} className='relative shadow-main' />
 
             {/* main content */}
-            <Main theme={theme} open={leftDrawerOpened} sx={{ borderRadius: 0 }} className='relative shadow-main'>
+            <Main theme={theme} open={leftDrawerOpened} className='relative shadow-card-inset'>
                 <Outlet />
             </Main>
         </Box>
