@@ -43,14 +43,10 @@ const ViewHeader = ({
                     <Box sx={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
                         <Typography
                             sx={{
-                                fontSize: '1rem',
-                                fontWeight: 600,
-                                display: '-webkit-box',
-                                WebkitLineClamp: 3,
-                                WebkitBoxOrient: 'vertical',
+                                fontSize: '1.2rem',
+                                fontWeight: 500,
                                 textOverflow: 'ellipsis',
                                 overflow: 'hidden',
-                                flex: 1,
                                 maxWidth: 'calc(100vh - 100px)'
                             }}
                             variant='h1'

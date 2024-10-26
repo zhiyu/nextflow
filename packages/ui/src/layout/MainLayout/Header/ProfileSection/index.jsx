@@ -351,22 +351,20 @@ const ProfileSection = ({ username, handleLogout }) => {
                         {
                             name: 'offset',
                             options: {
-                                offset: [0, 14]
+                                offset: [0, 0]
                             }
                         }
                     ]
                 }}
             >
                 {({ TransitionProps }) => (
-                    <Transitions in={open} {...TransitionProps}>
+                    <Transitions in={open} {...TransitionProps} position='top-right' type='grow'>
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     {username && (
                                         <Box sx={{ p: 2 }}>
-                                            <Typography component='span' variant='h4'>
-                                                {username}
-                                            </Typography>
+                                            <Typography component='span'>{username}</Typography>
                                         </Box>
                                     )}
                                     <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
@@ -388,7 +386,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     <ListItemIcon>
                                                         <PiExport size='1rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>导出</Typography>} />
+                                                    <ListItemText primary={<Typography>导出</Typography>} />
                                                 </ListItemButton>
                                                 <ListItemButton
                                                     onClick={() => {
@@ -398,7 +396,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     <ListItemIcon>
                                                         <PiUpload size='1rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>导入</Typography>} />
+                                                    <ListItemText primary={<Typography>导入</Typography>} />
                                                 </ListItemButton>
                                                 <input ref={inputRef} type='file' hidden onChange={fileChange} accept='.json' />
                                                 <ListItemButton
@@ -410,14 +408,14 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     <ListItemIcon>
                                                         <PiExclamationMark size='1rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>关于</Typography>} />
+                                                    <ListItemText primary={<Typography>关于</Typography>} />
                                                 </ListItemButton>
                                                 {localStorage.getItem('username') && localStorage.getItem('password') && (
                                                     <ListItemButton onClick={handleLogout}>
                                                         <ListItemIcon>
                                                             <PiSignOut size='1rem' />
                                                         </ListItemIcon>
-                                                        <ListItemText primary={<Typography variant='body2'>退出登录</Typography>} />
+                                                        <ListItemText primary={<Typography>退出登录</Typography>} />
                                                     </ListItemButton>
                                                 )}
                                             </List>
