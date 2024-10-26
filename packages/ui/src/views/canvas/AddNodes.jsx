@@ -258,7 +258,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
     return (
         <>
             <StyledFab
-                sx={{ left: 20, top: 70 }}
+                sx={{ position: 'absolute', left: 20, bottom: 20 }}
                 ref={anchorRef}
                 size='small'
                 color='primary'
@@ -269,7 +269,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                 {open ? <IconMinus /> : <IconPlus />}
             </StyledFab>
             <Popper
-                placement='bottom-end'
+                placement='top-start'
                 open={open}
                 anchorEl={anchorRef.current}
                 role={undefined}
@@ -280,7 +280,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                         {
                             name: 'offset',
                             options: {
-                                offset: [-40, 14]
+                                offset: [0, 20]
                             }
                         }
                     ]
@@ -288,7 +288,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                 sx={{ zIndex: 1000 }}
             >
                 {({ TransitionProps }) => (
-                    <Transitions in={open} {...TransitionProps}>
+                    <Transitions in={open} {...TransitionProps} type='grow' position='bottom-left'>
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>

@@ -572,8 +572,9 @@ const Canvas = () => {
                                 {isSyncNodesButtonEnabled && (
                                     <Fab
                                         sx={{
+                                            position: 'absolute',
                                             left: 40,
-                                            top: 70,
+                                            bottom: 20,
                                             color: 'white',
                                             background: 'orange',
                                             '&:hover': {

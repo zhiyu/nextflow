@@ -80,10 +80,10 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
 
     const clearChat = async () => {
         const confirmPayload = {
-            title: `Clear Chat History`,
-            description: `Are you sure you want to clear all chat history?`,
-            confirmButtonName: 'Clear',
-            cancelButtonName: 'Cancel'
+            title: `清空聊天记录`,
+            description: `确定要清空所有的聊天记录?`,
+            confirmButtonName: '清空',
+            cancelButtonName: '取消'
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -138,7 +138,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
     return (
         <>
             <StyledFab
-                sx={{ position: 'absolute', right: 20, top: 70 }}
+                sx={{ position: 'absolute', right: 20, bottom: 20 }}
                 ref={anchorRef}
                 size='small'
                 color='primary'
@@ -150,19 +150,19 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
             </StyledFab>
             {open && (
                 <StyledFab
-                    sx={{ position: 'absolute', right: 80, top: 70 }}
+                    sx={{ position: 'absolute', right: 80, bottom: 20 }}
                     onClick={clearChat}
                     size='small'
                     color='error'
                     aria-label='clear'
-                    title='Clear Chat History'
+                    title='清空聊天记录'
                 >
                     <IconEraser />
                 </StyledFab>
             )}
             {open && (
                 <StyledFab
-                    sx={{ position: 'absolute', right: 140, top: 70 }}
+                    sx={{ position: 'absolute', right: 140, bottom: 20 }}
                     onClick={expandChat}
                     size='small'
                     color='primary'
@@ -173,7 +173,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                 </StyledFab>
             )}
             <Popper
-                placement='bottom-end'
+                placement='top-end'
                 open={open}
                 anchorEl={anchorRef.current}
                 role={undefined}
@@ -184,7 +184,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                         {
                             name: 'offset',
                             options: {
-                                offset: [40, 14]
+                                offset: [0, 20]
                             }
                         }
                     ]
@@ -192,7 +192,7 @@ export const ChatPopUp = ({ chatflowid, isAgentCanvas }) => {
                 sx={{ zIndex: 1000 }}
             >
                 {({ TransitionProps }) => (
-                    <Transitions in={open} {...TransitionProps}>
+                    <Transitions in={open} {...TransitionProps} type='grow' position='bottom-right'>
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MainCard
