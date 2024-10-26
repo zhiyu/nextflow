@@ -249,8 +249,8 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     background: 'none',
                                     color: theme.palette.grey[700],
                                     '&:hover': {
-                                        background: theme.palette.primary.light,
-                                        color: theme.palette.primary.main
+                                        background: theme.palette.primary.main,
+                                        color: theme.palette.primary.light
                                     }
                                 }}
                                 color='inherit'
@@ -370,8 +370,8 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                     background: 'none',
                                     color: theme.palette.grey[700],
                                     '&:hover': {
-                                        background: theme.palette.primary.light,
-                                        color: theme.palette.primary.main
+                                        background: theme.palette.primary.main,
+                                        color: theme.palette.primary.light
                                     }
                                 }}
                                 color='inherit'
@@ -391,8 +391,8 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 background: 'none',
                                 color: theme.palette.grey[700],
                                 '&:hover': {
-                                    background: theme.palette.primary.light,
-                                    color: theme.palette.primary.main
+                                    background: theme.palette.primary.main,
+                                    color: theme.palette.primary.light
                                 }
                             }}
                             color='inherit'
@@ -411,8 +411,8 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                                 background: 'none',
                                 color: theme.palette.grey[700],
                                 '&:hover': {
-                                    background: theme.palette.primary.light,
-                                    color: theme.palette.primary.main
+                                    background: theme.palette.primary.main,
+                                    color: theme.palette.primary.light
                                 }
                             }}
                             onClick={() => setSettingsOpen(!isSettingsOpen)}

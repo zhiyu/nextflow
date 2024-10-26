@@ -28,8 +28,8 @@ const MarketplaceCanvasHeader = ({ flowName, flowData, onChatflowCopy }) => {
                             background: 'none',
                             color: theme.palette.grey[700],
                             '&:hover': {
-                                background: theme.palette.primary.light,
-                                color: theme.palette.primary.main
+                                background: theme.palette.primary.main,
+                                color: theme.palette.primary.light
                             }
                         }}
                         color='inherit'
