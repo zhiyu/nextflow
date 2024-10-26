@@ -80,7 +80,7 @@ const MainLayout = () => {
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
                 }}
             >
-                <Toolbar sx={{ height: `${headerHeight}px`, position: 'relative', zIndex: -1 }}>
+                <Toolbar sx={{ height: `${headerHeight}px`, position: 'relative' }}>
                     <Header handleLeftDrawerToggle={handleLeftDrawerToggle} drawerOpen={leftDrawerOpened} />
                 </Toolbar>
             </AppBar>
@@ -89,7 +89,7 @@ const MainLayout = () => {
             <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} className='relative shadow-main' />
 
             {/* main content */}
-            <Main theme={theme} open={leftDrawerOpened} sx={{ borderRadius: 0, zIndex: 999 }} className='relative shadow-main'>
+            <Main theme={theme} open={leftDrawerOpened} sx={{ borderRadius: 0 }} className='relative shadow-main'>
                 <Outlet />
             </Main>
         </Box>

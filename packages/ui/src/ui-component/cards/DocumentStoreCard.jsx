@@ -55,7 +55,7 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                             <Typography
                                 sx={{
                                     display: '-webkit-box',
-                                    fontSize: '1.25rem',
+                                    fontSize: '1rem',
                                     fontWeight: 500,
                                     WebkitLineClamp: 2,
                                     WebkitBoxOrient: 'vertical',
