@@ -93,7 +93,7 @@ export default function themeTypography(theme) {
             flexGrow: 1,
             padding: '10px 20px',
             marginTop: '55px',
-            borderRadius: '8px !important',
+            borderRadius: '4px !important',
             borderTopRightRadius: '0px !important',
             borderBottomLeftRadius: '0px !important',
             borderBottomRightRadius: '0px !important'
