@@ -1,5 +1,6 @@
 import express from 'express'
 import { Request, Response } from 'express'
+
 import path from 'path'
 import cors from 'cors'
 import http from 'http'
@@ -203,6 +204,11 @@ export class App {
 
         this.app.use('/api/v1', flowiseApiV1Router)
         this.sseStreamer = new SSEStreamer(this.app)
+
+        // import { ExpressAuth } from '@auth/express'
+        // If your app is served through a proxy
+        // trust the proxy to allow us to read the `X-Forwarded-*` headers
+        this.app.set('trust proxy', true)
 
         // ----------------------------------------
         // Configure number of proxies in Host Environment

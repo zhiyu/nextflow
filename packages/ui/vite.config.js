@@ -41,7 +41,7 @@ export default defineConfig(async ({ mode }) => {
             outDir: './build'
         },
         server: {
-            open: true,
+            open: false,
             proxy,
             port: process.env.VITE_PORT ?? 8080,
             host: process.env.VITE_HOST
