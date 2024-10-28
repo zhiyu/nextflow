@@ -16,6 +16,10 @@ export default defineConfig(async ({ mode }) => {
                     target: `http://${serverHost}:${serverPort}`,
                     changeOrigin: true
                 },
+                '/account': {
+                    target: `http://localhost:3001`,
+                    changeOrigin: false
+                },
                 '/socket.io': {
                     target: `http://${serverHost}:${serverPort}`,
                     changeOrigin: true

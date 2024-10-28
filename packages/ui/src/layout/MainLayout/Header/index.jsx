@@ -40,13 +40,11 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
         dispatch({ type: SET_DARKMODE, isDarkMode: !isDark })
         setIsDark((isDark) => !isDark)
         localStorage.setItem('isDarkMode', !isDark)
+        localStorage.setItem('theme', isDark ? 'light' : 'dark')
     }
 
     const signOutClicked = () => {
-        localStorage.removeItem('username')
-        localStorage.removeItem('password')
-        navigate('/', { replace: true })
-        navigate(0)
+        location.href = '/api/v1/user/logout'
     }
 
     return (

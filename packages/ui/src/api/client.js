@@ -22,5 +22,16 @@ apiClient.interceptors.request.use(function (config) {
 
     return config
 })
+apiClient.interceptors.response.use(
+    function (response) {
+        return response
+    },
+    function (error) {
+        if (error.response.status == 302) {
+            location.href = '/account/login'
+        }
+        return Promise.reject(error)
+    }
+)
 
 export default apiClient

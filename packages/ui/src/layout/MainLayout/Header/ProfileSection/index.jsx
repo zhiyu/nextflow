@@ -410,14 +410,13 @@ const ProfileSection = ({ username, handleLogout }) => {
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography>关于</Typography>} />
                                                 </ListItemButton>
-                                                {localStorage.getItem('username') && localStorage.getItem('password') && (
-                                                    <ListItemButton onClick={handleLogout}>
-                                                        <ListItemIcon>
-                                                            <PiSignOut size='1rem' />
-                                                        </ListItemIcon>
-                                                        <ListItemText primary={<Typography>退出登录</Typography>} />
-                                                    </ListItemButton>
-                                                )}
+
+                                                <ListItemButton onClick={handleLogout}>
+                                                    <ListItemIcon>
+                                                        <PiSignOut size='1rem' />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary={<Typography>退出登录</Typography>} />
+                                                </ListItemButton>
                                             </List>
                                         </Box>
                                     </PerfectScrollbar>

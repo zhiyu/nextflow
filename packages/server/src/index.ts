@@ -1,5 +1,6 @@
 import express from 'express'
 import { Request, Response } from 'express'
+import cookieParser from 'cookie-parser'
 
 import path from 'path'
 import cors from 'cors'
@@ -105,6 +106,9 @@ export class App {
             }
         })
 
+        //cookie parser
+        this.app.use(cookieParser())
+
         // Switch off the default 'X-Powered-By: Express' header
         this.app.disable('x-powered-by')
 
@@ -141,66 +145,31 @@ export class App {
         const URL_CASE_INSENSITIVE_REGEX: RegExp = /\/api\/v1\//i
         const URL_CASE_SENSITIVE_REGEX: RegExp = /\/api\/v1\//
 
-        if (process.env.FLOWISE_USERNAME && process.env.FLOWISE_PASSWORD) {
-            const username = process.env.FLOWISE_USERNAME
-            const password = process.env.FLOWISE_PASSWORD
-            const basicAuthMiddleware = basicAuth({
-                users: { [username]: password }
-            })
-            this.app.use(async (req, res, next) => {
-                // Step 1: Check if the req path contains /api/v1 regardless of case
-                if (URL_CASE_INSENSITIVE_REGEX.test(req.path)) {
-                    // Step 2: Check if the req path is case sensitive
-                    if (URL_CASE_SENSITIVE_REGEX.test(req.path)) {
-                        // Step 3: Check if the req path is in the whitelist
-                        const isWhitelisted = whitelistURLs.some((url) => req.path.startsWith(url))
-                        if (isWhitelisted) {
-                            next()
-                        } else if (req.headers['x-request-from'] === 'internal') {
-                            basicAuthMiddleware(req, res, next)
-                        } else {
-                            const isKeyValidated = await validateAPIKey(req)
-                            if (!isKeyValidated) {
-                                return res.status(401).json({ error: 'Unauthorized Access' })
-                            }
-                            next()
-                        }
+        this.app.use(async (req, res, next) => {
+            const jwt = req.cookies['authjs.session-token']
+            // Step 1: Check if the req path contains /api/v1 regardless of case
+            if (URL_CASE_INSENSITIVE_REGEX.test(req.path)) {
+                // Step 2: Check if the req path is case sensitive
+                if (URL_CASE_SENSITIVE_REGEX.test(req.path)) {
+                    // Step 3: Check if the req path is in the whitelist
+                    const isWhitelisted = whitelistURLs.some((url) => req.path.startsWith(url))
+                    if (isWhitelisted || (await validateAPIKey(req))) {
+                        next()
                     } else {
-                        return res.status(401).json({ error: 'Unauthorized Access' })
-                    }
-                } else {
-                    // If the req path does not contain /api/v1, then allow the request to pass through, example: /assets, /canvas
-                    next()
-                }
-            })
-        } else {
-            this.app.use(async (req, res, next) => {
-                // Step 1: Check if the req path contains /api/v1 regardless of case
-                if (URL_CASE_INSENSITIVE_REGEX.test(req.path)) {
-                    // Step 2: Check if the req path is case sensitive
-                    if (URL_CASE_SENSITIVE_REGEX.test(req.path)) {
-                        // Step 3: Check if the req path is in the whitelist
-                        const isWhitelisted = whitelistURLs.some((url) => req.path.startsWith(url))
-                        if (isWhitelisted) {
-                            next()
-                        } else if (req.headers['x-request-from'] === 'internal') {
+                        if (jwt) {
                             next()
                         } else {
-                            const isKeyValidated = await validateAPIKey(req)
-                            if (!isKeyValidated) {
-                                return res.status(401).json({ error: 'Unauthorized Access' })
-                            }
-                            next()
+                            return res.status(302).json({ error: 'Redirect' })
                         }
-                    } else {
-                        return res.status(401).json({ error: 'Unauthorized Access' })
                     }
                 } else {
-                    // If the req path does not contain /api/v1, then allow the request to pass through, example: /assets, /canvas
-                    next()
+                    return res.status(401).json({ error: 'Unauthorized Access' })
                 }
-            })
-        }
+            } else {
+                // If the req path does not contain /api/v1, then allow the request to pass through, example: /assets, /canvas
+                next()
+            }
+        })
 
         this.app.use('/api/v1', flowiseApiV1Router)
         this.sseStreamer = new SSEStreamer(this.app)
