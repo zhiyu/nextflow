@@ -1,6 +1,7 @@
 import express from 'express'
 import { Request, Response } from 'express'
 import cookieParser from 'cookie-parser'
+import { jwtVerify, decodeJwt } from 'jose'
 
 import path from 'path'
 import cors from 'cors'
@@ -146,7 +147,6 @@ export class App {
         const URL_CASE_SENSITIVE_REGEX: RegExp = /\/api\/v1\//
 
         this.app.use(async (req, res, next) => {
-            const jwt = req.cookies['authjs.session-token']
             // Step 1: Check if the req path contains /api/v1 regardless of case
             if (URL_CASE_INSENSITIVE_REGEX.test(req.path)) {
                 // Step 2: Check if the req path is case sensitive
@@ -156,11 +156,14 @@ export class App {
                     if (isWhitelisted || (await validateAPIKey(req))) {
                         next()
                     } else {
-                        if (jwt) {
-                            next()
-                        } else {
-                            return res.status(302).json({ error: 'Redirect' })
+                        const token = req.cookies['authjs.session-token']
+                        const secret = new TextEncoder().encode(process.env.AUTH_SECRET)
+                        try {
+                            const { payload, protectedHeader } = await jwtVerify(token, secret)
+                        } catch (e) {
+                            return res.status(302).json({ page: '/account/login' })
                         }
+                        next()
                     }
                 } else {
                     return res.status(401).json({ error: 'Unauthorized Access' })

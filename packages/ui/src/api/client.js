@@ -28,7 +28,8 @@ apiClient.interceptors.response.use(
     },
     function (error) {
         if (error.response.status == 302) {
-            location.href = '/account/login'
+            console.log(error.response)
+            location.href = error.response.data.page
         }
         return Promise.reject(error)
     }

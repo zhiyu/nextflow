@@ -58,9 +58,9 @@ const StyledMenu = styled((props) => (
     />
 ))(({ theme }) => ({
     '& .MuiPaper-root': {
-        borderRadius: 6,
+        borderRadius: 4,
         marginTop: theme.spacing(1),
-        minWidth: 180,
+        minWidth: 140,
         boxShadow:
             'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
         '& .MuiMenu-list': {
@@ -68,9 +68,8 @@ const StyledMenu = styled((props) => (
         },
         '& .MuiMenuItem-root': {
             '& svg': {
-                fontSize: 18,
                 color: theme.palette.text.secondary,
-                marginRight: theme.spacing(1.5)
+                marginRight: theme.spacing(1)
             },
             '&:active': {
                 backgroundColor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
