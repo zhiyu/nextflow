@@ -1428,9 +1428,9 @@ export const ChatMessage = ({ open, chatflowid, isAgentCanvas, isDialog, preview
                                 >
                                     {/* Display the correct icon depending on the message type */}
                                     {message.type === 'apiMessage' || message.type === 'leadCaptureMessage' ? (
-                                        <img src={robotPNG} alt='AI' width='30' height='30' className='boticon' />
+                                        <img src={robotPNG} alt='AI' width='24' height='24' className='boticon' />
                                     ) : (
-                                        <img src={userPNG} alt='Me' width='30' height='30' className='usericon' />
+                                        <img src={userPNG} alt='Me' width='24' height='24' className='usericon' />
                                     )}
                                     <div
                                         style={{
