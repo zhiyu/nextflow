@@ -75,9 +75,9 @@ const ChatbotFull = () => {
     console.log(chatbotTheme)
     chatbotTheme.footer = {
         textColor: '#303235',
-        text: 'AI 智能体服务支持来自 ',
-        company: '紫金诚',
-        companyLink: 'https://zijin.ai'
+        text: 'Powered by',
+        company: '',
+        companyLink: ''
     }
     console.log(chatbotTheme)
     return (

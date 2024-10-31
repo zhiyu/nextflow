@@ -180,8 +180,8 @@ const chatwindowConfig = (isReact = false) => {
                     footer: {
                         textColor: '#303235',
                         text: 'Powered by',
-                        company: '紫金诚',
-                        companyLink: 'https://zijin.ai',
+                        company: '',
+                        companyLink: '',
                     }
                 }`
         : `chatWindow: {
@@ -230,8 +230,8 @@ const chatwindowConfig = (isReact = false) => {
                 footer: {
                     textColor: '#303235',
                     text: 'Powered by',
-                    company: '紫金诚',
-                    companyLink: 'https://zijin.ai',
+                    company: '',
+                    companyLink: '',
                 }
             }`
 }
