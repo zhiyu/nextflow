@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD030 -->
 
-<img width="100%" src="https://github.com/FlowiseAI/Flowise/blob/main/images/flowise.png?raw=true"></a>
+# Flowise Next - Flowise 中文优化版
+
+<img width="100%" src="images/Screenshot.png"></a>
 
 # Flowise - Build LLM Apps Easily
 
