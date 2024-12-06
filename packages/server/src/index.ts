@@ -150,7 +150,8 @@ export class App {
             const username = process.env.FLOWISE_USERNAME
             const password = process.env.FLOWISE_PASSWORD
             const basicAuthMiddleware = basicAuth({
-                users: { [username]: password }
+                users: { [username]: password },
+                challenge: true
             })
             this.app.use(async (req, res, next) => {
                 // Step 1: Check if the req path contains /api/v1 regardless of case
@@ -162,6 +163,7 @@ export class App {
                         if (isWhitelisted) {
                             next()
                         } else if (req.headers['x-request-from'] === 'internal') {
+                            console.log('hello' + req.url)
                             basicAuthMiddleware(req, res, next)
                         } else {
                             const isKeyValidated = await validateAPIKey(req)
