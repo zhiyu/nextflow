@@ -51,6 +51,10 @@ const VectorStoreConfigure = () => {
     useNotifier()
     const customization = useSelector((state) => state.customization)
 
+    const pathSegments = document.location.pathname.toString().split('/')
+    const storeId = pathSegments[3] || null
+    const docId = pathSegments[4] || null
+
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
 
@@ -215,7 +219,8 @@ const VectorStoreConfigure = () => {
 
     const prepareConfigData = () => {
         const data = {
-            storeId: storeId
+            storeId: storeId,
+            docId: docId
         }
         // Set embedding config
         if (selectedEmbeddingsProvider.inputs) {
@@ -368,8 +373,6 @@ const VectorStoreConfigure = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [saveVectorStoreConfigApi.error])
 
-    const URLpath = document.location.pathname.toString().split('/')
-    const storeId = URLpath[URLpath.length - 1] === 'document-stores' ? '' : URLpath[URLpath.length - 1]
     useEffect(() => {
         getSpecificDocumentStoreApi.request(storeId)
 

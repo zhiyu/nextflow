@@ -56,6 +56,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
 
     const [isPublicChatflow, setChatflowIsPublic] = useState(chatflow.isPublic ?? false)
     const [generateNewSession, setGenerateNewSession] = useState(chatbotConfig?.generateNewSession ?? false)
+    const [renderHTML, setRenderHTML] = useState(chatbotConfig?.renderHTML ?? false)
 
     const [buttonBackgroundColor, setButtonBackgroundColor] = useState(
         chatbotConfig?.textInput?.sendButtonColor ?? defaultConfig.textInput.sendButtonColor
@@ -143,6 +144,12 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
         if (textInputSendButtonColor) obj.textInput.sendButtonColor = textInputSendButtonColor
 
         if (isSessionMemory) obj.overrideConfig.generateNewSession = generateNewSession
+
+        if (renderHTML) {
+            obj.renderHTML = true
+        } else {
+            obj.renderHTML = false
+        }
 
         if (chatbotConfig?.starterPrompts) obj.starterPrompts = chatbotConfig.starterPrompts
 
@@ -325,6 +332,9 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             case 'showAgentMessages':
                 setShowAgentMessages(value)
                 break
+            case 'renderHTML':
+                setRenderHTML(value)
+                break
         }
     }
 
@@ -490,6 +500,13 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             {colorField(textInputTextColor, 'textInputTextColor', '文本颜色')}
             {textField(textInputPlaceholder, 'textInputPlaceholder', '输入框 Placeholder', 'string', `Type question..`)}
             {colorField(textInputSendButtonColor, 'textInputSendButtonColor', '消息发送按钮颜色')}
+
+            <>
+                <Typography variant='h4' sx={{ mb: 1, mt: 2 }}>
+                    Render HTML
+                </Typography>
+                {booleanField(renderHTML, 'renderHTML', 'Render HTML on the chat')}
+            </>
 
             {/*Session Memory Input*/}
             {isSessionMemory && (

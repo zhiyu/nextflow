@@ -10,22 +10,34 @@ const DocumentStoreStatus = ({ status, isTableView }) => {
         switch (status) {
             case 'STALE':
                 return customization.isDarkMode
-                    ? [theme.palette.grey[400], theme.palette.grey[600], theme.palette.grey[700]]
+                    ? [theme.palette.grey[400], theme.palette.grey[600], theme.palette.grey[800]]
                     : [theme.palette.grey[300], theme.palette.grey[500], theme.palette.grey[700]]
             case 'EMPTY':
                 return ['#aaaaaa', '#aaaaaa', '#aaaaaa']
             case 'SYNCING':
+                return customization.isDarkMode
+                    ? ['#ff6f00', '#ff8f00', '#ffffff'] // Amber
+                    : ['#fff8e1', '#ffe57f', '#ffc107']
             case 'UPSERTING':
-                return ['#fff8e1', '#ffe57f', '#ffc107']
+                return customization.isDarkMode
+                    ? ['#01579b', '#0277bd', '#ffffff'] // Light Blue
+                    : ['#e1f5fe', '#4fc3f7', '#0288d1']
             case 'SYNC':
+                return customization.isDarkMode
+                    ? ['#1b5e20', '#2e7d32', '#ffffff'] // Green
+                    : ['#e8f5e9', '#81c784', '#43a047']
             case 'UPSERTED':
-                return ['#cdf5d8', '#00e676', '#00c853']
+                return customization.isDarkMode
+                    ? ['#004d40', '#00695c', '#ffffff'] // Teal
+                    : ['#e0f2f1', '#4db6ac', '#00897b']
             case 'NEW':
-                return ['#e3f2fd', '#2196f3', '#1e88e5']
+                return customization.isDarkMode
+                    ? ['#0d47a1', '#1565c0', '#ffffff'] // Blue
+                    : ['#e3f2fd', '#64b5f6', '#1e88e5']
             default:
                 return customization.isDarkMode
                     ? [theme.palette.grey[300], theme.palette.grey[500], theme.palette.grey[700]]
-                    : [theme.palette.grey[300], theme.palette.grey[500], theme.palette.grey[700]]
+                    : [theme.palette.grey[200], theme.palette.grey[400], theme.palette.grey[600]]
         }
     }
 

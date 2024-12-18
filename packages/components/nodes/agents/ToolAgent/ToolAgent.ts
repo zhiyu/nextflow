@@ -7,7 +7,7 @@ import { BaseChatModel } from '@langchain/core/language_models/chat_models'
 import { ChatPromptTemplate, MessagesPlaceholder, HumanMessagePromptTemplate, PromptTemplate } from '@langchain/core/prompts'
 import { formatToOpenAIToolMessages } from 'langchain/agents/format_scratchpad/openai_tools'
 import { type ToolsAgentStep } from 'langchain/agents/openai/output_parser'
-import { getBaseClasses, handleEscapeCharacters } from '../../../src/utils'
+import { getBaseClasses, handleEscapeCharacters, removeInvalidImageMarkdown } from '../../../src/utils'
 import {
     FlowiseMemory,
     ICommonObject,
@@ -35,7 +35,6 @@ class ToolAgent_Agents implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     sessionId?: string
-    badge?: string
 
     constructor(fields?: { sessionId?: string }) {
         this.label = 'Tool Agent'
@@ -188,7 +187,10 @@ class ToolAgent_Agents implements INode {
             output = output?.text || ''
         }
 
+        output = removeInvalidImageMarkdown(output)
+
         // Claude 3 Opus tends to spit out <thinking>..</thinking> as well, discard that in final output
+        // https://docs.anthropic.com/en/docs/build-with-claude/tool-use#chain-of-thought
         const regexPattern: RegExp = /<thinking>[\s\S]*?<\/thinking>/
         const matches: RegExpMatchArray | null = output.match(regexPattern)
         if (matches) {

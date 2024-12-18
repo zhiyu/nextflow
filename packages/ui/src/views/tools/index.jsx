@@ -102,6 +102,17 @@ const Tools = () => {
         getAllToolsApi.request()
     }
 
+    const [search, setSearch] = useState('')
+    const onSearchChange = (event) => {
+        setSearch(event.target.value)
+    }
+
+    function filterTools(data) {
+        return (
+            data.name.toLowerCase().indexOf(search.toLowerCase()) > -1 || data.description.toLowerCase().indexOf(search.toLowerCase()) > -1
+        )
+    }
+
     useEffect(() => {
         getAllToolsApi.request()
 

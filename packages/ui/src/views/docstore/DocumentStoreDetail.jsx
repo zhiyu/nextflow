@@ -32,6 +32,8 @@ import ErrorBoundary from '@/ErrorBoundary'
 import { StyledButton } from '@/ui-component/button/StyledButton'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 import DeleteDocStoreDialog from './DeleteDocStoreDialog'
+import DocumentStoreStatus from '@/views/docstore/DocumentStoreStatus'
+import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 
 // API
 import documentsApi from '@/api/documentstore'
@@ -39,6 +41,8 @@ import documentsApi from '@/api/documentstore'
 // Hooks
 import useApi from '@/hooks/useApi'
 import useNotifier from '@/utils/useNotifier'
+import { getFileName } from '@/utils/genericHelper'
+import useConfirm from '@/hooks/useConfirm'
 
 // icons
 import { IconPlus, IconRefresh, IconX, IconVectorBezier2, IconZoomScan } from '@tabler/icons-react'
@@ -93,6 +97,7 @@ const DocumentStoreDetails = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useNotifier()
+    const { confirm } = useConfirm()
 
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
@@ -109,6 +114,9 @@ const DocumentStoreDetails = () => {
     const [documentLoaderListDialogProps, setDocumentLoaderListDialogProps] = useState({})
     const [showDeleteDocStoreDialog, setShowDeleteDocStoreDialog] = useState(false)
     const [deleteDocStoreDialogProps, setDeleteDocStoreDialogProps] = useState({})
+
+    const [anchorEl, setAnchorEl] = useState(null)
+    const open = Boolean(anchorEl)
 
     const URLpath = document.location.pathname.toString().split('/')
     const storeId = URLpath[URLpath.length - 1] === 'document-stores' ? '' : URLpath[URLpath.length - 1]
@@ -179,9 +187,10 @@ const DocumentStoreDetails = () => {
             } catch (error) {
                 setBackdropLoading(false)
                 setError(error)
-                const errorData = error.response.data || `${error.response.status}: ${error.response.statusText}`
                 enqueueSnackbar({
-                    message: `Failed to delete loader: ${errorData}`,
+                    message: `Failed to delete Document Store: ${
+                        typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                    }`,
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -218,9 +227,10 @@ const DocumentStoreDetails = () => {
             } catch (error) {
                 setError(error)
                 setBackdropLoading(false)
-                const errorData = error.response.data || `${error.response.status}: ${error.response.statusText}`
                 enqueueSnackbar({
-                    message: `Failed to delete loader: ${errorData}`,
+                    message: `Failed to delete Document Loader: ${
+                        typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                    }`,
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -264,6 +274,55 @@ const DocumentStoreDetails = () => {
         setShowDeleteDocStoreDialog(true)
     }
 
+    const onStoreRefresh = async (storeId) => {
+        const confirmPayload = {
+            title: `Refresh all loaders and upsert all chunks?`,
+            description: `This will re-process all loaders and upsert all chunks. This action might take some time.`,
+            confirmButtonName: 'Refresh',
+            cancelButtonName: 'Cancel'
+        }
+        const isConfirmed = await confirm(confirmPayload)
+
+        if (isConfirmed) {
+            setAnchorEl(null)
+            setBackdropLoading(true)
+            try {
+                const resp = await documentsApi.refreshLoader(storeId)
+                if (resp.data) {
+                    enqueueSnackbar({
+                        message: 'Document store refresh successfully!',
+                        options: {
+                            key: new Date().getTime() + Math.random(),
+                            variant: 'success',
+                            action: (key) => (
+                                <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                                    <IconX />
+                                </Button>
+                            )
+                        }
+                    })
+                }
+                setBackdropLoading(false)
+            } catch (error) {
+                setBackdropLoading(false)
+                enqueueSnackbar({
+                    message: `Failed to refresh document store: ${
+                        typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                    }`,
+                    options: {
+                        key: new Date().getTime() + Math.random(),
+                        variant: 'error',
+                        action: (key) => (
+                            <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                                <IconX />
+                            </Button>
+                        )
+                    }
+                })
+            }
+        }
+    }
+
     const onEditClicked = () => {
         const data = {
             name: documentStore.name,
@@ -284,6 +343,16 @@ const DocumentStoreDetails = () => {
     const onConfirm = () => {
         setShowDialog(false)
         getSpecificDocumentStore.request(storeId)
+    }
+
+    const handleClick = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        setAnchorEl(event.currentTarget)
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null)
     }
 
     useEffect(() => {
@@ -501,6 +570,9 @@ const DocumentStoreDetails = () => {
                                                                 documentStore?.recordManagerConfig
                                                             )
                                                         }
+                                                        onChunkUpsert={() =>
+                                                            navigate(`/document-stores/vector/${documentStore.id}/${loader.id}`)
+                                                        }
                                                     />
                                                 ))}
                                         </>
@@ -543,6 +615,7 @@ const DocumentStoreDetails = () => {
                 />
             )}
             {isBackdropLoading && <BackdropLoader open={isBackdropLoading} />}
+            <ConfirmDialog />
         </>
     )
 }
@@ -562,6 +635,9 @@ function LoaderRow(props) {
     }
 
     const formatSources = (source) => {
+        if (source && typeof source === 'string' && source.includes('base64')) {
+            return getFileName(source)
+        }
         if (source && typeof source === 'string' && source.startsWith('[') && source.endsWith(']')) {
             return JSON.parse(source).join(', ')
         }
@@ -623,6 +699,10 @@ function LoaderRow(props) {
                                 <PiFilesLight />
                                 &nbsp;查看 & 编辑 Chunks
                             </MenuItem>
+                            <MenuItem onClick={props.onChunkUpsert} disableRipple>
+                                <PiRowsPlusTopLight />
+                                插入或更新配置
+                            </MenuItem>
                             <Divider sx={{ my: 0.5 }} />
                             <MenuItem onClick={props.onDeleteClick} disableRipple>
                                 <PiTrash />
@@ -643,6 +723,7 @@ LoaderRow.propTypes = {
     theme: PropTypes.any,
     onViewChunksClick: PropTypes.func,
     onEditClick: PropTypes.func,
-    onDeleteClick: PropTypes.func
+    onDeleteClick: PropTypes.func,
+    onChunkUpsert: PropTypes.func
 }
 export default DocumentStoreDetails
