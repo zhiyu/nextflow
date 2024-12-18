@@ -701,7 +701,7 @@ function LoaderRow(props) {
                             </MenuItem>
                             <MenuItem onClick={props.onChunkUpsert} disableRipple>
                                 <PiRowsPlusTopLight />
-                                插入或更新配置
+                                &nbsp;插入或更新配置
                             </MenuItem>
                             <Divider sx={{ my: 0.5 }} />
                             <MenuItem onClick={props.onDeleteClick} disableRipple>
