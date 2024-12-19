@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { drawerWidth } from '@/store/constant'
+
 // material-ui
 import { useTheme } from '@mui/material/styles'
 import { Avatar, Box, ButtonBase, IconButton, Typography } from '@mui/material'
@@ -52,7 +54,7 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
             {/* logo & toggler button */}
             <Box
                 sx={{
-                    width: 240,
+                    width: drawerWidth + 10,
                     display: 'flex',
                     [theme.breakpoints.down('md')]: {
                         width: 'auto'
@@ -91,11 +93,30 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
             </Box>
             <Box>
                 {isDark ? (
-                    <ModeButton sx={{ color: theme.palette.primary.main }} onClick={changeDarkMode}>
+                    <ModeButton
+                        sx={{
+                            borderRadius: '8px',
+                            color: theme.palette.primary.main,
+                            '&:hover': {
+                                background: theme.palette.primary.main,
+                                color: theme.palette.primary.light
+                            }
+                        }}
+                        onClick={changeDarkMode}
+                    >
                         <PiSun />
                     </ModeButton>
                 ) : (
-                    <ModeButton onClick={changeDarkMode}>
+                    <ModeButton
+                        sx={{
+                            borderRadius: '8px',
+                            '&:hover': {
+                                background: theme.palette.primary.main,
+                                color: theme.palette.primary.light
+                            }
+                        }}
+                        onClick={changeDarkMode}
+                    >
                         <PiMoon />
                     </ModeButton>
                 )}
