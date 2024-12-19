@@ -45,7 +45,7 @@ class JinaAIEmbedding_Embeddings implements INode {
         const credentialData = await getCredentialData(nodeData.credential ?? '', options)
         const apiKey = getCredentialParam('jinaAIAPIKey', credentialData, nodeData)
 
-        const obj: JinaEmbeddingsParams = {
+        const obj = {
             apiKey: apiKey,
             model: modelName
         }
