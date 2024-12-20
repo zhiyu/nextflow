@@ -109,73 +109,66 @@ const OpenAIAssistantLayout = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader
-                            isBackButton={true}
-                            onSearchChange={onSearchChange}
-                            search={true}
-                            searchPlaceholder='Search Assistants'
-                            title='OpenAI Assistant'
-                            onBack={() => navigate(-1)}
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader
+                        isBackButton={true}
+                        onSearchChange={onSearchChange}
+                        search={true}
+                        searchPlaceholder='Search Assistants'
+                        title='OpenAI Assistant'
+                        onBack={() => navigate(-1)}
+                    >
+                        <Button
+                            variant='outlined'
+                            onClick={loadExisting}
+                            startIcon={<IconFileUpload />}
+                            sx={{ borderRadius: 2, height: 40 }}
                         >
-                            <Button
-                                variant='outlined'
-                                onClick={loadExisting}
-                                startIcon={<IconFileUpload />}
-                                sx={{ borderRadius: 2, height: 40 }}
-                            >
-                                Load
-                            </Button>
-                            <StyledButton
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: 40 }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                            >
-                                Add
-                            </StyledButton>
-                        </ViewHeader>
-                        {isLoading ? (
-                            <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                <Skeleton variant='rounded' height={160} />
-                                <Skeleton variant='rounded' height={160} />
-                                <Skeleton variant='rounded' height={160} />
-                            </Box>
-                        ) : (
-                            <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                {getAllAssistantsApi.data &&
-                                    getAllAssistantsApi.data?.filter(filterAssistants).map((data, index) => (
-                                        <ItemCard
-                                            data={{
-                                                name: JSON.parse(data.details)?.name,
-                                                description: JSON.parse(data.details)?.instructions,
-                                                iconSrc: data.iconSrc
-                                            }}
-                                            key={index}
-                                            onClick={() => edit(data)}
-                                        />
-                                    ))}
-                            </Box>
-                        )}
-                        {!isLoading && (!getAllAssistantsApi.data || getAllAssistantsApi.data.length === 0) && (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
-                                        src={AssistantEmptySVG}
-                                        alt='AssistantEmptySVG'
+                            Load
+                        </Button>
+                        <StyledButton variant='contained' sx={{ borderRadius: 2, height: 40 }} onClick={addNew} startIcon={<IconPlus />}>
+                            Add
+                        </StyledButton>
+                    </ViewHeader>
+                    {isLoading ? (
+                        <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} />
+                        </Box>
+                    ) : (
+                        <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                            {getAllAssistantsApi.data &&
+                                getAllAssistantsApi.data?.filter(filterAssistants).map((data, index) => (
+                                    <ItemCard
+                                        data={{
+                                            name: JSON.parse(data.details)?.name,
+                                            description: JSON.parse(data.details)?.instructions,
+                                            iconSrc: data.iconSrc
+                                        }}
+                                        key={index}
+                                        onClick={() => edit(data)}
                                     />
-                                </Box>
-                                <div>No OpenAI Assistants Added Yet</div>
-                            </Stack>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+                                ))}
+                        </Box>
+                    )}
+                    {!isLoading && (!getAllAssistantsApi.data || getAllAssistantsApi.data.length === 0) && (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img
+                                    style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
+                                    src={AssistantEmptySVG}
+                                    alt='AssistantEmptySVG'
+                                />
+                            </Box>
+                            <div>No OpenAI Assistants Added Yet</div>
+                        </Stack>
+                    )}
+                </Stack>
+            )}
             <LoadAssistantDialog
                 show={showLoadDialog}
                 dialogProps={loadDialogProps}

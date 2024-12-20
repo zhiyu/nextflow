@@ -87,65 +87,58 @@ const CustomAssistantLayout = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader
-                            isBackButton={true}
-                            onSearchChange={onSearchChange}
-                            search={true}
-                            searchPlaceholder='Search Assistants'
-                            title='Custom Assistant'
-                            onBack={() => navigate(-1)}
-                        >
-                            <StyledButton
-                                variant='contained'
-                                sx={{ borderRadius: 2, height: 40 }}
-                                onClick={addNew}
-                                startIcon={<IconPlus />}
-                            >
-                                Add
-                            </StyledButton>
-                        </ViewHeader>
-                        {isLoading ? (
-                            <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                <Skeleton variant='rounded' height={160} />
-                                <Skeleton variant='rounded' height={160} />
-                                <Skeleton variant='rounded' height={160} />
-                            </Box>
-                        ) : (
-                            <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
-                                {getAllAssistantsApi.data &&
-                                    getAllAssistantsApi.data?.filter(filterAssistants).map((data, index) => (
-                                        <ItemCard
-                                            data={{
-                                                name: JSON.parse(data.details)?.name,
-                                                description: JSON.parse(data.details)?.instruction
-                                            }}
-                                            images={getImages(JSON.parse(data.details))}
-                                            key={index}
-                                            onClick={() => navigate('/assistants/custom/' + data.id)}
-                                        />
-                                    ))}
-                            </Box>
-                        )}
-                        {!isLoading && (!getAllAssistantsApi.data || getAllAssistantsApi.data.length === 0) && (
-                            <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
-                                <Box sx={{ p: 2, height: 'auto' }}>
-                                    <img
-                                        style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
-                                        src={AssistantEmptySVG}
-                                        alt='AssistantEmptySVG'
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column' sx={{ gap: 3 }}>
+                    <ViewHeader
+                        isBackButton={true}
+                        onSearchChange={onSearchChange}
+                        search={true}
+                        searchPlaceholder='Search Assistants'
+                        title='自定义助手'
+                        onBack={() => navigate(-1)}
+                    >
+                        <StyledButton variant='contained' sx={{ borderRadius: 2, height: 40 }} onClick={addNew} startIcon={<IconPlus />}>
+                            创建
+                        </StyledButton>
+                    </ViewHeader>
+                    {isLoading ? (
+                        <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} />
+                            <Skeleton variant='rounded' height={160} />
+                        </Box>
+                    ) : (
+                        <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
+                            {getAllAssistantsApi.data &&
+                                getAllAssistantsApi.data?.filter(filterAssistants).map((data, index) => (
+                                    <ItemCard
+                                        data={{
+                                            name: JSON.parse(data.details)?.name,
+                                            description: JSON.parse(data.details)?.instruction
+                                        }}
+                                        images={getImages(JSON.parse(data.details))}
+                                        key={index}
+                                        onClick={() => navigate('/assistants/custom/' + data.id)}
                                     />
-                                </Box>
-                                <div>No Custom Assistants Added Yet</div>
-                            </Stack>
-                        )}
-                    </Stack>
-                )}
-            </MainCard>
+                                ))}
+                        </Box>
+                    )}
+                    {!isLoading && (!getAllAssistantsApi.data || getAllAssistantsApi.data.length === 0) && (
+                        <Stack sx={{ alignItems: 'center', justifyContent: 'center' }} flexDirection='column'>
+                            <Box sx={{ p: 2, height: 'auto' }}>
+                                <img
+                                    style={{ objectFit: 'cover', height: '20vh', width: 'auto' }}
+                                    src={AssistantEmptySVG}
+                                    alt='AssistantEmptySVG'
+                                />
+                            </Box>
+                            <div>No Custom Assistants Added Yet</div>
+                        </Stack>
+                    )}
+                </Stack>
+            )}
             <AddCustomAssistantDialog
                 show={showDialog}
                 dialogProps={dialogProps}

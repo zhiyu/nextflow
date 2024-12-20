@@ -19,14 +19,14 @@ const dashboard = [
         title: '工作台',
         type: 'group',
         children: [
-            // {
-            //     id: 'assistants',
-            //     title: 'OpenAI 助手',
-            //     type: 'item',
-            //     url: '/assistants',
-            //     icon: PiOpenAiLogo,
-            //     breadcrumbs: true
-            // },
+            {
+                id: 'assistants',
+                title: 'OpenAI 助手',
+                type: 'item',
+                url: '/assistants',
+                icon: PiOpenAiLogo,
+                breadcrumbs: true
+            },
             {
                 id: 'chatflows',
                 title: '对话编排',

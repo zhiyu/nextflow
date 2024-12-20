@@ -6,7 +6,6 @@ import { Card, CardContent, Stack } from '@mui/material'
 import { useTheme, styled } from '@mui/material/styles'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
 
 // icons
@@ -14,7 +13,7 @@ import { IconRobotFace, IconBrandOpenai, IconBrandAzure } from '@tabler/icons-re
 
 const cards = [
     {
-        title: 'Custom 助手',
+        title: '自定义助手',
         description: 'Create custom assistant using your choice of LLMs',
         icon: <IconRobotFace />,
         iconText: 'Custom',
@@ -120,12 +119,10 @@ const FeatureCards = () => {
 const Assistants = () => {
     return (
         <>
-            <MainCard>
-                <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader title='Assistants' />
-                    <FeatureCards />
-                </Stack>
-            </MainCard>
+            <Stack flexDirection='column' sx={{ gap: 3 }}>
+                <ViewHeader title='OpenAI 助手' />
+                <FeatureCards />
+            </Stack>
         </>
     )
 }
