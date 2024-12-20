@@ -13,13 +13,8 @@ const Logo = () => {
     const theme = useTheme()
 
     return (
-        <div
-            style={{
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'row'
-            }}
-        >
+        <div className='flex items-end'>
+            <PiInfinity size='2em' color='#000000' />
             {customization.isDarkMode ? <img src={nextflowDark} className='h-8' /> : <img src={nextflow} className='h-8' />}
         </div>
     )
