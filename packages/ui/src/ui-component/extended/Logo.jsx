@@ -21,7 +21,7 @@ const Logo = () => {
             }}
         >
             <PiInfinity size='2rem' style={{ color: customization.isDarkMode ? '' : theme.palette.primary.main }} />
-            &nbsp;&nbsp;Flowise Next
+            &nbsp;&nbsp;NextFlow
         </div>
     )
 }
