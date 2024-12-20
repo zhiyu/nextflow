@@ -16,7 +16,7 @@ import NavBar from './NavBar'
 import ProfileSection from './ProfileSection'
 
 // assets
-import { PiArrowLineLeftThin, PiArrowLineRightThin, PiMoon, PiSun } from 'react-icons/pi'
+import { PiSidebarSimpleDuotone, PiSidebarSimple, PiMoon, PiSun } from 'react-icons/pi'
 
 // store
 import { SET_DARKMODE } from '@/store/actions'
@@ -86,8 +86,8 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
                         onClick={handleLeftDrawerToggle}
                         color='inherit'
                     >
-                        {drawerOpen && <PiArrowLineLeftThin size='1.2rem' />}
-                        {!drawerOpen && <PiArrowLineRightThin size='1.2rem' />}
+                        {drawerOpen && <PiSidebarSimpleDuotone size='1.2rem' />}
+                        {!drawerOpen && <PiSidebarSimple size='1.2rem' />}
                     </Avatar>
                 </ButtonBase>
             </Box>
