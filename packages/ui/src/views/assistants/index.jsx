@@ -120,7 +120,7 @@ const Assistants = () => {
     return (
         <>
             <Stack flexDirection='column' sx={{ gap: 3 }}>
-                <ViewHeader title='OpenAI 助手' />
+                <ViewHeader title='智能助手' />
                 <FeatureCards />
             </Stack>
         </>
