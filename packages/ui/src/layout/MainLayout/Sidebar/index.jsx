@@ -70,8 +70,8 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                         // [theme.breakpoints.up('md')]: {
                         //     top: `${headerHeight + 1}px`
                         // },
-                        borderRight: drawerOpen ? '0px solid' : 'none',
-                        borderColor: drawerOpen ? 'rgba(0, 0, 0, 0.12)' : 'transparent'
+                        borderRight: drawerOpen ? '1px solid' : 'none',
+                        borderColor: drawerOpen ? 'rgba(0, 0, 0, 0.06)' : 'transparent'
                     }
                 }}
                 ModalProps={{ keepMounted: true }}

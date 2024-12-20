@@ -50,7 +50,14 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
     }
 
     return (
-        <Box className='flex items-center p-2 px-4'>
+        <Box
+            sx={{
+                backgroundColor: customization.isDarkMode ? 'transparent' : theme.palette.common.white,
+                borderBottom: '1px solid',
+                borderColor: 'rgba(0, 0, 0, 0.06)'
+            }}
+            className='flex items-center p-2 px-4'
+        >
             <ButtonBase sx={{ borderRadius: '8px', overflow: 'hidden' }}>
                 <Avatar
                     variant='rounded'

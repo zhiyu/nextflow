@@ -87,7 +87,7 @@ const MainLayout = () => {
         >
             <CssBaseline />
             {/* drawer */}
-            <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} className='relative shadow-main' />
+            <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened} className='relative'>
                 <Outlet />
