@@ -24,17 +24,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
         [theme.breakpoints.up('md')]: {
             marginLeft: -drawerWidth,
             width: `calc(100% - ${drawerWidth}px)`
-        },
-        [theme.breakpoints.down('md')]: {
-            marginLeft: '20px',
-            width: `calc(100% - ${drawerWidth}px)`,
-            padding: '16px'
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: '10px',
-            width: `calc(100% - ${drawerWidth}px)`,
-            padding: '16px',
-            marginRight: '10px'
         }
     }),
     ...(open && {
@@ -44,6 +33,27 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
         }),
         marginLeft: 0,
         marginRight: 0,
+        width: `calc(100% - ${drawerWidth}px)`
+    })
+}))
+
+const HeaderWrapper = styled('HeaderWrapper', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
+    position: 'fixed',
+    width: `calc(100%)`,
+    left: drawerWidth,
+    ...(!open && {
+        transition: theme.transitions.create('all', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen
+        }),
+        left: '0px'
+    }),
+    ...(open && {
+        transition: theme.transitions.create('all', {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen
+        }),
+        left: drawerWidth,
         width: `calc(100% - ${drawerWidth}px)`
     })
 }))
@@ -68,35 +78,23 @@ const MainLayout = () => {
 
     return (
         <Box
-            sx={{
-                display: 'flex'
-                // background:'linear-gradient(100deg, rgba(192, 132, 252, 0) 20.79%, rgb(241 170 252 / 26%) 40.92%, rgba(204, 171, 238, 0) 70.35%)'
-            }}
+            sx={
+                {
+                    // background:'linear-gradient(100deg, rgba(192, 132, 252, 0) 20.79%, rgb(241 170 252 / 26%) 40.92%, rgba(204, 171, 238, 0) 70.35%)'
+                }
+            }
+            className='flex relative'
         >
             <CssBaseline />
-            {/* header */}
-            <AppBar
-                enableColorOnDark
-                position='fixed'
-                color='inherit'
-                elevation={0}
-                sx={{
-                    bgcolor: 'transparent',
-                    transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
-                }}
-            >
-                <Toolbar sx={{ height: `${headerHeight}px`, position: 'relative' }}>
-                    <Header handleLeftDrawerToggle={handleLeftDrawerToggle} drawerOpen={leftDrawerOpened} />
-                </Toolbar>
-            </AppBar>
-
             {/* drawer */}
             <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} className='relative shadow-main' />
-
             {/* main content */}
-            <Main theme={theme} open={leftDrawerOpened} className='relative shadow-card-inset'>
+            <Main theme={theme} open={leftDrawerOpened} className='relative'>
                 <Outlet />
             </Main>
+            <HeaderWrapper open={leftDrawerOpened}>
+                <Header handleLeftDrawerToggle={handleLeftDrawerToggle} drawerOpen={leftDrawerOpened} />
+            </HeaderWrapper>
         </Box>
     )
 }

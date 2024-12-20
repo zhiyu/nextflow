@@ -87,13 +87,13 @@ export default function themeTypography(theme) {
             }
         },
         mainContent: {
+            position: 'relative',
             backgroundColor: theme.customization.isDarkMode ? theme.colors.darkBackground : 'rgb(247,247,247)',
             width: '100%',
-            minHeight: 'calc(100vh - 55px)',
+            minHeight: 'calc(100vh - 0px)',
             flexGrow: 1,
             padding: '10px 20px',
-            marginTop: '55px',
-            borderRadius: '4px !important',
+            paddingTop: '55px',
             borderTopRightRadius: '0px !important',
             borderBottomLeftRadius: '0px !important',
             borderBottomRightRadius: '0px !important'

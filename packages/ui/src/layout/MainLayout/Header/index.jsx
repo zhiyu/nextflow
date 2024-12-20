@@ -50,47 +50,28 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
     }
 
     return (
-        <>
-            {/* logo & toggler button */}
-            <Box
-                sx={{
-                    width: drawerWidth + 10,
-                    display: 'flex',
-                    [theme.breakpoints.down('md')]: {
-                        width: 'auto'
-                    }
-                }}
-            >
-                <Box
-                    component='span'
-                    style={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}
-                    sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}
+        <Box className='flex items-center p-2 px-4'>
+            <ButtonBase sx={{ borderRadius: '8px', overflow: 'hidden' }}>
+                <Avatar
+                    variant='rounded'
+                    sx={{
+                        ...theme.typography.commonAvatar,
+                        ...theme.typography.mediumAvatar,
+                        transition: 'all .2s ease-in-out',
+                        background: 'none',
+                        color: theme.palette.text.primary,
+                        '&:hover': {
+                            background: theme.palette.primary.main,
+                            color: theme.palette.primary.light
+                        }
+                    }}
+                    onClick={handleLeftDrawerToggle}
+                    color='inherit'
                 >
-                    <LogoSection />
-                </Box>
-
-                <ButtonBase sx={{ borderRadius: '8px', overflow: 'hidden' }}>
-                    <Avatar
-                        variant='rounded'
-                        sx={{
-                            ...theme.typography.commonAvatar,
-                            ...theme.typography.mediumAvatar,
-                            transition: 'all .2s ease-in-out',
-                            background: 'none',
-                            color: theme.palette.text.primary,
-                            '&:hover': {
-                                background: theme.palette.primary.main,
-                                color: theme.palette.primary.light
-                            }
-                        }}
-                        onClick={handleLeftDrawerToggle}
-                        color='inherit'
-                    >
-                        {drawerOpen && <PiSidebarSimpleDuotone size='1.2rem' />}
-                        {!drawerOpen && <PiSidebarSimple size='1.2rem' />}
-                    </Avatar>
-                </ButtonBase>
-            </Box>
+                    {drawerOpen && <PiSidebarSimpleDuotone size='1.2rem' />}
+                    {!drawerOpen && <PiSidebarSimple size='1.2rem' />}
+                </Avatar>
+            </ButtonBase>
             <Box>
                 {isDark ? (
                     <ModeButton
@@ -131,7 +112,7 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
             </Box>
             <Box sx={{ ml: 2 }}></Box>
             <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />
-        </>
+        </Box>
     )
 }
 

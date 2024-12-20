@@ -22,32 +22,26 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
     const drawer = (
         <>
             <Box
+                className='fixed pt-1 px-5 z-10'
                 sx={{
-                    display: { xs: 'block', md: 'none' },
-                    height: '80px'
+                    height: headerHeight,
+                    width: drawerWidth
                 }}
             >
-                <Box sx={{ display: 'flex', p: 2, mx: 'auto' }}>
-                    <LogoSection />
-                </Box>
+                <LogoSection />
             </Box>
-            <BrowserView>
-                <PerfectScrollbar
-                    component='div'
-                    style={{
-                        height: !matchUpMd ? 'calc(100vh - 56px)' : `calc(100vh - ${headerHeight}px)`,
-                        paddingLeft: '0px',
-                        paddingRight: '0px'
-                    }}
-                >
-                    <MenuList drawerOpen={drawerOpen} />
-                </PerfectScrollbar>
-            </BrowserView>
-            <MobileView>
-                <Box sx={{ px: 2 }}>
-                    <MenuList />
-                </Box>
-            </MobileView>
+            <Box className='pt-10'>
+                <BrowserView>
+                    <PerfectScrollbar component='div' className='h-full'>
+                        <MenuList drawerOpen={drawerOpen} />
+                    </PerfectScrollbar>
+                </BrowserView>
+                <MobileView>
+                    <Box sx={{ px: 2 }}>
+                        <MenuList />
+                    </Box>
+                </MobileView>
+            </Box>
         </>
     )
 
@@ -73,9 +67,9 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                         // background:'linear-gradient(145deg, rgba(192, 132, 252, 0) 20%, rgb(243 180 252 / 26%) 40%, rgba(204, 171, 238, 0) 60%)',
                         background: theme.palette.background.default,
                         color: theme.palette.text.primary,
-                        [theme.breakpoints.up('md')]: {
-                            top: `${headerHeight + 1}px`
-                        },
+                        // [theme.breakpoints.up('md')]: {
+                        //     top: `${headerHeight + 1}px`
+                        // },
                         borderRight: drawerOpen ? '0px solid' : 'none',
                         borderColor: drawerOpen ? 'rgba(0, 0, 0, 0.12)' : 'transparent'
                     }
