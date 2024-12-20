@@ -59,7 +59,7 @@ const OpenAIAssistantLayout = () => {
 
     const addNew = (selectedOpenAIAssistantId, credential) => {
         const dialogProp = {
-            title: 'Add New Assistant',
+            title: '创建智能助理',
             type: 'ADD',
             cancelButtonName: 'Cancel',
             confirmButtonName: 'Add',

@@ -43,7 +43,7 @@ const CustomAssistantLayout = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Custom Assistant',
+            title: '创建智能助理',
             type: 'ADD',
             cancelButtonName: 'Cancel',
             confirmButtonName: 'Add'

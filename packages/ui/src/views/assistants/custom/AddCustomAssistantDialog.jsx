@@ -58,7 +58,7 @@ const AddCustomAssistantDialog = ({ show, dialogProps, onCancel, onConfirm }) =>
             const createResp = await assistantsApi.createNewAssistant(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'New Custom Assistant created.',
+                    message: '智能助理创建成功!',
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -109,7 +109,7 @@ const AddCustomAssistantDialog = ({ show, dialogProps, onCancel, onConfirm }) =>
                 <Box sx={{ p: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <Typography>
-                            Name<span style={{ color: 'red' }}>&nbsp;*</span>
+                            名称<span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
 
                         <div style={{ flexGrow: 1 }}></div>
