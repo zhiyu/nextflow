@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux'
 
 import { PiInfinity } from 'react-icons/pi'
 
+import nextflow from '@/assets/images/nextflow.svg'
+import nextflowDark from '@/assets/images/nextflow_dark.svg'
+
 // ==============================|| LOGO ||============================== //
 
 const Logo = () => {
@@ -12,16 +15,12 @@ const Logo = () => {
     return (
         <div
             style={{
-                color: customization.isDarkMode ? '' : theme.palette.primary.main,
-                fontSize: '1rem',
-                fontWeight: 600,
                 alignItems: 'center',
                 display: 'flex',
                 flexDirection: 'row'
             }}
         >
-            <PiInfinity size='2rem' style={{ color: customization.isDarkMode ? '' : theme.palette.primary.main }} />
-            &nbsp;&nbsp;NextFlow
+            {customization.isDarkMode ? <img src={nextflowDark} className='h-8' /> : <img src={nextflow} className='h-8' />}
         </div>
     )
 }

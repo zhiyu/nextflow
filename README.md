@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD030 -->
 
-# NextFlow - Flowise 中文优化版
+# Next Flow - Flowise 中文优化版
 
 <img width="100%" src="images/Screenshot.png"></a>
 
