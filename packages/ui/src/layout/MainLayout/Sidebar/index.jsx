@@ -13,8 +13,6 @@ import MenuList from './MenuList'
 import LogoSection from '../LogoSection'
 import { drawerWidth, headerHeight } from '@/store/constant'
 
-import { PiArrowLineLeftThin, PiArrowLineRightThin, PiMoon, PiSun } from 'react-icons/pi'
-
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
 const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
