@@ -23,6 +23,7 @@ import useApi from '@/hooks/useApi'
 import { IconPlus, IconFileUpload } from '@tabler/icons-react'
 import AssistantEmptySVG from '@/assets/images/assistant_empty.svg'
 import { gridSpacing } from '@/store/constant'
+import { PiPlus, PiUpload } from 'react-icons/pi'
 
 // ==============================|| OpenAIAssistantLayout ||============================== //
 
@@ -121,17 +122,12 @@ const OpenAIAssistantLayout = () => {
                         title='OpenAI 助理'
                         onBack={() => navigate(-1)}
                     >
-                        <Button
-                            variant='outlined'
-                            onClick={loadExisting}
-                            startIcon={<IconFileUpload />}
-                            sx={{ borderRadius: 2, height: 40 }}
-                        >
-                            Load
+                        <Button variant='contained' color='primary' onClick={loadExisting} startIcon={<PiUpload size='0.8em' />}>
+                            导入
                         </Button>
-                        <StyledButton variant='contained' sx={{ borderRadius: 2, height: 40 }} onClick={addNew} startIcon={<IconPlus />}>
-                            Add
-                        </StyledButton>
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            创建
+                        </Button>
                     </ViewHeader>
                     {isLoading ? (
                         <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>

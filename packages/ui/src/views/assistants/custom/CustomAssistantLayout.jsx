@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // material-ui
-import { Box, Stack, Skeleton } from '@mui/material'
+import { Box, Button, Stack, Skeleton } from '@mui/material'
 
 // project imports
 import ViewHeader from '@/layout/MainLayout/ViewHeader'
@@ -22,6 +22,7 @@ import useApi from '@/hooks/useApi'
 
 // icons
 import { IconPlus } from '@tabler/icons-react'
+import { PiPlus } from 'react-icons/pi'
 
 // ==============================|| CustomAssistantLayout ||============================== //
 
@@ -99,9 +100,9 @@ const CustomAssistantLayout = () => {
                         title='自定义助理'
                         onBack={() => navigate(-1)}
                     >
-                        <StyledButton variant='contained' sx={{ borderRadius: 2, height: 40 }} onClick={addNew} startIcon={<IconPlus />}>
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             创建
-                        </StyledButton>
+                        </Button>
                     </ViewHeader>
                     {isLoading ? (
                         <Box display='grid' gridTemplateColumns='repeat(3, 1fr)' gap={gridSpacing}>
