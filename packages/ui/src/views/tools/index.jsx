@@ -32,7 +32,7 @@ const Tools = () => {
     const [error, setError] = useState(null)
     const [showDialog, setShowDialog] = useState(false)
     const [dialogProps, setDialogProps] = useState({})
-    const [view, setView] = useState(localStorage.getItem('toolsDisplayStyle') || 'card')
+    const [view, setView] = useState(localStorage.getItem('toolsDisplayStyle') || 'list')
 
     const inputRef = useRef(null)
 
@@ -152,7 +152,7 @@ const Tools = () => {
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             创建工具
                         </Button>
-                        <ToggleButtonGroup
+                        {/* <ToggleButtonGroup
                             sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
                             value={view}
                             color='primary'
@@ -165,7 +165,7 @@ const Tools = () => {
                             <ToggleButton value='list' title='List View'>
                                 <PiListDashes size='1.2rem' />
                             </ToggleButton>
-                        </ToggleButtonGroup>
+                        </ToggleButtonGroup> */}
                     </ViewHeader>
                     {!view || view === 'card' ? (
                         <>

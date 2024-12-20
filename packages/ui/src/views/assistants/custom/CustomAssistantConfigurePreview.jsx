@@ -789,7 +789,7 @@ const CustomAssistantConfigurePreview = () => {
                                         paddingRight: 15
                                     }}
                                 >
-                                    <Box sx={{ flexGrow: 1, py: 1.25, width: '100%' }}>
+                                    <Box sx={{ flexGrow: 1, width: '100%' }}>
                                         <Toolbar
                                             disableGutters={true}
                                             sx={{
@@ -1204,7 +1204,7 @@ const CustomAssistantConfigurePreview = () => {
                             </Grid>
                             {customAssistantFlowId && !loadingAssistant && (
                                 <Grid item xs={12} md={6} lg={6} sm={6}>
-                                    <Box sx={{ mt: 2 }}>
+                                    <Box sx={{ mt: 1 }}>
                                         {customization.isDarkMode && (
                                             <MemoizedFullPageChat
                                                 chatflowid={customAssistantFlowId}
