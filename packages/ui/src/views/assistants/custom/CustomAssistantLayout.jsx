@@ -96,7 +96,7 @@ const CustomAssistantLayout = () => {
                         onSearchChange={onSearchChange}
                         search={true}
                         searchPlaceholder='Search Assistants'
-                        title='自定义助手'
+                        title='自定义助理'
                         onBack={() => navigate(-1)}
                     >
                         <StyledButton variant='contained' sx={{ borderRadius: 2, height: 40 }} onClick={addNew} startIcon={<IconPlus />}>

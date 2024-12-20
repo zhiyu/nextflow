@@ -13,22 +13,22 @@ import { IconRobotFace, IconBrandOpenai, IconBrandAzure } from '@tabler/icons-re
 
 const cards = [
     {
-        title: '自定义助手',
-        description: 'Create custom assistant using your choice of LLMs',
+        title: '自定义助理',
+        description: '使用自定义的大语言模型创建智能助理',
         icon: <IconRobotFace />,
         iconText: 'Custom',
         gradient: 'linear-gradient(135deg, #fff8e14e 0%, #ffcc802f 100%)'
     },
     {
-        title: 'OpenAI 助手',
-        description: 'Create assistant using OpenAI Assistant API',
+        title: 'OpenAI 助理',
+        description: '使用 OpenAI Assistant API 创建智能助理',
         icon: <IconBrandOpenai />,
         iconText: 'OpenAI',
         gradient: 'linear-gradient(135deg, #c9ffd85f 0%, #a0f0b567 100%)'
     },
     {
-        title: 'Azure 助手 (Coming Soon)',
-        description: 'Create assistant using Azure Assistant API',
+        title: 'Azure 助理 (即将发布)',
+        description: '使用 Azure Assistant API 创建智能助理',
         icon: <IconBrandAzure />,
         iconText: 'Azure',
         gradient: 'linear-gradient(135deg, #c4e1ff57 0%, #80b7ff5a 100%)'
@@ -46,6 +46,7 @@ const StyledCard = styled(Card)(({ gradient }) => ({
 
 const FeatureIcon = styled('div')(() => ({
     display: 'inline-flex',
+    alignItems: 'center',
     padding: '4px 8px',
     backgroundColor: 'rgba(0, 0, 0, 0.05)',
     borderRadius: '4px',
@@ -120,7 +121,7 @@ const Assistants = () => {
     return (
         <>
             <Stack flexDirection='column' sx={{ gap: 3 }}>
-                <ViewHeader title='智能助手' />
+                <ViewHeader title='智能助理' />
                 <FeatureCards />
             </Stack>
         </>

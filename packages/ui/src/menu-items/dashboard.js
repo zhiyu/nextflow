@@ -21,7 +21,7 @@ const dashboard = [
         children: [
             {
                 id: 'assistants',
-                title: '智能助手',
+                title: '智能助理',
                 type: 'item',
                 url: '/assistants',
                 icon: PiOpenAiLogo,

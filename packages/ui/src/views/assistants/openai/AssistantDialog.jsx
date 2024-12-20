@@ -734,7 +734,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>助手名称</Typography>
+                            <Typography variant='overline'>助理名称</Typography>
                             <TooltipWithParser title={'The name of the assistant. The maximum length is 256 characters.'} />
                         </Stack>
                         <OutlinedInput
@@ -803,7 +803,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>助手头像</Typography>
+                            <Typography variant='overline'>助理头像</Typography>
                             <TooltipWithParser
                                 title={'The system instructions that the assistant uses. The maximum length is 32768 characters.'}
                             />

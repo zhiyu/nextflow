@@ -118,7 +118,7 @@ const OpenAIAssistantLayout = () => {
                         onSearchChange={onSearchChange}
                         search={true}
                         searchPlaceholder='Search Assistants'
-                        title='OpenAI Assistant'
+                        title='OpenAI 助理'
                         onBack={() => navigate(-1)}
                     >
                         <Button
