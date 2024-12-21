@@ -16,7 +16,7 @@ const cards = [
         title: '自定义助理',
         description: '使用自定义的大语言模型创建智能助理',
         icon: <IconRobotFace />,
-        iconText: 'Custom',
+        iconText: '自定义',
         gradient: 'linear-gradient(135deg, #fff8e14e 0%, #ffcc802f 100%)'
     },
     {
@@ -47,9 +47,7 @@ const StyledCard = styled(Card)(({ gradient }) => ({
 const FeatureIcon = styled('div')(() => ({
     display: 'inline-flex',
     alignItems: 'center',
-    padding: '4px 8px',
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
-    borderRadius: '4px',
+    padding: '4px 0px',
     marginBottom: '16px',
     '& svg': {
         width: '1.2rem',
@@ -81,7 +79,6 @@ const FeatureCards = () => {
             {cards.map((card, index) => (
                 <StyledCard
                     key={index}
-                    gradient={card.gradient}
                     sx={{
                         flex: 1,
                         maxWidth: 'calc((100% - 2 * 16px) / 3)',
@@ -89,13 +86,11 @@ const FeatureCards = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
-                        border: 1,
-                        borderColor: theme.palette.grey[500] + 25,
                         color: customization.isDarkMode ? theme.palette.common.white : '#333333',
                         cursor: index === 2 ? 'not-allowed' : 'pointer',
                         opacity: index === 2 ? 0.6 : 1
                     }}
-                    className='shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300 rounded'
+                    className='rounded shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300 rounded'
                     onClick={() => index !== 2 && onCardClick(index)}
                 >
                     <CardContent className='h-full relative z-10 '>
@@ -103,7 +98,7 @@ const FeatureCards = () => {
                             {card.icon}
                             <span className='text-xs uppercase'>{card.iconText}</span>
                         </FeatureIcon>
-                        <h2 className='text-2xl font-bold mb-2'>{card.title}</h2>
+                        <h2 className='text-xl font-bold mb-2'>{card.title}</h2>
                         <p className='text-gray-600'>{card.description}</p>
                     </CardContent>
                 </StyledCard>
