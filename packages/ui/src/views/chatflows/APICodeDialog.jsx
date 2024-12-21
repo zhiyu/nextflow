@@ -91,7 +91,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     const apiConfig = chatflow?.apiConfig ? JSON.parse(chatflow.apiConfig) : {}
     const overrideConfigStatus = apiConfig?.overrideConfig?.status !== undefined ? apiConfig.overrideConfig.status : false
 
-    const codes = ['嵌入页面', 'Python', 'JavaScript', 'cURL', '通过链接分享']
+    const codes = ['嵌入网页', 'Python', 'JavaScript', 'cURL', '分享链接']
     const [value, setValue] = useState(0)
     const [keyOptions, setKeyOptions] = useState([])
     const [apiKeys, setAPIKeys] = useState([])
@@ -374,11 +374,11 @@ query({"question": "Hey, how are you?"}).then((response) => {
             return pythonSVG
         } else if (codeLang === 'JavaScript') {
             return javascriptSVG
-        } else if (codeLang === '嵌入页面') {
+        } else if (codeLang === '嵌入网页') {
             return EmbedSVG
         } else if (codeLang === 'cURL') {
             return cURLSVG
-        } else if (codeLang === '通过链接分享') {
+        } else if (codeLang === '分享链接') {
             return ShareChatbotSVG
         } else if (codeLang === 'Configuration') {
             return settingsSVG
@@ -701,7 +701,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                     <Box className='grow'>
                         {codes.map((codeLang, index) => (
                             <TabPanel key={index} value={value} index={index} sx={{}}>
-                                {(codeLang === '嵌入页面' || codeLang === '通过链接分享') && chatflowApiKeyId && (
+                                {(codeLang === '嵌入网页' || codeLang === '分享链接') && chatflowApiKeyId && (
                                     <>
                                         <p>You cannot use API key while embedding/sharing chatbot.</p>
                                         <p>
@@ -709,8 +709,8 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                         </p>
                                     </>
                                 )}
-                                {codeLang === '嵌入页面' && !chatflowApiKeyId && <EmbedChat chatflowid={dialogProps.chatflowid} />}
-                                {codeLang !== '嵌入页面' && codeLang !== '通过链接分享' && codeLang !== 'Configuration' && (
+                                {codeLang === '嵌入网页' && !chatflowApiKeyId && <EmbedChat chatflowid={dialogProps.chatflowid} />}
+                                {codeLang !== '嵌入网页' && codeLang !== '分享链接' && codeLang !== 'Configuration' && (
                                     <Box className='mt-6'>
                                         <CopyBlock
                                             theme={atomOneDark}
@@ -876,7 +876,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                         )}
                                     </Box>
                                 )}
-                                {codeLang === '通过链接分享' && !chatflowApiKeyId && (
+                                {codeLang === '分享链接' && !chatflowApiKeyId && (
                                     <ShareChatbot isSessionMemory={dialogProps.isSessionMemory} isAgentCanvas={dialogProps.isAgentCanvas} />
                                 )}
                             </TabPanel>
