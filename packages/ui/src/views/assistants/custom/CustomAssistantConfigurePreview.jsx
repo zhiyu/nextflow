@@ -476,7 +476,7 @@ const CustomAssistantConfigurePreview = () => {
             setViewMessagesDialogOpen(true)
         } else if (setting === 'viewLeads') {
             setViewLeadsDialogProps({
-                title: 'View Leads',
+                title: '潜在客户',
                 chatflow: canvas.chatflow
             })
             setViewLeadsDialogOpen(true)

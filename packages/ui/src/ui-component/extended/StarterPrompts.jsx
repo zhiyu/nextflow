@@ -151,9 +151,7 @@ const StarterPrompts = ({ dialogProps }) => {
                     }}
                 >
                     <IconBulb size={30} color='#2d6a4f' />
-                    <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>
-                        Starter prompts will only be shown when there is no messages on the chat
-                    </span>
+                    <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>聊天消息为空时，才会显示启动提示词。</span>
                 </div>
             </div>
             <Box sx={{ '& > :not(style)': { m: 1 }, pt: 2 }}>

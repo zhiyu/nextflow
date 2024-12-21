@@ -122,7 +122,7 @@ const AllowedDomains = ({ dialogProps }) => {
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
             <Typography variant='h3'>
-                Allowed Domains
+                域名授权
                 <TooltipWithParser
                     style={{ mb: 1, mt: 2, marginLeft: 10 }}
                     title={'Your chatbot will only work when used from the following domains.'}
@@ -130,7 +130,7 @@ const AllowedDomains = ({ dialogProps }) => {
             </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
                 <Stack direction='column' spacing={2}>
-                    <Typography>Domains</Typography>
+                    <Typography>域名列表</Typography>
                     {inputFields.map((origin, index) => {
                         return (
                             <div key={index} style={{ display: 'flex', width: '100%' }}>
@@ -175,7 +175,7 @@ const AllowedDomains = ({ dialogProps }) => {
                 </Stack>
                 <Stack direction='column' spacing={1}>
                     <Typography>
-                        Error Message
+                        提示消息
                         <TooltipWithParser
                             style={{ mb: 1, mt: 2, marginLeft: 10 }}
                             title={'Custom error message that will be shown when for unauthorized domain'}
@@ -195,7 +195,7 @@ const AllowedDomains = ({ dialogProps }) => {
                 </Stack>
             </Stack>
             <StyledButton variant='contained' onClick={onSave}>
-                Save
+                保存
             </StyledButton>
         </Stack>
     )

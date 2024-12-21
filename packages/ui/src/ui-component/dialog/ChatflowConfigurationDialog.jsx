@@ -14,7 +14,7 @@ import FileUpload from '@/ui-component/extended/FileUpload'
 
 const CHATFLOW_CONFIGURATION_TABS = [
     {
-        label: 'Security',
+        label: '安全',
         id: 'security'
     },
     {
@@ -26,7 +26,7 @@ const CHATFLOW_CONFIGURATION_TABS = [
         id: 'followUpPrompts'
     },
     {
-        label: 'Speech to Text',
+        label: '语音转文本',
         id: 'speechToText'
     },
     {
@@ -34,15 +34,15 @@ const CHATFLOW_CONFIGURATION_TABS = [
         id: 'chatFeedback'
     },
     {
-        label: 'Analyse Chatflow',
+        label: '数据分析',
         id: 'analyseChatflow'
     },
     {
-        label: 'Leads',
+        label: '潜在客户',
         id: 'leads'
     },
     {
-        label: 'File Upload',
+        label: '文件上传',
         id: 'fileUpload'
     }
 ]

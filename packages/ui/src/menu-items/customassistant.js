@@ -25,7 +25,7 @@ const customAssistantSettings = {
         },
         {
             id: 'viewLeads',
-            title: 'View Leads',
+            title: '潜在客户',
             type: 'item',
             url: '',
             icon: icons.IconUsers

@@ -110,7 +110,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
 
     const onSaveAsTemplate = () => {
         setExportAsTemplateDialogProps({
-            title: '保存为模版',
+            title: '存为模版',
             tool: {
                 name: toolName,
                 description: toolDesc,
@@ -437,7 +437,7 @@ const ToolDialog = ({ show, dialogProps, onUseTemplate, onCancel, onConfirm, set
                                     startIcon={<PiBookmarks />}
                                     color='primary'
                                 >
-                                    保存为模版
+                                    存为模版
                                 </Button>
                                 <Button variant='contained' onClick={() => exportTool()} startIcon={<PiExport />}>
                                     导出

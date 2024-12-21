@@ -78,7 +78,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             setViewMessagesDialogOpen(true)
         } else if (setting === 'viewLeads') {
             setViewLeadsDialogProps({
-                title: 'View Leads',
+                title: '潜在客户',
                 chatflow: chatflow
             })
             setViewLeadsDialogOpen(true)
@@ -113,7 +113,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             setUpsertHistoryDialogOpen(true)
         } else if (setting === 'chatflowConfiguration') {
             setChatflowConfigurationDialogProps({
-                title: `${title} 参数设置`,
+                title: `参数设置`,
                 chatflow: chatflow
             })
             setChatflowConfigurationDialogOpen(true)
@@ -229,7 +229,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             // if configuration dialog is open, update its data
             if (chatflowConfigurationDialogOpen) {
                 setChatflowConfigurationDialogProps({
-                    title: `${title} 参数设置`,
+                    title: `参数设置`,
                     chatflow
                 })
             }

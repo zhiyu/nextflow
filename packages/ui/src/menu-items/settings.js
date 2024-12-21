@@ -29,7 +29,7 @@ const settings = {
         },
         {
             id: 'viewLeads',
-            title: 'View Leads',
+            title: '潜在客户',
             type: 'item',
             url: '',
             icon: icons.PiUsers
@@ -50,7 +50,7 @@ const settings = {
         },
         {
             id: 'saveAsTemplate',
-            title: '保存为模版',
+            title: '存为模版',
             type: 'item',
             url: '',
             icon: icons.PiBookmarks

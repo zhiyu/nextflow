@@ -417,7 +417,7 @@ const OverrideConfig = ({ dialogProps }) => {
                 )}
             </Stack>
             <StyledButton variant='contained' onClick={onOverrideConfigSave}>
-                Save
+                保存
             </StyledButton>
         </Stack>
     )

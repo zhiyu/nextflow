@@ -110,11 +110,11 @@ const Leads = ({ dialogProps }) => {
                     mb: 2
                 }}
             >
-                <SwitchInput label='Enable Lead Capture' onChange={(value) => handleChange('status', value)} value={leadsConfig.status} />
+                <SwitchInput label='启用潜在客户捕获' onChange={(value) => handleChange('status', value)} value={leadsConfig.status} />
                 {leadsConfig && leadsConfig['status'] && (
                     <>
                         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 1 }}>
-                            <Typography>Form Title</Typography>
+                            <Typography>问候语</Typography>
                             <OutlinedInput
                                 id='form-title'
                                 type='text'
@@ -131,7 +131,7 @@ const Leads = ({ dialogProps }) => {
                             />
                         </Box>
                         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 1 }}>
-                            <Typography>Message after lead captured</Typography>
+                            <Typography>结束语</Typography>
                             <OutlinedInput
                                 id='success-message'
                                 type='text'
@@ -147,16 +147,12 @@ const Leads = ({ dialogProps }) => {
                                 }}
                             />
                         </Box>
-                        <Typography variant='h4'>Form fields</Typography>
+                        <Typography variant='h4'>表单项</Typography>
                         <Box sx={{ width: '100%' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 1 }}>
-                                <SwitchInput label='Name' onChange={(value) => handleChange('name', value)} value={leadsConfig.name} />
-                                <SwitchInput
-                                    label='Email Address'
-                                    onChange={(value) => handleChange('email', value)}
-                                    value={leadsConfig.email}
-                                />
-                                <SwitchInput label='Phone' onChange={(value) => handleChange('phone', value)} value={leadsConfig.phone} />
+                                <SwitchInput label='姓名' onChange={(value) => handleChange('name', value)} value={leadsConfig.name} />
+                                <SwitchInput label='邮箱' onChange={(value) => handleChange('email', value)} value={leadsConfig.email} />
+                                <SwitchInput label='电话' onChange={(value) => handleChange('phone', value)} value={leadsConfig.phone} />
                             </Box>
                         </Box>
                     </>
@@ -168,7 +164,7 @@ const Leads = ({ dialogProps }) => {
                 variant='contained'
                 onClick={onSave}
             >
-                Save
+                保存
             </StyledButton>
         </>
     )

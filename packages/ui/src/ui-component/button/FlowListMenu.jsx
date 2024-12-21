@@ -330,7 +330,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
                 </MenuItem>
                 <MenuItem onClick={handleExportTemplate} disableRipple>
                     <PiBookmarks size='1.2rem' />
-                    保存为模版
+                    存为模版
                 </MenuItem>
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleFlowStarterPrompts} disableRipple>

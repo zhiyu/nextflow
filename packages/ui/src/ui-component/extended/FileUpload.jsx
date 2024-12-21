@@ -18,9 +18,7 @@ import useNotifier from '@/utils/useNotifier'
 // API
 import chatflowsApi from '@/api/chatflows'
 
-const message = `Uploaded files will be parsed as strings and sent to the LLM. If file upload is enabled on the Vector Store as well, this will override and take precedence.
-<br />
-Refer <a href='https://docs.flowiseai.com/using-flowise/uploads#files' target='_blank'>docs</a> for more details.`
+const message = `上传的文件将被解析为字符串并发送到大语言模型，优先级高于向量数据库里的文件内容。`
 
 const FileUpload = ({ dialogProps }) => {
     const dispatch = useDispatch()
@@ -133,11 +131,11 @@ const FileUpload = ({ dialogProps }) => {
                         <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>{parser(message)}</span>
                     </div>
                 </div>
-                <SwitchInput label='Enable Full File Upload' onChange={handleChange} value={fullFileUpload} />
+                <SwitchInput label='启用文件上传' onChange={handleChange} value={fullFileUpload} />
             </Box>
             {/* TODO: Allow selection of allowed file types*/}
             <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' onClick={onSave}>
-                Save
+                保存
             </StyledButton>
         </>
     )

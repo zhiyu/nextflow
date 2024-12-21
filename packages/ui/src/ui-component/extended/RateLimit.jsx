@@ -148,27 +148,19 @@ const RateLimit = () => {
 
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
-            <Typography variant='h3'>
-                Rate Limit{' '}
-                <TooltipWithParser
-                    style={{ marginLeft: 10 }}
-                    title={
-                        'Visit <a target="_blank" href="https://docs.flowiseai.com/rate-limit">Rate Limit Setup Guide</a> to set up Rate Limit correctly in your hosting environment.'
-                    }
-                />
-            </Typography>
+            <Typography variant='h3'>限速 </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
-                <SwitchInput label='Enable Rate Limit' onChange={handleChange} value={rateLimitStatus} />
+                <SwitchInput label='启用限速' onChange={handleChange} value={rateLimitStatus} />
                 {rateLimitStatus && (
                     <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
-                        {textField(limitMax, 'limitMax', 'Message Limit per Duration', 'number', '5')}
-                        {textField(limitDuration, 'limitDuration', 'Duration in Second', 'number', '60')}
-                        {textField(limitMsg, 'limitMsg', 'Limit Message', 'string', 'You have reached the quota')}
+                        {textField(limitMax, 'limitMax', '消息数量', 'number', '5')}
+                        {textField(limitDuration, 'limitDuration', '限速周期（秒）', 'number', '60')}
+                        {textField(limitMsg, 'limitMsg', '提示消息', 'string', 'You have reached the quota')}
                     </Stack>
                 )}
             </Stack>
             <StyledButton disabled={checkDisabled()} variant='contained' onClick={() => onSave()} sx={{ width: 'auto' }}>
-                Save
+                保存
             </StyledButton>
         </Stack>
     )
