@@ -316,7 +316,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <Box sx={{ p: 2 }}>
                                         <Stack>
-                                            <Typography variant='h4'>Add Nodes</Typography>
+                                            <Typography variant='h4'>添加节点</Typography>
                                         </Stack>
                                         <OutlinedInput
                                             // eslint-disable-next-line
@@ -325,7 +325,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                             id='input-search-node'
                                             value={searchValue}
                                             onChange={(e) => filterSearch(e.target.value)}
-                                            placeholder='Search nodes'
+                                            placeholder='搜索节点'
                                             startAdornment={
                                                 <InputAdornment position='start'>
                                                     <PiMagnifyingGlassLight color={theme.palette.grey[500]} />
@@ -393,8 +393,6 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                 ))}
                                             </Tabs>
                                         )}
-
-                                        <Divider />
                                     </Box>
                                     <PerfectScrollbar
                                         containerRef={(el) => {
@@ -410,11 +408,11 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                             <List
                                                 sx={{
                                                     width: '100%',
-                                                    maxWidth: 370,
+                                                    maxWidth: 360,
                                                     py: 0,
                                                     borderRadius: '10px',
                                                     [theme.breakpoints.down('md')]: {
-                                                        maxWidth: 370
+                                                        maxWidth: 360
                                                     },
                                                     '& .MuiListItemSecondaryAction-root': {
                                                         top: 22
@@ -435,6 +433,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                             onChange={handleAccordionChange(category)}
                                                             key={category}
                                                             disableGutters
+                                                            className='shadow-none'
                                                         >
                                                             <AccordionSummary
                                                                 expandIcon={<ExpandMoreIcon />}
