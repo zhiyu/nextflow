@@ -90,10 +90,10 @@ export default function themeTypography(theme) {
             position: 'relative',
             backgroundColor: theme.customization.isDarkMode ? theme.colors.darkBackground : 'rgb(247,247,247)',
             width: '100%',
-            minHeight: 'calc(100vh - 0px)',
+            height: 'calc(100vh - 0px)',
             flexGrow: 1,
             padding: '10px 20px',
-            paddingTop: '55px',
+            paddingTop: '10px',
             borderTopRightRadius: '0px !important',
             borderBottomLeftRadius: '0px !important',
             borderBottomRightRadius: '0px !important'

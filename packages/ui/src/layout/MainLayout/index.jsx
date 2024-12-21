@@ -4,13 +4,16 @@ import { Outlet } from 'react-router-dom'
 
 // material-ui
 import { styled, useTheme } from '@mui/material/styles'
-import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material'
+import { AppBar, Box, CssBaseline, Avatar, ButtonBase, Toolbar, useMediaQuery } from '@mui/material'
 
 // project imports
 import Header from './Header'
 import Sidebar from './Sidebar'
 import { drawerWidth, headerHeight } from '@/store/constant'
 import { SET_MENU } from '@/store/actions'
+
+// assets
+import { PiSidebarSimpleDuotone, PiSidebarSimple, PiMoon, PiSun } from 'react-icons/pi'
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -37,27 +40,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
     })
 }))
 
-const HeaderWrapper = styled('HeaderWrapper', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
-    position: 'fixed',
-    width: `calc(100%)`,
-    left: drawerWidth,
-    ...(!open && {
-        transition: theme.transitions.create('all', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        }),
-        left: '0px'
-    }),
-    ...(open && {
-        transition: theme.transitions.create('all', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen
-        }),
-        left: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`
-    })
-}))
-
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
@@ -65,10 +47,10 @@ const MainLayout = () => {
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'))
 
     // Handle left drawer
-    const leftDrawerOpened = useSelector((state) => state.customization.opened)
+    const drawerOpen = useSelector((state) => state.customization.opened)
     const dispatch = useDispatch()
     const handleLeftDrawerToggle = () => {
-        dispatch({ type: SET_MENU, opened: !leftDrawerOpened })
+        dispatch({ type: SET_MENU, opened: !drawerOpen })
     }
 
     useEffect(() => {
@@ -87,14 +69,34 @@ const MainLayout = () => {
         >
             <CssBaseline />
             {/* drawer */}
-            <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
+            <Sidebar drawerOpen={drawerOpen} drawerToggle={handleLeftDrawerToggle} />
             {/* main content */}
-            <Main theme={theme} open={leftDrawerOpened} className='relative'>
+            <Main theme={theme} open={drawerOpen} className='relative'>
                 <Outlet />
+                {!drawerOpen && (
+                    <ButtonBase sx={{ borderRadius: '8px', overflow: 'hidden' }} className='fixed bottom-2 left-4'>
+                        <Avatar
+                            variant='rounded'
+                            sx={{
+                                ...theme.typography.commonAvatar,
+                                ...theme.typography.mediumAvatar,
+                                transition: 'all .2s ease-in-out',
+                                background: theme.palette.primary.light,
+                                color: theme.palette.primary.main,
+                                '&:hover': {
+                                    background: theme.palette.primary.main,
+                                    color: theme.palette.primary.light
+                                }
+                            }}
+                            onClick={handleLeftDrawerToggle}
+                            color='inherit'
+                        >
+                            {drawerOpen && <PiSidebarSimpleDuotone size='1.2rem' />}
+                            {!drawerOpen && <PiSidebarSimple size='1.2rem' />}
+                        </Avatar>
+                    </ButtonBase>
+                )}
             </Main>
-            <HeaderWrapper open={leftDrawerOpened}>
-                <Header handleLeftDrawerToggle={handleLeftDrawerToggle} drawerOpen={leftDrawerOpened} />
-            </HeaderWrapper>
         </Box>
     )
 }

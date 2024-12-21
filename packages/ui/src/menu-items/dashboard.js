@@ -69,17 +69,26 @@ const dashboard = [
             },
             {
                 id: 'tools',
-                title: '工具箱',
+                title: '工具',
                 type: 'item',
                 url: '/tools',
                 icon: PiHammer,
+                breadcrumbs: true
+            },
+
+            {
+                id: 'variables',
+                title: '全局变量',
+                type: 'item',
+                url: '/variables',
+                icon: PiCode,
                 breadcrumbs: true
             }
         ]
     },
     {
         id: 'settings',
-        title: '设置',
+        title: '访问控制',
         type: 'group',
         children: [
             {
@@ -88,14 +97,6 @@ const dashboard = [
                 type: 'item',
                 url: '/credentials',
                 icon: PiFingerprintSimple,
-                breadcrumbs: true
-            },
-            {
-                id: 'variables',
-                title: '全局变量',
-                type: 'item',
-                url: '/variables',
-                icon: PiCode,
                 breadcrumbs: true
             },
             {

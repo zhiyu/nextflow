@@ -56,7 +56,7 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
                 borderBottom: '1px solid',
                 borderColor: 'rgba(0, 0, 0, 0.06)'
             }}
-            className='flex items-center p-2 px-4'
+            className='flex items-center p-2 px-4 justify-center'
         >
             <ButtonBase sx={{ borderRadius: '8px', overflow: 'hidden' }}>
                 <Avatar
@@ -118,7 +118,7 @@ const Header = ({ handleLeftDrawerToggle, drawerOpen }) => {
                 <Typography>{localStorage.getItem('username') ?? ''}</Typography>
             </Box>
             <Box sx={{ ml: 2 }}></Box>
-            <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />
+            {/* <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} /> */}
         </Box>
     )
 }

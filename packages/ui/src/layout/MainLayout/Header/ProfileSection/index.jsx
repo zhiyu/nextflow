@@ -321,7 +321,6 @@ const ProfileSection = ({ username, handleLogout }) => {
         <>
             <ButtonBase ref={anchorRef} sx={{ borderRadius: '8px', overflow: 'hidden' }}>
                 <Avatar
-                    variant='rounded'
                     sx={{
                         ...theme.typography.commonAvatar,
                         ...theme.typography.mediumAvatar,
@@ -351,14 +350,14 @@ const ProfileSection = ({ username, handleLogout }) => {
                         {
                             name: 'offset',
                             options: {
-                                offset: [0, 0]
+                                offset: [0, 10]
                             }
                         }
                     ]
                 }}
             >
                 {({ TransitionProps }) => (
-                    <Transitions in={open} {...TransitionProps} position='top-right' type='grow'>
+                    <Transitions in={open} {...TransitionProps} position='bottom-left' type='grow'>
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>

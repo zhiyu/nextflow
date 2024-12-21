@@ -135,7 +135,7 @@ const Tools = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
-                    <ViewHeader title='工具箱'>
+                    <ViewHeader title='工具'>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<PiUpload size='0.8em' />}>
                                 导入
