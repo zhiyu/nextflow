@@ -91,7 +91,7 @@ export default function themeTypography(theme) {
             backgroundColor: theme.customization.isDarkMode ? theme.colors.darkBackground : 'rgb(247,247,247)',
             width: '100%',
             height: 'calc(100vh - 0px)',
-            flexGrow: 1,
+            overflow: 'scroll',
             padding: '10px 20px',
             paddingTop: '10px',
             borderTopRightRadius: '0px !important',
