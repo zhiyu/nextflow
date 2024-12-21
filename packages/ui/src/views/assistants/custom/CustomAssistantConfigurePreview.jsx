@@ -46,6 +46,9 @@ import { initNode } from '@/utils/genericHelper'
 import useNotifier from '@/utils/useNotifier'
 import { toolAgentFlow } from './toolAgentFlow'
 
+// icons
+import { PiArrowLeftLight } from 'react-icons/pi'
+
 // ===========================|| CustomAssistantConfigurePreview ||=========================== //
 
 const MemoizedFullPageChat = memo(
@@ -791,10 +794,18 @@ const CustomAssistantConfigurePreview = () => {
                                 }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-                                    <StyledFab size='small' color='secondary' aria-label='back' title='Back' onClick={() => navigate(-1)}>
-                                        <IconArrowLeft />
+                                    <StyledFab
+                                        className='h-6 w-9 shadow-lg'
+                                        sx={{ mr: 3 }}
+                                        color='primary'
+                                        aria-label='back'
+                                        title='Back'
+                                        onClick={() => navigate(-1)}
+                                    >
+                                        <PiArrowLeftLight size='1.2rem' />
                                     </StyledFab>
-                                    <Typography sx={{ ml: 2, mr: 2 }} variant='h3'>
+
+                                    <Typography sx={{ ml: 0, mr: 2 }} variant='h3'>
                                         {selectedCustomAssistant?.name ?? ''}
                                     </Typography>
                                 </Box>
