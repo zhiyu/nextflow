@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // material-ui
-import { styled } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
 import {
     Box,
@@ -39,6 +38,18 @@ import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
 // const
 import { baseURL, gridSpacing } from '@/store/constant'
+
+import { styled } from '@mui/material/styles'
+import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+    [`& .${toggleButtonGroupClasses.grouped}`]: {
+        border: 0,
+        borderRadius: 4,
+        [`&.${toggleButtonGroupClasses.disabled}`]: {
+            border: 0
+        }
+    }
+}))
 
 // ==============================|| DOCUMENTS ||============================== //
 
@@ -149,10 +160,13 @@ const Documents = () => {
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             创建知识库
                         </Button>
-                        <ToggleButtonGroup
-                            sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
+                        <StyledToggleButtonGroup
+                            sx={{
+                                ml: 6,
+                                maxHeight: 36
+                            }}
+                            className='shadow-lg'
                             value={view}
-                            color='primary'
                             exclusive
                             onChange={handleChange}
                         >
@@ -162,7 +176,7 @@ const Documents = () => {
                             <ToggleButton value='list' title='List View'>
                                 <PiListDashes size='1.2rem' />
                             </ToggleButton>
-                        </ToggleButtonGroup>
+                        </StyledToggleButtonGroup>
                     </ViewHeader>
                     {!view || view === 'card' ? (
                         <>

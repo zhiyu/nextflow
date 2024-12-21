@@ -27,6 +27,18 @@ import { baseURL } from '@/store/constant'
 // icons
 import { PiPlus, PiGridFour, PiListDashes } from 'react-icons/pi'
 
+import { styled } from '@mui/material/styles'
+import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+    [`& .${toggleButtonGroupClasses.grouped}`]: {
+        border: 0,
+        borderRadius: 4,
+        [`&.${toggleButtonGroupClasses.disabled}`]: {
+            border: 0
+        }
+    }
+}))
+
 // ==============================|| CHATFLOWS ||============================== //
 
 const Chatflows = () => {
@@ -117,10 +129,13 @@ const Chatflows = () => {
                         <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             创建对话
                         </Button>
-                        <ToggleButtonGroup
-                            sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
+                        <StyledToggleButtonGroup
+                            sx={{
+                                ml: 6,
+                                maxHeight: 36
+                            }}
+                            className='shadow-lg'
                             value={view}
-                            color='primary'
                             exclusive
                             onChange={handleChange}
                         >
@@ -130,7 +145,7 @@ const Chatflows = () => {
                             <ToggleButton value='list' title='List View'>
                                 <PiListDashes size='1.2rem' />
                             </ToggleButton>
-                        </ToggleButtonGroup>
+                        </StyledToggleButtonGroup>
                     </ViewHeader>
                     {!view || view === 'card' ? (
                         <>

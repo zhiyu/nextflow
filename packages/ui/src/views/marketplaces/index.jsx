@@ -20,6 +20,7 @@ import {
     Tabs,
     Tab
 } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { useTheme } from '@mui/material/styles'
 import { IconX } from '@tabler/icons-react'
 
@@ -58,6 +59,17 @@ const framework = {
     Langchain: 'Lang Chain',
     LlamaIndex: 'Llama Index'
 }
+
+import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+    [`& .${toggleButtonGroupClasses.grouped}`]: {
+        border: 0,
+        borderRadius: 4,
+        [`&.${toggleButtonGroupClasses.disabled}`]: {
+            border: 0
+        }
+    }
+}))
 
 // ==============================|| Marketplace ||============================== //
 
@@ -140,7 +152,7 @@ const Marketplace = () => {
         getEligibleUsecases(data, params)
     }, [badgeFilter, typeFilter, frameworkFilter, search])
 
-    const handleViewChange = (event, nextView) => {
+    const handleChange = (event, nextView) => {
         if (nextView === null) return
         localStorage.setItem('mpDisplayStyle', nextView)
         setView(nextView)
@@ -483,12 +495,15 @@ const Marketplace = () => {
                         searchPlaceholder='搜索...'
                         title='模版库'
                     >
-                        <ToggleButtonGroup
-                            sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
+                        <StyledToggleButtonGroup
+                            sx={{
+                                ml: 6,
+                                maxHeight: 36
+                            }}
+                            className='shadow-lg'
                             value={view}
-                            color='primary'
                             exclusive
-                            onChange={handleViewChange}
+                            onChange={handleChange}
                         >
                             <ToggleButton value='card' title='Card View'>
                                 <PiGridFour size='1.2rem' />
@@ -496,7 +511,7 @@ const Marketplace = () => {
                             <ToggleButton value='list' title='List View'>
                                 <PiListDashes size='1.2rem' />
                             </ToggleButton>
-                        </ToggleButtonGroup>
+                        </StyledToggleButtonGroup>
                     </ViewHeader>
                     {/* <Tabs value={activeTabValue} onChange={handleTabChange} textColor='primary' aria-label='tabs' centered>
                             <Tab value={0} label='全部'></Tab>
