@@ -428,7 +428,7 @@ const DocumentStoreDetails = () => {
                                     startIcon={<PiFilesLight size='0.8em' />}
                                     onClick={() => showStoredChunks('all')}
                                 >
-                                    查看 Chunks
+                                    分块管理
                                 </Button>
                                 <Button
                                     variant='contained'
@@ -436,7 +436,7 @@ const DocumentStoreDetails = () => {
                                     startIcon={<PiRowsPlusTopLight size='0.8em' />}
                                     onClick={() => showVectorStore(documentStore.id)}
                                 >
-                                    插入或更新配置
+                                    配置管理
                                 </Button>
                             </>
                         )}
@@ -493,11 +493,11 @@ const DocumentStoreDetails = () => {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>&nbsp;</TableCell>
-                                        <TableCell>加载器</TableCell>
-                                        <TableCell>Splitter</TableCell>
+                                        <TableCell width='120'>加载器</TableCell>
+                                        <TableCell width='200'>分割器</TableCell>
                                         <TableCell>数据源</TableCell>
-                                        <TableCell>Chunks</TableCell>
-                                        <TableCell>Chars</TableCell>
+                                        <TableCell width='100'>分块数量</TableCell>
+                                        <TableCell width='100'>字符数量</TableCell>
                                         <TableCell style={{ width: '120px' }}>操作</TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -693,20 +693,20 @@ function LoaderRow(props) {
                         >
                             <MenuItem onClick={props.onEditClick} disableRipple>
                                 <PiEyeLight />
-                                &nbsp;预览 & 处理
+                                &nbsp;&nbsp;文件处理
                             </MenuItem>
                             <MenuItem onClick={props.onViewChunksClick} disableRipple>
                                 <PiFilesLight />
-                                &nbsp;查看 & 编辑 Chunks
+                                &nbsp;&nbsp;分块管理
                             </MenuItem>
                             <MenuItem onClick={props.onChunkUpsert} disableRipple>
                                 <PiRowsPlusTopLight />
-                                &nbsp;插入或更新配置
+                                &nbsp;&nbsp;配置管理
                             </MenuItem>
                             <Divider sx={{ my: 0.5 }} />
                             <MenuItem onClick={props.onDeleteClick} disableRipple>
                                 <PiTrash />
-                                &nbsp;删除
+                                &nbsp;&nbsp;删除
                             </MenuItem>
                         </StyledMenu>
                     </div>
