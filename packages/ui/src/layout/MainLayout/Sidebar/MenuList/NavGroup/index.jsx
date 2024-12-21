@@ -52,15 +52,14 @@ const NavGroup = ({ item }) => {
                             display='block'
                             gutterBottom
                         >
-                            <Typography sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Typography className='flex items-center justify-between'>
                                 {item.title}
                                 {open ? (
-                                    <IconChevronUp stroke={1.5} size='1rem' style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+                                    <IconChevronUp stroke={1.5} size='1rem' className='relative left-1' />
                                 ) : (
-                                    <IconChevronDown stroke={1.5} size='1rem' style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+                                    <IconChevronDown stroke={1.5} size='1rem' className='relative left-1' />
                                 )}
                             </Typography>
-
                             {item.caption && (
                                 <Typography variant='caption' sx={{ ...theme.typography.subMenuCaption }} display='block' gutterBottom>
                                     {item.caption}

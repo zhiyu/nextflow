@@ -17,11 +17,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0px 0px 0px rgba(33, 33, 52, 0.1)',
     border: 'none !important',
-    borderRadius: '4px !important',
     cursor: 'pointer',
-    height: '100%',
     minHeight: '160px',
     maxHeight: '300px',
     width: '100%',
@@ -35,12 +32,11 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
 
     return (
         <CardWrapper
-            className='shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
+            className='rounded shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
             content={false}
             onClick={onClick}
-            sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
         >
-            <Box sx={{ height: '100%', p: 2.25 }} onClick={onClick}>
+            <Box sx={{ height: '100%', p: 2 }} onClick={onClick}>
                 <Grid container justifyContent='space-between' direction='column' sx={{ height: '100%' }} gap={2}>
                     <Box display='flex' flexDirection='column' sx={{ flex: 1, width: '100%' }}>
                         <div
@@ -116,50 +112,22 @@ const DocumentStoreCard = ({ data, images, onClick }) => {
                             )}
                         </Box>
                     )}
-                    <Grid container columnGap={1} rowGap={1}>
-                        <div
-                            style={{
-                                padding: '5px 10px',
-                                width: 'max-content',
-                                borderRadius: '2px',
-                                background: theme.palette.background.default
-                            }}
-                            className='flex items-center '
-                        >
+                    <Box className='flex items-center'>
+                        <div className='flex items-center'>
                             <IconVectorBezier2 style={{ marginRight: 5 }} size={14} />
                             <span>
-                                {data.whereUsed?.length ?? 0} {data.whereUsed?.length <= 1 ? 'flow' : 'flows'}
+                                {data.whereUsed?.length ?? 0} {data.whereUsed?.length <= 1 ? '流程' : '流程'}
                             </span>
                         </div>
-                        <div
-                            style={{
-                                padding: '3px 10px',
-                                width: 'max-content',
-                                borderRadius: '2px',
-                                background: theme.palette.background.default,
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                        >
+                        <div className='flex items-center ml-4'>
                             <IconLanguage style={{ marginRight: 5 }} size={14} />
-                            {kFormatter(data.totalChars ?? 0)} chars
+                            {kFormatter(data.totalChars ?? 0)} 字符
                         </div>
-                        <div
-                            style={{
-                                padding: '3px 10px',
-                                width: 'max-content',
-                                borderRadius: '2px',
-                                background: theme.palette.background.default,
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                        >
+                        <div className='flex items-center ml-4'>
                             <IconScissors style={{ marginRight: 5 }} size={14} />
-                            {kFormatter(data.totalChunks ?? 0)} chunks
+                            {kFormatter(data.totalChunks ?? 0)} 分块
                         </div>
-                    </Grid>
+                    </Box>
                 </Grid>
             </Box>
         </CardWrapper>

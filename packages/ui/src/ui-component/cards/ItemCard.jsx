@@ -13,12 +13,9 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0px 0px 0px rgba(33, 33, 52, 0.1)',
     border: 'none !important',
-    borderRadius: '4px !important',
     cursor: 'pointer',
-    height: '100%',
-    minHeight: '160px',
+    minHeight: '120px',
     maxHeight: '300px',
     width: '100%',
     overflowWrap: 'break-word',
@@ -32,13 +29,12 @@ const ItemCard = ({ data, images, onClick }) => {
     return (
         <CardWrapper
             content={false}
-            className='shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
+            className='rounded shadow-card transition ease-in-out hover:-translate-y-1 hover:shadow-lg duration-300'
             onClick={onClick}
-            sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
         >
-            <Box sx={{ height: '100%', p: 2.25 }}>
-                <Grid container justifyContent='space-between' direction='column' sx={{ height: '100%', gap: 3 }}>
-                    <Box display='flex' flexDirection='column' sx={{ width: '100%' }}>
+            <Box className='p-4' sx={{ height: '100%' }}>
+                <Box sx={{ height: '100%' }} className='flex flex-col justify-between'>
+                    <Box>
                         <div
                             style={{
                                 width: '100%',
@@ -93,30 +89,23 @@ const ItemCard = ({ data, images, onClick }) => {
                             </Typography>
                         </div>
                         {data.description && (
-                            <span
+                            <div
                                 style={{
                                     display: '-webkit-box',
-                                    marginTop: 10,
                                     overflowWrap: 'break-word',
                                     WebkitLineClamp: 3,
                                     WebkitBoxOrient: 'vertical',
                                     textOverflow: 'ellipsis',
                                     overflow: 'hidden'
                                 }}
+                                className='mt-4'
                             >
                                 {data.description}
-                            </span>
+                            </div>
                         )}
                     </Box>
                     {images && (
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'start',
-                                gap: 1
-                            }}
-                        >
+                        <Box className='flex items-center jusitify-start gap-2 mt-8'>
                             {images.slice(0, images.length > 3 ? 3 : images.length).map((img) => (
                                 <Box
                                     key={img}
@@ -139,7 +128,7 @@ const ItemCard = ({ data, images, onClick }) => {
                             )}
                         </Box>
                     )}
-                </Grid>
+                </Box>
             </Box>
         </CardWrapper>
     )
