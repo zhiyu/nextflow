@@ -33,7 +33,7 @@ export default function componentStyleOverrides(theme) {
         MuiTableContainer: {
             styleOverrides: {
                 root: {
-                    boxShadow: '0 0px 16px 0px rgba(0, 0, 0, 0.05)',
+                    boxShadow: '0 0px 16px 0px rgba(0, 0, 0, 0.02)',
                     padding: '0px 16px',
                     'th,td': {
                         borderBottom: '1px solid ' + theme.divider

@@ -162,7 +162,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                         // [theme.breakpoints.up('md')]: {
                         //     top: `${headerHeight + 1}px`
                         // },
-                        borderRight: drawerOpen ? '1px solid' : 'none',
+                        borderRight: drawerOpen ? '0px solid' : 'none',
                         borderColor: drawerOpen ? 'rgba(0, 0, 0, 0.06)' : 'transparent',
                         paddingBottom: `${headerHeight + 1}px`
                     }
