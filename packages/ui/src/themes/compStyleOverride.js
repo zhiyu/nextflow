@@ -54,8 +54,8 @@ export default function componentStyleOverrides(theme) {
             styleOverrides: {
                 root: {
                     color: theme.darkTextPrimary,
-                    paddingTop: '10px',
-                    paddingBottom: '10px !important',
+                    paddingTop: '5px !important',
+                    paddingBottom: '5px !important',
                     paddingLeft: '14px !important',
                     paddingRight: '14px !important',
                     margin: '0px 10px',
