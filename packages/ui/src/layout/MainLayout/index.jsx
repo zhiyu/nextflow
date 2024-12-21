@@ -7,9 +7,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import { AppBar, Box, CssBaseline, Avatar, ButtonBase, Toolbar, useMediaQuery } from '@mui/material'
 
 // project imports
-import Header from './Header'
 import Sidebar from './Sidebar'
-import { drawerWidth, headerHeight } from '@/store/constant'
 import { SET_MENU } from '@/store/actions'
 
 // assets
@@ -22,20 +20,13 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
         transition: theme.transitions.create('all', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
-        }),
-        marginRight: 0,
-        [theme.breakpoints.up('md')]: {
-            marginLeft: -drawerWidth
-        }
+        })
     }),
     ...(open && {
         transition: theme.transitions.create('all', {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen
-        }),
-        marginLeft: 0,
-        marginRight: 0,
-        width: `calc(100% - ${drawerWidth}px)`
+        })
     })
 }))
 

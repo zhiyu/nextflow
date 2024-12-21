@@ -38,7 +38,6 @@ const signOutClicked = () => {
 const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
-    const matchUpMd = useMediaQuery(theme.breakpoints.up('md'))
 
     const [isDark, setIsDark] = useState(customization.isDarkMode)
     const dispatch = useDispatch()
@@ -51,7 +50,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
     }
 
     const drawer = (
-        <>
+        <Box>
             <Box
                 className='fixed pt-3 px-5 z-10'
                 sx={{
@@ -134,7 +133,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                     </Avatar>
                 </ButtonBase>
             </Box>
-        </>
+        </Box>
     )
 
     const container = window !== undefined ? () => window.document.body : undefined
@@ -144,12 +143,13 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
             component='nav'
             sx={{
                 flexShrink: { md: 0 },
-                width: matchUpMd ? drawerWidth : 'auto'
+                width: drawerOpen ? drawerWidth : 'auto'
             }}
+            className='z-10 shadow-card'
         >
             <Drawer
                 container={container}
-                variant={matchUpMd ? 'persistent' : 'temporary'}
+                variant={drawerOpen ? 'persistent' : 'temporary'}
                 anchor='left'
                 open={drawerOpen}
                 onClose={drawerToggle}
