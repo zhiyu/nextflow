@@ -404,16 +404,15 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
 
     return (
         <>
-            <Stack direction='row'>
+            <Stack direction='row' className='mt-6'>
                 <Typography
                     sx={{
-                        p: 1,
-                        borderRadius: 10,
                         backgroundColor: theme.palette.primary.light,
                         width: 'max-content',
                         height: 'max-content'
                     }}
                     variant='h5'
+                    className='rounded p-4 py-2'
                 >
                     {`${baseURL}/chatbot/${chatflowid}`}
                 </Typography>
@@ -433,7 +432,8 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                 <IconButton title='Open New Tab' color='primary' onClick={() => window.open(`${baseURL}/chatbot/${chatflowid}`, '_blank')}>
                     <IconArrowUpRightCircle />
                 </IconButton>
-                <div style={{ flex: 1 }} />
+            </Stack>
+            <Stack direction='row'>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Switch
                         checked={isPublicChatflow}

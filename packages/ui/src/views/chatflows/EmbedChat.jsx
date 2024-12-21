@@ -452,16 +452,11 @@ const EmbedChat = ({ chatflowid }) => {
 
     return (
         <>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                <div style={{ flex: 80 }}>
-                    <Tabs value={value} onChange={handleChange} aria-label='tabs'>
-                        {codes.map((codeLang, index) => (
-                            <Tab key={index} label={codeLang} {...a11yProps(index)}></Tab>
-                        ))}
-                    </Tabs>
-                </div>
-            </div>
-            <div style={{ marginTop: 10 }}></div>
+            <Tabs value={value} onChange={handleChange} aria-label='tabs'>
+                {codes.map((codeLang, index) => (
+                    <Tab key={index} label={codeLang} {...a11yProps(index)}></Tab>
+                ))}
+            </Tabs>
             {codes.map((codeLang, index) => (
                 <TabPanel key={index} value={value} index={index}>
                     {(value === 0 || value === 1) && (
