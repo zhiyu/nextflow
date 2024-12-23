@@ -471,7 +471,7 @@ const VectorStoreConfigure = () => {
                                 startIcon={<PiRowsPlusTopLight size='0.8em' />}
                                 onClick={() => tryAndInsertIntoStore()}
                             >
-                                Upsert
+                                更新文档
                             </Button>
                         )}
                         <Button variant='contained' startIcon={<PiClockCountdownLight size='0.8em' />} onClick={showUpsertHistoryDrawer}>

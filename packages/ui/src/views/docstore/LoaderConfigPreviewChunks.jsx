@@ -36,6 +36,8 @@ import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackba
 import { initNode } from '@/utils/genericHelper'
 import useNotifier from '@/utils/useNotifier'
 
+import { PiArrowLeftLight } from 'react-icons/pi'
+
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     background: theme.palette.card.main,
     color: theme.darkTextPrimary,
@@ -377,291 +379,268 @@ const LoaderConfigPreviewChunks = () => {
 
     return (
         <>
-            <MainCard>
-                {error ? (
-                    <ErrorBoundary error={error} />
-                ) : (
-                    <Stack flexDirection='column'>
-                        <Box sx={{ flexGrow: 1, py: 1.25, width: '100%' }}>
-                            <Toolbar
-                                disableGutters={true}
-                                sx={{
-                                    p: 0,
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    width: '100%'
-                                }}
-                            >
-                                <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-                                    <StyledFab size='small' color='primary' aria-label='back' title='Back' onClick={() => navigate(-1)}>
-                                        <IconArrowLeft />
-                                    </StyledFab>
-                                    <Typography sx={{ ml: 2, mr: 2 }} variant='h3'>
+            {error ? (
+                <ErrorBoundary error={error} />
+            ) : (
+                <Stack flexDirection='column'>
+                    <Box>
+                        <Toolbar
+                            disableGutters={true}
+                            sx={{
+                                p: 0,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                width: '100%'
+                            }}
+                        >
+                            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+                                <StyledFab
+                                    className='h-6 w-9 shadow-lg'
+                                    sx={{ mr: 3 }}
+                                    color='primary'
+                                    aria-label='back'
+                                    title='Back'
+                                    onClick={() => navigate(-1)}
+                                >
+                                    <PiArrowLeftLight size='1.2rem' />
+                                </StyledFab>
+                                <div className='flex items-center h-8'>
+                                    <Typography variant='h3' className='mr-2'>
                                         {selectedDocumentLoader?.label}
                                     </Typography>
-                                    <div
-                                        style={{
-                                            width: 40,
-                                            height: 40,
-                                            borderRadius: '50%',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            backgroundColor: 'white',
-                                            boxShadow: '0 2px 14px 0 rgb(32 40 45 / 25%)'
-                                        }}
-                                    >
-                                        {selectedDocumentLoader?.name ? (
-                                            <img
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    padding: 7,
-                                                    borderRadius: '50%',
-                                                    objectFit: 'contain'
-                                                }}
-                                                alt={selectedDocumentLoader?.name ?? 'docloader'}
-                                                src={`${baseURL}/api/v1/node-icon/${selectedDocumentLoader?.name}`}
-                                            />
-                                        ) : (
-                                            <IconBook color='black' />
-                                        )}
-                                    </div>
-                                </Box>
-                                <Box>
-                                    <StyledButton
-                                        variant='contained'
-                                        onClick={onSaveAndProcess}
-                                        sx={{ borderRadius: 2, height: '100%' }}
-                                        startIcon={<IconDatabaseImport />}
-                                    >
-                                        Process
-                                    </StyledButton>
-                                </Box>
-                            </Toolbar>
-                        </Box>
-                        <Box>
-                            <Grid container spacing='2'>
-                                <Grid item xs={4} md={6} lg={6} sm={4}>
-                                    <div
-                                        style={{
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            paddingRight: 15
-                                        }}
-                                    >
-                                        {selectedDocumentLoader &&
-                                            Object.keys(selectedDocumentLoader).length > 0 &&
-                                            (selectedDocumentLoader.inputParams ?? [])
-                                                .filter((inputParam) => !inputParam.hidden)
-                                                .map((inputParam, index) => (
-                                                    <DocStoreInputHandler
-                                                        key={index}
-                                                        inputParam={inputParam}
-                                                        data={selectedDocumentLoader}
-                                                    />
-                                                ))}
-                                        {textSplitterNodes && textSplitterNodes.length > 0 && (
-                                            <>
-                                                <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', p: 2, mt: 5 }}>
-                                                    <Typography sx={{ mr: 2 }} variant='h3'>
-                                                        {(splitterOptions ?? []).find(
-                                                            (splitter) => splitter.name === selectedTextSplitter?.name
-                                                        )?.label ?? 'Select Text Splitter'}
-                                                    </Typography>
-                                                    <div
-                                                        style={{
-                                                            width: 40,
-                                                            height: 40,
-                                                            borderRadius: '50%',
-                                                            backgroundColor: 'white',
-                                                            display: 'flex',
-                                                            alignItems: 'center',
-                                                            justifyContent: 'center',
-                                                            boxShadow: '0 2px 14px 0 rgb(32 40 45 / 25%)'
-                                                        }}
-                                                    >
-                                                        {selectedTextSplitter?.name ? (
-                                                            <img
-                                                                style={{
-                                                                    width: '100%',
-                                                                    height: '100%',
-                                                                    padding: 7,
-                                                                    borderRadius: '50%',
-                                                                    objectFit: 'contain'
-                                                                }}
-                                                                alt={selectedTextSplitter?.name ?? 'textsplitter'}
-                                                                src={`${baseURL}/api/v1/node-icon/${selectedTextSplitter?.name}`}
-                                                            />
-                                                        ) : (
-                                                            <IconScissors color='black' />
-                                                        )}
-                                                    </div>
-                                                </Box>
-                                                <Box sx={{ p: 2 }}>
-                                                    <Typography>Splitter</Typography>
-                                                    <Dropdown
-                                                        key={JSON.stringify(selectedTextSplitter)}
-                                                        name='textSplitter'
-                                                        options={splitterOptions}
-                                                        onSelect={(newValue) => onSplitterChange(newValue)}
-                                                        value={selectedTextSplitter?.name ?? 'none'}
-                                                    />
-                                                </Box>
-                                            </>
-                                        )}
-                                        {Object.keys(selectedTextSplitter).length > 0 &&
-                                            (selectedTextSplitter.inputParams ?? [])
-                                                .filter((inputParam) => !inputParam.hidden)
-                                                .map((inputParam, index) => (
-                                                    <DocStoreInputHandler key={index} data={selectedTextSplitter} inputParam={inputParam} />
-                                                ))}
-                                    </div>
-                                </Grid>
-                                <Grid item xs={8} md={6} lg={6} sm={8}>
-                                    {!documentChunks ||
-                                        (documentChunks.length === 0 && (
-                                            <div style={{ position: 'relative' }}>
-                                                <Box display='grid' gridTemplateColumns='repeat(2, 1fr)' gap={gridSpacing}>
-                                                    <Skeleton
-                                                        animation={false}
-                                                        sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
-                                                        variant='rounded'
-                                                        height={160}
-                                                    />
-                                                    <Skeleton
-                                                        animation={false}
-                                                        sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
-                                                        variant='rounded'
-                                                        height={160}
-                                                    />
-                                                    <Skeleton
-                                                        animation={false}
-                                                        sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
-                                                        variant='rounded'
-                                                        height={160}
-                                                    />
-                                                    <Skeleton
-                                                        animation={false}
-                                                        sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
-                                                        variant='rounded'
-                                                        height={160}
-                                                    />
-                                                    <Skeleton
-                                                        animation={false}
-                                                        sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
-                                                        variant='rounded'
-                                                        height={160}
-                                                    />
-                                                    <Skeleton
-                                                        animation={false}
-                                                        sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
-                                                        variant='rounded'
-                                                        height={160}
-                                                    />
-                                                </Box>
+                                    {selectedDocumentLoader?.name ? (
+                                        <img
+                                            style={{
+                                                objectFit: 'contain'
+                                            }}
+                                            className='w-6'
+                                            alt={selectedDocumentLoader?.name ?? 'docloader'}
+                                            src={`${baseURL}/api/v1/node-icon/${selectedDocumentLoader?.name}`}
+                                        />
+                                    ) : (
+                                        <IconBook color='black' />
+                                    )}
+                                </div>
+                            </Box>
+                            <Box>
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                    onClick={onSaveAndProcess}
+                                    startIcon={<IconDatabaseImport size='0.8em' />}
+                                >
+                                    处理
+                                </Button>
+                            </Box>
+                        </Toolbar>
+                    </Box>
+                    <MainCard className='bg-white w-full shadow-card mt-4'>
+                        <Grid container spacing='2'>
+                            <Grid item xs={4} md={6} lg={6} sm={4}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        paddingRight: 15
+                                    }}
+                                >
+                                    {selectedDocumentLoader &&
+                                        Object.keys(selectedDocumentLoader).length > 0 &&
+                                        (selectedDocumentLoader.inputParams ?? [])
+                                            .filter((inputParam) => !inputParam.hidden)
+                                            .map((inputParam, index) => (
+                                                <DocStoreInputHandler key={index} inputParam={inputParam} data={selectedDocumentLoader} />
+                                            ))}
+                                    {textSplitterNodes && textSplitterNodes.length > 0 && (
+                                        <>
+                                            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', p: 2, mt: 5 }}>
+                                                <Typography sx={{ mr: 2 }} variant='h3'>
+                                                    {(splitterOptions ?? []).find(
+                                                        (splitter) => splitter.name === selectedTextSplitter?.name
+                                                    )?.label ?? 'Select Text Splitter'}
+                                                </Typography>
                                                 <div
                                                     style={{
-                                                        position: 'absolute',
-                                                        top: 0,
-                                                        right: 0,
-                                                        width: '100%',
-                                                        height: '100%',
-                                                        backdropFilter: `blur(1px)`,
-                                                        background: `transparent`,
+                                                        width: 40,
+                                                        height: 40,
+                                                        borderRadius: '50%',
+                                                        backgroundColor: 'white',
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        justifyContent: 'center'
+                                                        justifyContent: 'center',
+                                                        boxShadow: '0 2px 14px 0 rgb(32 40 45 / 25%)'
                                                     }}
                                                 >
-                                                    <StyledFab
-                                                        color='primary'
-                                                        aria-label='preview'
-                                                        title='Preview'
-                                                        variant='extended'
-                                                        onClick={onPreviewChunks}
-                                                    >
-                                                        <IconEye style={{ marginRight: '5px' }} />
-                                                        Preview Chunks
-                                                    </StyledFab>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    {documentChunks && documentChunks.length > 0 && (
-                                        <>
-                                            <Typography sx={{ wordWrap: 'break-word', textAlign: 'left', mb: 2 }} variant='h3'>
-                                                {currentPreviewCount} of {totalChunks} Chunks
-                                            </Typography>
-                                            <Box sx={{ mb: 3 }}>
-                                                <Typography>Show Chunks in Preview</Typography>
-                                                <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                    <OutlinedInput
-                                                        size='small'
-                                                        multiline={false}
-                                                        sx={{ mt: 1, flex: 1, mr: 2 }}
-                                                        type='number'
-                                                        key='previewChunkCount'
-                                                        onChange={(e) => setPreviewChunkCount(e.target.value)}
-                                                        value={previewChunkCount ?? 25}
-                                                    />
-                                                    <StyledFab
-                                                        color='primary'
-                                                        aria-label='preview'
-                                                        title='Preview'
-                                                        variant='extended'
-                                                        onClick={onPreviewChunks}
-                                                    >
-                                                        <IconEye style={{ marginRight: '5px' }} />
-                                                        Preview
-                                                    </StyledFab>
+                                                    {selectedTextSplitter?.name ? (
+                                                        <img
+                                                            style={{
+                                                                width: '100%',
+                                                                height: '100%',
+                                                                padding: 7,
+                                                                borderRadius: '50%',
+                                                                objectFit: 'contain'
+                                                            }}
+                                                            alt={selectedTextSplitter?.name ?? 'textsplitter'}
+                                                            src={`${baseURL}/api/v1/node-icon/${selectedTextSplitter?.name}`}
+                                                        />
+                                                    ) : (
+                                                        <IconScissors color='black' />
+                                                    )}
                                                 </div>
                                             </Box>
-                                            <div style={{ height: '800px', overflow: 'scroll', padding: '5px' }}>
-                                                <Grid container spacing={2}>
-                                                    {documentChunks?.map((row, index) => (
-                                                        <Grid item lg={6} md={6} sm={6} xs={6} key={index}>
-                                                            <CardWrapper
-                                                                content={false}
-                                                                onClick={() => onChunkClick(row, index + 1)}
-                                                                sx={{
-                                                                    border: 1,
-                                                                    borderColor: theme.palette.grey[900] + 25,
-                                                                    borderRadius: 2
-                                                                }}
-                                                            >
-                                                                <Card>
-                                                                    <CardContent sx={{ p: 1 }}>
-                                                                        <Typography sx={{ wordWrap: 'break-word', mb: 1 }} variant='h5'>
-                                                                            {`#${index + 1}. Characters: ${row.pageContent.length}`}
-                                                                        </Typography>
-                                                                        <Typography sx={{ wordWrap: 'break-word' }} variant='body2'>
-                                                                            {row.pageContent}
-                                                                        </Typography>
-                                                                        <ReactJson
-                                                                            theme={customization.isDarkMode ? 'ocean' : 'rjv-default'}
-                                                                            style={{ paddingTop: 10 }}
-                                                                            src={row.metadata}
-                                                                            name={null}
-                                                                            quotesOnKeys={false}
-                                                                            enableClipboard={false}
-                                                                            displayDataTypes={false}
-                                                                            collapsed={1}
-                                                                        />
-                                                                    </CardContent>
-                                                                </Card>
-                                                            </CardWrapper>
-                                                        </Grid>
-                                                    ))}
-                                                </Grid>
-                                            </div>
+                                            <Box sx={{ p: 2 }}>
+                                                <Typography>Splitter</Typography>
+                                                <Dropdown
+                                                    key={JSON.stringify(selectedTextSplitter)}
+                                                    name='textSplitter'
+                                                    options={splitterOptions}
+                                                    onSelect={(newValue) => onSplitterChange(newValue)}
+                                                    value={selectedTextSplitter?.name ?? 'none'}
+                                                />
+                                            </Box>
                                         </>
                                     )}
-                                </Grid>
+                                    {Object.keys(selectedTextSplitter).length > 0 &&
+                                        (selectedTextSplitter.inputParams ?? [])
+                                            .filter((inputParam) => !inputParam.hidden)
+                                            .map((inputParam, index) => (
+                                                <DocStoreInputHandler key={index} data={selectedTextSplitter} inputParam={inputParam} />
+                                            ))}
+                                </div>
                             </Grid>
-                        </Box>
-                    </Stack>
-                )}
-            </MainCard>
+                            <Grid item xs={8} md={6} lg={6} sm={8}>
+                                {!documentChunks ||
+                                    (documentChunks.length === 0 && (
+                                        <div style={{ position: 'relative' }} className='mt-10'>
+                                            <Box display='grid' gridTemplateColumns='repeat(2, 1fr)' gap={gridSpacing}>
+                                                <Skeleton
+                                                    animation={false}
+                                                    sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
+                                                    variant='rounded'
+                                                    height={160}
+                                                />
+                                                <Skeleton
+                                                    animation={false}
+                                                    sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
+                                                    variant='rounded'
+                                                    height={160}
+                                                />
+                                                <Skeleton
+                                                    animation={false}
+                                                    sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
+                                                    variant='rounded'
+                                                    height={160}
+                                                />
+                                                <Skeleton
+                                                    animation={false}
+                                                    sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
+                                                    variant='rounded'
+                                                    height={160}
+                                                />
+                                                <Skeleton
+                                                    animation={false}
+                                                    sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
+                                                    variant='rounded'
+                                                    height={160}
+                                                />
+                                                <Skeleton
+                                                    animation={false}
+                                                    sx={{ bgcolor: customization.isDarkMode ? '#23262c' : '#fafafa' }}
+                                                    variant='rounded'
+                                                    height={160}
+                                                />
+                                            </Box>
+                                            <div
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    right: 0,
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    background: `transparent`,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center'
+                                                }}
+                                            >
+                                                <StyledFab
+                                                    className='h-10 shadow-lg'
+                                                    color='primary'
+                                                    aria-label='preview'
+                                                    title='Preview'
+                                                    variant='extended'
+                                                    onClick={onPreviewChunks}
+                                                >
+                                                    <IconEye style={{ marginRight: '5px' }} />
+                                                    预览分块
+                                                </StyledFab>
+                                            </div>
+                                        </div>
+                                    ))}
+                                {documentChunks && documentChunks.length > 0 && (
+                                    <>
+                                        <Box sx={{ mb: 3 }} className='mt-8 mb-8'>
+                                            <Typography className='mb-5'>
+                                                分块预览数量（{currentPreviewCount} of {totalChunks} 分块）
+                                            </Typography>
+                                            <div className='flex items-center'>
+                                                <OutlinedInput
+                                                    size='small'
+                                                    multiline={false}
+                                                    sx={{ mt: 0, flex: 1, mr: 2 }}
+                                                    type='number'
+                                                    key='previewChunkCount'
+                                                    onChange={(e) => setPreviewChunkCount(e.target.value)}
+                                                    value={previewChunkCount ?? 25}
+                                                />
+
+                                                <Button
+                                                    variant='contained'
+                                                    color='primary'
+                                                    onClick={onPreviewChunks}
+                                                    startIcon={<IconEye size='0.8em' />}
+                                                >
+                                                    预览
+                                                </Button>
+                                            </div>
+                                        </Box>
+                                        <div style={{ height: '800px', overflow: 'scroll' }}>
+                                            <Grid container spacing={2}>
+                                                {documentChunks?.map((row, index) => (
+                                                    <Grid item lg={6} md={6} sm={6} xs={6} key={index}>
+                                                        <CardWrapper
+                                                            className='rounded p-4 border'
+                                                            content={false}
+                                                            onClick={() => onChunkClick(row, index + 1)}
+                                                        >
+                                                            <Typography sx={{ wordWrap: 'break-word', mb: 1 }} variant='h5'>
+                                                                {`#${index + 1}. Characters: ${row.pageContent.length}`}
+                                                            </Typography>
+                                                            <Typography sx={{ wordWrap: 'break-word' }} variant='body2'>
+                                                                {row.pageContent}
+                                                            </Typography>
+                                                            <ReactJson
+                                                                theme={customization.isDarkMode ? 'ocean' : 'rjv-default'}
+                                                                style={{ paddingTop: 10 }}
+                                                                src={row.metadata}
+                                                                name={null}
+                                                                quotesOnKeys={false}
+                                                                enableClipboard={false}
+                                                                displayDataTypes={false}
+                                                                collapsed={1}
+                                                            />
+                                                        </CardWrapper>
+                                                    </Grid>
+                                                ))}
+                                            </Grid>
+                                        </div>
+                                    </>
+                                )}
+                            </Grid>
+                        </Grid>
+                    </MainCard>
+                </Stack>
+            )}
             <ExpandedChunkDialog
                 show={showExpandedChunkDialog}
                 isReadOnly={true}

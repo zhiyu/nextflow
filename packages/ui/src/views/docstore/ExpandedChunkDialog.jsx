@@ -131,23 +131,15 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                             style={{
                                 paddingLeft: '10px',
                                 paddingRight: '10px',
-                                paddingTop: '5px',
-                                paddingBottom: '5px',
-                                fontSize: '15px',
                                 width: 'max-content',
-                                borderRadius: '25px',
-                                boxShadow: customization.isDarkMode
-                                    ? '0 2px 14px 0 rgb(255 255 255 / 20%)'
-                                    : '0 2px 14px 0 rgb(32 40 45 / 20%)',
                                 display: 'flex',
                                 flexDirection: 'row',
                                 alignItems: 'center',
-                                marginTop: '5px',
                                 marginBottom: '10px'
                             }}
                         >
                             <IconLanguage style={{ marginRight: 5 }} size={15} />
-                            {selectedChunk?.pageContent?.length} characters
+                            {selectedChunk?.pageContent?.length} 个字符
                         </div>
                         <div style={{ marginTop: '5px' }}></div>
                         {!isEdit && (
