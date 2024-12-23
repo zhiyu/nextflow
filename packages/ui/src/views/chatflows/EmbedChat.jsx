@@ -462,18 +462,8 @@ const EmbedChat = ({ chatflowid }) => {
                     {(value === 0 || value === 1) && (
                         <>
                             <span>
-                                Paste this anywhere in the <code>{`<body>`}</code> tag of your html file.
-                                <p>
-                                    You can also specify a&nbsp;
-                                    <a
-                                        rel='noreferrer'
-                                        target='_blank'
-                                        href='https://www.npmjs.com/package/flowise-embed?activeTab=versions'
-                                    >
-                                        version
-                                    </a>
-                                    :&nbsp;<code>{`https://cdn.jsdelivr.net/npm/flowise-embed@<version>/dist/web.js`}</code>
-                                </p>
+                                将其粘贴到html文件的<code>{`<body>`}</code>标签中的任何位置。 您还可以指定版本
+                                <code>{`https://cdn.jsdelivr.net/npm/flowise-embed@<version>/dist/web.js`}</code>
                             </span>
                             <div style={{ height: 10 }}></div>
                         </>
