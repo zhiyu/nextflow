@@ -88,12 +88,12 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                         </Typography>
                         {!isEdit && !isReadOnly && (
                             <IconButton onClick={() => setIsEdit(true)} size='small' color='primary' title='Edit Chunk' sx={{ ml: 2 }}>
-                                <IconEdit />
+                                <IconEdit size='1.2rem' />
                             </IconButton>
                         )}
                         {isEdit && !isReadOnly && (
-                            <Button onClick={() => onEditCancel()} color='primary' title='Cancel' sx={{ ml: 2 }}>
-                                Cancel
+                            <Button size='small' onClick={() => onEditCancel()} color='primary' title='Cancel' sx={{ ml: 2 }}>
+                                取消
                             </Button>
                         )}
                         {isEdit && !isReadOnly && (
@@ -102,9 +102,10 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                                 color='primary'
                                 title='Save'
                                 variant='contained'
-                                sx={{ ml: 2, mr: 1 }}
+                                sx={{ ml: 1, mr: 1 }}
+                                size='small'
                             >
-                                Save
+                                保存
                             </Button>
                         )}
                         {!isEdit && !isReadOnly && (
@@ -115,11 +116,11 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                                 title='Delete Chunk'
                                 sx={{ ml: 1 }}
                             >
-                                <IconTrash />
+                                <IconTrash size='1.2rem' />
                             </IconButton>
                         )}
                         <IconButton onClick={onCancel} size='small' color='inherit' title='Close' sx={{ ml: 1 }}>
-                            <IconX />
+                            <IconX size='1.2rem' />
                         </IconButton>
                     </div>
                 )}
