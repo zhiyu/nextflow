@@ -13,9 +13,9 @@ const Logo = () => {
     const theme = useTheme()
 
     return (
-        <div className='flex items-center mt-2'>
-            <PiInfinity size='2em' style={{ color: customization.isDarkMode ? '#ffffff' : '#000000' }} />
-            {customization.isDarkMode ? <img src={nextflowDark} className='h-8' /> : <img src={nextflow} className='h-8' />}
+        <div className='flex items-center mt-1'>
+            {/* <PiInfinity size='2em' style={{ color: customization.isDarkMode ? '#ffffff' : '#000000' }} /> */}
+            {customization.isDarkMode ? <img src={nextflowDark} className='h-10' /> : <img src={nextflow} className='h-10' />}
         </div>
     )
 }
