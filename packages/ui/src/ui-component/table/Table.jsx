@@ -6,7 +6,7 @@ export const TableViewOnly = ({ columns, rows, sx }) => {
     return (
         <>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650, ...sx }} aria-label='simple table'>
+                <Table sx={{ ...sx }} aria-label='simple table'>
                     <TableHead>
                         <TableRow>
                             {columns.map((col, index) => (

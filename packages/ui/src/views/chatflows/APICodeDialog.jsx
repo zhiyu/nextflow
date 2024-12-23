@@ -719,15 +719,14 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                             showLineNumbers={false}
                                             wrapLines
                                         />
-                                        <CheckboxInput label='Show Override Config' value={checkboxVal} onChange={onCheckBoxChanged} />
+                                        <CheckboxInput label='显示可配置参数' value={checkboxVal} onChange={onCheckBoxChanged} />
                                         {checkboxVal && getConfigApi.data && getConfigApi.data.length > 0 && (
                                             <>
                                                 <Typography sx={{ mt: 2, mb: 3 }}>
-                                                    You can override existing input configuration of the chatflow with overrideConfig
-                                                    property.
+                                                    您可以使用overrideConfig属性覆盖现有的配置参数。
                                                 </Typography>
                                                 <Stack direction='column' spacing={2} sx={{ width: '100%', my: 2 }}>
-                                                    <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>
+                                                    <Box>
                                                         <Stack
                                                             sx={{ mt: 1, mb: 2, ml: 1, alignItems: 'center' }}
                                                             direction='row'
@@ -744,6 +743,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                                     onChange={handleAccordionChange(nodeLabel)}
                                                                     key={nodeLabel}
                                                                     disableGutters
+                                                                    className='shadow-none'
                                                                 >
                                                                     <AccordionSummary
                                                                         expandIcon={<ExpandMoreIcon />}
@@ -794,8 +794,8 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                                     </AccordionDetails>
                                                                 </Accordion>
                                                             ))}
-                                                    </Card>
-                                                    <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>
+                                                    </Box>
+                                                    <Box>
                                                         <Stack
                                                             sx={{ mt: 1, mb: 2, ml: 1, alignItems: 'center' }}
                                                             direction='row'
@@ -805,7 +805,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                             <Typography variant='h4'>Variables</Typography>
                                                         </Stack>
                                                         <TableViewOnly rows={variableOverrides} columns={['name', 'type', 'enabled']} />
-                                                    </Card>
+                                                    </Box>
                                                 </Stack>
                                                 <CopyBlock
                                                     theme={atomOneDark}
@@ -826,52 +826,41 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                     style={{
                                                         display: 'flex',
                                                         flexDirection: 'column',
-                                                        borderRadius: 10,
-                                                        background: '#d8f3dc',
-                                                        padding: 10,
                                                         marginTop: 10,
                                                         marginBottom: 10
                                                     }}
                                                 >
-                                                    <div
-                                                        style={{
-                                                            display: 'flex',
-                                                            flexDirection: 'row',
-                                                            alignItems: 'center'
-                                                        }}
-                                                    >
-                                                        <IconBulb size={30} color='#2d6a4f' />
-                                                        <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>
+                                                    <div className='flex items-center mb-2 mt-2'>
+                                                        <IconBulb size='1.2rem' color='#2d6a4f' />
+                                                        <span style={{ color: '#2d6a4f', marginLeft: 5, fontWeight: 500 }}>
                                                             您还可以通过指定节点id为配置参数指定多个值
                                                         </span>
                                                     </div>
-                                                    <div style={{ padding: 10 }}>
-                                                        <CopyBlock
-                                                            theme={atomOneDark}
-                                                            text={
-                                                                dialogProps.isFormDataRequired
-                                                                    ? getMultiConfigCodeWithFormData(codeLang)
-                                                                    : getMultiConfigCode()
-                                                            }
-                                                            language={getLang(codeLang)}
-                                                            showLineNumbers={false}
-                                                            wrapLines
-                                                        />
-                                                    </div>
+                                                    <CopyBlock
+                                                        theme={atomOneDark}
+                                                        text={
+                                                            dialogProps.isFormDataRequired
+                                                                ? getMultiConfigCodeWithFormData(codeLang)
+                                                                : getMultiConfigCode()
+                                                        }
+                                                        language={getLang(codeLang)}
+                                                        showLineNumbers={false}
+                                                        wrapLines
+                                                    />
                                                 </div>
                                             </>
                                         )}
                                         {getIsChatflowStreamingApi.data?.isStreaming && (
                                             <p>
-                                                Read&nbsp;
+                                                查看&nbsp;
                                                 <a
                                                     rel='noreferrer'
                                                     target='_blank'
                                                     href='https://docs.flowiseai.com/using-flowise/streaming'
                                                 >
-                                                    here
+                                                    这里
                                                 </a>
-                                                &nbsp;on how to stream response back to application
+                                                &nbsp;了解应用程序如何接收流式响应。
                                             </p>
                                         )}
                                     </Box>

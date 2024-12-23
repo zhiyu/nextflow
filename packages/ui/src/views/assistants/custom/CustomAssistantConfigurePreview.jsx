@@ -901,7 +901,7 @@ const CustomAssistantConfigurePreview = () => {
                                 <Box className='bg-white shadow-card p-4 rounded'>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                                         <Typography>
-                                            Select Model<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            选择模型<span style={{ color: 'red' }}>&nbsp;*</span>
                                         </Typography>
                                     </div>
                                     <Dropdown
@@ -929,7 +929,7 @@ const CustomAssistantConfigurePreview = () => {
                                 <Box className='bg-white shadow-card p-4 rounded mt-4'>
                                     <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
                                         <Typography>
-                                            Instructions<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            指令<span style={{ color: 'red' }}>&nbsp;*</span>
                                         </Typography>
                                         <div style={{ flex: 1 }}></div>
                                         {selectedChatModel?.name && (
@@ -956,7 +956,7 @@ const CustomAssistantConfigurePreview = () => {
                                 </Box>
                                 <Box className='bg-white shadow-card p-4 rounded mt-4'>
                                     <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                        <Typography>Knowledge (Document Stores)</Typography>
+                                        <Typography>知识库 (Document Stores)</Typography>
                                         <TooltipWithParser title='Give your assistant context about different document sources' />
                                     </Stack>
                                     <MultiDropdown
@@ -1131,23 +1131,18 @@ const CustomAssistantConfigurePreview = () => {
                                         variant='outlined'
                                         onClick={() => setSelectedTools([...selectedTools, {}])}
                                     >
-                                        Add Tool
+                                        添加工具
                                     </Button>
                                 </Box>
                                 {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
                                     <Button
                                         fullWidth
                                         title='Save Assistant'
-                                        sx={{
-                                            mt: 1,
-                                            mb: 1,
-                                            borderRadius: 20,
-                                            background: 'linear-gradient(45deg, #673ab7 30%, #1e88e5 90%)'
-                                        }}
+                                        className='mt-4'
                                         variant='contained'
                                         onClick={onSaveAndProcess}
                                     >
-                                        Save Assistant
+                                        保存
                                     </Button>
                                 )}
                             </Box>
