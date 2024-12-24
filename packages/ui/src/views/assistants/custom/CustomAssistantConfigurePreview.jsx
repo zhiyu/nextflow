@@ -946,28 +946,13 @@ const CustomAssistantConfigurePreview = () => {
                                             value={selectedChatModel ? selectedChatModel?.name : 'choose an option'}
                                         />
 
-                                        {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
-                                            <Box
-                                                sx={{
-                                                    p: 0,
-                                                    mt: 1,
-                                                    mb: 1,
-                                                    border: 1,
-                                                    borderColor: theme.palette.grey[900] + 25,
-                                                    borderRadius: 2
-                                                }}
-                                            >
-                                                {(selectedChatModel.inputParams ?? [])
-                                                    .filter((inputParam) => !inputParam.hidden)
-                                                    .map((inputParam, index) => (
-                                                        <DocStoreInputHandler
-                                                            key={index}
-                                                            inputParam={inputParam}
-                                                            data={selectedChatModel}
-                                                        />
-                                                    ))}
-                                            </Box>
-                                        )}
+                                        {selectedChatModel &&
+                                            Object.keys(selectedChatModel).length > 0 &&
+                                            (selectedChatModel.inputParams ?? [])
+                                                .filter((inputParam) => !inputParam.hidden)
+                                                .map((inputParam, index) => (
+                                                    <DocStoreInputHandler key={index} inputParam={inputParam} data={selectedChatModel} />
+                                                ))}
 
                                         <Stack sx={{ position: 'relative' }} direction='row'></Stack>
                                         <Box className='mt-4'>

@@ -82,7 +82,7 @@ const DocStoreInputHandler = ({ inputParam, data, disabled = false }) => {
         <div>
             {inputParam && (
                 <>
-                    <Box sx={{ p: 2 }}>
+                    <Box className='py-4'>
                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                             <Typography>
                                 {inputParam.label}
