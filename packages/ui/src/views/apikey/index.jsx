@@ -68,13 +68,13 @@ function APIKeyRow(props) {
                 <TableCell scope='row' style={{ width: '15%' }}>
                     {props.apiKey.keyName}
                 </TableCell>
-                <TableCell style={{ width: '40%' }}>
+                <TableCell>
                     {props.showApiKeys.includes(props.apiKey.apiKey)
                         ? props.apiKey.apiKey
                         : `${props.apiKey.apiKey.substring(0, 2)}${'•'.repeat(18)}${props.apiKey.apiKey.substring(
                               props.apiKey.apiKey.length - 5
                           )}`}
-                    <IconButton title='Copy' color='success' onClick={props.onCopyClick}>
+                    <IconButton title='Copy' onClick={props.onCopyClick} className='ml-2'>
                         <PiCopy size={'1rem'} />
                     </IconButton>
                     <IconButton title='Show' color='inherit' onClick={props.onShowAPIClick}>
@@ -93,9 +93,7 @@ function APIKeyRow(props) {
                             horizontal: 'left'
                         }}
                     >
-                        <Typography variant='h6' sx={{ pl: 1, pr: 1, color: 'white', background: props.theme.palette.success.dark }}>
-                            Copied!
-                        </Typography>
+                        <Typography sx={{ p: 1, color: 'white', background: props.theme.palette.success.dark }}>已复制!</Typography>
                     </Popover>
                 </TableCell>
                 <TableCell>
@@ -252,7 +250,7 @@ const APIKey = () => {
         const dialogProp = {
             type: 'ADD',
             cancelButtonName: '取消',
-            confirmButtonName: '上传',
+            confirmButtonName: '导入',
             data: {}
         }
         setUploadDialogProps(dialogProp)
@@ -370,12 +368,12 @@ const APIKey = () => {
                         </Stack>
                     ) : (
                         <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+                            <Table aria-label='simple table'>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>Key 名称</TableCell>
                                         <TableCell>Key 值</TableCell>
-                                        <TableCell>使用情况</TableCell>
+                                        <TableCell style={{ width: '100px' }}>使用情况</TableCell>
                                         <TableCell style={{ width: '180px' }}>创建时间</TableCell>
                                         <TableCell style={{ width: '120px' }}></TableCell>
                                     </TableRow>

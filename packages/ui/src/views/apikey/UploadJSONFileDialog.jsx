@@ -145,10 +145,10 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>导入 API Keys</div>
             </DialogTitle>
             <DialogContent>
-                <Box sx={{ p: 2 }}>
+                <Box>
                     <Stack sx={{ position: 'relative' }} direction='row'>
                         <Typography variant='overline'>
-                            导入 api.json 文件
+                            选择要导入的api.json文件
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                     </Stack>
@@ -159,7 +159,7 @@ const UploadJSONFileDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                         value={selectedFile ?? 'Choose a file to upload'}
                     />
                 </Box>
-                <Box sx={{ p: 2 }}>
+                <Box className='mt-8'>
                     <FormControl fullWidth>
                         <InputLabel id='demo-simple-select-label'>导入模式</InputLabel>
                         <Select

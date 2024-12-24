@@ -99,7 +99,7 @@ export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChan
                 startIcon={<PiUploadSimpleLight />}
                 sx={{ marginRight: '1rem' }}
             >
-                {'请选择上传文件'}
+                {'请选择文件'}
                 <input
                     type='file'
                     multiple

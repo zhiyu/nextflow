@@ -125,36 +125,20 @@ const CredentialListDialog = ({ show, dialogProps, onCancel, onCredentialSelecte
                             sx={{
                                 border: 1,
                                 borderColor: theme.palette.grey[900] + 25,
-                                borderRadius: 2,
-                                display: 'flex',
-                                alignItems: 'center',
                                 justifyContent: 'start',
-                                textAlign: 'left',
-                                gap: 1,
-                                p: 2
+                                textAlign: 'left'
                             }}
+                            className='flex items-center rounded m-0 h-14'
                         >
-                            <div
+                            <img
                                 style={{
-                                    width: 50,
-                                    height: 50,
-                                    borderRadius: '50%',
-                                    backgroundColor: 'white'
+                                    height: '18px',
+                                    objectFit: 'contain'
                                 }}
-                            >
-                                <img
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        padding: 7,
-                                        borderRadius: '50%',
-                                        objectFit: 'contain'
-                                    }}
-                                    alt={componentCredential.name}
-                                    src={`${baseURL}/api/v1/components-credentials-icon/${componentCredential.name}`}
-                                />
-                            </div>
-                            <Typography>{componentCredential.label}</Typography>
+                                alt={componentCredential.name}
+                                src={`${baseURL}/api/v1/components-credentials-icon/${componentCredential.name}`}
+                            />
+                            <Typography className='ml-2'>{componentCredential.label}</Typography>
                         </ListItemButton>
                     ))}
                 </List>
