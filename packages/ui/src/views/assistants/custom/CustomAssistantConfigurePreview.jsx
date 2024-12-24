@@ -48,13 +48,27 @@ import { toolAgentFlow } from './toolAgentFlow'
 
 import { PiArrowLeftLight } from 'react-icons/pi'
 
+import { styled } from '@mui/material/styles'
+
 // ===========================|| CustomAssistantConfigurePreview ||=========================== //
+
+const CardWrapper = styled(MainCard)(({ theme }) => ({
+    background: theme.palette.card.main,
+    color: theme.darkTextPrimary,
+    overflow: 'auto',
+    position: 'relative',
+    border: 'none !important',
+    cursor: 'pointer',
+    width: '100%',
+    overflowWrap: 'break-word',
+    whiteSpace: 'pre-line'
+}))
 
 const MemoizedFullPageChat = memo(
     ({ ...props }) => (
-        <div>
+        <CardWrapper className='shadow-card pt-4'>
             <FullPageChat {...props}></FullPageChat>
-        </div>
+        </CardWrapper>
     ),
     (prevProps, nextProps) => prevProps.chatflow === nextProps.chatflow
 )
@@ -904,16 +918,7 @@ const CustomAssistantConfigurePreview = () => {
                                             )}
                                         </Toolbar>
                                     </Box>
-                                    <Box
-                                        sx={{
-                                            p: 2,
-                                            mt: 1,
-                                            mb: 1,
-                                            border: 1,
-                                            borderColor: theme.palette.grey[900] + 25,
-                                            borderRadius: 2
-                                        }}
-                                    >
+                                    <CardWrapper className='mt-2 pt-4 shadow-card'>
                                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                                             <Typography>
                                                 选择模型<span style={{ color: 'red' }}>&nbsp;*</span>
@@ -940,227 +945,224 @@ const CustomAssistantConfigurePreview = () => {
                                             }}
                                             value={selectedChatModel ? selectedChatModel?.name : 'choose an option'}
                                         />
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            p: 2,
-                                            mt: 1,
-                                            mb: 1,
-                                            border: 1,
-                                            borderColor: theme.palette.grey[900] + 25,
-                                            borderRadius: 2
-                                        }}
-                                    >
-                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                            <Typography>
-                                                指令<span style={{ color: 'red' }}>&nbsp;*</span>
-                                            </Typography>
-                                            <div style={{ flex: 1 }}></div>
-                                            {selectedChatModel?.name && (
-                                                <Button
-                                                    title='Generate instructions using model'
-                                                    sx={{ borderRadius: 20 }}
-                                                    size='small'
-                                                    variant='text'
-                                                    onClick={() => generateInstruction(customAssistantInstruction)}
-                                                    startIcon={<IconWand size={20} />}
-                                                >
-                                                    Generate
-                                                </Button>
-                                            )}
-                                        </Stack>
-                                        <OutlinedInput
-                                            sx={{ mt: 1, width: '100%' }}
-                                            type={'text'}
-                                            multiline={true}
-                                            rows={6}
-                                            value={customAssistantInstruction}
-                                            onChange={(event) => setCustomAssistantInstruction(event.target.value)}
-                                        />
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            p: 2,
-                                            mt: 1,
-                                            mb: 1,
-                                            border: 1,
-                                            borderColor: theme.palette.grey[900] + 25,
-                                            borderRadius: 2
-                                        }}
-                                    >
-                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                            <Typography>知识库 (Document Stores)</Typography>
-                                            <TooltipWithParser title='Give your assistant context about different document sources. Document stores must be upserted in advance.' />
-                                        </Stack>
-                                        <MultiDropdown
-                                            key={JSON.stringify(selectedDocumentStores)}
-                                            name={JSON.stringify(selectedDocumentStores)}
-                                            options={documentStoreOptions ?? []}
-                                            onSelect={(newValue) => {
-                                                if (!newValue) {
-                                                    setSelectedDocumentStores([])
-                                                } else {
-                                                    onDocStoreItemSelected(newValue)
-                                                }
-                                            }}
-                                            value={selectedDocumentStores.map((ds) => ds.id) ?? 'choose an option'}
-                                        />
-                                        {selectedDocumentStores.length > 0 && (
-                                            <Stack sx={{ mt: 3, position: 'relative', alignItems: 'center' }} direction='row'>
-                                                <Typography>
-                                                    Describe Knowledge<span style={{ color: 'red' }}>&nbsp;*</span>
-                                                </Typography>
-                                                <TooltipWithParser title='Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information' />
-                                            </Stack>
+
+                                        {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
+                                            <Box
+                                                sx={{
+                                                    p: 0,
+                                                    mt: 1,
+                                                    mb: 1,
+                                                    border: 1,
+                                                    borderColor: theme.palette.grey[900] + 25,
+                                                    borderRadius: 2
+                                                }}
+                                            >
+                                                {(selectedChatModel.inputParams ?? [])
+                                                    .filter((inputParam) => !inputParam.hidden)
+                                                    .map((inputParam, index) => (
+                                                        <DocStoreInputHandler
+                                                            key={index}
+                                                            inputParam={inputParam}
+                                                            data={selectedChatModel}
+                                                        />
+                                                    ))}
+                                            </Box>
                                         )}
-                                        {selectedDocumentStores.map((ds, index) => {
-                                            return (
-                                                <Box sx={{ mt: 1, mb: 2 }} key={index}>
-                                                    <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                                        <div
-                                                            style={{
-                                                                display: 'flex',
-                                                                flexDirection: 'row',
-                                                                alignItems: 'center',
-                                                                width: 'max-content',
-                                                                height: 'max-content',
-                                                                borderRadius: 15,
-                                                                background: 'rgb(254,252,191)',
-                                                                paddingLeft: 15,
-                                                                paddingRight: 15,
-                                                                paddingTop: 5,
-                                                                paddingBottom: 5,
-                                                                marginRight: 10,
-                                                                marginBottom: 10
-                                                            }}
-                                                        >
-                                                            <span style={{ color: 'rgb(116,66,16)', marginRight: 10 }}>{ds.name}</span>
-                                                            <IconButton
-                                                                sx={{ height: 15, width: 15, p: 0 }}
-                                                                onClick={() => onDocStoreItemDelete(ds.id)}
-                                                            >
-                                                                <IconX />
-                                                            </IconButton>
-                                                        </div>
-                                                        <div style={{ flex: 1 }}></div>
-                                                        {selectedChatModel?.name && (
-                                                            <Button
-                                                                title='Generate description using model'
-                                                                sx={{ borderRadius: 20 }}
-                                                                size='small'
-                                                                variant='text'
-                                                                onClick={() => generateDocStoreToolDesc(ds.id)}
-                                                                startIcon={<IconWand size={20} />}
-                                                            >
-                                                                Generate
-                                                            </Button>
-                                                        )}
-                                                    </Stack>
-                                                    <OutlinedInput
-                                                        sx={{ mt: 1, width: '100%' }}
-                                                        type={'text'}
-                                                        multiline={true}
-                                                        rows={3}
-                                                        value={ds.description}
-                                                        onChange={(event) => {
-                                                            const newSelectedDocumentStores = [...selectedDocumentStores]
-                                                            newSelectedDocumentStores[index].description = event.target.value
-                                                            setSelectedDocumentStores(newSelectedDocumentStores)
-                                                        }}
-                                                    />
-                                                </Box>
-                                            )
-                                        })}
-                                    </Box>
-                                    {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
-                                        <Box
-                                            sx={{
-                                                p: 0,
-                                                mt: 1,
-                                                mb: 1,
-                                                border: 1,
-                                                borderColor: theme.palette.grey[900] + 25,
-                                                borderRadius: 2
-                                            }}
-                                        >
-                                            {(selectedChatModel.inputParams ?? [])
-                                                .filter((inputParam) => !inputParam.hidden)
-                                                .map((inputParam, index) => (
-                                                    <DocStoreInputHandler key={index} inputParam={inputParam} data={selectedChatModel} />
-                                                ))}
+
+                                        <Stack sx={{ position: 'relative' }} direction='row'></Stack>
+                                        <Box className='mt-4'>
+                                            <Box className='flex'>
+                                                <Typography>
+                                                    指令<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                </Typography>
+                                                <div style={{ flex: 1 }}></div>
+                                                {selectedChatModel?.name && (
+                                                    <Button
+                                                        title='Generate instructions using model'
+                                                        sx={{ borderRadius: 20 }}
+                                                        size='small'
+                                                        variant='text'
+                                                        onClick={() => generateInstruction(customAssistantInstruction)}
+                                                        startIcon={<IconWand size={20} />}
+                                                    >
+                                                        Generate
+                                                    </Button>
+                                                )}
+                                            </Box>
+                                            <OutlinedInput
+                                                sx={{ width: '100%' }}
+                                                type={'text'}
+                                                multiline={true}
+                                                rows={6}
+                                                value={customAssistantInstruction}
+                                                onChange={(event) => setCustomAssistantInstruction(event.target.value)}
+                                            />
                                         </Box>
-                                    )}
-                                    <Box
-                                        sx={{
-                                            p: 2,
-                                            mt: 1,
-                                            mb: 1,
-                                            border: 1,
-                                            borderColor: theme.palette.grey[900] + 25,
-                                            borderRadius: 2
-                                        }}
-                                    >
-                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                            <Typography>使用工具</Typography>
-                                            <TooltipWithParser title='Tools are actions that your assistant can perform' />
-                                        </Stack>
-                                        {selectedTools.map((tool, index) => {
-                                            return (
-                                                <Box
-                                                    sx={{
-                                                        border: 1,
-                                                        borderColor: theme.palette.grey[900] + 25,
-                                                        borderRadius: 2,
-                                                        mt: 2,
-                                                        mb: 2
-                                                    }}
-                                                    key={index}
-                                                >
-                                                    <Box sx={{ pl: 2, pr: 2, pt: 2, pb: 0 }}>
-                                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                            <Typography>
-                                                                工具<span style={{ color: 'red' }}>&nbsp;*</span>
-                                                            </Typography>
-                                                            <div style={{ flex: 1 }}></div>
-                                                            <IconButton
-                                                                color='error'
-                                                                sx={{ height: 15, width: 15, p: 0 }}
-                                                                onClick={() => {
-                                                                    const newSelectedTools = selectedTools.filter((t, i) => i !== index)
-                                                                    setSelectedTools(newSelectedTools)
+
+                                        <Box className='mt-4'>
+                                            <Box className='flex'>
+                                                <Typography>知识库 (Document Stores)</Typography>
+                                                <TooltipWithParser title='Give your assistant context about different document sources. Document stores must be upserted in advance.' />
+                                            </Box>
+                                            <MultiDropdown
+                                                key={JSON.stringify(selectedDocumentStores)}
+                                                name={JSON.stringify(selectedDocumentStores)}
+                                                options={documentStoreOptions ?? []}
+                                                onSelect={(newValue) => {
+                                                    if (!newValue) {
+                                                        setSelectedDocumentStores([])
+                                                    } else {
+                                                        onDocStoreItemSelected(newValue)
+                                                    }
+                                                }}
+                                                value={selectedDocumentStores.map((ds) => ds.id) ?? 'choose an option'}
+                                            />
+                                            {selectedDocumentStores.length > 0 && (
+                                                <Stack sx={{ mt: 3, position: 'relative', alignItems: 'center' }} direction='row'>
+                                                    <Typography>
+                                                        Describe Knowledge<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                    </Typography>
+                                                    <TooltipWithParser title='Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information' />
+                                                </Stack>
+                                            )}
+                                            {selectedDocumentStores.map((ds, index) => {
+                                                return (
+                                                    <Box sx={{ mt: 1, mb: 2 }} key={index}>
+                                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
+                                                            <div
+                                                                style={{
+                                                                    display: 'flex',
+                                                                    flexDirection: 'row',
+                                                                    alignItems: 'center',
+                                                                    width: 'max-content',
+                                                                    height: 'max-content',
+                                                                    borderRadius: 15,
+                                                                    background: 'rgb(254,252,191)',
+                                                                    paddingLeft: 15,
+                                                                    paddingRight: 15,
+                                                                    paddingTop: 5,
+                                                                    paddingBottom: 5,
+                                                                    marginRight: 10,
+                                                                    marginBottom: 10
                                                                 }}
                                                             >
-                                                                <IconTrash />
-                                                            </IconButton>
-                                                        </div>
-                                                        <Dropdown
-                                                            key={JSON.stringify(tool)}
-                                                            name={tool.name}
-                                                            options={toolOptions ?? []}
-                                                            onSelect={(newValue) => {
-                                                                if (!newValue) {
-                                                                    const newSelectedTools = [...selectedTools]
-                                                                    newSelectedTools[index] = {}
-                                                                    setSelectedTools(newSelectedTools)
-                                                                } else {
-                                                                    const foundToolComponent = toolComponents.find(
-                                                                        (tool) => tool.name === newValue
-                                                                    )
-                                                                    if (foundToolComponent) {
-                                                                        const toolId = `${foundToolComponent.name}_${index}`
-                                                                        const clonedComponent = cloneDeep(foundToolComponent)
-                                                                        const initToolData = initNode(clonedComponent, toolId)
-                                                                        const newSelectedTools = [...selectedTools]
-                                                                        newSelectedTools[index] = initToolData
-                                                                        setSelectedTools(newSelectedTools)
-                                                                    }
-                                                                }
+                                                                <span style={{ color: 'rgb(116,66,16)', marginRight: 10 }}>{ds.name}</span>
+                                                                <IconButton
+                                                                    sx={{ height: 15, width: 15, p: 0 }}
+                                                                    onClick={() => onDocStoreItemDelete(ds.id)}
+                                                                >
+                                                                    <IconX />
+                                                                </IconButton>
+                                                            </div>
+                                                            <div style={{ flex: 1 }}></div>
+                                                            {selectedChatModel?.name && (
+                                                                <Button
+                                                                    title='Generate description using model'
+                                                                    sx={{ borderRadius: 20 }}
+                                                                    size='small'
+                                                                    variant='text'
+                                                                    onClick={() => generateDocStoreToolDesc(ds.id)}
+                                                                    startIcon={<IconWand size={20} />}
+                                                                >
+                                                                    Generate
+                                                                </Button>
+                                                            )}
+                                                        </Stack>
+                                                        <OutlinedInput
+                                                            sx={{ mt: 1, width: '100%' }}
+                                                            type={'text'}
+                                                            multiline={true}
+                                                            rows={3}
+                                                            value={ds.description}
+                                                            onChange={(event) => {
+                                                                const newSelectedDocumentStores = [...selectedDocumentStores]
+                                                                newSelectedDocumentStores[index].description = event.target.value
+                                                                setSelectedDocumentStores(newSelectedDocumentStores)
                                                             }}
-                                                            value={tool?.name || 'choose an option'}
                                                         />
                                                     </Box>
-                                                    {tool && Object.keys(tool).length === 0 && <Box sx={{ pl: 2, pr: 2, pt: 0, pb: 2 }} />}
-                                                    {tool && Object.keys(tool).length > 0 && (
+                                                )
+                                            })}
+                                        </Box>
+
+                                        <Box className='mt-4'>
+                                            <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
+                                                <Typography>使用工具</Typography>
+                                                <TooltipWithParser title='Tools are actions that your assistant can perform' />
+                                            </Stack>
+                                            {selectedTools.map((tool, index) => {
+                                                return (
+                                                    <Box
+                                                        sx={{
+                                                            border: 1,
+                                                            borderColor: theme.palette.grey[900] + 25,
+                                                            borderRadius: 2
+                                                        }}
+                                                        className='p-4 mt-2'
+                                                        key={index}
+                                                    >
+                                                        <Box>
+                                                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                                <Typography>
+                                                                    工具<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                                </Typography>
+                                                                <div style={{ flex: 1 }}></div>
+                                                                <IconButton
+                                                                    color='error'
+                                                                    sx={{ height: 15, width: 15, p: 0 }}
+                                                                    onClick={() => {
+                                                                        const newSelectedTools = selectedTools.filter((t, i) => i !== index)
+                                                                        setSelectedTools(newSelectedTools)
+                                                                    }}
+                                                                >
+                                                                    <IconTrash />
+                                                                </IconButton>
+                                                            </div>
+                                                            <Dropdown
+                                                                key={JSON.stringify(tool)}
+                                                                name={tool.name}
+                                                                options={toolOptions ?? []}
+                                                                onSelect={(newValue) => {
+                                                                    if (!newValue) {
+                                                                        const newSelectedTools = [...selectedTools]
+                                                                        newSelectedTools[index] = {}
+                                                                        setSelectedTools(newSelectedTools)
+                                                                    } else {
+                                                                        const foundToolComponent = toolComponents.find(
+                                                                            (tool) => tool.name === newValue
+                                                                        )
+                                                                        if (foundToolComponent) {
+                                                                            const toolId = `${foundToolComponent.name}_${index}`
+                                                                            const clonedComponent = cloneDeep(foundToolComponent)
+                                                                            const initToolData = initNode(clonedComponent, toolId)
+                                                                            const newSelectedTools = [...selectedTools]
+                                                                            newSelectedTools[index] = initToolData
+                                                                            setSelectedTools(newSelectedTools)
+                                                                        }
+                                                                    }
+                                                                }}
+                                                                value={tool?.name || 'choose an option'}
+                                                            />
+                                                        </Box>
+                                                        {tool && Object.keys(tool).length > 0 && (
+                                                            <Box
+                                                                sx={{
+                                                                    p: 0,
+                                                                    mt: 2,
+                                                                    mb: 1
+                                                                }}
+                                                            >
+                                                                {(tool.inputParams ?? [])
+                                                                    .filter((inputParam) => !inputParam.hidden)
+                                                                    .map((inputParam, index) => (
+                                                                        <DocStoreInputHandler
+                                                                            key={index}
+                                                                            inputParam={inputParam}
+                                                                            data={tool}
+                                                                        />
+                                                                    ))}
+                                                            </Box>
+                                                        )}
                                                         <Box
                                                             sx={{
                                                                 p: 0,
@@ -1168,35 +1170,36 @@ const CustomAssistantConfigurePreview = () => {
                                                                 mb: 1
                                                             }}
                                                         >
-                                                            {(tool.inputParams ?? [])
-                                                                .filter((inputParam) => !inputParam.hidden)
-                                                                .map((inputParam, index) => (
-                                                                    <DocStoreInputHandler key={index} inputParam={inputParam} data={tool} />
-                                                                ))}
+                                                            <Button
+                                                                title='Add Tool'
+                                                                variant='outlined'
+                                                                onClick={() => setSelectedTools([...selectedTools, {}])}
+                                                            >
+                                                                添加工具
+                                                            </Button>
                                                         </Box>
-                                                    )}
-                                                </Box>
-                                            )
-                                        })}
-                                        <Button
-                                            fullWidth
-                                            title='Add Tool'
-                                            variant='outlined'
-                                            onClick={() => setSelectedTools([...selectedTools, {}])}
-                                        >
-                                            添加工具
-                                        </Button>
-                                    </Box>
-                                    {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
-                                        <Button fullWidth title='Save Assistant' variant='contained' onClick={onSaveAndProcess}>
-                                            保存
-                                        </Button>
-                                    )}
+                                                    </Box>
+                                                )
+                                            })}
+                                        </Box>
+
+                                        {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
+                                            <Button
+                                                className='mt-4'
+                                                fullWidth
+                                                title='Save Assistant'
+                                                variant='contained'
+                                                onClick={onSaveAndProcess}
+                                            >
+                                                保存
+                                            </Button>
+                                        )}
+                                    </CardWrapper>
                                 </div>
                             </Grid>
                             {customAssistantFlowId && !loadingAssistant && (
                                 <Grid item xs={12} md={6} lg={6} sm={6}>
-                                    <Box sx={{ mt: 2 }}>
+                                    <Box sx={{ mt: 8 }}>
                                         {customization.isDarkMode && (
                                             <MemoizedFullPageChat
                                                 chatflowid={customAssistantFlowId}
