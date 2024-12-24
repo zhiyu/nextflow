@@ -617,7 +617,7 @@ const CustomAssistantConfigurePreview = () => {
 
     const onAPIDialogClick = () => {
         setAPIDialogProps({
-            title: 'Embed in website or use as API',
+            title: '发布到网站或通过API访问',
             chatflowid: customAssistantFlowId,
             chatflowApiKeyId: canvas.chatflow.apikeyid,
             isSessionMemory: true
