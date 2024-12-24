@@ -61,7 +61,7 @@ export const FlowListTable = ({ data, images, isLoading, filterFunction, updateF
 
     return (
         <>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} className='py-4'>
                 <Table sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>

@@ -21,7 +21,7 @@ export const ToolsTable = ({ data, isLoading, onSelect }) => {
     const theme = useTheme()
     return (
         <>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} className='py-4'>
                 <Table sx={{ minWidth: 650 }}>
                     <TableHead>
                         <TableRow>

@@ -5,7 +5,7 @@ import { TooltipWithParser } from '@/ui-component/tooltip/TooltipWithParser'
 export const TableViewOnly = ({ columns, rows, sx }) => {
     return (
         <>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} className='py-4'>
                 <Table sx={{ ...sx }} aria-label='simple table'>
                     <TableHead>
                         <TableRow>

@@ -200,7 +200,7 @@ const Documents = () => {
                             )}
                         </>
                     ) : (
-                        <TableContainer component={Paper}>
+                        <TableContainer component={Paper} className='py-4'>
                             <Table aria-label='documents table'>
                                 <TableHead>
                                     <TableRow>

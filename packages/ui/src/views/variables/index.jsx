@@ -199,7 +199,7 @@ const Variables = () => {
                             <div>No Variables Yet</div>
                         </Stack>
                     ) : (
-                        <TableContainer component={Paper}>
+                        <TableContainer component={Paper} className='py-4'>
                             <Table sx={{ minWidth: 650 }}>
                                 <TableHead>
                                     <TableRow>

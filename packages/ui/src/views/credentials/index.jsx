@@ -223,7 +223,7 @@ const Credentials = () => {
                             <div>No Credentials Yet</div>
                         </Stack>
                     ) : (
-                        <TableContainer component={Paper}>
+                        <TableContainer component={Paper} className='py-4'>
                             <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                                 <TableHead>
                                     <TableRow>

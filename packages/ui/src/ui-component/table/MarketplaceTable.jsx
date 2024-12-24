@@ -39,7 +39,7 @@ export const MarketplaceTable = ({
 
     return (
         <>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} className='py-4'>
                 <Table sx={{ minWidth: 650 }} aria-label='a dense table'>
                     <TableHead>
                         <TableRow>

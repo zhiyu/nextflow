@@ -367,7 +367,7 @@ const APIKey = () => {
                             <div>No API Keys Yet</div>
                         </Stack>
                     ) : (
-                        <TableContainer component={Paper}>
+                        <TableContainer component={Paper} className='py-4'>
                             <Table aria-label='simple table'>
                                 <TableHead>
                                     <TableRow>
