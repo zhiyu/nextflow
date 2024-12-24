@@ -1,6 +1,6 @@
 {
     "name": "print_or_export_text_document",
-    "description": "Print or export text content to various formats. Supported `inType` values include md, html, and fountain, while supported `outType` values include pdf, epub, zip, and docx. The default `inType` is md, and the default `outType` is pdf. Provide a concise file name for the document in the `name` field. Once the print or export process is initiated, a JSON response will be returned.",
+    "description": "将文本内容打印或导出为各种格式。支持的“inType”值包括md、html和founder，而支持的“outType”值则包括pdf、epub、zip和docx。默认的`inType`是md，默认的`outType`是pdf。在“名称”字段中为文档提供简洁的文件名。一旦启动打印或导出过程，将返回JSON响应。",
     "color": "linear-gradient(rgb(166,129,168), rgb(132,109,140))",
     "iconSrc": "https://raw.githubusercontent.com/JotterPad/.github/refs/heads/main/jotterpad.svg",
     "schema": "[{\"id\":0,\"property\":\"inType\",\"description\":\"Input type of the document: md, html, fountain\",\"type\":\"string\",\"required\":false},{\"id\":1,\"property\":\"outType\",\"description\":\"Output type of the document: pdf, epub, zip, docx\",\"type\":\"string\",\"required\":false},{\"id\":2,\"property\":\"input\",\"description\":\"Input content of the document.\",\"type\":\"string\",\"required\":false},{\"id\":3,\"property\":\"metadata\",\"description\":\"Metadata of document in JSON string.\",\"type\":\"string\",\"required\":false},{\"id\":4,\"property\":\"name\",\"description\":\"Short title or name of the document.\",\"type\":\"string\",\"required\":false}]",
