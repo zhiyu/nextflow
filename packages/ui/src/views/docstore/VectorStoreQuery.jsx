@@ -243,233 +243,217 @@ const VectorStoreQuery = () => {
 
     return (
         <>
-            <MainCard style={{ position: 'relative' }}>
-                <Stack flexDirection='column' sx={{ gap: 1 }}>
-                    <ViewHeader
-                        isBackButton={true}
-                        search={false}
-                        title={documentStore?.name || 'Document Store'}
-                        description='Retrieval Playground - Test your vector store retrieval settings'
-                        onBack={() => navigate(-1)}
-                    >
-                        <Button
-                            variant='outlined'
-                            color='primary'
-                            sx={{ borderRadius: 2, height: '100%' }}
-                            startIcon={<IconDeviceFloppy />}
-                            onClick={saveConfig}
-                        >
-                            Save Config
-                        </Button>
-                    </ViewHeader>
-                    <div style={{ width: '100%' }}></div>
-                    <div>
-                        <Grid container spacing={2}>
-                            <Grid sx={{ ml: 1, mr: 1 }} item xs={12} sm={12} md={12} lg={12}>
-                                <Box>
-                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <Typography variant='overline'>
-                                            Enter your Query<span style={{ color: 'red' }}>&nbsp;*</span>
-                                        </Typography>
+            <Stack flexDirection='column' sx={{ gap: 1 }}>
+                <ViewHeader
+                    isBackButton={true}
+                    search={false}
+                    title={documentStore?.name || 'Document Store'}
+                    description='向量存储查询参数测试'
+                    onBack={() => navigate(-1)}
+                >
+                    <Button variant='contained' color='primary' startIcon={<IconDeviceFloppy size='1.2rem' />} onClick={saveConfig}>
+                        保存配置
+                    </Button>
+                </ViewHeader>
+                <div style={{ width: '100%' }}></div>
+                <div>
+                    <Grid container spacing={2}>
+                        <Grid sx={{ ml: 1, mr: 1 }} item xs={12} sm={12} md={12} lg={12}>
+                            <Box>
+                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                    <Typography variant='overline'>
+                                        输入查询<span style={{ color: 'red' }}>&nbsp;*</span>
+                                    </Typography>
 
-                                        <div style={{ flexGrow: 1 }}></div>
-                                    </div>
-                                    <OutlinedInput
-                                        size='small'
-                                        multiline={true}
-                                        rows={4}
-                                        sx={{ mt: 1 }}
-                                        type='string'
-                                        fullWidth
-                                        inputRef={inputRef}
-                                        onChange={(e) => setQuery(e.target.value)}
-                                        onKeyDown={handleEnter}
-                                        value={query ?? ''}
-                                        endAdornment={
-                                            <IconButton variant='contained' onClick={doQuery}>
-                                                <IconSearch />
-                                            </IconButton>
-                                        }
-                                    />
-                                </Box>
-                            </Grid>
-                            <Grid sx={{ ml: 1, mr: 1, mt: 1 }} container spacing={1}>
-                                <Grid item xs={12} sm={4} md={4}>
-                                    <Box>
-                                        <Grid container spacing='2'>
-                                            <Grid item xs={12} md={12} lg={12} sm={12}>
-                                                <div
-                                                    style={{
+                                    <div style={{ flexGrow: 1 }}></div>
+                                </div>
+                                <OutlinedInput
+                                    size='small'
+                                    multiline={true}
+                                    rows={4}
+                                    sx={{ mt: 1 }}
+                                    type='string'
+                                    fullWidth
+                                    inputRef={inputRef}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    onKeyDown={handleEnter}
+                                    value={query ?? ''}
+                                    endAdornment={
+                                        <IconButton variant='contained' onClick={doQuery}>
+                                            <IconSearch />
+                                        </IconButton>
+                                    }
+                                />
+                            </Box>
+                        </Grid>
+                        <Grid sx={{ ml: 1, mr: 1, mt: 1 }} container spacing={1}>
+                            <Grid item xs={12} sm={4} md={4}>
+                                <Box>
+                                    <Grid container spacing='2'>
+                                        <Grid item xs={12} md={12} lg={12} sm={12}>
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    paddingRight: 15,
+                                                    paddingTop: 5
+                                                }}
+                                            >
+                                                <Box
+                                                    sx={{
                                                         display: 'flex',
-                                                        flexDirection: 'column',
-                                                        paddingRight: 15,
-                                                        paddingTop: 5
+                                                        alignItems: 'center',
+                                                        flexDirection: 'row',
+                                                        p: 1
                                                     }}
                                                 >
-                                                    <Box
-                                                        sx={{
+                                                    <div
+                                                        style={{
+                                                            width: 32,
+                                                            height: 32,
                                                             display: 'flex',
                                                             alignItems: 'center',
-                                                            flexDirection: 'row',
-                                                            p: 1
+                                                            justifyContent: 'center'
                                                         }}
                                                     >
-                                                        <div
-                                                            style={{
-                                                                width: 40,
-                                                                height: 40,
-                                                                borderRadius: '50%',
-                                                                backgroundColor: 'white',
-                                                                display: 'flex',
-                                                                alignItems: 'center',
-                                                                justifyContent: 'center',
-                                                                boxShadow: '0 2px 14px 0 rgb(32 40 45 / 25%)'
-                                                            }}
-                                                        >
-                                                            {selectedVectorStoreProvider.label ? (
-                                                                <img
-                                                                    style={{
-                                                                        width: '100%',
-                                                                        height: '100%',
-                                                                        padding: 7,
-                                                                        borderRadius: '50%',
-                                                                        objectFit: 'contain'
-                                                                    }}
-                                                                    alt={selectedVectorStoreProvider.label ?? 'embeddings'}
-                                                                    src={`${baseURL}/api/v1/node-icon/${selectedVectorStoreProvider?.name}`}
-                                                                />
-                                                            ) : (
-                                                                <Embeddings color='black' />
-                                                            )}
-                                                        </div>
-                                                        <Typography sx={{ ml: 2 }} variant='h3'>
-                                                            {selectedVectorStoreProvider.label}
-                                                        </Typography>
-                                                        <div style={{ flex: 1 }}></div>
-                                                    </Box>
-                                                    {selectedVectorStoreProvider &&
-                                                        Object.keys(selectedVectorStoreProvider).length > 0 &&
-                                                        (selectedVectorStoreProvider.inputParams ?? [])
-                                                            .filter((inputParam) => !inputParam.hidden)
-                                                            .map((inputParam, index) => (
-                                                                <DocStoreInputHandler
-                                                                    key={index}
-                                                                    data={selectedVectorStoreProvider}
-                                                                    inputParam={inputParam}
-                                                                    isAdditionalParams={inputParam.additionalParams}
-                                                                />
-                                                            ))}
-                                                </div>
-                                            </Grid>
+                                                        {selectedVectorStoreProvider.label ? (
+                                                            <img
+                                                                style={{
+                                                                    width: '100%',
+                                                                    height: '100%',
+                                                                    padding: 7,
+                                                                    borderRadius: '50%',
+                                                                    objectFit: 'contain'
+                                                                }}
+                                                                alt={selectedVectorStoreProvider.label ?? 'embeddings'}
+                                                                src={`${baseURL}/api/v1/node-icon/${selectedVectorStoreProvider?.name}`}
+                                                            />
+                                                        ) : (
+                                                            <Embeddings color='black' />
+                                                        )}
+                                                    </div>
+                                                    <Typography variant='h5'>{selectedVectorStoreProvider.label}</Typography>
+                                                    <div style={{ flex: 1 }}></div>
+                                                </Box>
+                                                {selectedVectorStoreProvider &&
+                                                    Object.keys(selectedVectorStoreProvider).length > 0 &&
+                                                    (selectedVectorStoreProvider.inputParams ?? [])
+                                                        .filter((inputParam) => !inputParam.hidden)
+                                                        .map((inputParam, index) => (
+                                                            <DocStoreInputHandler
+                                                                key={index}
+                                                                data={selectedVectorStoreProvider}
+                                                                inputParam={inputParam}
+                                                                isAdditionalParams={inputParam.additionalParams}
+                                                            />
+                                                        ))}
+                                            </div>
                                         </Grid>
-                                    </Box>
-                                </Grid>
-                                <Grid item xs={12} sm={8} md={8}>
-                                    <Box
-                                        sx={{
+                                    </Grid>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} sm={8} md={8}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        flexDirection: 'row',
+                                        p: 1,
+                                        paddingTop: 2,
+                                        marginBottom: 4
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            width: 32,
+                                            height: 32,
                                             display: 'flex',
                                             alignItems: 'center',
-                                            flexDirection: 'row',
-                                            p: 1,
-                                            paddingTop: 2,
-                                            marginBottom: 4
+                                            justifyContent: 'center'
                                         }}
                                     >
-                                        <div
+                                        <IconFileStack
                                             style={{
-                                                width: 40,
-                                                height: 40,
+                                                width: '100%',
+                                                height: '100%',
+                                                padding: 7,
                                                 borderRadius: '50%',
-                                                backgroundColor: 'white',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                boxShadow: '0 2px 14px 0 rgb(32 40 45 / 25%)'
+                                                objectFit: 'contain'
                                             }}
-                                        >
-                                            <IconFileStack
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    padding: 7,
-                                                    borderRadius: '50%',
-                                                    objectFit: 'contain'
-                                                }}
+                                        />
+                                    </div>
+                                    <Typography variant='h5'>
+                                        检索结果
+                                        {timeTaken > -1 && (
+                                            <Typography variant='body2' sx={{ color: 'gray' }}>
+                                                Count: {documentChunks.length}. Time taken: {timeTaken} millis.
+                                            </Typography>
+                                        )}
+                                        {retrievalError && (
+                                            <Typography variant='body2' sx={{ color: 'gray' }}>
+                                                {retrievalError}
+                                            </Typography>
+                                        )}
+                                    </Typography>
+                                    <div style={{ flex: 1 }}></div>
+                                </Box>
+                                {!documentChunks.length && (
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                            width: '100%'
+                                        }}
+                                    >
+                                        <Box sx={{ mt: 5, p: 2, height: 'auto' }}>
+                                            <img
+                                                style={{ objectFit: 'cover', height: '16vh', width: 'auto' }}
+                                                src={chunks_emptySVG}
+                                                alt='chunks_emptySVG'
                                             />
-                                        </div>
-                                        <Typography sx={{ ml: 2 }} variant='h3'>
-                                            Retrieved Documents
-                                            {timeTaken > -1 && (
-                                                <Typography variant='body2' sx={{ color: 'gray' }}>
-                                                    Count: {documentChunks.length}. Time taken: {timeTaken} millis.
-                                                </Typography>
-                                            )}
-                                            {retrievalError && (
-                                                <Typography variant='body2' sx={{ color: 'gray' }}>
-                                                    {retrievalError}
-                                                </Typography>
-                                            )}
-                                        </Typography>
-                                        <div style={{ flex: 1 }}></div>
-                                    </Box>
-                                    {!documentChunks.length && (
-                                        <div
-                                            style={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                alignItems: 'center',
-                                                width: '100%'
-                                            }}
-                                        >
-                                            <Box sx={{ mt: 5, p: 2, height: 'auto' }}>
-                                                <img
-                                                    style={{ objectFit: 'cover', height: '16vh', width: 'auto' }}
-                                                    src={chunks_emptySVG}
-                                                    alt='chunks_emptySVG'
-                                                />
-                                            </Box>
-                                            <div>No Documents Retrieved</div>
-                                        </div>
-                                    )}
-                                    <Grid container spacing={2}>
-                                        {documentChunks?.length > 0 &&
-                                            documentChunks.map((row, index) => (
-                                                <Grid item lg={6} md={6} sm={6} xs={6} key={index}>
-                                                    <CardWrapper
-                                                        content={false}
-                                                        onClick={() => chunkSelected(row.id, row.chunkNo)}
-                                                        sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
-                                                    >
-                                                        <Card>
-                                                            <CardContent sx={{ p: 2 }}>
-                                                                <Typography sx={{ wordWrap: 'break-word', mb: 1 }} variant='h5'>
-                                                                    {`#${row.chunkNo}. Characters: ${row.pageContent.length}`}
-                                                                </Typography>
-                                                                <Typography sx={{ wordWrap: 'break-word' }} variant='body2'>
-                                                                    {row.pageContent}
-                                                                </Typography>
-                                                                <ReactJson
-                                                                    theme={customization.isDarkMode ? 'ocean' : 'rjv-default'}
-                                                                    style={{ paddingTop: 10 }}
-                                                                    src={row.metadata || {}}
-                                                                    name={null}
-                                                                    quotesOnKeys={false}
-                                                                    enableClipboard={false}
-                                                                    displayDataTypes={false}
-                                                                    collapsed={true}
-                                                                />
-                                                            </CardContent>
-                                                        </Card>
-                                                    </CardWrapper>
-                                                </Grid>
-                                            ))}
-                                    </Grid>
+                                        </Box>
+                                        <div>No Documents Retrieved</div>
+                                    </div>
+                                )}
+                                <Grid container spacing={2}>
+                                    {documentChunks?.length > 0 &&
+                                        documentChunks.map((row, index) => (
+                                            <Grid item lg={6} md={6} sm={6} xs={6} key={index}>
+                                                <CardWrapper
+                                                    content={false}
+                                                    onClick={() => chunkSelected(row.id, row.chunkNo)}
+                                                    sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}
+                                                >
+                                                    <Card>
+                                                        <CardContent sx={{ p: 2 }}>
+                                                            <Typography sx={{ wordWrap: 'break-word', mb: 1 }} variant='h5'>
+                                                                {`#${row.chunkNo}. Characters: ${row.pageContent.length}`}
+                                                            </Typography>
+                                                            <Typography sx={{ wordWrap: 'break-word' }} variant='body2'>
+                                                                {row.pageContent}
+                                                            </Typography>
+                                                            <ReactJson
+                                                                theme={customization.isDarkMode ? 'ocean' : 'rjv-default'}
+                                                                style={{ paddingTop: 10 }}
+                                                                src={row.metadata || {}}
+                                                                name={null}
+                                                                quotesOnKeys={false}
+                                                                enableClipboard={false}
+                                                                displayDataTypes={false}
+                                                                collapsed={true}
+                                                            />
+                                                        </CardContent>
+                                                    </Card>
+                                                </CardWrapper>
+                                            </Grid>
+                                        ))}
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </div>
-                </Stack>
-            </MainCard>
+                    </Grid>
+                </div>
+            </Stack>
             <ConfirmDialog />
             <ExpandedChunkDialog
                 show={showExpandedChunkDialog}
