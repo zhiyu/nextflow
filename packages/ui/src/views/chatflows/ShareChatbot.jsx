@@ -115,8 +115,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             userMessage: {
                 showAvatar: false
             },
-            textInput: {},
-            overrideConfig: {}
+            textInput: {}
         }
 
         if (buttonBackgroundColor) obj.button.backgroundColor = buttonBackgroundColor
@@ -143,15 +142,13 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
         if (textInputPlaceholder) obj.textInput.placeholder = textInputPlaceholder
         if (textInputSendButtonColor) obj.textInput.sendButtonColor = textInputSendButtonColor
 
-        if (isSessionMemory) obj.overrideConfig.generateNewSession = generateNewSession
+        if (isSessionMemory) obj.generateNewSession = generateNewSession
 
         if (renderHTML) {
             obj.renderHTML = true
         } else {
             obj.renderHTML = false
         }
-
-        if (chatbotConfig?.starterPrompts) obj.starterPrompts = chatbotConfig.starterPrompts
 
         if (isAgentCanvas) {
             // if showAgentMessages is undefined, default to true
@@ -162,7 +159,10 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             }
         }
 
-        return obj
+        return {
+            ...chatbotConfig,
+            ...obj
+        }
     }
 
     const onSave = async () => {
@@ -460,8 +460,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             {colorField(backgroundColor, 'backgroundColor', '背景颜色')}
             {textField(fontSize, 'fontSize', '字体大小', 'number')}
             {colorField(poweredByTextColor, 'poweredByTextColor', 'PoweredBy 文本颜色')}
-            {booleanField(showAgentMessages, 'showAgentMessages', '显示智能体响应信息')}
-
+            {isAgentCanvas && booleanField(showAgentMessages, 'showAgentMessages', 'Show Agent Reasoning')}
             {/*BOT Message*/}
             <Typography variant='h4' sx={{ mb: 1, mt: 2 }}>
                 智能体消息

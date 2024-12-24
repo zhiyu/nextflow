@@ -46,7 +46,6 @@ import { initNode } from '@/utils/genericHelper'
 import useNotifier from '@/utils/useNotifier'
 import { toolAgentFlow } from './toolAgentFlow'
 
-// icons
 import { PiArrowLeftLight } from 'react-icons/pi'
 
 // ===========================|| CustomAssistantConfigurePreview ||=========================== //
@@ -324,7 +323,7 @@ const CustomAssistantConfigurePreview = () => {
                 const docStoreOption = documentStoreOptions.find((ds) => ds.name === selectedDocumentStores[i].id)
                 // convert to small case and replace space with underscore
                 const name = (docStoreOption?.label || '').toLowerCase().replace(/ /g, '_')
-                const desc = docStoreOption?.description || ''
+                const desc = selectedDocumentStores[i].description || docStoreOption?.description || ''
 
                 set(retrieverToolNodeData, 'inputs', {
                     name,
@@ -479,7 +478,7 @@ const CustomAssistantConfigurePreview = () => {
             setViewMessagesDialogOpen(true)
         } else if (setting === 'viewLeads') {
             setViewLeadsDialogProps({
-                title: '潜在客户',
+                title: 'View Leads',
                 chatflow: canvas.chatflow
             })
             setViewLeadsDialogOpen(true)
@@ -767,9 +766,9 @@ const CustomAssistantConfigurePreview = () => {
 
     const defaultWidth = () => {
         if (customAssistantFlowId && !loadingAssistant) {
-            return 240
+            return 6
         }
-        return 240
+        return 12
     }
 
     const pageHeight = () => {
@@ -783,372 +782,421 @@ const CustomAssistantConfigurePreview = () => {
             ) : (
                 <Stack flexDirection='column'>
                     <Box>
-                        <Box sx={{ width: '100%' }}>
-                            <Toolbar
-                                disableGutters={true}
-                                sx={{
-                                    p: 0,
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    width: '100%'
-                                }}
-                            >
-                                <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-                                    <StyledFab
-                                        className='h-6 w-9 shadow-lg'
-                                        sx={{ mr: 3 }}
-                                        color='primary'
-                                        aria-label='back'
-                                        title='Back'
-                                        onClick={() => navigate(-1)}
-                                    >
-                                        <PiArrowLeftLight size='1.2rem' />
-                                    </StyledFab>
+                        <Grid container spacing='2'>
+                            <Grid item xs={12} md={defaultWidth()} lg={defaultWidth()} sm={defaultWidth()}>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        paddingRight: 15
+                                    }}
+                                >
+                                    <Box sx={{ flexGrow: 1, width: '100%' }}>
+                                        <Toolbar
+                                            disableGutters={true}
+                                            sx={{
+                                                p: 0,
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                width: '100%'
+                                            }}
+                                        >
+                                            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+                                                <StyledFab
+                                                    className='h-6 w-9 shadow-lg'
+                                                    sx={{ mr: 3 }}
+                                                    color='primary'
+                                                    aria-label='back'
+                                                    title='Back'
+                                                    onClick={() => navigate(-1)}
+                                                >
+                                                    <PiArrowLeftLight size='1.2rem' />
+                                                </StyledFab>
 
-                                    <Typography sx={{ ml: 0, mr: 2 }} variant='h3'>
-                                        {selectedCustomAssistant?.name ?? ''}
-                                    </Typography>
-                                </Box>
-                                <div style={{ flex: 1 }}></div>
-                                {customAssistantFlowId && !loadingAssistant && (
-                                    <ButtonBase title='API Endpoint' sx={{ borderRadius: '50%', mr: 2 }}>
-                                        <Avatar
-                                            variant='rounded'
-                                            sx={{
-                                                ...theme.typography.commonAvatar,
-                                                ...theme.typography.mediumAvatar,
-                                                transition: 'all .2s ease-in-out',
-                                                background: theme.palette.canvasHeader.deployLight,
-                                                color: theme.palette.canvasHeader.deployDark,
-                                                '&:hover': {
-                                                    background: theme.palette.canvasHeader.deployDark,
-                                                    color: theme.palette.canvasHeader.deployLight
-                                                }
-                                            }}
-                                            color='inherit'
-                                            onClick={onAPIDialogClick}
-                                        >
-                                            <IconCode stroke={1.5} size='1.3rem' />
-                                        </Avatar>
-                                    </ButtonBase>
-                                )}
-                                <ButtonBase title={`Save`} sx={{ borderRadius: '50%', mr: 2 }}>
-                                    <Avatar
-                                        variant='rounded'
-                                        sx={{
-                                            ...theme.typography.commonAvatar,
-                                            ...theme.typography.mediumAvatar,
-                                            transition: 'all .2s ease-in-out',
-                                            background: theme.palette.canvasHeader.saveLight,
-                                            color: theme.palette.canvasHeader.saveDark,
-                                            '&:hover': {
-                                                background: theme.palette.canvasHeader.saveDark,
-                                                color: theme.palette.canvasHeader.saveLight
-                                            }
-                                        }}
-                                        color='inherit'
-                                        onClick={onSaveAndProcess}
-                                    >
-                                        <IconDeviceFloppy stroke={1.5} size='1.3rem' />
-                                    </Avatar>
-                                </ButtonBase>
-                                {customAssistantFlowId && !loadingAssistant && (
-                                    <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
-                                        <Avatar
-                                            variant='rounded'
-                                            sx={{
-                                                ...theme.typography.commonAvatar,
-                                                ...theme.typography.mediumAvatar,
-                                                transition: 'all .2s ease-in-out',
-                                                background: theme.palette.canvasHeader.settingsLight,
-                                                color: theme.palette.canvasHeader.settingsDark,
-                                                '&:hover': {
-                                                    background: theme.palette.canvasHeader.settingsDark,
-                                                    color: theme.palette.canvasHeader.settingsLight
-                                                }
-                                            }}
-                                            onClick={() => setSettingsOpen(!isSettingsOpen)}
-                                        >
-                                            <IconSettings stroke={1.5} size='1.3rem' />
-                                        </Avatar>
-                                    </ButtonBase>
-                                )}
-                                {!customAssistantFlowId && !loadingAssistant && (
-                                    <ButtonBase ref={settingsRef} title='Delete Assistant' sx={{ borderRadius: '50%' }}>
-                                        <Avatar
-                                            variant='rounded'
-                                            sx={{
-                                                ...theme.typography.commonAvatar,
-                                                ...theme.typography.mediumAvatar,
-                                                transition: 'all .2s ease-in-out',
-                                                background: theme.palette.error.light,
-                                                color: theme.palette.error.dark,
-                                                '&:hover': {
-                                                    background: theme.palette.error.dark,
-                                                    color: theme.palette.error.light
-                                                }
-                                            }}
-                                            onClick={handleDeleteFlow}
-                                        >
-                                            <IconTrash stroke={1.5} size='1.3rem' />
-                                        </Avatar>
-                                    </ButtonBase>
-                                )}
-                            </Toolbar>
-                        </Box>
-                        <Box className='flex mt-4'>
-                            <Box className='w-[32rem]'>
-                                <Box className='bg-white shadow-card p-4 rounded'>
-                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <Typography>
-                                            选择模型<span style={{ color: 'red' }}>&nbsp;*</span>
-                                        </Typography>
-                                    </div>
-                                    <Dropdown
-                                        key={JSON.stringify(selectedChatModel)}
-                                        name={'chatModel'}
-                                        options={chatModelsOptions ?? []}
-                                        onSelect={(newValue) => {
-                                            if (!newValue) {
-                                                setSelectedChatModel({})
-                                            } else {
-                                                const foundChatComponent = chatModelsComponents.find(
-                                                    (chatModel) => chatModel.name === newValue
-                                                )
-                                                if (foundChatComponent) {
-                                                    const chatModelId = `${foundChatComponent.name}_0`
-                                                    const clonedComponent = cloneDeep(foundChatComponent)
-                                                    const initChatModelData = initNode(clonedComponent, chatModelId)
-                                                    setSelectedChatModel(initChatModelData)
-                                                }
-                                            }
-                                        }}
-                                        value={selectedChatModel ? selectedChatModel?.name : 'choose an option'}
-                                    />
-                                </Box>
-                                <Box className='bg-white shadow-card p-4 rounded mt-4'>
-                                    <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                        <Typography>
-                                            指令<span style={{ color: 'red' }}>&nbsp;*</span>
-                                        </Typography>
-                                        <div style={{ flex: 1 }}></div>
-                                        {selectedChatModel?.name && (
-                                            <Button
-                                                title='Generate instructions using model'
-                                                sx={{ borderRadius: 20 }}
-                                                size='small'
-                                                variant='text'
-                                                onClick={() => generateInstruction(customAssistantInstruction)}
-                                                startIcon={<IconWand size={20} />}
-                                            >
-                                                Generate
-                                            </Button>
-                                        )}
-                                    </Stack>
-                                    <OutlinedInput
-                                        sx={{ mt: 1, width: '100%' }}
-                                        type={'text'}
-                                        multiline={true}
-                                        rows={6}
-                                        value={customAssistantInstruction}
-                                        onChange={(event) => setCustomAssistantInstruction(event.target.value)}
-                                    />
-                                </Box>
-                                <Box className='bg-white shadow-card p-4 rounded mt-4'>
-                                    <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                        <Typography>知识库 (Document Stores)</Typography>
-                                        <TooltipWithParser title='Give your assistant context about different document sources' />
-                                    </Stack>
-                                    <MultiDropdown
-                                        key={JSON.stringify(selectedDocumentStores)}
-                                        name={JSON.stringify(selectedDocumentStores)}
-                                        options={documentStoreOptions ?? []}
-                                        onSelect={(newValue) => {
-                                            if (!newValue) {
-                                                setSelectedDocumentStores([])
-                                            } else {
-                                                onDocStoreItemSelected(newValue)
-                                            }
-                                        }}
-                                        value={selectedDocumentStores.map((ds) => ds.id) ?? 'choose an option'}
-                                    />
-                                    {selectedDocumentStores.length > 0 && (
-                                        <Stack sx={{ mt: 3, position: 'relative', alignItems: 'center' }} direction='row'>
-                                            <Typography>
-                                                Describe Knowledge<span style={{ color: 'red' }}>&nbsp;*</span>
-                                            </Typography>
-                                            <TooltipWithParser title='Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information' />
-                                        </Stack>
-                                    )}
-                                    {selectedDocumentStores.map((ds, index) => {
-                                        return (
-                                            <Box sx={{ mt: 1, mb: 2 }} key={index}>
-                                                <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                                    <div
-                                                        style={{
-                                                            display: 'flex',
-                                                            flexDirection: 'row',
-                                                            alignItems: 'center',
-                                                            width: 'max-content',
-                                                            height: 'max-content',
-                                                            borderRadius: 15,
-                                                            background: 'rgb(254,252,191)',
-                                                            paddingLeft: 15,
-                                                            paddingRight: 15,
-                                                            paddingTop: 5,
-                                                            paddingBottom: 5,
-                                                            marginRight: 10,
-                                                            marginBottom: 10
-                                                        }}
-                                                    >
-                                                        <span style={{ color: 'rgb(116,66,16)', marginRight: 10 }}>{ds.name}</span>
-                                                        <IconButton
-                                                            sx={{ height: 15, width: 15, p: 0 }}
-                                                            onClick={() => onDocStoreItemDelete(ds.id)}
-                                                        >
-                                                            <IconX />
-                                                        </IconButton>
-                                                    </div>
-                                                    <div style={{ flex: 1 }}></div>
-                                                    {selectedChatModel?.name && (
-                                                        <Button
-                                                            title='Generate description using model'
-                                                            sx={{ borderRadius: 20 }}
-                                                            size='small'
-                                                            variant='text'
-                                                            onClick={() => generateDocStoreToolDesc(ds.id)}
-                                                            startIcon={<IconWand size={20} />}
-                                                        >
-                                                            Generate
-                                                        </Button>
-                                                    )}
-                                                </Stack>
-                                                <OutlinedInput
-                                                    sx={{ mt: 1, width: '100%' }}
-                                                    type={'text'}
-                                                    multiline={true}
-                                                    rows={3}
-                                                    value={ds.description}
-                                                    onChange={(event) => {
-                                                        const newSelectedDocumentStores = [...selectedDocumentStores]
-                                                        newSelectedDocumentStores[index].description = event.target.value
-                                                        setSelectedDocumentStores(newSelectedDocumentStores)
-                                                    }}
-                                                />
+                                                <Typography sx={{ ml: 2, mr: 2 }} variant='h3'>
+                                                    {selectedCustomAssistant?.name ?? ''}
+                                                </Typography>
                                             </Box>
-                                        )
-                                    })}
-                                </Box>
-                                {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
-                                    <Box className='bg-white shadow-card p-4 rounded mt-4'>
-                                        {(selectedChatModel.inputParams ?? [])
-                                            .filter((inputParam) => !inputParam.hidden)
-                                            .map((inputParam, index) => (
-                                                <DocStoreInputHandler key={index} inputParam={inputParam} data={selectedChatModel} />
-                                            ))}
-                                    </Box>
-                                )}
-                                <Box className='bg-white shadow-card p-4 rounded mt-4'>
-                                    <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                        <Typography>Tools</Typography>
-                                        <TooltipWithParser title='Tools are actions that your assistant can perform' />
-                                    </Stack>
-                                    {selectedTools.map((tool, index) => {
-                                        return (
-                                            <Box
-                                                sx={{
-                                                    mt: 2,
-                                                    mb: 2
-                                                }}
-                                                key={index}
-                                            >
-                                                <Box sx={{ pt: 2, pb: 0 }}>
-                                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                                        <Typography>
-                                                            Tool<span style={{ color: 'red' }}>&nbsp;*</span>
-                                                        </Typography>
-                                                        <div style={{ flex: 1 }}></div>
-                                                        <IconButton
-                                                            color='error'
-                                                            sx={{ height: 15, width: 15, p: 0 }}
-                                                            onClick={() => {
-                                                                const newSelectedTools = selectedTools.filter((t, i) => i !== index)
-                                                                setSelectedTools(newSelectedTools)
-                                                            }}
-                                                        >
-                                                            <IconTrash />
-                                                        </IconButton>
-                                                    </div>
-                                                    <Dropdown
-                                                        key={JSON.stringify(tool)}
-                                                        name={tool.name}
-                                                        options={toolOptions ?? []}
-                                                        onSelect={(newValue) => {
-                                                            if (!newValue) {
-                                                                const newSelectedTools = [...selectedTools]
-                                                                newSelectedTools[index] = {}
-                                                                setSelectedTools(newSelectedTools)
-                                                            } else {
-                                                                const foundToolComponent = toolComponents.find(
-                                                                    (tool) => tool.name === newValue
-                                                                )
-                                                                if (foundToolComponent) {
-                                                                    const toolId = `${foundToolComponent.name}_${index}`
-                                                                    const clonedComponent = cloneDeep(foundToolComponent)
-                                                                    const initToolData = initNode(clonedComponent, toolId)
-                                                                    const newSelectedTools = [...selectedTools]
-                                                                    newSelectedTools[index] = initToolData
-                                                                    setSelectedTools(newSelectedTools)
-                                                                }
+                                            <div style={{ flex: 1 }}></div>
+                                            {customAssistantFlowId && !loadingAssistant && (
+                                                <ButtonBase title='API Endpoint' sx={{ borderRadius: '50%', mr: 2 }}>
+                                                    <Avatar
+                                                        variant='rounded'
+                                                        sx={{
+                                                            ...theme.typography.commonAvatar,
+                                                            ...theme.typography.mediumAvatar,
+                                                            transition: 'all .2s ease-in-out',
+                                                            background: theme.palette.canvasHeader.deployLight,
+                                                            color: theme.palette.canvasHeader.deployDark,
+                                                            '&:hover': {
+                                                                background: theme.palette.canvasHeader.deployDark,
+                                                                color: theme.palette.canvasHeader.deployLight
                                                             }
                                                         }}
-                                                        value={tool?.name || 'choose an option'}
+                                                        color='inherit'
+                                                        onClick={onAPIDialogClick}
+                                                    >
+                                                        <IconCode stroke={1.5} size='1.3rem' />
+                                                    </Avatar>
+                                                </ButtonBase>
+                                            )}
+                                            <ButtonBase title={`Save`} sx={{ borderRadius: '50%', mr: 2 }}>
+                                                <Avatar
+                                                    variant='rounded'
+                                                    sx={{
+                                                        ...theme.typography.commonAvatar,
+                                                        ...theme.typography.mediumAvatar,
+                                                        transition: 'all .2s ease-in-out',
+                                                        background: theme.palette.canvasHeader.saveLight,
+                                                        color: theme.palette.canvasHeader.saveDark,
+                                                        '&:hover': {
+                                                            background: theme.palette.canvasHeader.saveDark,
+                                                            color: theme.palette.canvasHeader.saveLight
+                                                        }
+                                                    }}
+                                                    color='inherit'
+                                                    onClick={onSaveAndProcess}
+                                                >
+                                                    <IconDeviceFloppy stroke={1.5} size='1.3rem' />
+                                                </Avatar>
+                                            </ButtonBase>
+                                            {customAssistantFlowId && !loadingAssistant && (
+                                                <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
+                                                    <Avatar
+                                                        variant='rounded'
+                                                        sx={{
+                                                            ...theme.typography.commonAvatar,
+                                                            ...theme.typography.mediumAvatar,
+                                                            transition: 'all .2s ease-in-out',
+                                                            background: theme.palette.canvasHeader.settingsLight,
+                                                            color: theme.palette.canvasHeader.settingsDark,
+                                                            '&:hover': {
+                                                                background: theme.palette.canvasHeader.settingsDark,
+                                                                color: theme.palette.canvasHeader.settingsLight
+                                                            }
+                                                        }}
+                                                        onClick={() => setSettingsOpen(!isSettingsOpen)}
+                                                    >
+                                                        <IconSettings stroke={1.5} size='1.3rem' />
+                                                    </Avatar>
+                                                </ButtonBase>
+                                            )}
+                                            {!customAssistantFlowId && !loadingAssistant && (
+                                                <ButtonBase ref={settingsRef} title='Delete Assistant' sx={{ borderRadius: '50%' }}>
+                                                    <Avatar
+                                                        variant='rounded'
+                                                        sx={{
+                                                            ...theme.typography.commonAvatar,
+                                                            ...theme.typography.mediumAvatar,
+                                                            transition: 'all .2s ease-in-out',
+                                                            background: theme.palette.error.light,
+                                                            color: theme.palette.error.dark,
+                                                            '&:hover': {
+                                                                background: theme.palette.error.dark,
+                                                                color: theme.palette.error.light
+                                                            }
+                                                        }}
+                                                        onClick={handleDeleteFlow}
+                                                    >
+                                                        <IconTrash stroke={1.5} size='1.3rem' />
+                                                    </Avatar>
+                                                </ButtonBase>
+                                            )}
+                                        </Toolbar>
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            p: 2,
+                                            mt: 1,
+                                            mb: 1,
+                                            border: 1,
+                                            borderColor: theme.palette.grey[900] + 25,
+                                            borderRadius: 2
+                                        }}
+                                    >
+                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                            <Typography>
+                                                选择模型<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            </Typography>
+                                        </div>
+                                        <Dropdown
+                                            key={JSON.stringify(selectedChatModel)}
+                                            name={'chatModel'}
+                                            options={chatModelsOptions ?? []}
+                                            onSelect={(newValue) => {
+                                                if (!newValue) {
+                                                    setSelectedChatModel({})
+                                                } else {
+                                                    const foundChatComponent = chatModelsComponents.find(
+                                                        (chatModel) => chatModel.name === newValue
+                                                    )
+                                                    if (foundChatComponent) {
+                                                        const chatModelId = `${foundChatComponent.name}_0`
+                                                        const clonedComponent = cloneDeep(foundChatComponent)
+                                                        const initChatModelData = initNode(clonedComponent, chatModelId)
+                                                        setSelectedChatModel(initChatModelData)
+                                                    }
+                                                }
+                                            }}
+                                            value={selectedChatModel ? selectedChatModel?.name : 'choose an option'}
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            p: 2,
+                                            mt: 1,
+                                            mb: 1,
+                                            border: 1,
+                                            borderColor: theme.palette.grey[900] + 25,
+                                            borderRadius: 2
+                                        }}
+                                    >
+                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
+                                            <Typography>
+                                                指令<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            </Typography>
+                                            <div style={{ flex: 1 }}></div>
+                                            {selectedChatModel?.name && (
+                                                <Button
+                                                    title='Generate instructions using model'
+                                                    sx={{ borderRadius: 20 }}
+                                                    size='small'
+                                                    variant='text'
+                                                    onClick={() => generateInstruction(customAssistantInstruction)}
+                                                    startIcon={<IconWand size={20} />}
+                                                >
+                                                    Generate
+                                                </Button>
+                                            )}
+                                        </Stack>
+                                        <OutlinedInput
+                                            sx={{ mt: 1, width: '100%' }}
+                                            type={'text'}
+                                            multiline={true}
+                                            rows={6}
+                                            value={customAssistantInstruction}
+                                            onChange={(event) => setCustomAssistantInstruction(event.target.value)}
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            p: 2,
+                                            mt: 1,
+                                            mb: 1,
+                                            border: 1,
+                                            borderColor: theme.palette.grey[900] + 25,
+                                            borderRadius: 2
+                                        }}
+                                    >
+                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
+                                            <Typography>知识库 (Document Stores)</Typography>
+                                            <TooltipWithParser title='Give your assistant context about different document sources. Document stores must be upserted in advance.' />
+                                        </Stack>
+                                        <MultiDropdown
+                                            key={JSON.stringify(selectedDocumentStores)}
+                                            name={JSON.stringify(selectedDocumentStores)}
+                                            options={documentStoreOptions ?? []}
+                                            onSelect={(newValue) => {
+                                                if (!newValue) {
+                                                    setSelectedDocumentStores([])
+                                                } else {
+                                                    onDocStoreItemSelected(newValue)
+                                                }
+                                            }}
+                                            value={selectedDocumentStores.map((ds) => ds.id) ?? 'choose an option'}
+                                        />
+                                        {selectedDocumentStores.length > 0 && (
+                                            <Stack sx={{ mt: 3, position: 'relative', alignItems: 'center' }} direction='row'>
+                                                <Typography>
+                                                    Describe Knowledge<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                </Typography>
+                                                <TooltipWithParser title='Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information' />
+                                            </Stack>
+                                        )}
+                                        {selectedDocumentStores.map((ds, index) => {
+                                            return (
+                                                <Box sx={{ mt: 1, mb: 2 }} key={index}>
+                                                    <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
+                                                        <div
+                                                            style={{
+                                                                display: 'flex',
+                                                                flexDirection: 'row',
+                                                                alignItems: 'center',
+                                                                width: 'max-content',
+                                                                height: 'max-content',
+                                                                borderRadius: 15,
+                                                                background: 'rgb(254,252,191)',
+                                                                paddingLeft: 15,
+                                                                paddingRight: 15,
+                                                                paddingTop: 5,
+                                                                paddingBottom: 5,
+                                                                marginRight: 10,
+                                                                marginBottom: 10
+                                                            }}
+                                                        >
+                                                            <span style={{ color: 'rgb(116,66,16)', marginRight: 10 }}>{ds.name}</span>
+                                                            <IconButton
+                                                                sx={{ height: 15, width: 15, p: 0 }}
+                                                                onClick={() => onDocStoreItemDelete(ds.id)}
+                                                            >
+                                                                <IconX />
+                                                            </IconButton>
+                                                        </div>
+                                                        <div style={{ flex: 1 }}></div>
+                                                        {selectedChatModel?.name && (
+                                                            <Button
+                                                                title='Generate description using model'
+                                                                sx={{ borderRadius: 20 }}
+                                                                size='small'
+                                                                variant='text'
+                                                                onClick={() => generateDocStoreToolDesc(ds.id)}
+                                                                startIcon={<IconWand size={20} />}
+                                                            >
+                                                                Generate
+                                                            </Button>
+                                                        )}
+                                                    </Stack>
+                                                    <OutlinedInput
+                                                        sx={{ mt: 1, width: '100%' }}
+                                                        type={'text'}
+                                                        multiline={true}
+                                                        rows={3}
+                                                        value={ds.description}
+                                                        onChange={(event) => {
+                                                            const newSelectedDocumentStores = [...selectedDocumentStores]
+                                                            newSelectedDocumentStores[index].description = event.target.value
+                                                            setSelectedDocumentStores(newSelectedDocumentStores)
+                                                        }}
                                                     />
                                                 </Box>
-                                                {tool && Object.keys(tool).length === 0 && <Box sx={{ pl: 2, pr: 2, pt: 0, pb: 2 }} />}
-                                                {tool && Object.keys(tool).length > 0 && (
-                                                    <Box
-                                                        sx={{
-                                                            p: 0,
-                                                            mt: 2,
-                                                            mb: 1
-                                                        }}
-                                                    >
-                                                        {(tool.inputParams ?? [])
-                                                            .filter((inputParam) => !inputParam.hidden)
-                                                            .map((inputParam, index) => (
-                                                                <DocStoreInputHandler key={index} inputParam={inputParam} data={tool} />
-                                                            ))}
+                                            )
+                                        })}
+                                    </Box>
+                                    {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
+                                        <Box
+                                            sx={{
+                                                p: 0,
+                                                mt: 1,
+                                                mb: 1,
+                                                border: 1,
+                                                borderColor: theme.palette.grey[900] + 25,
+                                                borderRadius: 2
+                                            }}
+                                        >
+                                            {(selectedChatModel.inputParams ?? [])
+                                                .filter((inputParam) => !inputParam.hidden)
+                                                .map((inputParam, index) => (
+                                                    <DocStoreInputHandler key={index} inputParam={inputParam} data={selectedChatModel} />
+                                                ))}
+                                        </Box>
+                                    )}
+                                    <Box
+                                        sx={{
+                                            p: 2,
+                                            mt: 1,
+                                            mb: 1,
+                                            border: 1,
+                                            borderColor: theme.palette.grey[900] + 25,
+                                            borderRadius: 2
+                                        }}
+                                    >
+                                        <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
+                                            <Typography>使用工具</Typography>
+                                            <TooltipWithParser title='Tools are actions that your assistant can perform' />
+                                        </Stack>
+                                        {selectedTools.map((tool, index) => {
+                                            return (
+                                                <Box
+                                                    sx={{
+                                                        border: 1,
+                                                        borderColor: theme.palette.grey[900] + 25,
+                                                        borderRadius: 2,
+                                                        mt: 2,
+                                                        mb: 2
+                                                    }}
+                                                    key={index}
+                                                >
+                                                    <Box sx={{ pl: 2, pr: 2, pt: 2, pb: 0 }}>
+                                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                                            <Typography>
+                                                                工具<span style={{ color: 'red' }}>&nbsp;*</span>
+                                                            </Typography>
+                                                            <div style={{ flex: 1 }}></div>
+                                                            <IconButton
+                                                                color='error'
+                                                                sx={{ height: 15, width: 15, p: 0 }}
+                                                                onClick={() => {
+                                                                    const newSelectedTools = selectedTools.filter((t, i) => i !== index)
+                                                                    setSelectedTools(newSelectedTools)
+                                                                }}
+                                                            >
+                                                                <IconTrash />
+                                                            </IconButton>
+                                                        </div>
+                                                        <Dropdown
+                                                            key={JSON.stringify(tool)}
+                                                            name={tool.name}
+                                                            options={toolOptions ?? []}
+                                                            onSelect={(newValue) => {
+                                                                if (!newValue) {
+                                                                    const newSelectedTools = [...selectedTools]
+                                                                    newSelectedTools[index] = {}
+                                                                    setSelectedTools(newSelectedTools)
+                                                                } else {
+                                                                    const foundToolComponent = toolComponents.find(
+                                                                        (tool) => tool.name === newValue
+                                                                    )
+                                                                    if (foundToolComponent) {
+                                                                        const toolId = `${foundToolComponent.name}_${index}`
+                                                                        const clonedComponent = cloneDeep(foundToolComponent)
+                                                                        const initToolData = initNode(clonedComponent, toolId)
+                                                                        const newSelectedTools = [...selectedTools]
+                                                                        newSelectedTools[index] = initToolData
+                                                                        setSelectedTools(newSelectedTools)
+                                                                    }
+                                                                }
+                                                            }}
+                                                            value={tool?.name || 'choose an option'}
+                                                        />
                                                     </Box>
-                                                )}
-                                            </Box>
-                                        )
-                                    })}
-                                    <Button
-                                        fullWidth
-                                        title='Add Tool'
-                                        sx={{ mt: 1, mb: 1, borderRadius: 20 }}
-                                        variant='outlined'
-                                        onClick={() => setSelectedTools([...selectedTools, {}])}
-                                    >
-                                        添加工具
-                                    </Button>
-                                </Box>
-                                {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
-                                    <Button
-                                        fullWidth
-                                        title='Save Assistant'
-                                        className='mt-4'
-                                        variant='contained'
-                                        onClick={onSaveAndProcess}
-                                    >
-                                        保存
-                                    </Button>
-                                )}
-                            </Box>
-                            <Box className='grow ml-4'>
-                                {customAssistantFlowId && !loadingAssistant && (
-                                    <Box className='rounded shadow-lg p-2 bg-white'>
+                                                    {tool && Object.keys(tool).length === 0 && <Box sx={{ pl: 2, pr: 2, pt: 0, pb: 2 }} />}
+                                                    {tool && Object.keys(tool).length > 0 && (
+                                                        <Box
+                                                            sx={{
+                                                                p: 0,
+                                                                mt: 2,
+                                                                mb: 1
+                                                            }}
+                                                        >
+                                                            {(tool.inputParams ?? [])
+                                                                .filter((inputParam) => !inputParam.hidden)
+                                                                .map((inputParam, index) => (
+                                                                    <DocStoreInputHandler key={index} inputParam={inputParam} data={tool} />
+                                                                ))}
+                                                        </Box>
+                                                    )}
+                                                </Box>
+                                            )
+                                        })}
+                                        <Button
+                                            fullWidth
+                                            title='Add Tool'
+                                            variant='outlined'
+                                            onClick={() => setSelectedTools([...selectedTools, {}])}
+                                        >
+                                            添加工具
+                                        </Button>
+                                    </Box>
+                                    {selectedChatModel && Object.keys(selectedChatModel).length > 0 && (
+                                        <Button fullWidth title='Save Assistant' variant='contained' onClick={onSaveAndProcess}>
+                                            保存
+                                        </Button>
+                                    )}
+                                </div>
+                            </Grid>
+                            {customAssistantFlowId && !loadingAssistant && (
+                                <Grid item xs={12} md={6} lg={6} sm={6}>
+                                    <Box sx={{ mt: 2 }}>
                                         {customization.isDarkMode && (
                                             <MemoizedFullPageChat
                                                 chatflowid={customAssistantFlowId}
@@ -1220,9 +1268,9 @@ const CustomAssistantConfigurePreview = () => {
                                             />
                                         )}
                                     </Box>
-                                )}
-                            </Box>
-                        </Box>
+                                </Grid>
+                            )}
+                        </Grid>
                     </Box>
                 </Stack>
             )}
