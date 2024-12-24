@@ -162,6 +162,7 @@ const Leads = ({ dialogProps }) => {
                 disabled={!leadsConfig['name'] && !leadsConfig['phone'] && !leadsConfig['email'] && leadsConfig['status']}
                 style={{ marginBottom: 10, marginTop: 10 }}
                 variant='contained'
+                size='small'
                 onClick={onSave}
             >
                 保存

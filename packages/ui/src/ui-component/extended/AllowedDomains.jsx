@@ -121,7 +121,7 @@ const AllowedDomains = ({ dialogProps }) => {
 
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
-            <Typography variant='h3'>
+            <Typography variant='h4'>
                 域名授权
                 <TooltipWithParser
                     style={{ mb: 1, mt: 2, marginLeft: 10 }}
@@ -194,7 +194,7 @@ const AllowedDomains = ({ dialogProps }) => {
                     />
                 </Stack>
             </Stack>
-            <StyledButton variant='contained' onClick={onSave}>
+            <StyledButton variant='contained' size='small' onClick={onSave}>
                 保存
             </StyledButton>
         </Stack>

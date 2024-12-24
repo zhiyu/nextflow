@@ -45,8 +45,8 @@ const CustomAssistantLayout = () => {
         const dialogProp = {
             title: '创建智能助理',
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: '取消',
+            confirmButtonName: '创建'
         }
         setDialogProps(dialogProp)
         setShowDialog(true)

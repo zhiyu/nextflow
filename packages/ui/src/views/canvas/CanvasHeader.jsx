@@ -264,7 +264,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                             </Avatar>
                         </ButtonBase>
                     </Box>
-                    <Box sx={{ width: '100%' }}>
+                    <Box sx={{ width: '100%' }} className='flex items-center'>
                         {!isEditingFlowName ? (
                             <Stack flexDirection='row' alignItems='center'>
                                 <Typography
@@ -445,9 +445,9 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
             <SaveChatflowDialog
                 show={flowDialogOpen}
                 dialogProps={{
-                    title: `Save New ${title}`,
-                    confirmButtonName: 'Save',
-                    cancelButtonName: 'Cancel'
+                    title: `保存 ${title}`,
+                    confirmButtonName: '保存',
+                    cancelButtonName: '取消'
                 }}
                 onCancel={() => setFlowDialogOpen(false)}
                 onConfirm={onConfirmSaveName}

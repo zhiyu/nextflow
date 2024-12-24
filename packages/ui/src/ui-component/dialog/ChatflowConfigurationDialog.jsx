@@ -18,7 +18,7 @@ const CHATFLOW_CONFIGURATION_TABS = [
         id: 'security'
     },
     {
-        label: '启动提示词',
+        label: '提示语',
         id: 'conversationStarters'
     },
     {
@@ -55,7 +55,7 @@ function TabPanel(props) {
             hidden={value !== index}
             id={`chatflow-config-tabpanel-${index}`}
             aria-labelledby={`chatflow-config-tab-${index}`}
-            style={{ width: '100%', paddingTop: '1rem' }}
+            style={{ width: '100%' }}
             {...other}
         >
             {value === index && <Box sx={{ p: 1 }}>{children}</Box>}
@@ -89,46 +89,43 @@ const ChatflowConfigurationDialog = ({ show, dialogProps, onCancel }) => {
             aria-labelledby='alert-dialog-title'
             aria-describedby='alert-dialog-description'
         >
-            <DialogTitle sx={{ fontSize: '1.25rem' }} id='alert-dialog-title'>
+            <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 {dialogProps.title}
             </DialogTitle>
-            <DialogContent>
+            <DialogContent className='flex'>
                 <Tabs
-                    sx={{
-                        position: 'relative',
-                        minHeight: '40px',
-                        height: '40px',
-                        [`& .${tabsClasses.scrollButtons}`]: {
-                            '&.Mui-disabled': { opacity: 0.3 }
-                        }
-                    }}
+                    className='mr-8 mt-0'
                     value={tabValue}
                     onChange={(event, value) => setTabValue(value)}
                     aria-label='tabs'
                     variant='scrollable'
                     scrollButtons='auto'
+                    orientation='vertical'
                 >
                     {CHATFLOW_CONFIGURATION_TABS.map((item, index) => (
                         <Tab
-                            sx={{ minHeight: '40px', height: '40px', textAlign: 'left', display: 'flex', mb: 1 }}
+                            sx={{ minHeight: '44px', height: '44px' }}
+                            className='flex items-start justify-center p-0 '
                             key={index}
                             label={item.label}
                             {...a11yProps(index)}
                         ></Tab>
                     ))}
                 </Tabs>
-                {CHATFLOW_CONFIGURATION_TABS.map((item, index) => (
-                    <TabPanel key={index} value={tabValue} index={index}>
-                        {item.id === 'security' && <Security dialogProps={dialogProps} />}
-                        {item.id === 'conversationStarters' ? <StarterPrompts dialogProps={dialogProps} /> : null}
-                        {item.id === 'followUpPrompts' ? <FollowUpPrompts dialogProps={dialogProps} /> : null}
-                        {item.id === 'speechToText' ? <SpeechToText dialogProps={dialogProps} /> : null}
-                        {item.id === 'chatFeedback' ? <ChatFeedback dialogProps={dialogProps} /> : null}
-                        {item.id === 'analyseChatflow' ? <AnalyseFlow dialogProps={dialogProps} /> : null}
-                        {item.id === 'leads' ? <Leads dialogProps={dialogProps} /> : null}
-                        {item.id === 'fileUpload' ? <FileUpload dialogProps={dialogProps} /> : null}
-                    </TabPanel>
-                ))}
+                <Box className='grow'>
+                    {CHATFLOW_CONFIGURATION_TABS.map((item, index) => (
+                        <TabPanel key={index} value={tabValue} index={index}>
+                            {item.id === 'security' && <Security dialogProps={dialogProps} />}
+                            {item.id === 'conversationStarters' ? <StarterPrompts dialogProps={dialogProps} /> : null}
+                            {item.id === 'followUpPrompts' ? <FollowUpPrompts dialogProps={dialogProps} /> : null}
+                            {item.id === 'speechToText' ? <SpeechToText dialogProps={dialogProps} /> : null}
+                            {item.id === 'chatFeedback' ? <ChatFeedback dialogProps={dialogProps} /> : null}
+                            {item.id === 'analyseChatflow' ? <AnalyseFlow dialogProps={dialogProps} /> : null}
+                            {item.id === 'leads' ? <Leads dialogProps={dialogProps} /> : null}
+                            {item.id === 'fileUpload' ? <FileUpload dialogProps={dialogProps} /> : null}
+                        </TabPanel>
+                    ))}
+                </Box>
             </DialogContent>
         </Dialog>
     ) : null

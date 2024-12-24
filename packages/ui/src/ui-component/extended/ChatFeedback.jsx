@@ -96,7 +96,7 @@ const ChatFeedback = ({ dialogProps }) => {
             <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
                 <SwitchInput label='启用聊天反馈' onChange={handleChange} value={chatFeedbackStatus} />
             </Box>
-            <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' onClick={onSave}>
+            <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' size='small' onClick={onSave}>
                 保存
             </StyledButton>
         </>

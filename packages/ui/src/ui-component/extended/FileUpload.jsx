@@ -106,7 +106,7 @@ const FileUpload = ({ dialogProps }) => {
                     flexDirection: 'column',
                     alignItems: 'start',
                     justifyContent: 'start',
-                    gap: 3,
+                    gap: 2,
                     mb: 2
                 }}
             >
@@ -134,7 +134,7 @@ const FileUpload = ({ dialogProps }) => {
                 <SwitchInput label='启用文件上传' onChange={handleChange} value={fullFileUpload} />
             </Box>
             {/* TODO: Allow selection of allowed file types*/}
-            <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' onClick={onSave}>
+            <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' size='small' onClick={onSave}>
                 保存
             </StyledButton>
         </>

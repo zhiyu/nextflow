@@ -134,27 +134,38 @@ const StarterPrompts = ({ dialogProps }) => {
 
     return (
         <>
-            <div
-                style={{
+            <Box
+                sx={{
+                    width: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    borderRadius: 10,
-                    background: '#d8f3dc',
-                    padding: 10
+                    alignItems: 'start',
+                    justifyContent: 'start',
+                    gap: 2,
+                    mb: 2
                 }}
             >
                 <div
                     style={{
                         display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center'
+                        flexDirection: 'column',
+                        borderRadius: 10,
+                        background: '#d8f3dc',
+                        width: '100%',
+                        padding: 10
                     }}
                 >
-                    <IconBulb size={30} color='#2d6a4f' />
-                    <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>聊天消息为空时，才会显示启动提示词。</span>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <IconBulb size={30} color='#2d6a4f' />
+                        <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>聊天消息为空时，才会显示提示语。</span>
+                    </div>
                 </div>
-            </div>
-            <Box sx={{ '& > :not(style)': { m: 1 }, pt: 2 }}>
                 <List>
                     {inputFields.map((data, index) => {
                         return (
@@ -198,8 +209,8 @@ const StarterPrompts = ({ dialogProps }) => {
                     })}
                 </List>
             </Box>
-            <StyledButton variant='contained' onClick={onSave}>
-                Save
+            <StyledButton variant='contained' size='small' onClick={onSave}>
+                保存
             </StyledButton>
         </>
     )

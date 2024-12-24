@@ -319,7 +319,7 @@ const OverrideConfig = ({ dialogProps }) => {
 
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
-            <Typography variant='h3'>
+            <Typography variant='h4'>
                 Override Configuration
                 <TooltipWithParser
                     style={{ mb: 1, mt: 2, marginLeft: 10 }}
@@ -333,7 +333,7 @@ const OverrideConfig = ({ dialogProps }) => {
                 {overrideConfigStatus && (
                     <>
                         {nodeOverrides && nodeConfig && (
-                            <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>
+                            <Card className='shadow-lg pt-4 mb-4'>
                                 <Stack sx={{ mt: 1, mb: 2, ml: 1, alignItems: 'center' }} direction='row' spacing={2}>
                                     <IconBox />
                                     <Typography variant='h4'>Nodes</Typography>
@@ -401,7 +401,7 @@ const OverrideConfig = ({ dialogProps }) => {
                             </Card>
                         )}
                         {variableOverrides && variableOverrides.length > 0 && (
-                            <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>
+                            <Card className='shadow-lg pt-4'>
                                 <Stack sx={{ mt: 1, mb: 2, ml: 1, alignItems: 'center' }} direction='row' spacing={2}>
                                     <IconVariable />
                                     <Typography variant='h4'>Variables</Typography>
@@ -416,7 +416,7 @@ const OverrideConfig = ({ dialogProps }) => {
                     </>
                 )}
             </Stack>
-            <StyledButton variant='contained' onClick={onOverrideConfigSave}>
+            <StyledButton variant='contained' size='small' onClick={onOverrideConfigSave}>
                 保存
             </StyledButton>
         </Stack>

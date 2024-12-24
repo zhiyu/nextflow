@@ -82,7 +82,7 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
             aria-describedby='export-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='export-dialog-title'>
-                {!isExporting ? 'Select Data to Export' : 'Exporting..'}
+                {!isExporting ? '选择要导出的数据' : '正在导出...'}
             </DialogTitle>
             <DialogContent>
                 {!isExporting && (
@@ -128,7 +128,7 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
             </DialogContent>
             {!isExporting && (
                 <DialogActions>
-                    <Button onClick={onCancel}>Cancel</Button>
+                    <Button onClick={onCancel}>取消</Button>
                     <Button
                         disabled={selectedData.length === 0}
                         variant='contained'
@@ -137,7 +137,7 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
                             onExport(selectedData)
                         }}
                     >
-                        Export
+                        导出
                     </Button>
                 </DialogActions>
             )}

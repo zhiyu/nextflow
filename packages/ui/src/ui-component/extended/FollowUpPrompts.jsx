@@ -376,12 +376,12 @@ const FollowUpPrompts = ({ dialogProps }) => {
                     flexDirection: 'column',
                     alignItems: 'start',
                     justifyContent: 'start',
-                    gap: 3,
+                    gap: 2,
                     mb: 2
                 }}
             >
                 <SwitchInput
-                    label='Enable Follow-up Prompts'
+                    label='启用 Follow-up Prompts'
                     onChange={(value) => handleChange('status', value)}
                     value={followUpPromptsConfig.status}
                 />
@@ -402,25 +402,15 @@ const FollowUpPrompts = ({ dialogProps }) => {
                             <>
                                 <ListItem sx={{ p: 0 }} alignItems='center'>
                                     <ListItemAvatar>
-                                        <div
+                                        <img
                                             style={{
-                                                width: 50,
-                                                height: 50,
-                                                borderRadius: '50%',
-                                                backgroundColor: 'white'
+                                                width: '44px',
+                                                height: '44px%',
+                                                objectFit: 'contain'
                                             }}
-                                        >
-                                            <img
-                                                style={{
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    padding: 10,
-                                                    objectFit: 'contain'
-                                                }}
-                                                alt='AI'
-                                                src={followUpPromptsOptions[selectedProvider].icon}
-                                            />
-                                        </div>
+                                            alt='AI'
+                                            src={followUpPromptsOptions[selectedProvider].icon}
+                                        />
                                     </ListItemAvatar>
                                     <ListItemText
                                         primary={followUpPromptsOptions[selectedProvider].label}
@@ -432,7 +422,7 @@ const FollowUpPrompts = ({ dialogProps }) => {
                                     />
                                 </ListItem>
                                 {followUpPromptsOptions[selectedProvider].inputs.map((inputParam, index) => (
-                                    <Box key={index} sx={{ px: 2, width: '100%' }}>
+                                    <Box key={index} sx={{ width: '100%' }}>
                                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                                             <Typography>
                                                 {inputParam.label}
@@ -513,8 +503,8 @@ const FollowUpPrompts = ({ dialogProps }) => {
                     </>
                 )}
             </Box>
-            <StyledButton disabled={checkDisabled()} variant='contained' onClick={onSave}>
-                Save
+            <StyledButton disabled={checkDisabled()} variant='contained' size='small' onClick={onSave}>
+                保存
             </StyledButton>
         </>
     )

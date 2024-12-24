@@ -469,7 +469,7 @@ const Canvas = () => {
             dispatch({
                 type: SET_CHATFLOW,
                 chatflow: {
-                    name: `Untitled ${canvasTitle}`
+                    name: `未命名的 ${canvasTitle}`
                 }
             })
         }

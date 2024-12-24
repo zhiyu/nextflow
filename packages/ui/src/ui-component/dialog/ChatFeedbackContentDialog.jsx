@@ -62,9 +62,9 @@ const ChatFeedbackContentDialog = ({ show, onCancel, onConfirm }) => {
                 </Box>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onCancel}>Cancel</Button>
+                <Button onClick={onCancel}>取消</Button>
                 <StyledButton variant='contained' onClick={onSave}>
-                    Submit Feedback
+                    提交
                 </StyledButton>
             </DialogActions>
         </Dialog>

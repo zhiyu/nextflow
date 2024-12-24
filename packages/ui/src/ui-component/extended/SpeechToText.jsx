@@ -349,7 +349,7 @@ const SpeechToText = ({ dialogProps }) => {
     return (
         <>
             <Box fullWidth sx={{ mb: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography>Providers</Typography>
+                <Typography>选择服务</Typography>
                 <FormControl fullWidth>
                     <Select size='small' value={selectedProvider} onChange={handleProviderChange}>
                         <MenuItem value='none'>None</MenuItem>
@@ -363,27 +363,17 @@ const SpeechToText = ({ dialogProps }) => {
             </Box>
             {selectedProvider !== 'none' && (
                 <>
-                    <ListItem sx={{ mt: 3 }} alignItems='center'>
+                    <ListItem className='p-0 my-4'>
                         <ListItemAvatar>
-                            <div
+                            <img
                                 style={{
-                                    width: 50,
-                                    height: 50,
-                                    borderRadius: '50%',
-                                    backgroundColor: 'white'
+                                    width: '44px',
+                                    height: '44px',
+                                    objectFit: 'contain'
                                 }}
-                            >
-                                <img
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        padding: 10,
-                                        objectFit: 'contain'
-                                    }}
-                                    alt='AI'
-                                    src={speechToTextProviders[selectedProvider].icon}
-                                />
-                            </div>
+                                alt='AI'
+                                src={speechToTextProviders[selectedProvider].icon}
+                            />
                         </ListItemAvatar>
                         <ListItemText
                             sx={{ ml: 1 }}
@@ -396,7 +386,7 @@ const SpeechToText = ({ dialogProps }) => {
                         />
                     </ListItem>
                     {speechToTextProviders[selectedProvider].inputs.map((inputParam, index) => (
-                        <Box key={index} sx={{ p: 2 }}>
+                        <Box key={index} sx={{ mt: 2 }}>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <Typography>
                                     {inputParam.label}
@@ -460,9 +450,10 @@ const SpeechToText = ({ dialogProps }) => {
                 style={{ marginBottom: 10, marginTop: 10 }}
                 disabled={selectedProvider !== 'none' && !speechToText[selectedProvider]?.credentialId}
                 variant='contained'
+                size='small'
                 onClick={onSave}
             >
-                Save
+                保存
             </StyledButton>
         </>
     )

@@ -180,13 +180,13 @@ const ExportAsTemplateDialog = ({ show, dialogProps, onCancel }) => {
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                {dialogProps.title || 'Export As Template'}
+                {dialogProps.title || '导出为模版'}
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ pt: 2, pb: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                         <Typography sx={{ mb: 1 }}>
-                            Name<span style={{ color: 'red' }}>&nbsp;*</span>
+                            名称<span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                         <OutlinedInput
                             id={'name'}
@@ -203,7 +203,7 @@ const ExportAsTemplateDialog = ({ show, dialogProps, onCancel }) => {
                 </Box>
                 <Box sx={{ pt: 2, pb: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                        <Typography sx={{ mb: 1 }}>Description</Typography>
+                        <Typography sx={{ mb: 1 }}>描述</Typography>
                         <OutlinedInput
                             id={'description'}
                             type={'string'}
@@ -221,7 +221,7 @@ const ExportAsTemplateDialog = ({ show, dialogProps, onCancel }) => {
                 </Box>
                 <Box sx={{ pt: 2, pb: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                        <Typography sx={{ mb: 1 }}>Badge</Typography>
+                        <Typography sx={{ mb: 1 }}>标签</Typography>
                         <OutlinedInput
                             id={'badge'}
                             type={'string'}
@@ -237,7 +237,7 @@ const ExportAsTemplateDialog = ({ show, dialogProps, onCancel }) => {
                 </Box>
                 <Box sx={{ pt: 2, pb: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                        <Typography sx={{ mb: 1 }}>Usecases</Typography>
+                        <Typography sx={{ mb: 1 }}>使用场景</Typography>
                         {usecases.length > 0 && (
                             <div style={{ marginBottom: 10 }}>
                                 {usecases.map((uc, index) => (
@@ -258,15 +258,15 @@ const ExportAsTemplateDialog = ({ show, dialogProps, onCancel }) => {
                             variant='outlined'
                         />
                         <Typography variant='body2' sx={{ fontStyle: 'italic', mt: 1 }} color='text.secondary'>
-                            Type a usecase and press enter to add it to the list. You can add as many items as you want.
+                            输入后按回车键将其添加到列表中。
                         </Typography>
                     </div>
                 </Box>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onCancel}>{dialogProps.cancelButtonName || 'Cancel'}</Button>
+                <Button onClick={onCancel}>{dialogProps.cancelButtonName || '取消'}</Button>
                 <StyledButton disabled={dialogProps.disabled} variant='contained' onClick={onConfirm}>
-                    {dialogProps.confirmButtonName || 'Save Template'}
+                    {dialogProps.confirmButtonName || '保存'}
                 </StyledButton>
             </DialogActions>
         </Dialog>

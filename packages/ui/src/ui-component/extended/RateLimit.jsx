@@ -148,7 +148,7 @@ const RateLimit = () => {
 
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
-            <Typography variant='h3'>限速 </Typography>
+            <Typography variant='h4'>限速 </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
                 <SwitchInput label='启用限速' onChange={handleChange} value={rateLimitStatus} />
                 {rateLimitStatus && (
@@ -159,7 +159,7 @@ const RateLimit = () => {
                     </Stack>
                 )}
             </Stack>
-            <StyledButton disabled={checkDisabled()} variant='contained' onClick={() => onSave()} sx={{ width: 'auto' }}>
+            <StyledButton disabled={checkDisabled()} variant='contained' size='small' onClick={() => onSave()} sx={{ width: 'auto' }}>
                 保存
             </StyledButton>
         </Stack>

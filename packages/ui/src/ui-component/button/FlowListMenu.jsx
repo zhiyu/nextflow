@@ -104,7 +104,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
     const [exportTemplateDialogOpen, setExportTemplateDialogOpen] = useState(false)
     const [exportTemplateDialogProps, setExportTemplateDialogProps] = useState({})
 
-    const title = isAgentCanvas ? 'Agents' : 'Chatflow'
+    const title = isAgentCanvas ? '工作流' : '工作流'
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
@@ -122,7 +122,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
     const handleFlowStarterPrompts = () => {
         setAnchorEl(null)
         setConversationStartersDialogProps({
-            title: '启动提示词 - ' + chatflow.name,
+            title: '提示语 - ' + chatflow.name,
             chatflow: chatflow
         })
         setConversationStartersDialogOpen(true)
@@ -139,7 +139,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
     const handleFlowChatFeedback = () => {
         setAnchorEl(null)
         setChatFeedbackDialogProps({
-            title: 'Chat Feedback - ' + chatflow.name,
+            title: '聊天反馈 - ' + chatflow.name,
             chatflow: chatflow
         })
         setChatFeedbackDialogOpen(true)
@@ -148,7 +148,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
     const handleAllowedDomains = () => {
         setAnchorEl(null)
         setAllowedDomainsDialogProps({
-            title: 'Allowed Domains - ' + chatflow.name,
+            title: '授权的域名 - ' + chatflow.name,
             chatflow: chatflow
         })
         setAllowedDomainsDialogOpen(true)
@@ -157,7 +157,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
     const handleSpeechToText = () => {
         setAnchorEl(null)
         setSpeechToTextDialogProps({
-            title: 'Speech To Text - ' + chatflow.name,
+            title: '语音转文字 - ' + chatflow.name,
             chatflow: chatflow
         })
         setSpeechToTextDialogOpen(true)
@@ -335,7 +335,7 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleFlowStarterPrompts} disableRipple>
                     <PiTerminalWindow size='1.2rem' />
-                    启动提示词
+                    提示语
                 </MenuItem>
                 <MenuItem onClick={handleFlowChatFeedback} disableRipple>
                     <PiChatText size='1.2rem' />
@@ -362,9 +362,9 @@ export default function FlowListMenu({ chatflow, isAgentCanvas, setError, update
             <SaveChatflowDialog
                 show={flowDialogOpen}
                 dialogProps={{
-                    title: `Rename ${title}`,
-                    confirmButtonName: 'Rename',
-                    cancelButtonName: 'Cancel'
+                    title: `重命名${title}`,
+                    confirmButtonName: '保存',
+                    cancelButtonName: '取消'
                 }}
                 onCancel={() => setFlowDialogOpen(false)}
                 onConfirm={saveFlowRename}

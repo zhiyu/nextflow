@@ -12,7 +12,7 @@ export const SwitchInput = ({ label, value, onChange, disabled = false }) => {
     return (
         <>
             <FormControl
-                sx={{ mt: 1, width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+                sx={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
                 size='small'
             >
                 {label && <Typography>{label}</Typography>}
