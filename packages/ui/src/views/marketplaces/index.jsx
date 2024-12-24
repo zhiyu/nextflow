@@ -51,8 +51,8 @@ import useNotifier from '@/utils/useNotifier'
 const badges = ['POPULAR', 'NEW']
 
 const types = {
-    Chatflow: '对话编排',
-    Agentflow: '智能体编排',
+    Chatflow: '对话工作流',
+    Agentflow: '智能体工作流',
     Tool: '工具'
 }
 const framework = {

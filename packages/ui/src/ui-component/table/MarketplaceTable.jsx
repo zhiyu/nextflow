@@ -17,6 +17,12 @@ import {
 } from '@mui/material'
 import { IconTrash } from '@tabler/icons-react'
 
+const types = {
+    Chatflow: '对话工作流',
+    Agentflow: '智能体工作流',
+    Tool: '工具'
+}
+
 export const MarketplaceTable = ({
     data,
     filterFunction,
@@ -46,13 +52,13 @@ export const MarketplaceTable = ({
                             <TableCell sx={{ minWidth: '250px' }} key='0'>
                                 名称
                             </TableCell>
-                            <TableCell sx={{ minWidth: '100px' }} key='1'>
+                            <TableCell sx={{ minWidth: '120px' }} key='1'>
                                 类型
                             </TableCell>
                             <TableCell sx={{ minWidth: '100px' }} key='3'>
                                 框架
                             </TableCell>
-                            <TableCell sx={{ minWidth: '100px' }} key='4'>
+                            <TableCell sx={{ minWidth: '120px' }} key='4'>
                                 使用场景
                             </TableCell>
                             <TableCell key='2'>描述</TableCell>
@@ -138,20 +144,20 @@ export const MarketplaceTable = ({
                                                 </Button>
                                             </TableCell>
                                             <TableCell key='1'>
-                                                <Typography>{row.type}</Typography>
+                                                <Typography>{types[row.type]}</Typography>
                                             </TableCell>
                                             <TableCell key='3'>
                                                 <Stack flexDirection='row' sx={{ gap: 1, flexWrap: 'wrap' }}>
                                                     {row.framework &&
                                                         row.framework.length > 0 &&
                                                         row.framework.map((framework, index) => (
-                                                            <Chip
+                                                            <span
                                                                 variant='outlined'
                                                                 key={index}
-                                                                size='small'
-                                                                label={framework}
                                                                 style={{ marginRight: 3, marginBottom: 3 }}
-                                                            />
+                                                            >
+                                                                {framework}
+                                                            </span>
                                                         ))}
                                                 </Stack>
                                             </TableCell>
@@ -160,13 +166,13 @@ export const MarketplaceTable = ({
                                                     {row.usecases &&
                                                         row.usecases.length > 0 &&
                                                         row.usecases.map((usecase, index) => (
-                                                            <Chip
+                                                            <span
                                                                 variant='outlined'
                                                                 key={index}
-                                                                size='small'
-                                                                label={usecase}
                                                                 style={{ marginRight: 3, marginBottom: 3 }}
-                                                            />
+                                                            >
+                                                                {usecase}
+                                                            </span>
                                                         ))}
                                                 </Stack>
                                             </TableCell>
