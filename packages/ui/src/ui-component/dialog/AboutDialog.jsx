@@ -60,28 +60,26 @@ const AboutDialog = ({ show, onCancel }) => {
             </DialogTitle>
             <DialogContent>
                 {data && (
-                    <TableContainer component={Paper}>
-                        <Table aria-label='simple table'>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>当前版本</TableCell>
-                                    <TableCell>最新版本</TableCell>
-                                    <TableCell>发布时间</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCell>{data.currentVersion}</TableCell>
-                                    <TableCell>
-                                        <a target='_blank' rel='noreferrer' href={data.html_url}>
-                                            {data.name}
-                                        </a>
-                                    </TableCell>
-                                    <TableCell>{moment(data.published_at).fromNow()}</TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                    <Table aria-label='simple table'>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>当前版本</TableCell>
+                                <TableCell>最新版本</TableCell>
+                                <TableCell>发布时间</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>{data.currentVersion}</TableCell>
+                                <TableCell>
+                                    <a target='_blank' rel='noreferrer' href={data.html_url}>
+                                        {data.name}
+                                    </a>
+                                </TableCell>
+                                <TableCell>{moment(data.published_at).fromNow()}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
                 )}
             </DialogContent>
         </Dialog>
