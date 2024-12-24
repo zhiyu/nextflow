@@ -43,14 +43,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0 2px 14px 0 rgb(32 40 45 / 8%)',
     cursor: 'pointer',
-    '&:hover': {
-        background: theme.palette.card.hover,
-        boxShadow: '0 2px 14px 0 rgb(32 40 45 / 20%)'
-    },
-    maxHeight: '250px',
-    minHeight: '250px',
     maxWidth: '100%',
     overflowWrap: 'break-word',
     whiteSpace: 'pre-line',
@@ -434,7 +427,7 @@ const LoaderConfigPreviewChunks = () => {
                             </Box>
                         </Toolbar>
                     </Box>
-                    <MainCard className='bg-white w-full shadow-card mt-4'>
+                    <CardWrapper className='w-full shadow-card mt-4'>
                         <Grid container spacing='2'>
                             <Grid item xs={4} md={6} lg={6} sm={4}>
                                 <div
@@ -638,7 +631,7 @@ const LoaderConfigPreviewChunks = () => {
                                 )}
                             </Grid>
                         </Grid>
-                    </MainCard>
+                    </CardWrapper>
                 </Stack>
             )}
             <ExpandedChunkDialog
