@@ -147,87 +147,74 @@ const DeleteDocStoreDialog = ({ show, dialogProps, onCancel, onDelete }) => {
                 {dialogProps.type === 'STORE' && dialogProps.recordManagerConfig && (
                     <FormControlLabel
                         control={<Checkbox checked={removeFromVS} onChange={(event) => setRemoveFromVS(event.target.checked)} />}
-                        label='Remove data from vector store'
+                        label='同时删除向量存储中的数据'
                     />
                 )}
                 {removeFromVS && (
                     <div>
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label='simple table'>
-                                <TableBody>
-                                    <TableRow sx={{ '& td': { border: 0 } }}>
-                                        <TableCell sx={{ pb: 0, pt: 0 }} colSpan={6}>
-                                            <Box>
-                                                {([...vsFlowData, ...rmFlowData] || []).map((node, index) => {
-                                                    return (
-                                                        <Accordion
-                                                            expanded={nodeConfigExpanded[node.name] || true}
-                                                            onChange={handleAccordionChange(node.name)}
-                                                            key={index}
-                                                            disableGutters
+                        <Table aria-label='simple table' className='p-0'>
+                            <TableBody>
+                                <TableRow sx={{ '& td': { border: 0 } }}>
+                                    <TableCell sx={{ p: 0 }} colSpan={6}>
+                                        <Box>
+                                            {([...vsFlowData, ...rmFlowData] || []).map((node, index) => {
+                                                return (
+                                                    <Accordion
+                                                        expanded={nodeConfigExpanded[node.name] || true}
+                                                        onChange={handleAccordionChange(node.name)}
+                                                        key={index}
+                                                        disableGutters
+                                                        className='shadow-lg'
+                                                    >
+                                                        <AccordionSummary
+                                                            expandIcon={<ExpandMoreIcon />}
+                                                            aria-controls={`nodes-accordian-${node.name}`}
+                                                            id={`nodes-accordian-header-${node.name}`}
                                                         >
-                                                            <AccordionSummary
-                                                                expandIcon={<ExpandMoreIcon />}
-                                                                aria-controls={`nodes-accordian-${node.name}`}
-                                                                id={`nodes-accordian-header-${node.name}`}
-                                                            >
-                                                                <div
-                                                                    style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-                                                                >
-                                                                    <div
+                                                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                                                <div>
+                                                                    <img
                                                                         style={{
-                                                                            width: 40,
-                                                                            height: 40,
-                                                                            marginRight: 10,
-                                                                            borderRadius: '50%',
-                                                                            backgroundColor: 'white'
+                                                                            height: '16px',
+                                                                            objectFit: 'contain',
+                                                                            marginRight: '10px'
                                                                         }}
-                                                                    >
-                                                                        <img
-                                                                            style={{
-                                                                                width: '100%',
-                                                                                height: '100%',
-                                                                                padding: 7,
-                                                                                borderRadius: '50%',
-                                                                                objectFit: 'contain'
-                                                                            }}
-                                                                            alt={node.name}
-                                                                            src={`${baseURL}/api/v1/node-icon/${node.name}`}
-                                                                        />
-                                                                    </div>
-                                                                    <Typography variant='h5'>{node.label}</Typography>
-                                                                </div>
-                                                            </AccordionSummary>
-                                                            <AccordionDetails>
-                                                                {node.paramValues[0] && (
-                                                                    <TableViewOnly
-                                                                        sx={{ minWidth: 150 }}
-                                                                        rows={node.paramValues}
-                                                                        columns={Object.keys(node.paramValues[0])}
+                                                                        alt={node.name}
+                                                                        src={`${baseURL}/api/v1/node-icon/${node.name}`}
                                                                     />
-                                                                )}
-                                                            </AccordionDetails>
-                                                        </Accordion>
-                                                    )
-                                                })}
-                                            </Box>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                        <span style={{ marginTop: '30px', fontStyle: 'italic', color: '#b35702' }}>
+                                                                </div>
+                                                                <Typography variant='h5'>{node.label}</Typography>
+                                                            </div>
+                                                        </AccordionSummary>
+                                                        <AccordionDetails>
+                                                            {node.paramValues[0] && (
+                                                                <TableViewOnly
+                                                                    sx={{ minWidth: 150 }}
+                                                                    rows={node.paramValues}
+                                                                    columns={Object.keys(node.paramValues[0])}
+                                                                />
+                                                            )}
+                                                        </AccordionDetails>
+                                                    </Accordion>
+                                                )
+                                            })}
+                                        </Box>
+                                    </TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                        <div style={{ color: '#b35702' }} className='mt-4'>
                             * Only data that were upserted with Record Manager will be deleted from vector store
-                        </span>
+                        </div>
                     </div>
                 )}
             </DialogContent>
             <DialogActions sx={{ pr: 3, pb: 3 }}>
                 <Button onClick={onCancel} color='primary'>
-                    Cancel
+                    取消
                 </Button>
                 <Button variant='contained' onClick={() => onDelete(dialogProps.type, dialogProps.file, removeFromVS)} color='error'>
-                    Delete
+                    删除
                 </Button>
             </DialogActions>
         </Dialog>

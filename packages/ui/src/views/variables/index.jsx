@@ -180,11 +180,11 @@ const Variables = () => {
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
                     <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='全局变量'>
-                        <Button variant='contained' onClick={() => setShowHowToDialog(true)}>
-                            如何使用变量
-                        </Button>
-                        <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                        <Button color='primary' variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             添加变量
+                        </Button>
+                        <Button color='secondary' variant='text' onClick={() => setShowHowToDialog(true)}>
+                            如何使用变量
                         </Button>
                     </ViewHeader>
                     {!isLoading && variables.length === 0 ? (

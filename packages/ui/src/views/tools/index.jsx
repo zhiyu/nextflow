@@ -136,8 +136,16 @@ const Tools = () => {
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
                     <ViewHeader title='工具'>
+                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
+                            创建工具
+                        </Button>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Button variant='contained' onClick={() => inputRef.current.click()} startIcon={<PiUpload size='0.8em' />}>
+                            <Button
+                                color='secondary'
+                                variant='contained'
+                                onClick={() => inputRef.current.click()}
+                                startIcon={<PiUpload size='0.8em' />}
+                            >
                                 导入
                             </Button>
                             <input
@@ -149,9 +157,7 @@ const Tools = () => {
                                 onChange={(e) => handleFileUpload(e)}
                             />
                         </Box>
-                        <Button variant='contained' color='primary' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
-                            创建工具
-                        </Button>
+
                         {/* <ToggleButtonGroup
                             sx={{ ml: 10, borderRadius: 2, maxHeight: 36 }}
                             value={view}

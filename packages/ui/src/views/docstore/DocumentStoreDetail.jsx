@@ -264,7 +264,7 @@ const DocumentStoreDetails = () => {
     const onStoreDelete = (vectorStoreConfig, recordManagerConfig) => {
         const props = {
             title: `删除`,
-            description: `Delete Store ${getSpecificDocumentStore.data?.name} ? This will delete all the associated loaders and document chunks.`,
+            description: `确定要删除 ${getSpecificDocumentStore.data?.name} ? 这将删除所有关联的加载器和文档块。`,
             vectorStoreConfig,
             recordManagerConfig,
             type: 'STORE'

@@ -348,11 +348,17 @@ const APIKey = () => {
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 3 }}>
                     <ViewHeader onSearchChange={onSearchChange} search={true} searchPlaceholder='搜索...' title='API Keys'>
-                        <Button variant='contained' onClick={uploadDialog} startIcon={<PiUpload size='0.8em' />} id='btn_importApiKeys'>
-                            导入
-                        </Button>
                         <Button variant='contained' onClick={addNew} startIcon={<PiPlus size='0.8em' />}>
                             添加 Key
+                        </Button>
+                        <Button
+                            color='secondary'
+                            variant='contained'
+                            onClick={uploadDialog}
+                            startIcon={<PiUpload size='0.8em' />}
+                            id='btn_importApiKeys'
+                        >
+                            导入
                         </Button>
                     </ViewHeader>
                     {!isLoading && apiKeys.length <= 0 ? (
