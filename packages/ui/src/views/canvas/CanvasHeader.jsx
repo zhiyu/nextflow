@@ -101,7 +101,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, handleSaveFlow, handleDeleteFlo
                 return
             }
             setExportAsTemplateDialogProps({
-                title: 'Export As Template',
+                title: '存为模版',
                 chatflow: chatflow
             })
             setExportAsTemplateDialogOpen(true)
