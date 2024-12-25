@@ -4,18 +4,28 @@ import {
     PiKey,
     PiDatabase,
     PiChatsCircle,
-    PiAppStoreLogo,
     PiRobot,
     PiHammer,
     PiFingerprintSimple,
-    PiOpenAiLogo
+    PiOpenAiLogo,
+    PiFolders,
+    PiFolderSimpleUser,
+    PiFunction,
+    PiFunctionDuotone,
+    PiHash,
+    PiMagicWand,
+    PiPassword,
+    PiPercent,
+    PiCurrencyDollar,
+    PiStack,
+    PiBookOpen
 } from 'react-icons/pi'
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
 const dashboard = [
     {
-        id: 'studio',
+        id: 'console',
         title: '工作台',
         type: 'group',
         children: [
@@ -24,7 +34,7 @@ const dashboard = [
                 title: '智能助理',
                 type: 'item',
                 url: '/assistants',
-                icon: PiOpenAiLogo,
+                icon: PiMagicWand,
                 breadcrumbs: true
             },
             {
@@ -43,19 +53,34 @@ const dashboard = [
                 icon: PiRobot,
                 breadcrumbs: true,
                 isBeta: false
-            },
+            }
+        ]
+    },
+    {
+        id: 'templates',
+        title: '模板库',
+        type: 'group',
+        children: [
             {
                 id: 'marketplaces',
-                title: '模板库',
+                title: '共享模版',
                 type: 'item',
                 url: '/marketplaces',
-                icon: PiAppStoreLogo,
+                icon: PiFolders,
+                breadcrumbs: true
+            },
+            {
+                id: 'mytemplates',
+                title: '我的模版',
+                type: 'item',
+                url: '/mytemplates',
+                icon: PiFolderSimpleUser,
                 breadcrumbs: true
             }
         ]
     },
     {
-        id: 'studio2',
+        id: 'knowledge',
         title: '知识库 & 工具',
         type: 'group',
         children: [
@@ -64,7 +89,7 @@ const dashboard = [
                 title: '知识库',
                 type: 'item',
                 url: '/document-stores',
-                icon: PiDatabase,
+                icon: PiBookOpen,
                 breadcrumbs: true
             },
             {
@@ -72,7 +97,7 @@ const dashboard = [
                 title: '工具',
                 type: 'item',
                 url: '/tools',
-                icon: PiHammer,
+                icon: PiCode,
                 breadcrumbs: true
             },
 
@@ -81,7 +106,7 @@ const dashboard = [
                 title: '全局变量',
                 type: 'item',
                 url: '/variables',
-                icon: PiCode,
+                icon: PiCurrencyDollar,
                 breadcrumbs: true
             }
         ]

@@ -13,6 +13,9 @@ const Agentflows = Loadable(lazy(() => import('@/views/agentflows')))
 // marketplaces routing
 const Marketplaces = Loadable(lazy(() => import('@/views/marketplaces')))
 
+// mytemplates routing
+const MyTemplates = Loadable(lazy(() => import('@/views/marketplaces/mytemplates')))
+
 // apikey routing
 const APIKey = Loadable(lazy(() => import('@/views/apikey')))
 
@@ -60,6 +63,10 @@ const MainRoutes = {
         {
             path: '/marketplaces',
             element: <Marketplaces />
+        },
+        {
+            path: '/mytemplates',
+            element: <MyTemplates />
         },
         {
             path: '/apikey',
