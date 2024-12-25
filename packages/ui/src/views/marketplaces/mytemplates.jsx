@@ -211,6 +211,10 @@ const Marketplace = () => {
         return typeFilter.length > 0 ? typeFilter.includes(data.type) : true
     }
 
+    function filterByFramework(data) {
+        return data
+    }
+
     function filterByUsecases(data) {
         return selectedTemplateUsecases.length > 0 ? (data.usecases || []).some((item) => selectedTemplateUsecases.includes(item)) : true
     }
@@ -538,6 +542,7 @@ const Marketplace = () => {
                                 filterFunction={filterFlows}
                                 filterByType={filterByType}
                                 filterByBadge={filterByBadge}
+                                filterByFramework={filterByFramework}
                                 filterByUsecases={filterByUsecases}
                                 goToTool={goToTool}
                                 goToCanvas={goToCanvas}
