@@ -99,7 +99,7 @@ const Marketplace = () => {
     const [frameworkFilter, setFrameworkFilter] = useState([])
 
     const clearAllUsecases = () => {
-        setSelectedUsecases
+        setSelectedUsecases([])
     }
 
     const handleFilterChange = (event, filter) => {
