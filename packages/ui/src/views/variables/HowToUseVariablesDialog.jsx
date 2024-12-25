@@ -27,7 +27,7 @@ const HowToUseVariablesDialog = ({ show, onCancel }) => {
                 如何使用变量
             </DialogTitle>
             <DialogContent>
-                <p style={{ marginBottom: '10px' }}>变量可以在自定义工具、自定义函数、自定义加载器和带有$前缀的If-Else函数中使用。</p>
+                <p className='mb-2'>变量可以在自定义工具、自定义函数、自定义加载器和带有$前缀的If-Else函数中使用。</p>
                 <CodeEditor
                     disabled={true}
                     value={`$vars.<variable-name>`}
@@ -36,7 +36,7 @@ const HowToUseVariablesDialog = ({ show, onCancel }) => {
                     lang={'js'}
                     basicSetup={{ highlightActiveLine: false, highlightActiveLineGutter: false }}
                 />
-                <p style={{ marginBottom: '10px' }}>变量也可以在任何节点的文本字段参数中使用。例如，在Agent的系统消息中：</p>
+                <p className='mb-2 mt-4'>变量也可以在任何节点的文本字段参数中使用。例如，在Agent的系统消息中：</p>
                 <CodeEditor
                     disabled={true}
                     value={`You are a {{$vars.personality}} AI assistant`}
@@ -45,8 +45,8 @@ const HowToUseVariablesDialog = ({ show, onCancel }) => {
                     lang={'js'}
                     basicSetup={{ highlightActiveLine: false, highlightActiveLineGutter: false }}
                 />
-                <p style={{ marginBottom: '10px' }}>如果变量为静态类型，则将按原样取值。如果变量是运行时类型，则将从.env文件中取值。</p>
-                <p style={{ marginBottom: '10px' }}>
+                <p className='mb-2 mt-4'>如果变量为静态类型，则将按原样取值。如果变量是运行时类型，则将从.env文件中取值。</p>
+                <p className='mb-2 mt-4'>
                     您还可以使用<b>vars</b>覆盖API overrideConfig中的变量值：
                 </p>
                 <CodeEditor
@@ -57,7 +57,7 @@ const HowToUseVariablesDialog = ({ show, onCancel }) => {
                     lang={'js'}
                     basicSetup={{ highlightActiveLine: false, highlightActiveLineGutter: false }}
                 />
-                <p>
+                <p className='mt-4'>
                     Read more from{' '}
                     <a target='_blank' rel='noreferrer' href='https://docs.flowiseai.com/using-flowise/variables'>
                         docs
