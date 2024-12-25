@@ -58,7 +58,7 @@ const AddCustomAssistantDialog = ({ show, dialogProps, onCancel, onConfirm }) =>
             const createResp = await assistantsApi.createNewAssistant(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: '智能助理创建成功!',
+                    message: '智能助手创建成功!',
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',

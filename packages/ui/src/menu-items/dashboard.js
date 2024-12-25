@@ -31,7 +31,7 @@ const dashboard = [
         children: [
             {
                 id: 'assistants',
-                title: '智能助理',
+                title: '智能助手',
                 type: 'item',
                 url: '/assistants',
                 icon: PiMagicWand,
