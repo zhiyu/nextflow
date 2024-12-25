@@ -483,33 +483,25 @@ const AddNodes = ({ nodesData, node, isAgentCanvas }) => {
                                                                             sx={{
                                                                                 p: 0,
                                                                                 borderRadius: `${customization.borderRadius}px`,
-                                                                                cursor: 'move'
+                                                                                cursor: 'move',
+                                                                                paddingLeft: '0px !important',
+                                                                                paddingRight: '0px !important',
+                                                                                margin: '0px'
                                                                             }}
                                                                         >
-                                                                            <ListItem alignItems='center'>
+                                                                            <ListItem className='p-0'>
                                                                                 <ListItemAvatar>
-                                                                                    <div
+                                                                                    <img
                                                                                         style={{
-                                                                                            width: 50,
-                                                                                            height: 50,
-                                                                                            borderRadius: '50%',
-                                                                                            backgroundColor: 'white'
+                                                                                            padding: 0
                                                                                         }}
-                                                                                    >
-                                                                                        <img
-                                                                                            style={{
-                                                                                                width: '100%',
-                                                                                                height: '100%',
-                                                                                                padding: 10,
-                                                                                                objectFit: 'contain'
-                                                                                            }}
-                                                                                            alt={node.name}
-                                                                                            src={`${baseURL}/api/v1/node-icon/${node.name}`}
-                                                                                        />
-                                                                                    </div>
+                                                                                        className='h-8'
+                                                                                        alt={node.name}
+                                                                                        src={`${baseURL}/api/v1/node-icon/${node.name}`}
+                                                                                    />
                                                                                 </ListItemAvatar>
                                                                                 <ListItemText
-                                                                                    sx={{ ml: 1 }}
+                                                                                    className='ml-4'
                                                                                     primary={
                                                                                         <>
                                                                                             <div
