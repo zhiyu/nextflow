@@ -301,7 +301,7 @@ const Marketplace = () => {
                 }
                 setTemplateImages(images)
                 setTemplateUsecases(Array.from(new Set(usecases)).sort())
-                seteligibleTemplateUsecases(Array.from(new Set(usecases)).sort())
+                setEligibleTemplateUsecases(Array.from(new Set(usecases)).sort())
             } catch (e) {
                 console.error(e)
             }
