@@ -2,10 +2,8 @@
 import {
     PiCode,
     PiKey,
-    PiDatabase,
     PiChatsCircle,
     PiRobot,
-    PiHammer,
     PiFingerprintSimple,
     PiOpenAiLogo,
     PiFolders,
