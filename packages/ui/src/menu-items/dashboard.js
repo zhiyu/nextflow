@@ -16,6 +16,8 @@ import {
     PiMagicWand,
     PiPassword,
     PiPercent,
+    PiUsers,
+    PiUserCheck,
     PiCurrencyDollar,
     PiStack,
     PiBookOpen
@@ -130,6 +132,37 @@ const dashboard = [
                 type: 'item',
                 url: '/apikey',
                 icon: PiKey,
+                breadcrumbs: true
+            }
+        ]
+    },
+    {
+        id: 'users-workspaces',
+        title: '用户 & 工作区',
+        type: 'group',
+        children: [
+            {
+                id: 'roles',
+                title: '角色',
+                type: 'item',
+                url: '#',
+                icon: PiUserCheck,
+                breadcrumbs: true
+            },
+            {
+                id: 'users',
+                title: '用户',
+                type: 'item',
+                url: '#',
+                icon: PiUsers,
+                breadcrumbs: true
+            },
+            {
+                id: 'workspaces',
+                title: '工作区',
+                type: 'item',
+                url: '#',
+                icon: PiStack,
                 breadcrumbs: true
             }
         ]

@@ -38,6 +38,7 @@ import publicChatflowsRouter from './public-chatflows'
 import statsRouter from './stats'
 import toolsRouter from './tools'
 import userRouter from './user'
+import usersRouter from './users'
 import upsertHistoryRouter from './upsert-history'
 import variablesRouter from './variables'
 import vectorRouter from './vectors'
@@ -85,6 +86,7 @@ router.use('/public-chatflows', publicChatflowsRouter)
 router.use('/stats', statsRouter)
 router.use('/tools', toolsRouter)
 router.use('/user', userRouter)
+router.use('/users', usersRouter)
 router.use('/variables', variablesRouter)
 router.use('/vector', vectorRouter)
 router.use('/verify', verifyRouter)

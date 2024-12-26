@@ -1,6 +1,9 @@
 import express from 'express'
 import { Request, Response } from 'express'
+
+import session from 'express-session'
 import cookieParser from 'cookie-parser'
+
 import { jwtVerify, decodeJwt } from 'jose'
 
 import path from 'path'
@@ -112,8 +115,9 @@ export class App {
             }
         })
 
-        //cookie parser
+        //auth
         this.app.use(cookieParser())
+        this.app.use(session({ secret: 'wXNl7iJfjkHYMKfXwEeHaXUBQWxk4awk', cookie: { maxAge: 14 * 24 * 60 * 60 } }))
 
         // Switch off the default 'X-Powered-By: Express' header
         this.app.disable('x-powered-by')

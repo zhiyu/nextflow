@@ -18,6 +18,16 @@ export enum ChatMessageRatingType {
 /**
  * Databases
  */
+
+export interface IUser {
+    id: string
+    username: string
+    password: string
+    role: string
+    updatedDate: Date
+    createdDate: Date
+}
+
 export interface IChatFlow {
     id: string
     name: string
