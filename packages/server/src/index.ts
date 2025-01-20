@@ -170,7 +170,6 @@ export class App {
                         if (isWhitelisted) {
                             next()
                         } else if (req.headers['x-request-from'] === 'internal') {
-                            console.log('hello' + req.url)
                             basicAuthMiddleware(req, res, next)
                         } else {
                             const isKeyValidated = await validateAPIKey(req)

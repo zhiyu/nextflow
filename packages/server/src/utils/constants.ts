@@ -4,6 +4,7 @@ export const WHITELIST_URLS = [
     '/api/v1/public-chatflows',
     '/api/v1/public-chatbotConfig',
     '/api/v1/prediction/',
+    '/api/v1/internal-prediction/',
     '/api/v1/vector/upsert/',
     '/api/v1/node-icon/',
     '/api/v1/components-credentials-icon/',
