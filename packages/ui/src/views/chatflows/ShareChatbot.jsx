@@ -4,7 +4,7 @@ import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackba
 import { SketchPicker } from 'react-color'
 import PropTypes from 'prop-types'
 
-import { Box, Typography, Button, Switch, OutlinedInput, Popover, Stack, IconButton } from '@mui/material'
+import { Card, Box, Typography, Button, Switch, OutlinedInput, Popover, Stack, IconButton } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 // Project import
@@ -27,6 +27,8 @@ const defaultConfig = {
     backgroundColor: '#ffffff',
     fontSize: 16,
     poweredByTextColor: '#303235',
+    titleBackgroundColor: '#3B81F6',
+    titleTextColor: '#ffffff',
     botMessage: {
         backgroundColor: '#f7f8ff',
         textColor: '#303235'
@@ -63,13 +65,25 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
     )
     const [title, setTitle] = useState(chatbotConfig?.title ?? '')
     const [titleAvatarSrc, setTitleAvatarSrc] = useState(chatbotConfig?.titleAvatarSrc ?? '')
+    const [titleBackgroundColor, setTitleBackgroundColor] = useState(
+        chatbotConfig?.titleBackgroundColor ?? defaultConfig.titleBackgroundColor
+    )
+    const [titleTextColor, setTitleTextColor] = useState(chatbotConfig?.titleTextColor ?? defaultConfig.titleTextColor)
 
     const [welcomeMessage, setWelcomeMessage] = useState(chatbotConfig?.welcomeMessage ?? '')
     const [errorMessage, setErrorMessage] = useState(chatbotConfig?.errorMessage ?? '')
     const [backgroundColor, setBackgroundColor] = useState(chatbotConfig?.backgroundColor ?? defaultConfig.backgroundColor)
     const [fontSize, setFontSize] = useState(chatbotConfig?.fontSize ?? defaultConfig.fontSize)
     const [poweredByTextColor, setPoweredByTextColor] = useState(chatbotConfig?.poweredByTextColor ?? defaultConfig.poweredByTextColor)
-    const [showAgentMessages, setShowAgentMessages] = useState(chatbotConfig?.showAgentMessages || (isAgentCanvas ? true : undefined))
+
+    const getShowAgentMessagesStatus = () => {
+        if (chatbotConfig?.showAgentMessages !== undefined) {
+            return chatbotConfig?.showAgentMessages
+        } else {
+            return isAgentCanvas ? true : undefined
+        }
+    }
+    const [showAgentMessages, setShowAgentMessages] = useState(getShowAgentMessagesStatus())
 
     const [botMessageBackgroundColor, setBotMessageBackgroundColor] = useState(
         chatbotConfig?.botMessage?.backgroundColor ?? defaultConfig.botMessage.backgroundColor
@@ -121,6 +135,9 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
         if (buttonBackgroundColor) obj.button.backgroundColor = buttonBackgroundColor
         if (title) obj.title = title
         if (titleAvatarSrc) obj.titleAvatarSrc = titleAvatarSrc
+        if (titleBackgroundColor) obj.titleBackgroundColor = titleBackgroundColor
+        if (titleTextColor) obj.titleTextColor = titleTextColor
+
         if (welcomeMessage) obj.welcomeMessage = welcomeMessage
         if (errorMessage) obj.errorMessage = errorMessage
         if (backgroundColor) obj.backgroundColor = backgroundColor
@@ -285,6 +302,12 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
             case 'textInputSendButtonColor':
                 setTextInputSendButtonColor(hexColor)
                 break
+            case 'titleBackgroundColor':
+                setTitleBackgroundColor(hexColor)
+                break
+            case 'titleTextColor':
+                setTitleTextColor(hexColor)
+                break
         }
         setSketchPickerColor(hexColor)
     }
@@ -446,6 +469,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                     <TooltipWithParser style={{ marginLeft: 10 }} title={'公开将允许任何人无需用户名和密码即可访问聊天机器人'} />
                 </div>
             </Stack>
+
             {textField(title, 'title', '标题', 'string', 'Flowise Assistant')}
             {textField(
                 titleAvatarSrc,
@@ -454,6 +478,8 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                 'string',
                 `https://raw.githubusercontent.com/FlowiseAI/Flowise/main/assets/FloWiseAI_dark.png`
             )}
+            {colorField(titleBackgroundColor, 'titleBackgroundColor', 'Title Background Color')}
+            {colorField(titleTextColor, 'titleTextColor', 'Title TextColor')}
             {colorField(buttonBackgroundColor, 'buttonBackgroundColor', '背景颜色')}
             {textField(welcomeMessage, 'welcomeMessage', '欢迎词', 'string', 'Hello! This is custom welcome message')}
             {textField(errorMessage, 'errorMessage', '错误提示', 'string', 'This is custom error message')}
@@ -506,16 +532,8 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                 </Typography>
                 {booleanField(renderHTML, 'renderHTML', 'Render HTML on the chat')}
             </>
-
-            {/*Session Memory Input*/}
-            {isSessionMemory && (
-                <>
-                    <Typography variant='h4' sx={{ mb: 1, mt: 2 }}>
-                        Session Memory
-                    </Typography>
-                    {booleanField(generateNewSession, 'generateNewSession', 'Start new session when chatbot link is opened or refreshed')}
-                </>
-            )}
+            {isSessionMemory &&
+                booleanField(generateNewSession, 'generateNewSession', 'Start new session when chatbot link is opened or refreshed')}
 
             <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' onClick={() => onSave()}>
                 保存更改
